@@ -1,0 +1,45 @@
+@font-face {
+	font-family: "The Heart of Everything Demo";
+	src: url("/assets/font/TheHeartOfEverythingDemo-KRdD.ttf");
+}
+
+* {
+	padding: 0px;
+	margin: 0 auto;
+}
+
+#backlink {
+	position: absolute;
+	background-color: rgb(115, 171, 171);
+}
+
+#backlink>a {
+	text-decoration: none;
+	color: rgb(255, 255, 0);
+	font-size: 24px;
+	margin: 10px;
+}
+
+#backlink>a::before {
+	content: "<";
+	margin-right: 5%;
+}
+
+#container {
+	background-color: rgb(255, 200, 255);
+	width: 450px;
+}
+
+#friends td {
+	border: 1px solid black;
+	padding: 5px;
+	text-align: center;
+}
+
+#friends p {
+	text-align: center;
+}
+
+#friends table img {
+	max-height: 64px;
+}

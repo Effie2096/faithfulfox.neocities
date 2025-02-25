@@ -1,0 +1,142 @@
+:root {
+	--ruby: 205, 120, 170;
+	--surface-1: 219, 132, 55;
+	--surface-2: 193, 255, 155;
+	--page-height: 750px;
+
+	--side-grad: rgba(var(--ruby), 0.5), rgba(var(--surface-1), 0.5);
+}
+
+@font-face {
+	font-family: "The Heart of Everything Demo";
+	src: url("/assets/font/TheHeartOfEverythingDemo-KRdD.ttf");
+}
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	/* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='100%25' width='100%25'%3E%3Cdefs%3E%3Cpattern id='doodad' width='115.47' height='200' viewBox='0 0 34.64101615137755 60' patternUnits='userSpaceOnUse' patternTransform='rotate(160)'%3E%3Crect width='100%25' height='100%25' fill='rgba(180, 225, 255,1)'/%3E%3Cpath d='M51.96 30L51.96 50L34.64 60L34.64 40z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M17.32 30L17.32 50L0 60L0 40z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M34.64 0L34.64 20L17.32 30L17.32 10z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M34.64 60L34.64 80L17.32 90L17.32 70z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M34.64 60L17.32 50L17.32 30L34.64 40z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M0 60L-17.32 50L-17.32 30L0 40z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M17.32 30L0 20L0 0L17.32 10z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M17.32 90L0 80L0 60L17.32 70z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M24.25 46L24.25 34L34.64 28L34.64 40z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M-10.39 46L-10.39 34L0 28L0 40z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M6.93 16L6.93 4L17.32-2L17.32 10z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M6.93 76L6.93 64L17.32 58L17.32 70z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M34.64 28L45.03 34L45.03 46L34.64 40z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M0 28L10.39 34L10.39 46L0 40z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M17.32-2L27.71 4L27.71 16L17.32 10z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M17.32 58L27.71 64L27.71 76L17.32 70z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M45.03 46L34.64 52L24.25 46L34.64 40z' stroke-linejoin='miter' background='true' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M10.39 46L0 52L-10.39 46L0 40z' stroke-linejoin='miter' background='true' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M27.71 16L17.32 22L6.93 16L17.32 10z' stroke-linejoin='miter' background='true' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M27.71 76L17.32 82L6.93 76L17.32 70z' stroke-linejoin='miter' background='true' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M34.64 45.4L29.96 42.7L29.96 37.3L34.64 40z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M0 45.4L-4.68 42.7L-4.68 37.3L0 40z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M17.32 15.4L12.64 12.7L12.64 7.3L17.32 10z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M17.32 75.4L12.64 72.7L12.64 67.3L17.32 70z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M39.32 37.3L39.32 42.7L34.64 45.4L34.64 40z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M4.68 37.3L4.68 42.7L0 45.4L0 40z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M22 7.3L22 12.7L17.32 15.4L17.32 10z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M22 67.3L22 72.7L17.32 75.4L17.32 70z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M29.96 37.3L34.64 34.6L39.32 37.3L34.64 40z' stroke-linejoin='miter' background='true' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M-4.68 37.3L0 34.6L4.68 37.3L0 40z' stroke-linejoin='miter' background='true' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M12.64 7.3L17.32 4.6L22 7.3L17.32 10z' stroke-linejoin='miter' background='true' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M12.64 67.3L17.32 64.6L22 67.3L17.32 70z' stroke-linejoin='miter' background='true' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M33 40.95L33 39.06L34.64 38.11L34.64 40z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M-1.64 40.95L-1.64 39.06L0 38.11L0 40z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M15.68 10.95L15.68 9.06L17.32 8.11L17.32 10z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M15.68 70.94L15.68 69.06L17.32 68.11L17.32 70z' stroke-linejoin='miter' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M34.64 38.11L36.28 39.06L36.28 40.95L34.64 40z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M0 38.11L1.64 39.06L1.64 40.95L0 40z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M17.32 8.11L18.96 9.06L18.96 10.95L17.32 10z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M17.32 68.11L18.96 69.05L18.96 70.94L17.32 70z' stroke-linejoin='miter' fill='rgba(171, 135, 255,1)'/%3E%3Cpath d='M36.28 40.95L34.64 41.89L33 40.95L34.64 40z' stroke-linejoin='miter' background='true' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M1.64 40.95L0 41.89L-1.64 40.95L0 40z' stroke-linejoin='miter' background='true' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M18.96 10.95L17.32 11.89L15.68 10.95L17.32 10z' stroke-linejoin='miter' background='true' fill='rgba(255, 172, 228,1)'/%3E%3Cpath d='M18.96 70.94L17.32 71.89L15.68 70.94L17.32 70z' stroke-linejoin='miter' background='true' fill='rgba(255, 172, 228,1)'/%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23doodad)' height='200%25' width='200%25'/%3E%3C/svg%3E "); */
+	background-image: url("/assets/img/mist.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	backdrop-filter: blur(3px);
+	/* background-attachment: fixed; */
+}
+
+.header {
+	font-family: "The Heart of Everything Demo";
+	font-size: 2em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin: auto;
+}
+
+.header>* {
+	padding: 10px 10px;
+}
+
+.header>img {
+	max-height: 100%;
+}
+
+.container {
+	display: flex;
+	width: 900px;
+	height: var(--page-height);
+	margin: auto;
+	margin-top: 20px;
+	/* border: 1px solid var(--surface-1); */
+	border-radius: 0px;
+	box-shadow: 0 0 30px rgba(var(--ruby), 0.8);
+}
+
+/* .sidebar { */
+/* 	flex: 1 auto; */
+/* } */
+
+.sidebar {
+	display: table-row;
+	width: 30%;
+	height: var(--page-height);
+	overflow: scroll;
+	scrollbar-width: thin;
+}
+
+.sidebar-left {
+	background-image: linear-gradient(to right, var(--side-grad));
+}
+
+.sidebar-right {
+	background-image: linear-gradient(to left, var(--side-grad));
+	margin-left: auto;
+	margin-right: 0;
+}
+
+.main-content {
+	background-color: rgba(var(--surface-1), 0.5);
+	margin: auto;
+	width: 60%;
+	height: var(--page-height);
+	margin-top: 0px;
+}
+
+.content-card {
+	background-color: rgba(var(--surface-2), 0.6);
+	padding: 20px;
+	border: 1px solid rgba(var(--surface-2), 0.6);
+	border-radius: 10px;
+	/* box-shadow: 0 0 24px rgba(0, 0, 0, 0.8); */
+	margin-top: 10px;
+}
+
+.content-head {
+	display: flex;
+}
+
+.content-head>img {
+	max-height: 64px;
+}
+
+.content-card h2 {
+	margin-top: 0;
+	padding-left: 10px;
+	font-size: 28px;
+}
+
+.sidebar-content {
+	display: flex;
+}
+
+.sidebar-content {
+	color: #000;
+	text-decoration: none;
+	padding: 11px;
+}
+
+.sidebar-content h3 {
+	font-family: "The Heart of Everything Demo";
+	font-size: 3em;
+	margin-top: -9px;
+	margin-bottom: 0px;
+	margin-left: 10px
+}
+
+.sidebar-content img {
+	border-radius: 25%;
+}
+
+.sidebar-content:hover img {
+	transform: rotate(20deg);
+}
+
+
+.sidebar-content>img {
+	max-height: 64px;
+}
