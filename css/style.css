@@ -191,7 +191,6 @@ body:has(#construction:hover) #paradox {
 }
 
 .sidebar-left {
-	background-color: #000;
 	position: relative;
 	background-image: linear-gradient(to right, var(--side-grad));
 	padding-left: 11px;
