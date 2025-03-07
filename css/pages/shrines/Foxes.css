@@ -1,0 +1,29 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	margin: 1rem;
+	margin-bottom: 0.5rem;
+	width: 500px;
+}
+
+.header {
+	margin: auto;
+	text-align: center;
+	font-family: Arial, sans-serif;
+	font-size: 2rem;
+}
+
+.section {
+	background-color: rgba(255, 165, 205, 0.4);
+	border-radius: 1rem;
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	padding: 1rem;
+}
+
+.section * {
+	width: 100%;
+}

@@ -5,45 +5,164 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Fox Den</title>
-	<link href="css/style.css" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="/assets/img/xenia2.png">
 	<script src="script/jquery-3.7.1.min.js"></script>
-	<script>
-		$(function () {
-			var includes = $('[data-include]')
-			$.each(includes, function () {
-				var file = 'pages/posts/' + $(this).data('include') + '.html'
-				$(this).load(file)
-			})
-		});
-	</script>
+	<link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
+
 	<div class="header">
 		<img src="assets/img/fox-sniff.gif" alt="i can smell u :3">
 		<h1>Fox Den :3</h1>
 		<img src="assets/img/fox-sniff.gif" alt="i can smell u :3">
 	</div>
+
+	<div id="based-bnuy">
+		<img id="bnuy" src="https://i.imgur.com/unNqh6B.gif"></img>
+		<img id="muni" src="https://media.tenor.com/PI_PlTRIHbIAAAAi/money-rain.gif" alt="money rain">
+		<p id="cash" class="blink">CASH MONEY!!1!</p>
+		<p id="luc" class="blink">we stay lucrative</p>
+	</div>
+
+	<div id="construction">
+		<h2>Under Construction :3</h2>
+		<img style="max-width: 100%;" src="/assets/img/under-construction.gif" alt="under construction">
+		<img id="paradox" src="/assets/img/construction.gif" alt="">
+	</div>
 	<div class="container">
 
 		<div class="sidebar sidebar-left">
 
-			<a class="sidebar-content" id="friends" href="/pages/friends.html">
-				<img src="/assets/img/frens.jpg" alt="Friends">
-				<h3>Friends</h3>
-			</a>
+
+			<div class="sidebar-content tilt" id="friends">
+				<a href="/pages/friends.html">
+					<img src="/assets/img/frens.jpg" alt="Friends">
+					<h3>Friends</h3>
+				</a>
+			</div>
+
+			<div class="sidebar-content tilt" id="shrines">
+				<a href="/pages/shrines.html">
+					<img src="/assets/img/foxshrine.jpg" alt="Friends">
+					<h3>Shrines</h3>
+				</a>
+			</div>
+
+			<div id="update-container">
+				<h3>Updates</h3>
+				<div id="updates">
+					<div class="update">
+						<p class="update-date">07/03/25</p>
+						<p class="update-desc">Added updates section (this)</p>
+					</div>
+					<div class="update">
+						<p class="update-date">06/03/25</p>
+						<p class="update-desc">Added DOOM II Shrine</p>
+					</div>
+					<div class="update">
+						<p class="update-date">02/03/25</p>
+						<p class="update-desc">Joined ebic webring with frens &lt;3</p>
+					</div>
+					<div class="update">
+						<p class="update-date">22/02/25</p>
+						<p class="update-desc">Started site :D</p>
+					</div>
+				</div>
+			</div>
 
 		</div>
 		<div class="main-content">
-			<div class="content-card" data-include="foggs"></div>
+			<div class="content-card" data-include="posts/foggs"></div>
+			<img id="mushie" class="overlay-image" src="/assets/img/mushie.png" alt="lil mushroom guy">
+			<img id="flowie" class="overlay-image" src="/assets/img/hyacinth.png" alt="lil mushroom guy">
 		</div>
 		<div class="sidebar sidebar-right">
-			<h2>Under Contruction :3</h2>
-			<img src="https://i.imgur.com/unNqh6B.gif"></img>
+
+			<div class="contact">
+				<h3>Contact</h3>
+				<div id="email-section">
+					<p><span style="user-select: none;"> </span><span id="email">faithfulfox@proton.me</span></p>
+					<button class="tooltip" onclick="CopyToClipboard('email')" onmouseout="outFunc()"><span class="tooltiptext"
+							id="myTooltip">Copy to clipboard</span>
+					</button>
+				</div>
+				<h4>
+					<a href="/zased/gpg_key.txt" download="faithfulfox-GPG-Pubkey.txt"
+						style="text-decoration: none; color: black">
+						<span> </span> PGP Pubkey
+					</a>
+				</h4>
+			</div>
+
+			<hr />
+
 			<p>sponsored by the shadow government</p>
 			<p>i use ":3" too much :3</p>
+
+			<hr />
+
+			<div id="webrings">
+				<div>
+					<h3>Webrings</h3>
+				</div>
+				<div class="webring">
+					<div id="prev">
+						<a href="https://anarchywebring.netlify.app/Fox_Den/previous">
+							<p></p>
+						</a>
+					</div>
+					<div id="anarchy">
+						<a href="https://anarchywebring.netlify.app/">
+							<p>anarchy</p>
+						</a>
+					</div>
+					<div id="next">
+						<a href="https://anarchywebring.netlify.app/Fox_Den/next">
+							<p></p>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="badges-container">
+				<h3>Badges</h3>
+				<div id="badges" data-include="badges">
+				</div>
+			</div>
+
 		</div>
+
 	</div>
+
+	<div id="footer">
+		<p>
+			<b>
+				Copyright &copy; 2025 Ebic Webmaster Extraordinaire Faith (effie)
+			</b>
+		</p>
+	</div>
+
+	<script>
+		$(function () {
+			var includes = $('[data-include]')
+			$.each(includes, function () {
+				var file = '/pages/posts/' + $(this).data('include') + '.html'
+				$(this).load(file)
+			})
+		});
+	</script>
+	<script>
+		$(function () {
+			var includes = $('[data-include]')
+			$.each(includes, function () {
+				var file = '/pages/' + $(this).data('include') + '.html'
+				$(this).load(file)
+			})
+		});
+	</script>
+
+	<script src="script/CopyToClipboard.js"></script>
 </body>
 
 </html>
