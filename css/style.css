@@ -199,26 +199,38 @@ body:has(#construction:hover) #paradox {
 #update-container {
 	position: absolute;
 	bottom: 11px;
-	max-height: 205px;
-	height: 205px;
-	width: 93%;
+	max-height: 325px;
+	height: 325px;
+	width: 90%;
+	border: 2px solid #bed0be;
+	border-radius: 10px;
 	overflow: hidden;
 }
 
+#update-container h3 {
+	background-color: rgba(190, 208, 190, 0.7);
+	font-size: 34px;
+	padding: 10px 5px;
+	text-align: center;
+	margin: 0px;
+}
+
 #updates {
-	height: 89%;
-	margin: auto;
+	padding: 5px;
+	height: 79%;
 	overflow: scroll;
 	scrollbar-width: none;
+	padding: 5px;
 }
 
 .update {
 	background-color: rgb(255, 216, 223);
 	outline: 4px dashed rgba(191, 219, 195, 1);
-	font-family: "Monocraft", sans-serif;
 	border-radius: 5px;
-	margin: 3px 5px;
+	margin-left: 3px;
+	margin-right: 3px;
 	margin-top: 10px;
+	z-index: 1;
 	padding: 5px;
 }
 
@@ -230,6 +242,17 @@ body:has(#construction:hover) #paradox {
 .update-desc {
 	font-size: 15px;
 	margin: 5px 0px;
+}
+
+#updates .update:nth-child(3n),
+#updates .update:first-child {
+	margin-right: 20px;
+	transform: rotate(.7deg);
+}
+
+#updates .update:nth-child(2n) {
+	margin-left: 20px;
+	transform: rotate(-.6deg);
 }
 
 .sidebar-right {
@@ -283,7 +306,7 @@ body:has(#construction:hover) #paradox {
 	max-width: 120px;
 	bottom: 0px;
 	right: -60px;
-	z-index: 1;
+	z-index: 2;
 	transform: rotate(5deg);
 }
 
@@ -292,7 +315,7 @@ body:has(#construction:hover) #paradox {
 	max-width: 100px;
 	bottom: 10px;
 	left: -60px;
-	z-index: 1;
+	z-index: 2;
 	transform: rotate(10deg);
 }
 
@@ -361,7 +384,7 @@ body:has(#construction:hover) #paradox {
 .tooltip .tooltiptext {
 	visibility: hidden;
 	width: 140px;
-	background-color: #18f;
+	background-color: #ffbbf7;
 	color: #000;
 	text-align: center;
 	border-radius: 6px;
@@ -383,7 +406,7 @@ body:has(#construction:hover) #paradox {
 	margin-left: -5px;
 	border-width: 5px;
 	border-style: solid;
-	border-color: #555 transparent transparent transparent;
+	border-color: #ffbbf7 transparent transparent transparent;
 }
 
 .tooltip:hover .tooltiptext {
@@ -399,6 +422,7 @@ body:has(#construction:hover) #paradox {
 	display: flex;
 	font-family: "SymbolsNerdFont-Regular";
 	margin: auto;
+	margin-top: 5px;
 	justify-content: center;
 }
 
@@ -406,6 +430,10 @@ body:has(#construction:hover) #paradox {
 	color: black;
 	font-size: 24px;
 	text-decoration: none;
+}
+
+.ring-home {
+	margin: 0px 10px;
 }
 
 #badges-container {
