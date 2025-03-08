@@ -7,11 +7,35 @@
 	<title>Fox Den</title>
 	<link rel="icon" type="image/x-icon" href="/assets/img/xenia2.png">
 	<script src="script/jquery-3.7.1.min.js"></script>
+	<script>
+		window.onload = function () {
+			document.getElementById("chatbox").style.height = "0px";
+		}
+		function toggleChat() {
+			// toggle the visibility of the "chat-container" div
+			var chatContainer = document.getElementById("chatbox");
+			var chatButton = document.getElementById("chat-btn");
+			var chatButtonIcon = document.querySelector("#chat-btn span");
+			const stylea = "10px 10px 0px 0px";
+			const styleb = "10px 10px 10px 10px";
+			chatContainer.style.height = chatContainer.style.height === "0px" ? "450px" : "0px";
+			chatButton.style.borderRadius = chatButton.style.borderRadius === stylea ? styleb : stylea;
+			chatButtonIcon.textContent = chatButtonIcon.textContent === "" ? "" : ""
+		}
+	</script>
 	<link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-
+	<div id="chat-btn-container" class="chat-stuff">
+		<button id="chat-btn" class="chat-stuff" type="button" onclick="toggleChat()">
+			<p>Chat<span class="icon"></span></p>
+		</button>
+	</div>
+	<div id="chat-container" class="chat-stuff">
+		<iframe id="chatbox" src="https://www5.cbox.ws/box/?boxid=955776&boxtag=0z7OyY" width="100%" allowtransparency="yes"
+			allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+	</div>
 	<div class="header">
 		<img src="assets/img/fox-sniff.gif" alt="i can smell u :3">
 		<h1>Fox Den :3</h1>
@@ -54,7 +78,11 @@
 
 				<div id="updates">
 					<div class="update">
-						<p class="update-date">08/03/25</p>
+						<p class="update-date">08/03/25 19:08</p>
+						<p class="update-desc">Added chat box (top left :3)</p>
+					</div>
+					<div class="update">
+						<p class="update-date">08/03/25 14:44</p>
 						<p class="update-desc">Created/added webring badge</p>
 					</div>
 					<div class="update">

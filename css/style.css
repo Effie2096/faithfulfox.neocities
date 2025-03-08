@@ -41,6 +41,53 @@ body {
 	/* overflow: hidden; */
 }
 
+.chat-stuff {
+	position: absolute;
+	margin: 10px;
+	width: 300px;
+	/* transition: ease 1s; */
+}
+
+#chat-container {
+	z-index: 10;
+}
+
+#chatbox {
+	border-radius: 10px 10px 10px 10px;
+	height: 0px;
+	transition: ease .2s;
+}
+
+#chat-btn-container {
+	z-index: 11;
+}
+
+#chat-btn {
+	margin: 0px;
+	border: none;
+	border-radius: 10px 10px 10px 10px;
+	cursor: pointer;
+	background-color: rgb(var(--ruby));
+	font-size: 16px;
+	-webkit-transition: 0s;
+	-moz-transition: 0s;
+	-ms-transition: 0s;
+	-o-transition: 0s;
+	transition: 0s;
+}
+
+#chat-btn:active {
+	-webkit-transition: 0.2s;
+	-moz-transition: 0.2s;
+	-ms-transition: 0.2s;
+	-o-transition: 0.2s;
+	transition: 0.2s;
+}
+
+.icon {
+	font-family: "SymbolsNerdFont-Regular";
+}
+
 #based-bnuy {
 	position: absolute;
 	bottom: 10px;
