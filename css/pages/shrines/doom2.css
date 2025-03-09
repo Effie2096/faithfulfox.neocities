@@ -96,10 +96,10 @@ body {
 	background-size: 70%;
 }
 
-/* #mugshot-container:hover #mugshot-link { */
-/* 	background-image: url("/assets/img/shrines/doom2/devious_doomer.png"); */
-/* 	background-size: 60%; */
-/* } */
+#mugshot-container:hover #mugshot-link {
+	background-image: url("/assets/img/shrines/doom2/devious_doomer.png");
+	background-size: 60%;
+}
 
 #mugshot-link.active {
 	background-image: url("/assets/img/shrines/doom2/devious_doomer.png");
@@ -292,27 +292,27 @@ i span:hover {
 	position: absolute;
 	z-index: 1;
 	right: 230px;
-	top: 100px;
+	top: 10%;
 }
 
 #hellknight-container {
 	position: absolute;
 	z-index: 1;
 	left: 120px;
-	top: 330px;
+	top: 40%;
 }
 
 #pinky-container {
 	position: absolute;
 	z-index: 1;
-	animation: bobber 0.8s cubic-bezier(.1, 0, 1, 1) infinite;
+	animation: bobber 0.8s step-start infinite;
 	right: 75px;
-	top: 590px;
+	top: 72%;
 }
 
 .cacodemon {
 	position: absolute;
-	animation: bobber 1.0s cubic-bezier(.1, 0, 1, 1) infinite;
+	animation: bobber 1.0s step-start infinite;
 }
 
 #cacodemon1 {
@@ -335,7 +335,7 @@ i span:hover {
 
 .hellknight {
 	position: absolute;
-	animation: bobber 1.2s cubic-bezier(.1, 0, 1, 1) infinite;
+	animation: bobber 1.2s step-start infinite;
 }
 
 #hellknight {

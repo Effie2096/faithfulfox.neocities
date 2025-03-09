@@ -325,6 +325,12 @@ body:has(#construction:hover) #paradox {
 	margin-top: 0px;
 }
 
+.main-content #posts {
+	height: 99%;
+	overflow: scroll;
+	scrollbar-width: none;
+}
+
 .content-card {
 	background-color: rgba(var(--surface-2), 0.6);
 	padding: 20px;
@@ -343,9 +349,22 @@ body:has(#construction:hover) #paradox {
 }
 
 .content-card h2 {
-	margin-top: 0;
+	margin: auto;
+	margin-left: 0px;
 	padding-left: 10px;
 	font-size: 28px;
+}
+
+.content-card p {
+	margin-bottom: 20px;
+	padding-left: 5px;
+	border-left: 3px solid rgba(var(--surface-1));
+}
+
+.content-card hr {
+	border-top: 3px dashed rgba(var(--ruby));
+	border-bottom: none;
+	margin: 10px 0px;
 }
 
 #mushie {
@@ -459,6 +478,24 @@ body:has(#construction:hover) #paradox {
 .tooltip:hover .tooltiptext {
 	visibility: visible;
 	opacity: 1;
+}
+
+#socials {
+	margin-top: 10px;
+}
+
+#social-badges {
+	display: flex;
+	flex-wrap: wrap;
+	width: 304px;
+	justify-content: left;
+	margin-top: 5px;
+}
+
+#social-badges img {
+	width: 88px;
+	height: 31px;
+	margin: 2px;
 }
 
 #webrings {
