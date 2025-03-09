@@ -27,6 +27,11 @@
 	src: url("/assets/font/Monocraft.ttf");
 }
 
+@font-face {
+	font-family: "Monaspace-Neon-Frozen";
+	src: url("/assets/font/MonaspaceRadonFrozen-Regular.ttf");
+}
+
 body {
 	font-family: "Monocraft", Arial, sans-serif;
 	margin: 0;
@@ -92,6 +97,7 @@ body {
 	position: absolute;
 	bottom: 10px;
 	right: 10px;
+	z-index: 999;
 }
 
 #based-bnuy #bnuy {
@@ -108,7 +114,7 @@ body {
 	right: 0px;
 	margin-bottom: -10px;
 	margin-right: 15px;
-	z-index: 1;
+	z-index: 1000;
 }
 
 #based-bnuy p {
@@ -348,6 +354,10 @@ body:has(#construction:hover) #paradox {
 	max-height: 64px;
 }
 
+#posts .content-card:nth-child(2n) .content-head {
+	flex-flow: row-reverse;
+}
+
 .content-card h2 {
 	margin: auto;
 	margin-left: 0px;
@@ -358,6 +368,7 @@ body:has(#construction:hover) #paradox {
 .content-card p {
 	margin-bottom: 20px;
 	padding-left: 5px;
+	text-align: justify;
 	border-left: 3px solid rgba(var(--surface-1));
 }
 
@@ -365,6 +376,143 @@ body:has(#construction:hover) #paradox {
 	border-top: 3px dashed rgba(var(--ruby));
 	border-bottom: none;
 	margin: 10px 0px;
+}
+
+.content-preview,
+.content-body {
+	font-family: "Monaspace-Neon-Frozen";
+}
+
+.content-body {
+	height: 0px;
+	overflow: hidden;
+}
+
+.content-body.active {
+	height: fit-content;
+}
+
+.content-expand {
+	border: none;
+	background: none;
+	margin: auto;
+	text-align: center;
+	cursor: pointer;
+}
+
+.content-expand:hover {
+	color: rgb(var(--ruby));
+	font-weight: bold;
+}
+
+.content-expand.active>span {
+	transform: scale(1, -1);
+	display: inline-block;
+}
+
+.content-expand span {
+	font-family: "SymbolsNerdFont-Regular";
+}
+
+.content-footer {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+	width: 100%;
+	font-size: 12px;
+	border-top: 3px dashed rgba(var(--ruby));
+	padding-top: 5px;
+}
+
+.content-footer-section {
+	margin: auto;
+}
+
+.content-footer span {
+	margin: auto;
+}
+
+.content-footer.active {
+	border-top: 2px solid rgba(var(--ruby));
+}
+
+.content-footer-left {
+	position: relative;
+	display: inline-block;
+	text-align: left;
+	margin-left: 0px;
+	padding: 0px;
+	margin: 0px;
+	margin-top: 5px;
+	max-height: 20px;
+}
+
+.content-footer-left .tag {
+	font-family: "Monaspace-Neon-Frozen";
+	text-align: center;
+	background-color: rgba(var(--ruby), 1.0);
+	padding-top: 3px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+	padding-left: 8px;
+	border: 1px solid #000;
+	border-radius: 12px;
+	margin: 2px;
+	max-height: 12px;
+	text-wrap: nowrap;
+}
+
+.content-footer-left .tag:before {
+	content: "#"
+}
+
+.content-footer-left .tag-count {
+	font-family: "Monaspace-Neon-Frozen";
+	font-size: 10px;
+	text-align: center;
+	background-color: rgba(231, 227, 227, 0.8);
+	padding: 4px;
+	border-radius: 10px;
+	margin: auto;
+	margin-left: 3px;
+	margin-bottom: -4px;
+}
+
+.content-footer-left .tag-count:before {
+	content: "+";
+}
+
+.tag-dropdown {
+	position: absolute;
+	overflow: hidden;
+	display: none;
+	flex-wrap: wrap;
+	align-items: start;
+	flex-direction: row;
+	min-width: 200px;
+	margin-top: 3px;
+	width: 200%;
+	padding-top: 3px;
+	z-index: 999;
+}
+
+.content-footer-left:hover .tag-dropdown {
+	display: flex;
+}
+
+.content-footer-left:hover .tag-count {
+	visibility: hidden;
+}
+
+.content-footer-center {
+	margin: auto;
+}
+
+.content-footer-right {
+	font-family: "Monaspace-Neon-Frozen";
+	font-size: 16px;
+	text-align: right;
+	margin-right: 0px;
 }
 
 #mushie {

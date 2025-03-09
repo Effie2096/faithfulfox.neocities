@@ -7,9 +7,27 @@
 	<title>Fox Den</title>
 	<link rel="icon" type="image/x-icon" href="/assets/img/xenia2.png">
 	<script src="script/jquery-3.7.1.min.js"></script>
+	<script src="script/post.js"></script>
 	<script>
 		window.onload = function () {
 			document.getElementById("chatbox").style.height = "0px";
+
+			var postContainer = document.getElementById("posts");
+			postContainer.querySelectorAll(".content-card").forEach(post => {
+				console.log(post);
+				var tagSection = post
+					.getElementsByClassName("content-footer")[0]
+					.getElementsByClassName("content-footer-left")[0];
+				var tags = tagSection.getElementsByTagName("span");
+				// var tagCount = tagSection.appendChild(document.createElement("div"));
+				if (typeof tags !== undefined) {
+					console.log(tags);
+					tags[0].insertAdjacentHTML("afterend", "<span class='tag-count'></span>");
+					var tagCount = tagSection.getElementsByClassName("tag-count")[0];
+					tagCount.innerHTML = tags.length - 2;
+				}
+			});
+
 		}
 		function toggleChat() {
 			// toggle the visibility of the "chat-container" div
@@ -117,7 +135,7 @@
 		<div class="main-content">
 			<div id="posts">
 				<div class="content-card" data-include="posts/aboutme"></div>
-				<!-- <div class="content-card" data-include="posts/foggs"></div> -->
+				<div class="content-card" data-include="posts/foggs"></div>
 				<img id="mushie" class="overlay-image" src="/assets/img/mushie.png" alt="lil mushroom guy">
 				<img id="flowie" class="overlay-image" src="/assets/img/hyacinth.png" alt="lil mushroom guy">
 			</div>
