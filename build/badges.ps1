@@ -15,6 +15,7 @@ Function AddImages {
 		Add-Content -Path $outfile -Value "<img src=`"$path$($badge.Name)`" alt=`"$($badge.Name)`">"
 	}
 	Add-Content -Path $outfile -Value '</div>'
+	Add-Content -Path $outfile -Value '<hr/>'
 }
 
 AddImages $badges80 "smol"

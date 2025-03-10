@@ -384,12 +384,15 @@ body:has(#construction:hover) #paradox {
 }
 
 .content-body {
-	height: 0px;
-	overflow: hidden;
+	overflow-y: hidden;
+	max-height: 0;
+	transition-property: all;
+	transition-duration: .8s;
+	transition-timing-function: cubic-bezier(0.19, 1, 0.22, 2);
 }
 
 .content-body.active {
-	height: fit-content;
+	max-height: 2000px;
 }
 
 .content-expand {
@@ -485,7 +488,7 @@ body:has(#construction:hover) #paradox {
 .tag-dropdown {
 	position: absolute;
 	overflow: hidden;
-	display: none;
+	display: flex;
 	flex-wrap: wrap;
 	align-items: start;
 	flex-direction: row;
@@ -494,14 +497,22 @@ body:has(#construction:hover) #paradox {
 	width: 200%;
 	padding-top: 3px;
 	z-index: 999;
+	max-height: 0px;
+	transition: cubic-bezier(0.075, 0.2, 0.165, 0.12) .8s;
+	/* transition: cubic-bezier(0.75, 0.13, 0.39, 1.15) .8s; */
 }
 
 .content-footer-left:hover .tag-dropdown {
 	display: flex;
+	max-height: 428px;
+}
+
+.tag-count {
+	transition: cubic-bezier(0.75, 0.13, 0.39, 1.15) .2s;
 }
 
 .content-footer-left:hover .tag-count {
-	visibility: hidden;
+	opacity: 0%;
 }
 
 .content-footer-center {
@@ -705,30 +716,6 @@ body:has(#construction:hover) #paradox {
 	width: 304px;
 	justify-content: center;
 	margin-bottom: 10px;
-}
-
-.badge-box img {
-	margin: 1px;
-}
-
-#badges #smol img {
-	width: 80px;
-	height: 15px;
-}
-
-#badges #skinny img {
-	width: 150px;
-	height: 20px;
-}
-
-#badges #normal img {
-	width: 88px;
-	height: 31px;
-}
-
-#badges #stamps img {
-	width: 99px;
-	height: 56px;
 }
 
 #shrines {

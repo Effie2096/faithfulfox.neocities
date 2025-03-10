@@ -1,15 +1,9 @@
 function expandPost(caller) {
 	var postBody = caller.parentNode.parentNode.previousSibling.previousSibling;
-	postBody.classList.contains("active")
-		? postBody.classList.remove("active")
-		: postBody.classList.add("active");
+	postBody.classList.toggle("active");
 
-	caller.classList.contains("active")
-		? caller.classList.remove("active")
-		: caller.classList.add("active");
-	caller.parentNode.parentNode.classList.contains("active")
-		? caller.parentNode.parentNode.classList.remove("active")
-		: caller.parentNode.parentNode.classList.add("active");
+	caller.classList.toggle("active")
+	caller.parentNode.parentNode.classList.toggle("active")
 }
 
 function getCount(parent, recursive) {
