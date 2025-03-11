@@ -2,8 +2,10 @@ function expandPost(caller) {
 	var postBody = caller.parentNode.parentNode.previousSibling.previousSibling;
 	postBody.classList.toggle("active");
 
-	caller.classList.toggle("active")
-	caller.parentNode.parentNode.classList.toggle("active")
+	caller.classList.toggle("active");
+
+	caller.parentNode.parentNode.classList.toggle("active");
+	caller.innerHTML = caller.innerHTML == " less " ? " more " : " less ";
 }
 
 function getCount(parent, recursive) {

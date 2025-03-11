@@ -1,3 +1,5 @@
+@import url("/css/fonts.css");
+
 :root {
 	--ruby: 205, 120, 170;
 	--surface-1: 219, 132, 55;
@@ -10,26 +12,6 @@
 * {
 	margin: 0px;
 	padding: 0px;
-}
-
-@font-face {
-	font-family: "The Heart of Everything Demo";
-	src: url("/assets/font/TheHeartOfEverythingDemo-KRdD.ttf");
-}
-
-@font-face {
-	font-family: "SymbolsNerdFont-Regular";
-	src: url("/assets/font/SymbolsNerdFont-Regular.ttf");
-}
-
-@font-face {
-	font-family: "Monocraft";
-	src: url("/assets/font/Monocraft.ttf");
-}
-
-@font-face {
-	font-family: "Monaspace-Neon-Frozen";
-	src: url("/assets/font/MonaspaceRadonFrozen-Regular.ttf");
 }
 
 body {
@@ -369,7 +351,10 @@ body:has(#construction:hover) #paradox {
 	margin-bottom: 20px;
 	padding-left: 5px;
 	text-align: justify;
-	border-left: 3px solid rgba(var(--surface-1));
+}
+
+.content-card .accent {
+	border-left: 4px solid rgba(var(--surface-1));
 }
 
 .content-card hr {
@@ -391,16 +376,45 @@ body:has(#construction:hover) #paradox {
 	transition-timing-function: cubic-bezier(0.19, 1, 0.22, 2);
 }
 
+.media-card {
+	width: 95%;
+	margin: auto;
+	padding: 10px;
+	background-color: rgb(var(--ruby));
+	border-radius: 5px;
+}
+
 .content-body.active {
 	max-height: 2000px;
+}
+
+.censor {
+	background-color: black;
+	color: black;
+	margin-left: 1px;
+	margin-right: 1px;
+	transition: 1.5s;
+}
+
+.censor:hover {
+	background-color: inherit;
+	color: inherit;
+	transition: 0s;
 }
 
 .content-expand {
 	border: none;
 	background: none;
 	margin: auto;
+	padding: 5px;
 	text-align: center;
 	cursor: pointer;
+}
+
+.content-expand::before,
+.content-expand::after {
+	font-family: "SymbolsNerdFont-Regular";
+	content: "󰄼";
 }
 
 .content-expand:hover {
@@ -408,13 +422,10 @@ body:has(#construction:hover) #paradox {
 	font-weight: bold;
 }
 
-.content-expand.active>span {
+.content-expand.active::before,
+.content-expand.active::after {
 	transform: scale(1, -1);
 	display: inline-block;
-}
-
-.content-expand span {
-	font-family: "SymbolsNerdFont-Regular";
 }
 
 .content-footer {
@@ -425,6 +436,7 @@ body:has(#construction:hover) #paradox {
 	font-size: 12px;
 	border-top: 3px dashed rgba(var(--ruby));
 	padding-top: 5px;
+	margin-top: 10px;
 }
 
 .content-footer-section {
@@ -463,6 +475,7 @@ body:has(#construction:hover) #paradox {
 	margin: 2px;
 	max-height: 12px;
 	text-wrap: nowrap;
+	user-select: none;
 }
 
 .content-footer-left .tag:before {
@@ -604,6 +617,7 @@ body:has(#construction:hover) #paradox {
 .tooltip {
 	position: relative;
 	display: inline-block;
+	cursor: pointer;
 }
 
 .tooltip .tooltiptext {
@@ -670,9 +684,15 @@ body:has(#construction:hover) #paradox {
 }
 
 .webring a {
+	display: inline-block;
 	color: black;
 	font-size: 24px;
 	text-decoration: none;
+}
+
+.ring-prev:hover,
+.ring-next:hover {
+	transform: scale(1.1);
 }
 
 .ring-home {
@@ -732,6 +752,32 @@ body:has(#construction:hover) #paradox {
 	/* transform: rotate(20deg); */
 
 	animation: wiggle 0.7s linear infinite;
+}
+
+.tilt:hover h3 {
+	animation: jitter 0.9s step-start infinite;
+}
+
+@keyframes jitter {
+	0% {
+		transform: rotate(0deg) translateX(6px);
+	}
+
+	20% {
+		transform: rotate(8deg) translateY(2px) translateX(9px);
+	}
+
+	40% {
+		transform: rotate(11deg) translateY(11px) translateX(2px);
+	}
+
+	60% {
+		transform: rotate(-7deg) translateY(5px) translateX(7px);
+	}
+
+	100% {
+		transform: rotate(-2deg) translateY(7px) translateX(1px);
+	}
 }
 
 @keyframes wiggle {

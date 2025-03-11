@@ -1,7 +1,4 @@
-@font-face {
-	font-family: "The Heart of Everything Demo";
-	src: url("/assets/font/TheHeartOfEverythingDemo-KRdD.ttf");
-}
+@import url("/css/fonts.css");
 
 * {
 	padding: 0px;

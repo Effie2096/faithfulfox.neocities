@@ -1,12 +1,20 @@
+@import url("/css/fonts.css");
+
 * {
 	margin: 0;
 	padding: 0;
 }
 
+body {
+	margin: auto;
+}
+
 .container {
-	margin: 1rem;
+	margin: auto;
 	margin-bottom: 0.5rem;
 	width: 500px;
+	overflow: scroll;
+	scrollbar-width: none;
 }
 
 .header {
@@ -16,14 +24,64 @@
 	font-size: 2rem;
 }
 
+.header h1 {
+	font-family: "The Heart of Everything Demo";
+	font-size: 72px;
+}
+
 .section {
 	background-color: rgba(255, 165, 205, 0.4);
 	border-radius: 1rem;
 	font-family: Arial, sans-serif;
 	font-size: 16px;
 	padding: 1rem;
+	height: fit-content;
 }
 
 .section * {
 	width: 100%;
+}
+
+.divider {
+	width: 100%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.divider-one {
+	background-image: url("/assets/img/fall divider by iingo on DA.png");
+	height: 20px;
+}
+
+.divider-two {
+	background-image: url("/assets/img/mapleleaves.gif");
+	height: 60px;
+}
+
+.media-card {
+	width: 93%;
+	margin: auto;
+	padding: 15px;
+	background-color: rgb(255, 140, 180);
+	border-radius: 10px;
+}
+
+.video-wrapper {
+	position: relative;
+	width: 99%;
+	padding-bottom: 56.25%;
+	/* 16:9, for an aspect ratio of 1:1 change to this value to 100% */
+}
+
+.external::after {
+	font-family: "SymbolsNerdFont-Regular";
+	content: "";
+}
+
+iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }

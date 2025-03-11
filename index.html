@@ -9,6 +9,25 @@
 	<script src="script/jquery-3.7.1.min.js"></script>
 	<script src="script/post.js"></script>
 	<script>
+		$(function () {
+			var includes = $('[data-include]')
+			$.each(includes, function () {
+				var file = '/pages/posts/' + $(this).data('include') + '.html'
+				$(this).load(file)
+			})
+		});
+	</script>
+	<script>
+		$(function () {
+			var includes = $('[data-include]')
+			$.each(includes, function () {
+				var file = '/pages/' + $(this).data('include') + '.html'
+				$(this).load(file)
+			})
+		});
+	</script>
+
+	<script>
 		window.onload = function () {
 			document.getElementById("chatbox").style.height = "0px";
 
@@ -18,13 +37,13 @@
 				var tagSection = post
 					.getElementsByClassName("content-footer")[0]
 					.getElementsByClassName("content-footer-left")[0];
-				var tags = tagSection.getElementsByTagName("span");
+				var tags = tagSection.getElementsByClassName("tag");
 				// var tagCount = tagSection.appendChild(document.createElement("div"));
 				if (typeof tags !== undefined) {
 					console.log(tags);
 					tags[0].insertAdjacentHTML("afterend", "<span class='tag-count'></span>");
 					var tagCount = tagSection.getElementsByClassName("tag-count")[0];
-					tagCount.innerHTML = tags.length - 2;
+					tagCount.innerHTML = tags.length - 1;
 				}
 			});
 
@@ -97,6 +116,10 @@
 
 				<div id="updates">
 					<div class="update">
+						<p class="update-date">10/03/25 00:25</p>
+						<p class="update-desc">Added dedicated badges page and made posts look nicer :3</p>
+					</div>
+					<div class="update">
 						<p class="update-date">09/03/25 00:23</p>
 						<p class="update-desc">Wrote a bit about me :3</p>
 					</div>
@@ -147,16 +170,18 @@
 				<h3>Contact</h3>
 				<div id="email-section">
 					<p><span style="user-select: none;"> </span><span id="email">faithfulfox@proton.me</span></p>
-					<button class="tooltip" onclick="CopyToClipboard('email')" onmouseout="outFunc()"><span class="tooltiptext"
-							id="myTooltip">Copy to clipboard</span>
+					<button class="tooltip" onclick="CopyToClipboard('email')">
+						
+						<span class="tooltiptext" id="myTooltip">
+							Copy to clipboard
+						</span>
 					</button>
 				</div>
 				<h4>
 					<a href="/zased/gpg_key.txt" download="faithfulfox-GPG-Pubkey.txt"
 						style="text-decoration: none; color: black">
 						<span> </span> PGP Pubkey
-						<span style="font-size: 1px;"> </span>
-						<span style="font-size: 17px;">󰇚</span>
+						<span style="font-size: 17px;"> </span>
 					</a>
 				</h4>
 				<div id="socials">
@@ -176,7 +201,7 @@
 			</div>
 
 			<hr />
-
+			<h3>Free Real-Estate</h3>
 			<p>sponsored by the shadow government</p>
 			<p>i use ":3" too much :3</p>
 
@@ -189,7 +214,7 @@
 				<div id="anarchy" class="webring">
 					<div class="ring-prev">
 						<a href="https://anarchywebring.netlify.app/Fox_Den/previous">
-							<p>prev</p>
+							<p>[prev]</p>
 						</a>
 					</div>
 					<div class="ring-home">
@@ -199,7 +224,7 @@
 					</div>
 					<div class="ring-next">
 						<a href="https://anarchywebring.netlify.app/Fox_Den/next">
-							<p>next</p>
+							<p>[next]</p>
 						</a>
 					</div>
 				</div>
@@ -224,25 +249,6 @@
 			</b>
 		</p>
 	</div>
-
-	<script>
-		$(function () {
-			var includes = $('[data-include]')
-			$.each(includes, function () {
-				var file = '/pages/posts/' + $(this).data('include') + '.html'
-				$(this).load(file)
-			})
-		});
-	</script>
-	<script>
-		$(function () {
-			var includes = $('[data-include]')
-			$.each(includes, function () {
-				var file = '/pages/' + $(this).data('include') + '.html'
-				$(this).load(file)
-			})
-		});
-	</script>
 
 	<script src="script/CopyToClipboard.js"></script>
 </body>

@@ -1,0 +1,19 @@
+@font-face {
+	font-family: "The Heart of Everything Demo";
+	src: url("/assets/font/TheHeartOfEverythingDemo-KRdD.ttf");
+}
+
+@font-face {
+	font-family: "SymbolsNerdFont-Regular";
+	src: url("/assets/font/SymbolsNerdFont-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Monocraft";
+	src: url("/assets/font/Monocraft.ttf");
+}
+
+@font-face {
+	font-family: "Monaspace-Neon-Frozen";
+	src: url("/assets/font/MonaspaceRadonFrozen-Regular.ttf");
+}
