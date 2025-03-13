@@ -239,7 +239,6 @@ body:has(#construction:hover) #paradox {
 	width: 90%;
 	border: 2px solid #bed0be;
 	border-radius: 10px;
-	overflow: hidden;
 }
 
 #update-container h3 {
@@ -250,12 +249,58 @@ body:has(#construction:hover) #paradox {
 	margin: 0px;
 }
 
-#updates {
+#updates,
+#todo-list {
+	display: none;
 	padding: 5px;
 	height: 79%;
 	overflow: scroll;
 	scrollbar-width: none;
 	padding: 5px;
+}
+
+#updates.active,
+#todo-list.active {
+	display: block;
+}
+
+#postit {
+	position: absolute;
+	right: -18px;
+	top: -5px;
+	width: 64px;
+	height: 64px;
+	transform: rotate(20deg);
+	cursor: pointer;
+}
+
+#postit:hover {
+	transform: rotate(20deg) scale(1.1);
+}
+
+#postit.active {
+	transform: rotate(20deg) scale(1.1);
+}
+
+#todo-list {
+	background-image: linear-gradient(to bottom, #000 1px, #f2d05c 1px);
+	background-size: 100% 20px;
+	background-attachment: local;
+	background-repeat: repeat-y;
+	background-position: 0 5px;
+	/* border: 1px solid #000; */
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	line-height: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#todo-list ul {
+	padding-left: 30px;
+}
+
+#todo-list ul li::marker {
+	content: "🦊"
 }
 
 .update {
