@@ -40,14 +40,24 @@ function updatePosition() {
 				petElement.classList.remove("fox-wake");
 			}
 		} else {
-			petX += velocityX;
-			petY += velocityY;
+			// if mouse is on screen
+			if (
+				mouseX > 0 &&
+				mouseX < window.innerWidth &&
+				mouseY > 0 &&
+				mouseY < window.innerHeight
+			) {
+				petX += velocityX;
+				petY += velocityY;
 
-			velocity.x = velocityX;
-			velocity.y = velocityY;
+				velocity.x = velocityX;
+				velocity.y = velocityY;
 
-			petElement.style.left = petX + "px";
-			petElement.style.top = petY + "px";
+				petElement.style.left = petX + "px";
+				petElement.style.top = petY + "px";
+			} else {
+				petElement.classList.add("fox-search");
+			}
 
 			sit = Math.abs(dx) <= sit_range && Math.abs(dy) <= sit_range;
 

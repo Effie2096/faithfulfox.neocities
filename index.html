@@ -12,16 +12,7 @@
 		$(function () {
 			var includes = $('[data-include]')
 			$.each(includes, function () {
-				var file = '/pages/posts/' + $(this).data('include') + '.html'
-				$(this).load(file)
-			})
-		});
-	</script>
-	<script>
-		$(function () {
-			var includes = $('[data-include]')
-			$.each(includes, function () {
-				var file = '/pages/' + $(this).data('include') + '.html'
+				var file = $(this).data('include') + '.html'
 				$(this).load(file)
 			})
 		});
@@ -67,6 +58,45 @@
 			chatButton.style.borderRadius = chatButton.style.borderRadius === stylea ? styleb : stylea;
 			chatButtonIcon.textContent = chatButtonIcon.textContent === "" ? "" : ""
 		}
+		function notify(message, type) {
+			var notificationSection = document.getElementById("notifications");
+
+			type = (typeof type === 'undefined') ? 'default' : type;
+			var notification = document.createElement("div");
+			notification.className = "notification";
+			var notificationTitle = document.createElement("h4");
+			notificationTitle.className = "notification-title";
+			switch (type) {
+				case "error":
+					notification.classList.add("error");
+					notificationTitle.innerHTML = "Error!";
+					break;
+				case "info":
+					notification.classList.add("info");
+					notificationTitle.innerHTML = "Erm, btw~";
+					break;
+				case "default":
+					notification.classList.add("default");
+					notificationTitle.innerHTML = "Hey, you!";
+					break;
+			}
+
+			var notificationMessage = document.createElement("p");
+			notificationMessage.innerHTML = message;
+
+			notification.appendChild(notificationTitle);
+			notification.appendChild(notificationMessage);
+
+			notificationSection.prepend(notification);
+
+			setTimeout(function () {
+				notification.classList.add("removing");
+			}, 5000);
+			setTimeout(function () {
+				notification.remove();
+			}, 6000);
+			// $('#notifications').prepend('<div class=`"notification`">' + message + '</div>');
+		}
 	</script>
 	<link href="css/style.css" rel="stylesheet">
 	<link href="css/badges.css" rel="stylesheet">
@@ -76,6 +106,15 @@
 	<div class="pet-container">
 		<div id="pet" draggable="true"></div>
 	</div>
+	<div id="health-warning">
+		<p>Site contains flashy lights, swearing and other such nonsense.</p>
+		<div class="warning-header">
+			<img src="/assets/img/fuuuck.gif" style="width: 80px; margin-top: 8px;" alt="computer">
+			<h3>WARNING!</h3>
+			<img src="/assets/img/cat-boom.gif" style="width: 50px;" alt="cat explosion">
+		</div>
+	</div>
+	<div id="notifications"></div>
 	<div id="chat-btn-container" class="chat-stuff">
 		<button id="chat-btn" class="chat-stuff" type="button" onclick="toggleChat()">
 			<p class="click">Chat<span class="icon click"></span></p>
@@ -204,8 +243,8 @@
 		</div>
 		<div class="main-content">
 			<div id="posts">
-				<div class="content-card" data-include="posts/aboutme"></div>
-				<div class="content-card" data-include="posts/foggs"></div>
+				<div class="content-card" data-include="pages/posts/aboutme"></div>
+				<div class="content-card" data-include="pages/posts/foggs"></div>
 				<img id="mushie" class="overlay-image" src="/assets/img/mushie.png" alt="lil mushroom guy">
 				<img id="flowie" class="overlay-image" src="/assets/img/hyacinth.png" alt="lil mushroom guy">
 			</div>
@@ -216,7 +255,7 @@
 				<h3>Contact</h3>
 				<div id="email-section">
 					<p><span style="user-select: none;"> </span><span id="email">faithfulfox@proton.me</span></p>
-					<button class="tooltip click" onclick="CopyToClipboard('email')">
+					<button class="tooltip click" onclick="CopyToClipboard('email');notify('email copied to clipboard', 'info');">
 						
 						<span class="tooltiptext" id="myTooltip">
 							Copy to clipboard
@@ -224,10 +263,17 @@
 					</button>
 				</div>
 				<h4>
-					<a href="/zased/gpg_key.txt" download="faithfulfox-GPG-Pubkey.txt"
-						style="text-decoration: none; color: black">
-						<span class="click"> </span> PGP Pubkey
-						<span class="click" style="font-size: 17px;"> </span>
+					<span style="user-select: none;"> </span>
+					<a class="tooltip" style="text-decoration: none; color: black" href="/zased/gpg_key.txt">PGP
+						Pubkey
+					</a>
+					<a class="tooltip" style="text-decoration: none;" href="/zased/gpg_key.txt"
+						download="faithfulfox-GPG-Pubkey.txt" onclick="notify('downloading gpg pubkey...', 'info');"
+						style="color: black;">
+						<span class="click" style="font-size: 17px;color: black;"> </span>
+						<span class="tooltiptext" style="font-weight: normal;" id="myTooltip">
+							Download GPG Pubkey
+						</span>
 					</a>
 				</h4>
 				<div id="socials">
@@ -283,7 +329,7 @@
 				<a style="text-decoration: none; color: black;" href="/pages/badge_page.html">
 					<h3 class="link">Badges<span class="icon link" style="font-size: 16px;"> </span></h3>
 				</a>
-				<div id="badges" data-include="badges">
+				<div id="badges" data-include="pages/badges">
 				</div>
 			</div>
 

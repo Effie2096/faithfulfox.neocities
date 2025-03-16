@@ -52,6 +52,131 @@ body {
 	/* overflow: hidden; */
 }
 
+#health-warning {
+	position: absolute;
+	left: 350px;
+	width: 300px;
+	background-image: linear-gradient(to right, #d20f39, #fe640b, #df8e1d, #40a02b, #04a5e5, #8839ef);
+	background-size: 400% 400%;
+	animation: rainbow 5s ease infinite, rainbow-reverse 5s ease infinite;
+	animation-delay: 0s, 5s;
+	text-align: center;
+	border-radius: 10px;
+	margin-top: -40px;
+	padding: 3px;
+	overflow: hidden;
+	opacity: 0.3;
+	transition: 2s ease-out;
+	outline: 5px dashed #000;
+	box-shadow: 0 0 0 5px #ffff00;
+}
+
+#health-warning:hover {
+	opacity: 1;
+	transition: 0.1s linear;
+	margin-top: 10px;
+}
+
+.warning-header {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	color: red;
+	margin: auto;
+	text-shadow: -1px 0px 0px #000, 1px 0px 0px #000, 0px -1px 0px #000, 0px 1px 0px #000;
+	justify-items: center;
+	overflow: hidden;
+}
+
+.warning-header h3 {
+	text-align: center;
+	font-size: 24px;
+	margin-top: 25px;
+	margin-left: 15px
+}
+
+.warning-header img {
+	display: inline-block;
+	margin: auto;
+}
+
+#health-warning p {
+	/* font-family: Arial, Helvetica, sans-serif; */
+	color: #fff;
+	text-shadow: -1px 0px 0px #aaaaaa, 1px 0px 0px #aaaaaa, 0px -1px 0px #aaaaaa, 0px 1px 0px #aaaaaa;
+	font-size: 13px;
+}
+
+@keyframes rainbow {
+	0% {
+		background-position: 0% 0%;
+	}
+
+	100% {
+		background-position: 100% 100%;
+	}
+}
+
+@keyframes rainbow-reverse {
+	0% {
+		background-position: 100% 100%;
+	}
+
+	100% {
+		background-position: 0% 0%;
+	}
+}
+
+#notifications {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 300px;
+	height: 200px;
+	/* background-color: red; */
+}
+
+.notification {
+	background-color: rgba(var(--ruby), 0.8);
+	margin: 5px;
+	padding: 3px;
+	padding-left: 10px;
+	border-radius: 3px;
+}
+
+.notification.default {
+	background-color: rgba(var(--ruby), 0.8);
+}
+
+.notification.error {
+	background-color: rgba(242, 90, 90, 0.8);
+}
+
+.notification.info {
+	background-color: rgba(254, 243, 124, 0.8);
+}
+
+.notification h4.notification-title::before {
+	font-family: "SymbolsNerdFont-Regular";
+	margin-right: 5px;
+}
+
+.notification.error .notification-title::before {
+	content: "";
+}
+
+.notification.info .notification-title::before {
+	content: "";
+}
+
+.notification.default.notification-title::before {
+	content: "";
+}
+
+.notification.removing {
+	opacity: 0;
+	transition: 1s ease;
+}
+
 .chat-stuff {
 	position: absolute;
 	margin: 10px;
@@ -277,6 +402,8 @@ body {
 	transform: translate(-10%, -10%);
 	animation: fox_wake 4s step-start 1;
 }
+
+.fox-search {}
 
 .icon {
 	font-family: "SymbolsNerdFont-Regular";
