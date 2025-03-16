@@ -318,7 +318,8 @@ i span:hover {
 	padding-bottom: 3px;
 }
 
-.media-container img {
+.media-container img,
+.media-container video {
 	display: block;
 	width: 95%;
 	margin-left: auto;

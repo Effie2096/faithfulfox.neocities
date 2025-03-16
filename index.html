@@ -33,17 +33,25 @@
 
 			var postContainer = document.getElementById("posts");
 			postContainer.querySelectorAll(".content-card").forEach(post => {
-				console.log(post);
 				var tagSection = post
 					.getElementsByClassName("content-footer")[0]
 					.getElementsByClassName("content-footer-left")[0];
 				var tags = tagSection.getElementsByClassName("tag");
 				// var tagCount = tagSection.appendChild(document.createElement("div"));
-				if (typeof tags !== undefined) {
-					console.log(tags);
-					tags[0].insertAdjacentHTML("afterend", "<span class='tag-count'></span>");
-					var tagCount = tagSection.getElementsByClassName("tag-count")[0];
-					tagCount.innerHTML = tags.length - 1;
+				var tagDropdown = tagSection.getElementsByClassName("tag-dropdown")[0];
+				var extraTags = tagDropdown.getElementsByClassName("tag");
+				if (extraTags.length > 0) {
+					if (typeof tags !== undefined) {
+						var tagFound = 1;
+						for (var i = 0; i < tags.length; i++) {
+							if (tags[i].innerHTML === extraTags[0].innerHTML) {
+								tagFound = i;
+							}
+						}
+						tags[tagFound - 1].insertAdjacentHTML("afterend", "<div class='tag-count'></div>");
+						var tagCount = tagSection.getElementsByClassName("tag-count")[0];
+						tagCount.innerHTML = extraTags.length;
+					}
 				}
 			});
 
@@ -65,9 +73,12 @@
 </head>
 
 <body>
+	<div class="pet-container">
+		<div id="pet" draggable="true"></div>
+	</div>
 	<div id="chat-btn-container" class="chat-stuff">
 		<button id="chat-btn" class="chat-stuff" type="button" onclick="toggleChat()">
-			<p>Chat<span class="icon"></span></p>
+			<p class="click">Chat<span class="icon click"></span></p>
 		</button>
 	</div>
 	<div id="chat-container" class="chat-stuff">
@@ -99,15 +110,15 @@
 
 			<div class="sidebar-content tilt" id="friends">
 				<a href="/pages/friends.html">
-					<img src="/assets/img/frens.jpg" alt="Friends">
-					<h3>Friends</h3>
+					<img class="link" src="/assets/img/frens.jpg" alt="Friends">
+					<h3 class="link">Friends</h3>
 				</a>
 			</div>
 
 			<div class="sidebar-content tilt" id="shrines">
 				<a href="/pages/shrines.html">
-					<img src="/assets/img/foxshrine.jpg" alt="Friends">
-					<h3>Shrines</h3>
+					<img class="link" src="/assets/img/foxshrine.jpg" alt="Friends">
+					<h3 class="link">Shrines</h3>
 				</a>
 			</div>
 
@@ -122,17 +133,26 @@
 			</script>
 			<div id="update-container">
 				<div id="update-header">
-					<img id="postit" src="/assets/img/postit.png" onclick="toggleToDo()" alt="To-do Post it">
+					<img id="postit" class="click" src="/assets/img/postit.png" onclick="toggleToDo()" alt="To-do Post it">
 					<h3 id="update-heading">Updates</h3>
 				</div>
 				<div id="todo-list">
 					<ul>
 						<li>Write about BrutalDoom:BE and PB3. (Shrines/Doom)</li>
-						<li></li>
+						<li>Doom modding guide. (Shrines/Doom)</li>
+						<li>RSS</li>
 					</ul>
 				</div>
 
 				<div class="active" id="updates">
+					<div class="update">
+						<p class="update-date">16/03/25 02:22</p>
+						<p class="update-desc">Added sweetberry cursors to main page (foxes like sweetberries)</p>
+					</div>
+					<div class="update">
+						<p class="update-date">16/03/25 01:10</p>
+						<p class="update-desc">Added foxy friend to <strike>terrorize</strike> chase your cursor &gt;:3</p>
+					</div>
 					<div class="update">
 						<p class="update-date">13/03/25 20:31</p>
 						<p class="update-desc">Added "To-Do" list.</p>
@@ -196,7 +216,7 @@
 				<h3>Contact</h3>
 				<div id="email-section">
 					<p><span style="user-select: none;"> </span><span id="email">faithfulfox@proton.me</span></p>
-					<button class="tooltip" onclick="CopyToClipboard('email')">
+					<button class="tooltip click" onclick="CopyToClipboard('email')">
 						
 						<span class="tooltiptext" id="myTooltip">
 							Copy to clipboard
@@ -206,8 +226,8 @@
 				<h4>
 					<a href="/zased/gpg_key.txt" download="faithfulfox-GPG-Pubkey.txt"
 						style="text-decoration: none; color: black">
-						<span> </span> PGP Pubkey
-						<span style="font-size: 17px;"> </span>
+						<span class="click"> </span> PGP Pubkey
+						<span class="click" style="font-size: 17px;"> </span>
 					</a>
 				</h4>
 				<div id="socials">
@@ -235,7 +255,7 @@
 				<div id="anarchy" class="webring">
 					<div class="ring-prev">
 						<a href="https://anarchywebring.netlify.app/Fox_Den/previous">
-							<p>[prev]</p>
+							[prev]
 						</a>
 					</div>
 					<div class="ring-home">
@@ -245,7 +265,7 @@
 					</div>
 					<div class="ring-next">
 						<a href="https://anarchywebring.netlify.app/Fox_Den/next">
-							<p>[next]</p>
+							[next]
 						</a>
 					</div>
 				</div>
@@ -261,7 +281,7 @@
 
 			<div id="badges-container">
 				<a style="text-decoration: none; color: black;" href="/pages/badge_page.html">
-					<h3>Badges<span class="icon" style="font-size: 16px;"> </span></h3>
+					<h3 class="link">Badges<span class="icon link" style="font-size: 16px;"> </span></h3>
 				</a>
 				<div id="badges" data-include="badges">
 				</div>
@@ -280,6 +300,7 @@
 	</div>
 
 	<script src="script/CopyToClipboard.js"></script>
+	<script src="script/mouse-pet.js"> </script>
 </body>
 
 </html>
