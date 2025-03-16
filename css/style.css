@@ -343,6 +343,24 @@ body {
 	}
 }
 
+@keyframes fox_search {
+	0% {
+		background-image: url("/assets/img/fox_pet/search_sit.png");
+	}
+
+	25% {
+		background-image: url("/assets/img/fox_pet/search_left.png");
+	}
+
+	50% {
+		background-image: url("/assets/img/fox_pet/search_right.png");
+	}
+
+	100% {
+		background-image: url("/assets/img/fox_pet/search_sit.png");
+	}
+}
+
 .north {
 	background-image: url("/assets/img/fox_pet/walk_up.png");
 	transform: translate(-10%, -10%);
@@ -403,7 +421,11 @@ body {
 	animation: fox_wake 4s step-start 1;
 }
 
-.fox-search {}
+.fox-search {
+	background-image: url("/assets/img/fox_pet/search_sit.png");
+	transform: translate(-10%, -10%);
+	animation: fox_search 4s step-start infinite;
+}
 
 .icon {
 	font-family: "SymbolsNerdFont-Regular";

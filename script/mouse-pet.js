@@ -13,10 +13,16 @@ const sitTimeout = 4000;
 const wakeUpTimeout = 4000;
 var isWakingUp = false;
 var lastSitTime = 0;
+var isSearching = false;
+const searchBounds = 0;
 
 function updatePosition() {
 	var dx = mouseX - petX;
 	var dy = mouseY - petY;
+
+	if (!isSearching) {
+		petElement.classList.remove("fox-search");
+	}
 
 	if (Math.abs(dx) > speed || Math.abs(dy) > speed) {
 		var angle = Math.atan2(dy, dx);
@@ -39,28 +45,19 @@ function updatePosition() {
 				isWakingUp = false;
 				petElement.classList.remove("fox-wake");
 			}
+		} else if (isSearching) {
+			petElement.classList.add("fox-search");
 		} else {
-			// if mouse is on screen
-			if (
-				mouseX > 0 &&
-				mouseX < window.innerWidth &&
-				mouseY > 0 &&
-				mouseY < window.innerHeight
-			) {
-				petX += velocityX;
-				petY += velocityY;
+			petX += velocityX;
+			petY += velocityY;
 
-				velocity.x = velocityX;
-				velocity.y = velocityY;
+			velocity.x = velocityX;
+			velocity.y = velocityY;
 
-				petElement.style.left = petX + "px";
-				petElement.style.top = petY + "px";
-			} else {
-				petElement.classList.add("fox-search");
-			}
+			petElement.style.left = petX + "px";
+			petElement.style.top = petY + "px";
 
 			sit = Math.abs(dx) <= sit_range && Math.abs(dy) <= sit_range;
-
 			updateBackgroundImage(petElement, velocity);
 		}
 	}
@@ -68,10 +65,19 @@ function updatePosition() {
 	requestAnimationFrame(updatePosition);
 }
 
+document.addEventListener("mouseout", function (event) {
+	isSearching =
+		event.clientY <= searchBounds ||
+		event.clientX <= searchBounds ||
+		event.clientX >= window.innerWidth - searchBounds ||
+		event.clientY >= window.innerHeight - searchBounds;
+});
+
 // For tracking mouse movement
 function trackMouse(event) {
 	mouseX = event.clientX;
 	mouseY = event.clientY;
+	console.log("Mouse X:", mouseX, "Mouse Y:", mouseY);
 }
 document.addEventListener("mousemove", trackMouse);
 
