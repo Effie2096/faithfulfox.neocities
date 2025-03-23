@@ -1,8 +1,9 @@
-function CopyToClipboard(id) {
-	var r = document.createRange();
-	r.selectNode(document.getElementById(id));
-	window.getSelection().removeAllRanges();
-	window.getSelection().addRange(r);
-	document.execCommand("copy");
-	window.getSelection().removeAllRanges();
+function CopyToClipboard(content) {
+	var text = "";
+	if (typeof content !== "string") {
+		text = document.getElementById(content).textContent;
+	} else {
+		text = content;
+	}
+	navigator.clipboard.writeText(text);
 }

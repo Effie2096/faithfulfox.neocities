@@ -9,39 +9,103 @@
 </head>
 
 <body>
+	<canvas id="canvas"></canvas>
+	<canvas id="canvas-tuah"></canvas>
 	<div class="container">
-		<div class="header">
-			<h1>Foxes</h1>
-		</div>
-		<p style="color: rgb(255, 155, 65);">
-			≿━━━━━━━━━━━━━━━━━━━━━━━━━━━༺❀༻━━━━━━━━━━━━━━━━━━━━━━━━━━━≾
-		</p>
-		<div class="section">
-			<p>
-				Dunno if you could tell yet but I really like foxes :3.
-			</p>
-		</div>
-		<div class="divider divider-one"></div>
-		<div class="section">
-			<img src="/assets/img/foxstarememe.jpg" alt="I hired this fox to stare at you meme">
-		</div>
-		<div class="divider divider-one"></div>
-		<div class="section">
-			<p>My fave youtube channel about foxes 🦊</p>
-			<div class="media-card">
-				<p>
-					<a class="external" style="color: black; font-weight: bold;" href="https://www.youtube.com/@Saveafox">
-						saveafox - youtube
-					</a>
-				</p>
-				<div class="video-wrapper">
-					<iframe src="https://youtube.com/embed/Ul_V-e0l7TE" width="100%" height="100%"></iframe>
+		<div class="content-column">
+			<div class="scrollbox">
+				<div class="header">
+					<h1>Foxes</h1>
+					<p style="color: rgb(255, 155, 65); font-size: initial;">
+						≿━━━━━━━━━━━━━━━━━━━━━━━━━━━༺❀༻━━━━━━━━━━━━━━━━━━━━━━━━━━━≾
+					</p>
 				</div>
+				<div class="section">
+					<p>
+						Dunno if you could tell yet but I really like foxes :3.
+					</p>
+				</div>
+				<div class="divider divider-one"></div>
+				<div class="section">
+					<img src="/assets/img/foxstarememe.jpg" alt="I hired this fox to stare at you meme">
+				</div>
+				<div class="divider divider-one"></div>
+				<div class="section">
+					<p>My fave youtube channel about foxes 🦊</p>
+					<div class="media-card">
+						<p>
+							<a class="external" style="color: black; font-weight: bold;"
+								href="https://www.youtube.com/@Saveafox">
+								saveafox - youtube
+							</a>
+						</p>
+						<div class="video-wrapper">
+							<iframe src="https://youtube.com/embed/Ul_V-e0l7TE" width="100%"
+								height="100%"></iframe>
+						</div>
+					</div>
+					<p></p>
+				</div>
+				<div class="divider divider-two"></div>
 			</div>
-			<p></p>
 		</div>
-		<div class="divider divider-two"></div>
 	</div>
+
+	<script>
+		const canvas = document.getElementById('canvas');
+		const ctx = canvas.getContext('2d');
+
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+
+		const images = [];
+		const numImages = 10;
+		const radius = 20;
+		let imagesLoaded = 0;
+
+		for (let i = 0; i < numImages; i++) {
+			const image = {
+				x: Math.random() * (canvas.width - radius * 2),
+				y: Math.random() * (canvas.height - radius * 2),
+				vx: Math.random() * 4 - 2,
+				vy: Math.random() * 4 - 2,
+				img: new Image()
+			};
+			image.img.src = '/assets/img/fox sit.webp';
+			image.img.onload = function () {
+				imagesLoaded++;
+				if (imagesLoaded === numImages) {
+					draw();
+				}
+			};
+			images.push(image);
+		}
+
+		function draw() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			for (let i = 0; i < images.length; i++) {
+				const image = images[i];
+				ctx.drawImage(image.img, image.x, image.y, radius * 2, radius * 2);
+
+				image.x += image.vx;
+				image.y += image.vy;
+
+				if (image.x + radius * 2 > canvas.width || image.x < 0) {
+					image.vx = -image.vx;
+				}
+				if (image.y + radius * 2 > canvas.height || image.y < 0) {
+					image.vy = -image.vy;
+				}
+			}
+			requestAnimationFrame(draw);
+		}
+	</script>
+	<div id="flower-bed">
+		<img src="/assets/img/flowers3.gif" alt="Flower bed.">
+		<img src="/assets/img/flowers3.gif" alt="Flower bed.">
+		<img src="/assets/img/flowers3.gif" alt="Flower bed.">
+	</div>
+	<script src="/script/foxsplosion.js"></script>
 </body>
 
 </html>

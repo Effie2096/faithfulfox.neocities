@@ -9,6 +9,17 @@
 	<script>
 		window.onload = function () {
 			document.body.style.backgroundImage = "url('/assets/img/shrines/doom2/doom2background.jpg')";
+
+			const tabLinks = document.querySelectorAll('.tablinks');
+
+			tabLinks.forEach((link) => {
+				link.addEventListener('click', () => {
+					const content = document.querySelector('#content');
+					if (content.scrollTop > 205) {
+						content.scrollTop = 205;
+					}
+				});
+			});
 		}
 	</script>
 	<script>
@@ -65,14 +76,17 @@
 		}
 		function easteregg() {
 			var egg = document.getElementById("easteregg");
+			const hudBackground = document.querySelector('#hud-background');
 			if (egg.style.display === "flex") {
 				document.body.style.backgroundImage = "url('/assets/img/shrines/doom2/doom2background.jpg')";
 				document.body.style.animation = "";
 				egg.style.display = "none";
+				hudBackground.style.setProperty('--fire-display', 'none');
 			} else {
 				document.body.style.backgroundImage = "";
 				document.body.style.animation = "easteregg 0.2s linear infinite";
 				egg.style.display = "flex";
+				hudBackground.style.setProperty('--fire-display', 'block');
 			}
 		}
 	</script>
@@ -271,6 +285,7 @@
 			</div>
 		</div>
 	</div>
+	<div id="hud-background"></div>
 	<div id="hud">
 		<div id="hud-one" class="hud">
 

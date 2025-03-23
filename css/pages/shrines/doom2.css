@@ -2,6 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
+:root {
+	--fire-display: none;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -58,6 +62,40 @@ body {
 	transform: translate(-50%, 0);
 	display: flex;
 	flex-direction: row;
+}
+
+#hud-background {
+	display: block;
+	position: relative;
+	background-image: url("/assets/img/shrines/doom2/hud-repeat.png");
+	background-repeat: repeat-x;
+	background-size: auto 100%;
+	background-position-x: center;
+	height: 100px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+
+	/* border-top: 100px solid transparent; */
+	/* border-image: url("/assets/img/shrines/doom2/fire-divider.gif") 100 20 1 repeat; */
+}
+
+#hud-background::before {
+	content: "";
+	display: var(--fire-display);
+	background-image: url("/assets/img/shrines/doom2/fire-divider.gif"), url("/assets/img/shrines/doom2/fire-divider.gif");
+	background-size: 500px auto, 500px auto;
+	background-position: 0 0, 250px 0;
+	background-repeat: repeat-x;
+	height: 100px;
+	/* set the height of the repeated image */
+
+	position: absolute;
+	bottom: 62px;
+	left: 0;
+	width: 100%;
+	/* z-index: 999; */
 }
 
 .hud {
@@ -258,6 +296,7 @@ i span:hover {
 	margin: auto;
 	justify-content: center;
 	text-align: justify;
+	text-align-last: center;
 	margin-bottom: 1rem;
 }
 

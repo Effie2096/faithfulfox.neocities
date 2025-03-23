@@ -1,11 +1,11 @@
 var velocity = { x: 1, y: 1 };
 
-var petElement = document.getElementById("pet");
+let petElement = document.getElementById("pet");
 var mouseX = 0;
 var mouseY = 0;
 var petX = 0;
 var petY = 0;
-var speed = 2;
+let speed = 2;
 var sit = false;
 const sit_range = 4;
 
@@ -16,18 +16,29 @@ var lastSitTime = 0;
 var isSearching = false;
 const searchBounds = 0;
 
+const directions = {
+	north: [247.6, 292.5],
+	"north-east": [292.6, 337.5],
+	east: [-22.4, 22.5],
+	"south-east": [22.6, 67.5],
+	south: [67.6, 112.5],
+	"south-west": [112.6, 157.5],
+	west: [157.6, 202.5],
+	"north-west": [202.6, 247.5],
+};
+
 function updatePosition() {
-	var dx = mouseX - petX;
-	var dy = mouseY - petY;
+	let dx = mouseX - petX;
+	let dy = mouseY - petY;
 
 	if (!isSearching) {
 		petElement.classList.remove("fox-search");
 	}
 
 	if (Math.abs(dx) > speed || Math.abs(dy) > speed) {
-		var angle = Math.atan2(dy, dx);
-		var velocityX = Math.cos(angle) * speed;
-		var velocityY = Math.sin(angle) * speed;
+		let angle = Math.atan2(dy, dx);
+		let velocityX = Math.cos(angle) * speed;
+		let velocityY = Math.sin(angle) * speed;
 
 		var currentTime = new Date().getTime();
 		if (sit) {
@@ -77,7 +88,6 @@ document.addEventListener("mouseout", function (event) {
 function trackMouse(event) {
 	mouseX = event.clientX;
 	mouseY = event.clientY;
-	console.log("Mouse X:", mouseX, "Mouse Y:", mouseY);
 }
 document.addEventListener("mousemove", trackMouse);
 
@@ -106,17 +116,6 @@ function updateBackgroundImage(element, velocity) {
 }
 
 function angleToDirection(angle) {
-	const directions = {
-		"north-east": [292.5, 337.5],
-		east: [-22.5, 22.5],
-		north: [247.5, 292.5],
-		"north-west": [202.5, 247.5],
-		west: [157.5, 202.5],
-		"south-west": [112.5, 157.5],
-		south: [67.5, 112.5],
-		"south-east": [22.5, 67.5],
-	};
-
 	for (const direction in directions) {
 		const range = directions[direction];
 		if (range[0] < 0) {

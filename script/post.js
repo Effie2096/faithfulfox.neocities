@@ -1,11 +1,20 @@
 function expandPost(caller) {
-	var postBody = caller.parentNode.parentNode.previousSibling.previousSibling;
+	var postContainer = caller.closest(".content-card");
+	var postBody = postContainer.getElementsByClassName("content-body")[0];
 	postBody.classList.toggle("active");
 
-	caller.classList.toggle("active");
+	var expandButtons = postContainer.querySelectorAll(".content-expand");
+	expandButtons.forEach((button) => {
+		button.classList.toggle("active");
+		if (button.classList.contains("hidden-content-expand")) {
+			button.style.display = button.style.display == "block" ? "none" : "block";
+		}
+		button.innerHTML = button.innerHTML == " less " ? " more " : " less ";
+	});
 
-	caller.parentNode.parentNode.classList.toggle("active");
-	caller.innerHTML = caller.innerHTML == " less " ? " more " : " less ";
+	postContainer
+		.getElementsByClassName("content-footer")[0]
+		.classList.toggle("active");
 }
 
 function getCount(parent, recursive) {

@@ -95,7 +95,6 @@
 			setTimeout(function () {
 				notification.remove();
 			}, 6000);
-			// $('#notifications').prepend('<div class=`"notification`">' + message + '</div>');
 		}
 	</script>
 	<link href="css/style.css" rel="stylesheet">
@@ -121,8 +120,9 @@
 		</button>
 	</div>
 	<div id="chat-container" class="chat-stuff">
-		<iframe id="chatbox" src="https://www5.cbox.ws/box/?boxid=955776&boxtag=0z7OyY" width="100%" allowtransparency="yes"
-			allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+		<iframe id="chatbox" src="https://www5.cbox.ws/box/?boxid=955776&boxtag=0z7OyY" width="100%"
+			allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0"
+			scrolling="auto"></iframe>
 	</div>
 	<div class="header">
 		<img src="assets/img/fox-sniff.gif" alt="i can smell u :3">
@@ -156,8 +156,15 @@
 
 			<div class="sidebar-content tilt" id="shrines">
 				<a href="/pages/shrines.html">
-					<img class="link" src="/assets/img/foxshrine.jpg" alt="Friends">
+					<img class="link" src="/assets/img/foxshrine.jpg" alt="Fox Shrine">
 					<h3 class="link">Shrines</h3>
+				</a>
+			</div>
+
+			<div class="sidebar-content tilt new" id="guestbook">
+				<a href="https://faithfulfox.atabook.org/">
+					<img class="link" src="/assets/img/tome_aspect.gif" alt="Spinning Tome">
+					<h3 class="link">Guestbook</h3>
 				</a>
 			</div>
 
@@ -172,7 +179,8 @@
 			</script>
 			<div id="update-container">
 				<div id="update-header">
-					<img id="postit" class="click" src="/assets/img/postit.png" onclick="toggleToDo()" alt="To-do Post it">
+					<img id="postit" class="click" src="/assets/img/postit.png" onclick="toggleToDo()"
+						alt="To-do Post it">
 					<h3 id="update-heading">Updates</h3>
 				</div>
 				<div id="todo-list">
@@ -180,73 +188,24 @@
 						<li>Write about BrutalDoom:BE and PB3. (Shrines/Doom)</li>
 						<li>Doom modding guide. (Shrines/Doom)</li>
 						<li>RSS</li>
+						<li>Make site resizable</li>
+						<li>Actual filters for posts (tags, text, etc.)</li>
 					</ul>
 				</div>
 
-				<div class="active" id="updates">
-					<div class="update">
-						<p class="update-date">16/03/25 02:22</p>
-						<p class="update-desc">Added sweetberry cursors to main page (foxes like sweetberries)</p>
-					</div>
-					<div class="update">
-						<p class="update-date">16/03/25 01:10</p>
-						<p class="update-desc">Added foxy friend to <strike>terrorize</strike> chase your cursor &gt;:3</p>
-					</div>
-					<div class="update">
-						<p class="update-date">13/03/25 20:31</p>
-						<p class="update-desc">Added "To-Do" list.</p>
-					</div>
-					<div class="update">
-						<p class="update-date">12/03/25 16:50</p>
-						<p class="update-desc">Added start of mods tab in Doom Shrine (more to come).</p>
-					</div>
-					<div class="update">
-						<p class="update-date">10/03/25 00:25</p>
-						<p class="update-desc">Added dedicated badges page and made posts look nicer :3</p>
-					</div>
-					<div class="update">
-						<p class="update-date">09/03/25 00:23</p>
-						<p class="update-desc">Wrote a bit about me :3</p>
-					</div>
-					<div class="update">
-						<p class="update-date">08/03/25 22:39</p>
-						<p class="update-desc">Added socials links</p>
-					</div>
-					<div class="update">
-						<p class="update-date">08/03/25 19:08</p>
-						<p class="update-desc">Added chat box (top left :3)</p>
-					</div>
-					<div class="update">
-						<p class="update-date">08/03/25 14:44</p>
-						<p class="update-desc">Created/added webring badge</p>
-					</div>
-					<div class="update">
-						<p class="update-date">07/03/25</p>
-						<p class="update-desc">Added updates section (this)</p>
-					</div>
-					<div class="update">
-						<p class="update-date">06/03/25</p>
-						<p class="update-desc">Added DOOM II Shrine</p>
-					</div>
-					<div class="update">
-						<p class="update-date">02/03/25</p>
-						<p class="update-desc">Joined ebic webring with frens &lt;3</p>
-					</div>
-					<div class="update">
-						<p class="update-date">22/02/25</p>
-						<p class="update-desc">Started site :D</p>
-					</div>
-				</div>
+				<div class="active" id="updates" data-include="/pages/updates"></div>
 
 			</div>
 
 		</div>
 		<div class="main-content">
 			<div id="posts">
-				<div class="content-card" data-include="pages/posts/aboutme"></div>
-				<div class="content-card" data-include="pages/posts/foggs"></div>
+				<div class="content-card" data-include="/pages/posts/pixelart_20250316"></div>
+				<div class="content-card" data-include="/pages/posts/aboutme"></div>
+				<div class="content-card" data-include="/pages/posts/foggs"></div>
 				<img id="mushie" class="overlay-image" src="/assets/img/mushie.png" alt="lil mushroom guy">
-				<img id="flowie" class="overlay-image" src="/assets/img/hyacinth.png" alt="lil mushroom guy">
+				<img id="flowie" class="overlay-image" src="/assets/img/hyacinth.png"
+					alt="lil mushroom guy">
 			</div>
 		</div>
 		<div class="sidebar sidebar-right">
@@ -254,28 +213,28 @@
 			<div class="contact">
 				<h3>Contact</h3>
 				<div id="email-section">
-					<p><span style="user-select: none;"> </span><span id="email">faithfulfox@proton.me</span></p>
-					<button class="tooltip click" onclick="CopyToClipboard('email');notify('email copied to clipboard', 'info');">
+					<p><span style="user-select: none;"> </span><span id="email">faithfulfox@proton.me</span>
+					</p>
+					<button class="tooltip click"
+						onclick="CopyToClipboard('faithfulfox@proton.me');notify('email copied to clipboard', 'info');">
 						
 						<span class="tooltiptext" id="myTooltip">
 							Copy to clipboard
 						</span>
 					</button>
 				</div>
-				<h4>
-					<span style="user-select: none;"> </span>
-					<a class="tooltip" style="text-decoration: none; color: black" href="/zased/gpg_key.txt">PGP
-						Pubkey
-					</a>
-					<a class="tooltip" style="text-decoration: none;" href="/zased/gpg_key.txt"
-						download="faithfulfox-GPG-Pubkey.txt" onclick="notify('downloading gpg pubkey...', 'info');"
-						style="color: black;">
-						<span class="click" style="font-size: 17px;color: black;"> </span>
-						<span class="tooltiptext" style="font-weight: normal;" id="myTooltip">
-							Download GPG Pubkey
-						</span>
-					</a>
-				</h4>
+				<span style="user-select: none;"> </span>
+				<a class="tooltip" style="text-decoration: none; color: black" href="/zased/gpg_key.txt">
+					PGP Pubkey
+				</a>
+				<a class="tooltip" style="text-decoration: none;" href="/zased/gpg_key.txt"
+					download="faithfulfox-GPG-Pubkey.txt"
+					onclick="notify('downloading gpg pubkey...', 'info');" style="color: black;">
+					<span class="click" style="font-size: 17px;color: black;"> </span>
+					<span class="tooltiptext" style="font-weight: normal;" id="myTooltip">
+						Download GPG Pubkey
+					</span>
+				</a>
 				<div id="socials">
 					<h3>Socials</h3>
 					<div id="social-badges">
@@ -319,10 +278,24 @@
 
 			<hr />
 
-			<div>
-				<h3>Free Real-Estate</h3>
-				<p>sponsored by the shadow government</p>
-				<p>i use ":3" too much :3</p>
+			<div id="my-site">
+				<div>
+					<h3>Fox Den Button</h3>
+				</div>
+				<div id="foxden-badge">
+					<a class="tooltip" href="/assets/img/FoxDenLogo.gif" download="FoxDenLogo.gif" onclick="notify('downloading Fox Den button...', 'info');
+						notify('Fox den badge HTML copied to clipboard.', 'info');
+						CopyToClipboard(`
+						&lt;a href=&quot;https://faithfulfox.neocities.org/&quot;&gt;
+						&lt;img src=&quot;FoxDenLogo.gif&quot; alt=&quot;Fox Den Button&quot; width=&quot;88px&quot; height=&quot;31px&quot;&gt;
+						&lt;/a&gt;
+						`)">
+						<img src="/assets/img/FoxDenLogo.gif" alt="Fox Den Badge">
+						<span class="tooltiptext" style="font-weight: normal;" id="myTooltip">
+							Get a button for linking to my site :D
+						</span>
+					</a>
+				</div>
 			</div>
 
 			<div id="badges-container">

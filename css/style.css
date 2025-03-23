@@ -38,6 +38,72 @@ h6 {
 	/* cursor: url("https://files.catbox.moe/qt8zrs.cur") 0 16, auto; */
 }
 
+.wip,
+.new,
+.notif-badge {
+	position: relative;
+}
+
+.wip::after,
+.new::after {
+	color: red;
+	font-family: "Monocraft", Arial, sans-serif;
+	font-size: 20px;
+	position: absolute;
+	text-shadow: 0.2em 0.2em 5px rgba(0, 0, 0, 0.5);
+	width: 64px;
+	height: 64px;
+	/* background-image: url("/assets/img/wip.png"); */
+	right: 40px;
+	top: 18px;
+	z-index: 20;
+	transform: rotate(30deg);
+}
+
+.wip::after {
+	content: "WIP!";
+}
+
+.new::after {
+	content: "NEW!";
+	animation: attention-text ease-in-out 0.7s infinite;
+}
+
+.notif-badge::after {
+	content: "+1";
+	color: white;
+	background-color: red;
+	font-family: "Monaspace-Neon-Frozen";
+	text-align: center;
+	padding: auto;
+	user-select: none;
+	padding-top: 2px;
+	padding-bottom: 0;
+	position: absolute;
+	text-shadow: 0.2em 0.2em 5px rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	font-size: 10px;
+	width: 16px;
+	height: 14px;
+	right: -14px;
+	bottom: 8px;
+	z-index: 20;
+}
+
+@keyframes attention-text {
+	0% {
+		transform: rotate(30deg) scale(1.0);
+	}
+
+	50% {
+		transform: rotate(30deg) scale(1.3) translateY(4px);
+	}
+
+	100% {
+		transform: rotate(30deg) scale(1.0);
+	}
+}
+
 body {
 	font-family: "Monocraft", Arial, sans-serif;
 	margin: 0;
@@ -577,7 +643,8 @@ body:has(#construction:hover) #paradox {
 	display: table-row;
 	width: 35%;
 	height: var(--page-height);
-	overflow: scroll;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	scrollbar-width: none;
 }
 
@@ -679,13 +746,12 @@ body:has(#construction:hover) #paradox {
 	margin: 5px 0px;
 }
 
-#updates .update:nth-child(3n),
-#updates .update:first-child {
+#updates .update:nth-child(even) {
 	margin-right: 20px;
 	transform: rotate(.7deg);
 }
 
-#updates .update:nth-child(2n) {
+#updates .update:nth-child(odd) {
 	margin-left: 20px;
 	transform: rotate(-.6deg);
 }
@@ -736,9 +802,14 @@ body:has(#construction:hover) #paradox {
 	max-height: 64px;
 }
 
-#posts .content-card:nth-child(2n) .content-head {
-	flex-flow: row-reverse;
-}
+/* #posts .content-card:nth-child(2n) .content-head { */
+/* 	flex-flow: row-reverse; */
+/* 	text-align: right; */
+/* } */
+
+/* #posts .content-card:nth-child(2n) .content-head h2 { */
+/* 	margin-right: 10px; */
+/* } */
 
 .content-card h2 {
 	margin: auto;
@@ -755,12 +826,19 @@ body:has(#construction:hover) #paradox {
 
 .content-card .accent {
 	border-left: 4px solid rgba(var(--surface-1));
+	padding-left: 10px;
 }
 
 .content-card hr {
 	border-top: 3px dashed rgba(var(--ruby));
 	border-bottom: none;
 	margin: 10px 0px;
+}
+
+.content-card ol,
+.content-card ul {
+	margin-left: 31px;
+	text-align: justify;
 }
 
 .content-preview,
@@ -771,7 +849,7 @@ body:has(#construction:hover) #paradox {
 .content-body {
 	overflow-y: hidden;
 	max-height: 0;
-	transition-property: all;
+	transition-property: max-height;
 	transition-duration: .8s;
 	transition-timing-function: cubic-bezier(0.19, 1, 0.22, 2);
 }
@@ -779,24 +857,73 @@ body:has(#construction:hover) #paradox {
 .media-card {
 	width: 95%;
 	margin: auto;
+	margin-bottom: 20px;
 	padding: 10px;
 	background-color: rgb(var(--ruby));
 	border-radius: 5px;
 }
 
-.media-side {
-	display: flex;
-	gap: 10px;
-	padding-top: 5px;
-	padding-bottom: 15px;
+.media-card img,
+.media-card video {
+	width: 100%;
+	display: inline-block;
+	margin: auto;
 }
 
-.media-side img {
-	width: 128px;
+.file-download {
+	width: 100px;
+	height: fit-content;
+	border: 1px dashed rgba(235, 235, 235, 0.7);
+	display: grid;
+	grid-template-rows: auto 1fr;
+	overflow: hidden;
+}
+
+.file-download .file-download-icon {
+	font-family: "SymbolsNerdFont-Regular";
+	background-color: rgba(235, 235, 235, 0.2);
+	color: rgba(235, 235, 235, 0.95);
+	font-size: 92px;
+	margin: auto;
+	width: 100%;
+	text-align: center;
+	user-select: none;
+}
+
+.file-download a {
+	text-decoration: none;
+}
+
+.file-download p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background-color: rgba(235, 235, 235, 0.4);
+	color: #000;
+	width: 100%;
+	margin: auto;
+	text-align: center;
+	user-select: none;
+}
+
+.media-side {
+	position: relative;
+	padding-top: 5px;
+	padding-bottom: 0px;
+	align-content: center;
+}
+
+.media-side .media {
+	float: left;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-left: 5px;
 }
 
 .content-body.active {
-	max-height: 2000px;
+	max-height: 10000px;
+	transition-property: max-height;
+	transition-duration: 1.8s;
+	transition-timing-function: ease;
 }
 
 .censor {
@@ -820,6 +947,11 @@ body:has(#construction:hover) #paradox {
 	padding: 5px;
 	text-align: center;
 	width: 100%;
+}
+
+.hidden-content-expand {
+	display: none;
+	background-image: radial-gradient(rgba(var(--ruby), 0.5), rgba(var(--ruby), 0) 80%);
 }
 
 .content-expand::before,
@@ -986,6 +1118,7 @@ body:has(#construction:hover) #paradox {
 
 .sidebar-content {
 	padding-top: 11px;
+	width: 100%;
 }
 
 .sidebar-content h3 {
@@ -1113,6 +1246,27 @@ body:has(#construction:hover) #paradox {
 
 .ring-home {
 	margin: 0px 10px;
+}
+
+#my-site {
+	padding-top: 15px;
+	padding-left: 15px;
+}
+
+#foxden-badge {
+	margin: auto;
+	width: 100%;
+	padding-top: 10px;
+}
+
+#foxden-badge a {
+	margin: auto;
+	width: 100%;
+}
+
+#foxden-badge img {
+	display: block;
+	margin: auto;
 }
 
 #badges-container {
