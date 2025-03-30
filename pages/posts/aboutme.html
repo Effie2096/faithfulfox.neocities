@@ -7,7 +7,7 @@
 	<div class="media-side">
 		<div class="media">
 			<a href="https://picrew.me/">
-				<img src="/assets/img/pfp.png" alt="picrew by me" style="width: 128px;">
+				<img src="/assets/img/pfp.png" alt="picrew by me">
 			</a>
 		</div>
 		<p>
@@ -51,9 +51,9 @@
 </div>
 <div class="content-footer">
 	<div class="content-footer-left content-footer-section">
-		<div class="tag">blessed</div>
-		<div class="tag">deep-state</div>
-		<div class="tag-dropdown">
+		<div class="tag-dropdown" onclick="toggleActive(this)">
+			<div class="tag">blessed</div>
+			<div class="tag">deep-state</div>
 			<div class="tag">money-machine</div>
 			<div class="tag">too-gay-to-die</div>
 			<div class="tag">keep-it-100</div>
@@ -61,7 +61,9 @@
 		</div>
 	</div>
 	<div class="content-footer-center content-footer-section">
+		<div class="expand-border expand-border-left"></div>
 		<button class="content-expand" type="button" onclick="expandPost(this)"> more </button>
+		<div class="expand-border expand-border-right"></div>
 	</div>
 	<div class="content-footer-right content-footer-section">
 		<span>9-Mar-2025</span>

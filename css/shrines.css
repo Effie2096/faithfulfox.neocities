@@ -1,5 +1,9 @@
 @import url("/css/fonts.css");
 
+:root {
+	font-size: 1em;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -22,6 +26,12 @@
 #backlink>a::before {
 	content: "<";
 	margin-right: 5%;
+}
+
+body {
+	overflow: hidden;
+	height: 1vh;
+	font-family: Helvetica, Arial, sans-serif;
 }
 
 #header {
@@ -48,18 +58,25 @@
 	margin: auto;
 }
 
-#container #shrines {
+#shrines-container {
+	height: 80vh;
+	overflow: scroll;
+	border-radius: 0.7rem;
+	scrollbar-width: none;
+}
+
+#shrines {
 	columns: 15rem 3;
 	gap: 1.4rem;
 }
 
-#container #shrines .card img {
+#shrines .card img {
 	width: 100%;
 	margin-bottom: 1rem;
 	border-radius: 0.7rem;
 }
 
-#container #shrines .card:hover {
+#shrines .card:hover {
 	transform: scale(1.01);
 }
 
@@ -79,4 +96,193 @@
 	bottom: 20px;
 	border-bottom-right-radius: 0.7rem;
 	border-bottom-left-radius: 0.7rem;
+}
+
+.content-warning-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	width: fit-content;
+	height: fit-content;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 0px 0.7rem 0px 3px;
+}
+
+/* .content-warning-container .content-warning:not(:last-of-type)::after { */
+/* 	position: absolute; */
+/* 	right: -6px; */
+/* 	content: "|"; */
+/* 	color: white; */
+/* 	font-size: 28px; */
+/* } */
+
+.content-warning {
+	position: relative;
+	width: 2rem;
+	height: 2rem;
+	margin: 3px;
+	border-radius: 4px;
+	background-size: cover;
+	background-position: center;
+}
+
+#content-warning-index {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: grid;
+	/* width: 460px; */
+	grid-template-rows: 25px auto 20px;
+	z-index: 900;
+	background-color: orange;
+	border-radius: 0px 0px 10px 10px;
+}
+
+#content-warning-index .content-warning,
+#content-warning-index .no-entry {
+	width: 64px;
+	height: 64px;
+	background-size: cover;
+	background-position: center;
+}
+
+#content-warning-header {
+	grid-row-start: 1;
+	grid-row-end: 1;
+	width: 100%;
+	text-align: center;
+	justify-items: center;
+	padding: 0px 3rem 0px 3rem;
+}
+
+#content-warning-index-items {
+	display: none;
+	grid-row-start: 2;
+	grid-row-end: 2;
+	font-size: 1.1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+#content-warning-index.active #content-warning-index-items {
+	display: block;
+}
+
+.content-warning-index-item {
+	display: grid;
+	grid-template-columns: 64px 1fr;
+	align-items: center;
+}
+
+.content-warning-index-item p {
+	padding: 1rem;
+}
+
+#content-warning-index-toggle {
+	grid-row-start: 3;
+	grid-row-end: 3;
+	width: 100%;
+	text-align: center;
+	background-color: rgba(255, 99, 0, 1.0);
+	border-radius: 0px 0px 10px 10px;
+	cursor: pointer;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+/* #content-warning-index-toggle:hover #toggle-button { */
+/* 	transform: scale(1.1); */
+/* } */
+
+#toggle-button::before,
+#toggle-button::after {
+	content: "󰄼";
+	font-family: "SymbolsNerdFont-Regular";
+	padding: 0px 10px 0px 10px;
+	display: inline-block;
+}
+
+#content-warning-index.active #toggle-button::before,
+#content-warning-index.active #toggle-button::after {
+	transform: rotate(180deg);
+}
+
+.no-entry {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 32px;
+	height: 32px;
+	transform: translate(-50%, -50%) scale(0.9);
+	background-image: url("/assets/img/content_warning/No-Entry.png");
+}
+
+.mobile {
+	background-image: url("/assets/img/content_warning/Mobile1.png");
+}
+
+.mobile:hover {
+	background-image: url("/assets/img/content_warning/Mobile.gif");
+}
+
+.violence {
+	background-image: url("/assets/img/content_warning/Violence1.png");
+}
+
+.violence:hover {
+	background-image: url("/assets/img/content_warning/Violence.gif");
+}
+
+.blood {
+	background-image: url("/assets/img/content_warning/Blood1.png");
+}
+
+.blood:hover {
+	background-image: url("/assets/img/content_warning/Blood.gif");
+}
+
+.language {
+	background-image: url("/assets/img/content_warning/Language1.png");
+}
+
+.language:hover {
+	background-image: url("/assets/img/content_warning/Language.gif");
+}
+
+.spider {
+	background-image: url("/assets/img/content_warning/Spider1.png");
+}
+
+.spider:hover {
+	background-image: url("/assets/img/content_warning/Spider.gif");
+}
+
+@media (max-width: 550px) {
+	.content-warning {
+		width: 3rem;
+		height: 3rem;
+	}
+}
+
+@media (max-width: 690px) {
+
+	.mobile {
+		background-image: url("/assets/img/content_warning/Mobile.gif");
+	}
+
+	.violence {
+		background-image: url("/assets/img/content_warning/Violence.gif");
+	}
+
+	.blood {
+		background-image: url("/assets/img/content_warning/Blood.gif");
+	}
+
+	.language {
+		background-image: url("/assets/img/content_warning/Language.gif");
+	}
+
+	.spider {
+		background-image: url("/assets/img/content_warning/Spider.gif");
+	}
 }

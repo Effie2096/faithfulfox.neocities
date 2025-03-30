@@ -6,28 +6,80 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Shrines</title>
 	<link href="/css/shrines.css" rel="stylesheet">
+	<script>
+		function toggleContentWarnings() {
+			const contentWarnings = document.getElementById("content-warning-index");
+			const toggleButton = document.getElementById("toggle-button");
+			contentWarnings.classList.toggle("active");
+			toggleButton.innerHTML = toggleButton.innerHTML == "expand" ? "close" : "expand";
+		}
+	</script>
 </head>
 
 <body>
 	<div id="backlink">
-		<a href="https://faithfulfox.neocities.org/">Home</a>
+		<a href="/index.html">Home</a>
 	</div>
+
+	<div id="content-warning-index">
+		<div id="content-warning-header">
+			<h3>Content Warnings</h3>
+		</div>
+		<div id="content-warning-index-items">
+			<div class="content-warning-index-item">
+				<div class="content-warning mobile">
+					<div class="no-entry"></div>
+				</div>
+				<p>Not optimized for small screens (yet).</p>
+			</div>
+			<div class="content-warning-index-item">
+				<div class="content-warning blood"></div>
+				<p>Contains depictions of blood and/or gore.</p>
+			</div>
+			<div class="content-warning-index-item">
+				<div class="content-warning violence"></div>
+				<p>Contains depictions or descriptions of violent acts.</p>
+			</div>
+			<div class="content-warning-index-item">
+				<div class="content-warning language"></div>
+				<p>Contains strong or offensive language.</p>
+			</div>
+			<div class="content-warning-index-item">
+				<div class="content-warning spider"></div>
+				<p>Contains depictions of common critter phobias. &gt;&lt;</p>
+			</div>
+		</div>
+		<div id="content-warning-index-toggle">
+			<div id="toggle-button" onclick="toggleContentWarnings()">expand</div>
+		</div>
+	</div>
+
 	<div id="container">
 		<div id="header">
 			<h1>Shrines</h1>
 		</div>
-		<div id="shrines">
-			<div class="card">
-				<a href="/pages/shrines/Foxes.html">
-					<img src="/assets/img/shrines/Foxes.jpg" alt="Foxes">
-					<div class="title">Foxes</div>
-				</a>
-			</div>
-			<div class="card">
-				<a href="/pages/shrines/doom2.html">
-					<img src="/assets/img/shrines/Doom2.jpg" alt="Doom Two">
-					<div class="title">DOOM2</div>
-				</a>
+		<div id="shrines-container">
+			<div id="shrines">
+				<div class="card">
+					<a href="/pages/shrines/Foxes.html">
+						<img src="/assets/img/shrines/Foxes.jpg" alt="Foxes">
+						<div class="title">Foxes</div>
+					</a>
+				</div>
+				<div class="card">
+					<a href="/pages/shrines/doom2.html">
+						<div class="content-warning-container">
+							<div class="content-warning blood"></div>
+							<div class="content-warning language"></div>
+							<div class="content-warning violence"></div>
+							<div class="content-warning mobile">
+								<div class="no-entry"></div>
+							</div>
+						</div>
+						<img src="/assets/img/shrines/Doom2.jpg" alt="Doom Two">
+						<div class="title">DOOM2</div>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>

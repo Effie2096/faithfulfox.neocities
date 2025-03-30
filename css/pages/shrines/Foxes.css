@@ -1,5 +1,9 @@
 @import url("/css/fonts.css");
 
+:root {
+	font-size: 16px;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -11,6 +15,25 @@ body {
 	width: 100%;
 	background-color: rgb(255, 220, 255);
 	overflow-x: hidden;
+	box-sizing: border-box;
+}
+
+#backlink {
+	position: absolute;
+	background-color: rgb(115, 171, 171);
+	z-index: 900;
+}
+
+#backlink>a {
+	text-decoration: none;
+	color: rgb(255, 255, 0);
+	font-size: 24px;
+	margin: 10px;
+}
+
+#backlink>a::before {
+	content: "<";
+	margin-right: 5%;
 }
 
 #canvas {
@@ -61,7 +84,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 0.5rem;
-	width: 500px;
+	max-width: 500px;
 	height: 95%;
 	overflow: hidden;
 }
@@ -79,11 +102,19 @@ body {
 	font-size: 2rem;
 	position: sticky;
 	top: 0;
+	margin-left: -50%;
+	margin-right: -50%;
 }
 
 .header h1 {
 	font-family: "The Heart of Everything Demo";
 	font-size: 72px;
+}
+
+.header p {
+	font-size: 1rem;
+	text-wrap: nowrap;
+	text-align: center;
 }
 
 .section {
@@ -103,6 +134,7 @@ body {
 	width: 100%;
 	margin-top: 5px;
 	margin-bottom: 5px;
+	background-position: 50%;
 }
 
 .divider-one {

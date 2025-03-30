@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow: hidden;">
 
 <head>
 	<meta charset="UTF-8">
@@ -8,45 +8,97 @@
 	<link rel="icon" type="image/x-icon" href="/assets/img/xenia2.png">
 	<script src="script/jquery-3.7.1.min.js"></script>
 	<script src="script/post.js"></script>
-	<script>
-		$(function () {
-			var includes = $('[data-include]')
-			$.each(includes, function () {
-				var file = $(this).data('include') + '.html'
-				$(this).load(file)
-			})
-		});
-	</script>
+	<script src="/script/page_include.js"></script>
 
 	<script>
+		function getContentTagDropdowns() {
+			var postContainer = document.getElementById("posts");
+			var tagDropdowns = Array.from(postContainer.querySelectorAll(".content-card"))
+				.map((post) => {
+					var footerLeft = post
+						.getElementsByClassName("content-footer")[0]
+						.getElementsByClassName("content-footer-left")[0];
+					return footerLeft.getElementsByClassName("tag-dropdown")[0];
+				});
+			return tagDropdowns;
+		}
+
+		function countContentTags() {
+			const tagDropdowns = getContentTagDropdowns();
+			tagDropdowns.forEach(tagDropdown => {
+				const tagCountFound = tagDropdown.getElementsByClassName("tag-count");
+				if (tagCountFound.length > 0) {
+					tagCountFound[0].remove();
+				}
+
+				var tags = tagDropdown.getElementsByClassName("tag");
+				const tagDropdownWidth = tagDropdown.offsetWidth - 30;
+
+				var rowWidth = 0;
+				var tagCount = 0;
+
+				for (var i = 0; i < tags.length; i++) {
+					const tagWidth = tags[i].offsetWidth;
+
+					rowWidth += tagWidth;
+
+					if (rowWidth < tagDropdownWidth) {
+						tagCount += 1;
+						continue;
+					}
+					break;
+				}
+				if (tags.length - tagCount > 0) {
+					var tagCountBadge = document.createElement("div")
+					tagCountBadge.classList.add("tag-count");
+					tags[tagCount - 1].insertAdjacentElement("afterend", tagCountBadge);
+					tagCountBadge.innerHTML = tags.length - tagCount;
+				}
+			});
+		}
+
+		function toggleSidebarRight() {
+			const sidebar = document.getElementsByClassName("sidebar-right")[0];
+			const sidebarRightToggle = sidebar.getElementsByClassName("sidebar-right-toggle-button")[0];
+			toggleActive(sidebar);
+			toggleActive(sidebarRightToggle);
+		}
+
 		window.onload = function () {
 			document.getElementById("chatbox").style.height = "0px";
 
-			var postContainer = document.getElementById("posts");
-			postContainer.querySelectorAll(".content-card").forEach(post => {
-				var tagSection = post
-					.getElementsByClassName("content-footer")[0]
-					.getElementsByClassName("content-footer-left")[0];
-				var tags = tagSection.getElementsByClassName("tag");
-				// var tagCount = tagSection.appendChild(document.createElement("div"));
-				var tagDropdown = tagSection.getElementsByClassName("tag-dropdown")[0];
-				var extraTags = tagDropdown.getElementsByClassName("tag");
-				if (extraTags.length > 0) {
-					if (typeof tags !== undefined) {
-						var tagFound = 1;
-						for (var i = 0; i < tags.length; i++) {
-							if (tags[i].innerHTML === extraTags[0].innerHTML) {
-								tagFound = i;
-							}
-						}
-						tags[tagFound - 1].insertAdjacentHTML("afterend", "<div class='tag-count'></div>");
-						var tagCount = tagSection.getElementsByClassName("tag-count")[0];
-						tagCount.innerHTML = extraTags.length;
+			const observer = new ResizeObserver((entries) => {
+				for (const entry of entries) {
+					if (entry.contentRect.width !== entry.contentRect.previousWidth ||
+						entry.contentRect.height !== entry.contentRect.previousHeight) {
+						console.log('Flex layout changed!');
+						countContentTags();
 					}
 				}
 			});
+			getContentTagDropdowns().forEach(dropDown => {
+				observer.observe(dropDown);
+			});
+			countContentTags();
 
+			document.querySelectorAll(".censor").forEach((element) => {
+				element.addEventListener("click", () => {
+					toggleActive(element);
+					removeClassAfterTimeout(element, "active", 3000);
+				});
+			});
 		}
+
+		function toggleActive(element) {
+			element.classList.toggle("active");
+		}
+
+		function removeClassAfterTimeout(element, className, timeout) {
+			setTimeout(function () {
+				element.classList.remove(className);
+			}, timeout);
+		}
+
 		function toggleChat() {
 			// toggle the visibility of the "chat-container" div
 			var chatContainer = document.getElementById("chatbox");
@@ -105,7 +157,14 @@
 	<div class="pet-container">
 		<div id="pet" draggable="true"></div>
 	</div>
-	<div id="health-warning">
+
+	<div id="construction">
+		<h2>Under Construction :3</h2>
+		<img style="max-width: 100%;" src="/assets/img/under-construction.gif" alt="under construction">
+		<img id="paradox" src="/assets/img/construction.gif" alt="">
+	</div>
+
+	<div id="health-warning" onclick="toggleActive(this)">
 		<div class="warning-header">
 			<img src="/assets/img/fuuuck.gif" style="width: 80px; margin-top: 8px;" alt="computer">
 			<h3>WARNING!</h3>
@@ -113,6 +172,14 @@
 		</div>
 		<p>Site contains flashy lights, swearing and other such nonsense.</p>
 	</div>
+
+	<div id="based-bnuy">
+		<img id="bnuy" src="https://i.imgur.com/unNqh6B.gif"></img>
+		<img id="muni" src="https://media.tenor.com/PI_PlTRIHbIAAAAi/money-rain.gif" alt="money rain">
+		<p id="cash" class="blink">CASH MONEY!!1!</p>
+		<p id="luc" class="blink">we stay lucrative</p>
+	</div>
+
 	<div id="notifications"></div>
 	<div id="chat-btn-container" class="chat-stuff">
 		<button id="chat-btn" class="chat-stuff" type="button" onclick="toggleChat()">
@@ -124,48 +191,39 @@
 			allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0"
 			scrolling="auto"></iframe>
 	</div>
-	<div id="based-bnuy">
-		<img id="bnuy" src="https://i.imgur.com/unNqh6B.gif"></img>
-		<img id="muni" src="https://media.tenor.com/PI_PlTRIHbIAAAAi/money-rain.gif" alt="money rain">
-		<p id="cash" class="blink">CASH MONEY!!1!</p>
-		<p id="luc" class="blink">we stay lucrative</p>
-	</div>
-
-	<div id="construction">
-		<h2>Under Construction :3</h2>
-		<img style="max-width: 100%;" src="/assets/img/under-construction.gif" alt="under construction">
-		<img id="paradox" src="/assets/img/construction.gif" alt="">
-	</div>
 	<div class="container">
 
 		<div class="header">
 			<img src="assets/img/fox-sniff.gif" alt="i can smell u :3">
-			<h1>Fox Den :3</h1>
+			<h1>Fox Den</h1>
 			<img src="assets/img/fox-sniff.gif" alt="i can smell u :3">
 		</div>
 
 		<div class="sidebar sidebar-left">
 
 
-			<div class="sidebar-content tilt" id="friends">
-				<a href="/pages/friends.html">
-					<img class="link" src="/assets/img/frens.jpg" alt="Friends">
-					<h3 class="link">Friends</h3>
-				</a>
-			</div>
+			<div id="index-items" class="sidebar-content-left">
+				<div class="sidebar-content sidebar-content-left tilt index-item" id="friends">
+					<a href="/pages/friends.html">
+						<img class="click index-item-image" src="/assets/img/frens.jpg" alt="Friends">
+						<h3 class="click">Friends</h3>
+					</a>
+				</div>
 
-			<div class="sidebar-content tilt" id="shrines">
-				<a href="/pages/shrines.html">
-					<img class="link" src="/assets/img/foxshrine.jpg" alt="Fox Shrine">
-					<h3 class="link">Shrines</h3>
-				</a>
-			</div>
+				<div class="sidebar-content sidebar-content-left tilt index-item" id="shrines">
+					<a href="/pages/shrines.html">
+						<img class="click index-item-image" src="/assets/img/foxshrine.jpg" alt="Fox Shrine">
+						<h3 class="click">Shrines</h3>
+					</a>
+				</div>
 
-			<div class="sidebar-content tilt new" id="guestbook">
-				<a href="https://faithfulfox.atabook.org/">
-					<img class="link" src="/assets/img/tome_aspect.gif" alt="Spinning Tome">
-					<h3 class="link">Guestbook</h3>
-				</a>
+				<div class="sidebar-content sidebar-content-left tilt index-item new" id="guestbook">
+					<a href="https://faithfulfox.atabook.org/">
+						<img class="click index-item-image" src="/assets/img/tome_aspect.gif"
+							alt="Spinning Tome">
+						<h3 class="click">Guestbook</h3>
+					</a>
+				</div>
 			</div>
 
 			<script>
@@ -177,21 +235,45 @@
 					updateHeading.innerHTML = updateHeading.innerHTML == "To-do" ? "Updates" : "To-do";
 				}
 			</script>
-			<div id="update-container">
+			<div id="update-container" class="sidebar-content sidebar-content-left">
 				<div id="update-header">
+					<a href="/pages/updates_page.html" style="text-decoration: none; color: black;"
+						class="update-icon-link">
+						<span id="update-icon" class="icon click link">󰂞</span>
+					</a>
+					<a href="#" class="rss-link soon">
+						<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="42px" height="42px"
+							id="RSSicon" viewBox="0 0 256 256" style="margin-top: 3px;">
+							<defs>
+								<linearGradient x1="0.085" y1="0.085" x2="0.915" y2="0.915" id="RSSg">
+									<stop offset="0.0" stop-color="#E3702D" />
+									<stop offset="0.1071" stop-color="#EA7D31" />
+									<stop offset="0.3503" stop-color="#F69537" />
+									<stop offset="0.5" stop-color="#FB9E3A" />
+									<stop offset="0.7016" stop-color="#EA7C31" />
+									<stop offset="0.8866" stop-color="#DE642B" />
+									<stop offset="1.0" stop-color="#D95B29" />
+								</linearGradient>
+							</defs>
+							<rect width="256" height="256" rx="55" ry="55" x="0" y="0" fill="#CC5D15" />
+							<rect width="246" height="246" rx="50" ry="50" x="5" y="5" fill="#F49C52" />
+							<rect width="236" height="236" rx="47" ry="47" x="10" y="10" fill="url(#RSSg)" />
+							<circle cx="68" cy="189" r="24" fill="#FFF" />
+							<path d="M160 213h-34a82 82 0 0 0 -82 -82v-34a116 116 0 0 1 116 116z" fill="#FFF" />
+							<path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF" />
+						</svg>
+					</a>
+					<a href="/pages/updates_page.html" class="click link update-link"
+						style="text-decoration: none; color: black;">
+						<h3 id="update-heading">
+							Updates
+						</h3>
+					</a>
 					<img id="postit" class="click" src="/assets/img/postit.png" onclick="toggleToDo()"
 						alt="To-do Post it">
-					<h3 id="update-heading">Updates</h3>
+					<div class="spacer" style="width: 40px;"></div>
 				</div>
-				<div id="todo-list">
-					<ul>
-						<li>Write about BrutalDoom:BE and PB3. (Shrines/Doom)</li>
-						<li>Doom modding guide. (Shrines/Doom)</li>
-						<li>RSS</li>
-						<li>Make site resizable</li>
-						<li>Actual filters for posts (tags, text, etc.)</li>
-					</ul>
-				</div>
+				<div id="todo-list" data-include="/pages/todo"></div>
 
 				<div class="active" id="updates" data-include="/pages/updates"></div>
 
@@ -210,86 +292,18 @@
 		</div>
 		<div class="sidebar sidebar-right">
 
-			<div class="contact">
-				<h3>Contact</h3>
-				<div id="email-section">
-					<p><span style="user-select: none;"> </span><span id="email">faithfulfox@proton.me</span>
-					</p>
-					<button class="tooltip click"
-						onclick="CopyToClipboard('faithfulfox@proton.me');notify('email copied to clipboard', 'info');">
-						
-						<span class="tooltiptext" id="myTooltip">
-							Copy to clipboard
-						</span>
-					</button>
-				</div>
-				<span style="user-select: none;"> </span>
-				<a class="tooltip" style="text-decoration: none; color: black" href="/zased/gpg_key.txt">
-					PGP Pubkey
-				</a>
-				<a class="tooltip" style="text-decoration: none;" href="/zased/gpg_key.txt"
-					download="faithfulfox-GPG-Pubkey.txt"
-					onclick="notify('downloading gpg pubkey...', 'info');" style="color: black;">
-					<span class="click" style="font-size: 17px;color: black;"> </span>
-					<span class="tooltiptext" style="font-weight: normal;" id="myTooltip">
-						Download GPG Pubkey
-					</span>
-				</a>
-				<div id="socials">
-					<h3>Socials</h3>
-					<div id="social-badges">
-						<a href="https://tech.lgbt/@effie">
-							<img src="/assets/img/badges/88x31/mastodon.png" alt="mastodon">
-						</a>
-						<a href="https://bsky.app/profile/effiexo.bsky.social">
-							<img src="/assets/img/badges/88x31/bsky.png" alt="bluesky">
-						</a>
-						<a href="https://anilist.co/user/effiexo/">
-							<img src="/assets/img/badges/88x31/anilist.png" alt="anilist">
-						</a>
-					</div>
-				</div>
+			<div id="sidebar-right-toggle" onclick="toggleSidebarRight()">
+				<span class="sidebar-right-toggle-button click">expand</span>
 			</div>
-
-			<hr />
-
-			<div id="webrings">
-				<div>
-					<h3>Webrings</h3>
-				</div>
-				<div id="anarchy" class="webring">
-					<div class="ring-prev">
-						<a href="https://anarchywebring.netlify.app/Fox_Den/previous">
-							[prev]
-						</a>
-					</div>
-					<div class="ring-home">
-						<a href="https://anarchywebring.netlify.app/">
-							<img src="/assets/img/webring/hellspawn.png" alt="hellspawn">
-						</a>
-					</div>
-					<div class="ring-next">
-						<a href="https://anarchywebring.netlify.app/Fox_Den/next">
-							[next]
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<hr />
-
 			<div id="my-site">
-				<div>
-					<h3>Fox Den Button</h3>
-				</div>
-				<div id="foxden-badge">
+				<div id="foxden-badge" class="sidebar-content sidebar-content-right">
 					<a class="tooltip" href="/assets/img/FoxDenLogo.gif" download="FoxDenLogo.gif" onclick="notify('downloading Fox Den button...', 'info');
-						notify('Fox den badge HTML copied to clipboard.', 'info');
-						CopyToClipboard(`
-						&lt;a href=&quot;https://faithfulfox.neocities.org/&quot;&gt;
-						&lt;img src=&quot;FoxDenLogo.gif&quot; alt=&quot;Fox Den Button&quot; width=&quot;88px&quot; height=&quot;31px&quot;&gt;
-						&lt;/a&gt;
-						`)">
+							notify('Fox den badge HTML copied to clipboard.', 'info');
+							CopyToClipboard(`
+							&lt;a href=&quot;https://faithfulfox.neocities.org/&quot;&gt;
+							&lt;img src=&quot;FoxDenLogo.gif&quot; alt=&quot;Fox Den Button&quot; width=&quot;88px&quot; height=&quot;31px&quot;&gt;
+							&lt;/a&gt;
+							`)">
 						<img src="/assets/img/FoxDenLogo.gif" alt="Fox Den Badge">
 						<span class="tooltiptext" style="font-weight: normal;" id="myTooltip">
 							Get a button for linking to my site :D
@@ -298,10 +312,87 @@
 				</div>
 			</div>
 
+			<div id="social-stuff">
+				<div>
+					<h3 class="heading">Contact</h3>
+					<div class="contact-section-container">
+						<div id="email-section" class="sidebar-content-right contact-section">
+
+							<img id="mail-logo" src="/assets/img/mail-fox.png" alt="Fox holding a mail letter.">
+
+							<span class="contact-label">faithfulfox@proton.me</span>
+
+							<a href="#" class="tooltip click contact-button"
+								onclick="CopyToClipboard('faithfulfox@proton.me');notify('email copied to clipboard', 'info');">
+								<span class="click icon">
+									
+								</span>
+								<span class="tooltiptext" id="myTooltip">
+									Copy Email To Clipboard
+								</span>
+							</a>
+						</div>
+						<div id="cryptography-section" class="sidebar-content-right contact-section">
+
+							<img id="crypto-logo" class="click" src="/assets/img/crypto-fox.png"
+								alt="Fox over a shield and padlock holding a key.">
+							<span class="contact-label click">PGP Pubkey</span>
+							<a class="tooltip contact-button" href="/zased/gpg_key.txt"
+								download="faithfulfox-PGP-Pubkey.pgp"
+								onclick="copyFile('/zased/gpg_key.txt');notify('downloading pgp pubkey...', 'info');">
+								<span class="click icon"></span>
+								<span class="tooltiptext" id="myTooltip">
+									Download/Copy PGP Pubkey
+								</span>
+							</a>
+						</div>
+					</div>
+					<h3 class="heading">Socials</h3>
+					<div id="socials" class="sidebar-content-right">
+						<div id="social-badges">
+							<a href="https://tech.lgbt/@effie">
+								<img src="/assets/img/badges/88x31/mastodon.png" alt="mastodon">
+							</a>
+							<a href="https://bsky.app/profile/effiexo.bsky.social">
+								<img src="/assets/img/badges/88x31/bsky.png" alt="bluesky">
+							</a>
+							<a href="https://anilist.co/user/effiexo/">
+								<img src="/assets/img/badges/88x31/anilist.png" alt="anilist">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="webrings">
+				<div class="sidebar-content sidebar-content-right">
+					<h3 class="heading">Webrings</h3>
+					<div id="anarchy" class="webring">
+						<div class="ring-prev">
+							<a href="https://anarchywebring.netlify.app/Fox_Den/previous">
+								
+							</a>
+						</div>
+						<div class="ring-home">
+							<a href="https://anarchywebring.netlify.app/">
+								<img src="/assets/img/webring/hellspawn.png" alt="hellspawn">
+							</a>
+						</div>
+						<div class="ring-next">
+							<a href="https://anarchywebring.netlify.app/Fox_Den/next">
+								
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div id="badges-container">
-				<a style="text-decoration: none; color: black;" href="/pages/badge_page.html">
-					<h3 class="link">Badges<span class="icon link" style="font-size: 16px;"> </span></h3>
-				</a>
+				<div id="badges-header">
+					<a style="text-decoration: none; color: black;" href="/pages/badge_page.html">
+						<h3 class="heading link click">Badges</h3>
+					</a>
+				</div>
 				<div id="badges" data-include="pages/badges">
 				</div>
 			</div>
@@ -310,9 +401,12 @@
 		<div id="footer">
 			<p>
 				<b>
-					Copyright &copy; 2025 Ebic Webmaster Extraordinaire Faith (effie)
+					Copyright &copy; 2025 Ebic Webmaster Extraordinaire Faith
 				</b>
 			</p>
+		</div>
+		<div id="the-depths-of-hell">
+
 		</div>
 	</div>
 

@@ -1,0 +1,131 @@
+#update-container {
+	display: grid;
+	grid-template-rows: 50px auto;
+	/* max-height: 325px; */
+	border: 2px solid #bed0be;
+	border-radius: 10px;
+}
+
+#update-header {
+	position: relative;
+	font-family: "Monocraft";
+	display: flex;
+	flex-wrap: wrap;
+	background-color: rgba(190, 208, 190, 0.7);
+	border-radius: 5px 5px 0px 0px;
+	width: 100%;
+}
+
+#update-icon {
+	display: none;
+	margin-right: auto;
+	font-size: 46px;
+	user-select: none;
+}
+
+#update-icon:hover {
+	transform: scale(1.1);
+}
+
+.update-link {
+	font-size: 34px;
+	padding: 5px 0px;
+	text-align: center;
+	margin: auto;
+	/* margin-right: 52px; */
+	align-items: center;
+}
+
+#update-heading {
+	left: 0;
+	right: 0;
+}
+
+#postit {
+	position: absolute;
+	right: -18px;
+	top: 0px;
+	width: 64px;
+	height: 64px;
+	z-index: 8;
+	transform: rotate(20deg);
+}
+
+#postit:hover {
+	transform: rotate(20deg) scale(1.1);
+}
+
+#postit.active {
+	transform: rotate(20deg) scale(1.1);
+}
+
+#updates,
+#todo-list {
+	display: none;
+	width: 100%;
+	padding: 5px;
+	overflow: scroll;
+	scrollbar-width: none;
+	padding: 5px;
+}
+
+#updates.active,
+#todo-list.active {
+	display: block;
+}
+
+#todo-list,
+.postit-note {
+	font-family: "Monaspace-Neon-Frozen";
+	background-image: linear-gradient(to bottom, #000 1px, #f2d05c 1px);
+	background-size: 100% 20px;
+	background-attachment: local;
+	background-repeat: repeat-y;
+	background-position: 0 5px;
+	/* border: 1px solid #000; */
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	line-height: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#todo-list ul,
+.update ul {
+	padding-left: 30px;
+}
+
+#todo-list ul li::marker {
+	content: "🦊"
+}
+
+.update {
+	font-family: "Monocraft";
+	background-color: rgb(255, 216, 223);
+	outline: 4px dashed rgba(191, 219, 195, 1);
+	border-radius: 5px;
+	margin-left: 3px;
+	margin-right: 3px;
+	margin-top: 10px;
+	z-index: 1;
+	padding: 5px;
+}
+
+.update-date {
+	font-weight: bold;
+	font-size: 17px;
+}
+
+.update-desc {
+	font-size: 15px;
+	margin: 5px 0px;
+}
+
+#updates .update:nth-child(even) {
+	margin-right: 20px;
+	transform: rotate(.7deg);
+}
+
+#updates .update:nth-child(odd) {
+	margin-left: 20px;
+	transform: rotate(-.6deg);
+}
