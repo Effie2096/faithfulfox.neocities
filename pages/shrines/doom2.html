@@ -5,23 +5,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Doom2</title>
+	<link href="/css/globals.css" rel="stylesheet">
 	<link href="/css/pages/shrines/doom2.css" rel="stylesheet">
-	<script>
-		window.onload = function () {
-			document.body.style.backgroundImage = "url('/assets/img/shrines/doom2/doom2background.jpg')";
-
-			const tabLinks = document.querySelectorAll('.tablinks');
-
-			tabLinks.forEach((link) => {
-				link.addEventListener('click', () => {
-					const content = document.querySelector('#content');
-					if (content.scrollTop > 205) {
-						content.scrollTop = 205;
-					}
-				});
-			});
-		}
-	</script>
+	<script src="/script/shrines/doom2.js"></script>
 	<script>
 		function openTab(evt, tabName) {
 			// Declare all variables
@@ -49,35 +35,64 @@
 			document.querySelectorAll('.player').forEach(player => {player.pause()});
 			document.querySelectorAll('.player-btn').forEach(btn => {btn.innerHTML = ""});
 		}
+		function playSecret() {
+			return new Promise(function (resolve) {
+				window.secret.addEventListener('ended', function () {
+					console.log("secret ended");
+					resolve();
+				});
+				window.secret.play();
+				// window.secretHasEnded = false;
+			});
+		}
 		function playButton(name) {
 			var elem = document.getElementById(name);
-			var btn = document.getElementById(`${name}-btn`)
-			if (elem.paused) {
-				if (name === "player4") {
-					var mugshotLink = document.getElementById("mugshot-link");
-					// mugshotLink.className = mugshotLink.className.replace(" active", "");
-					mugshotLink.className = mugshotLink.className += " active";
-					easteregg();
+			var btn = document.getElementById(`${name}-btn`);
+
+			// Pause all other players
+			document.querySelectorAll('.player').forEach(player => {
+				if (player !== elem) {
+					player.pause();
 				}
-				pausePlayers();
-				elem.play();
-				btn.innerHTML = '';
-			} else {
-				if (name === "player4") {
-					var mugshotLink = document.getElementById("mugshot-link");
-					mugshotLink.className = mugshotLink.className.replace(" active", "");
+			});
+
+			// Handle player4's special case
+			if (name === "player4") {
+				const mugshot = document.getElementById("mugshot-link");
+				mugshot.classList.toggle("active");
+				if (window.startSound.currentTime > 0 && !window.startSound.paused) {
+					setTimeout(function () {
+						window.startSound.pause();
+						window.startSound.currentTime = 0;
+					}, 100); // add a 100ms delay
+				}
+				if (elem.paused) {
+					// Play start sound before main audio
+					window.startSound.play();
+					window.startSound.addEventListener('ended', function () {
+						elem.play();
+					});
+				} else {
+					// Play pause sound when paused
+					window.pauseSound.play();
+					elem.pause();
 					elem.currentTime = 0;
-					easteregg();
-					// mugshotLink.className = mugshotLink.className += " active";
 				}
-				elem.pause()
-				btn.innerHTML = '';
+			} else {
+				// Play or pause the main audio
+				if (elem.paused) {
+					elem.play();
+					btn.innerHTML = '';
+				} else {
+					elem.pause();
+					btn.innerHTML = '';
+				}
 			}
 		}
-		function easteregg() {
+		function easteregg(player) {
 			var egg = document.getElementById("easteregg");
-			const hudBackground = document.querySelector('#hud-background');
-			if (egg.style.display === "flex") {
+			const hudBackground = document.querySelector('#hud');
+			if (player.paused) {
 				document.body.style.backgroundImage = "url('/assets/img/shrines/doom2/doom2background.jpg')";
 				document.body.style.animation = "";
 				egg.style.display = "none";
@@ -89,6 +104,27 @@
 				hudBackground.style.setProperty('--fire-display', 'block');
 			}
 		}
+
+		function toggleCollapsible(caller) {
+			const collapsibles = document.querySelectorAll('.collapsible-container').forEach((collapsible) => {
+				if (collapsible !== caller.parentNode) {
+					collapsible.classList.remove("active");
+				}
+			});
+			caller.parentNode.classList.toggle("active");
+		}
+
+		function toggleHUD() {
+			const hud = document.getElementById("hud");
+			const hudToggle = document.getElementById("hud-toggle");
+			hudToggle.querySelector("span").innerHTML = hudToggle.innerHTML === "open" ? "close" : "close";
+			toggleActive(hud);
+			toggleActive(hudToggle);
+		}
+
+		function toggleActive(element) {
+			element.classList.toggle("active");
+		}
 	</script>
 </head>
 
@@ -99,46 +135,56 @@
 	<div id="container">
 
 		<div id="easteregg">
-			<img id="at-dooms-gate" src="/assets/img/shrines/doom2/doom-nightmare-at-dooms-gate.png"
-				alt="At Doom's Gate">
+			<img id="at-dooms-gate" src="/assets/img/shrines/doom2/doom-nightmare-at.png" alt="At">
+			<img id="at-dooms-gate" src="/assets/img/shrines/doom2/doom-nightmare-dooms.png" alt="Doom's">
+			<img id="at-dooms-gate" src="/assets/img/shrines/doom2/doom-nightmare-gate.png" alt="Gate">
 		</div>
+
 
 		<div id="caco-container">
 			<img src="/assets/img/shrines/doom2/Cacodemon_sprite.png" alt="Cacodemon" id="cacodemon1"
-				class="cacodemon">
+				class="sprite cacodemon active">
 			<img src="/assets/img/shrines/doom2/Cacodemon_sprite_pog.png" alt="Cacodemon"
-				id="cacodemontuah" class="cacodemon">
+				id="cacodemontuah" class="sprite cacodemon">
 		</div>
 
 		<div id="hellknight-container">
 			<img src="/assets/img/shrines/doom2/Hellknight_sprite.png" alt="Hellknight" id="hellknight"
-				class="hellknight">
+				class="sprite hellknight active">
 			<img src="/assets/img/shrines/doom2/Hellknight_sprite_pretty.png" alt="Hellknight"
-				id="hellknightprincess" class="hellknight">
+				id="hellknightprincess" class="sprite hellknight">
 		</div>
 
 		<div id="pinky-container">
-			<img src=" /assets/img/shrines/doom2/Doom_Demon.gif" alt="Pinky" id="pinky" class="pinky">
-			<img src="/assets/img/shrines/doom2/pinkies.png" alt="Pinky" id="pinkies" class="pinky">
+			<img src=" /assets/img/shrines/doom2/Doom_Demon.gif" alt="Pinky" id="pinky"
+				class="sprite pinky active">
+			<img src="/assets/img/shrines/doom2/pinkies.png" alt="Pinky" id="pinkies"
+				class="sprite pinky">
 		</div>
 
+
+
+
 		<div id="content">
+
 			<div id="header">
-				<img src="/assets/img/shrines/doom2/doom2logo.png" alt="DOOM2"
-					style="width: 300px; margin: 5px;">
+				<img id="header-logo" src="/assets/img/shrines/doom2/doom2logo.png" alt="DOOM2">
 			</div>
 			<div id="tabs">
-				<button class="tablinks" onclick="openTab(event, 'origins')" id="defaultOpen">
+				<button class="tablinks" onclick="openTab(event, 'origins')">
 					<img src="/assets/img/shrines/doom2/doom-bigupper-origins.png" alt="Origins">
 				</button>
-				<button class="tablinks" onclick="openTab(event, 'mods')">
+				<button class="tablinks wip" onclick="openTab(event, 'mods')" id="defaultOpen">
 					<img src="/assets/img/shrines/doom2/doom-bigupper-mods.png" alt="Mods">
+				</button>
+				<button class="tablinks soon">
+					<img src="/assets/img/shrines/doom2/doom-bigupper-setup.png" alt="Setup">
 				</button>
 			</div>
 			<div id="origins" class="tab-content">
 				<p>
 					I never played DOOM or DOOM II back when they came out (they came out before I was born
-					&gt; &lt;) or when growing up for that matter. My first experience playing them for the
+					&gt;&lt;) or when growing up for that matter. My first experience playing them for the
 					first time was when my ebic friend <strong> Annie</strong> just randomly decided we were
 					going to play it one time. She helped me get a couple mods and showed me how to run it all
 					using the Zandronum source port (I didn't know what the <i>f<span>uck</span></i> that was
@@ -195,183 +241,319 @@
 				</p>
 			</div>
 			<div id="mods" class="tab-content">
-				<div class="heading">
-					<img src="/assets/img/shrines/doom2/mods/doom-nightmare-brutal-doom.png"
-						alt="Brutal Doom">
-				</div>
-				<p>So.. I guess I'll start with <strong>Brutal Doom</strong> :D</p>
-				<p>
-					This is by no means my favourite DOOM II mod but I gassed it up enough in the Origins
-					section and it was the first DOOM II mod I knew by name so I'll start there (also it's
-					just fun and kinda a precursor to some of my favourite mods in a way).
-				</p>
-				<div class="media-container">
-					<div class="media-header">
-						<h3>loog at this gif <i>b<span>itch</span></i>~!</h3>
+
+				<div class="collapsible-container">
+					<div class="heading-container" onclick="toggleCollapsible(this)">
+						<div class="heading">
+							<img src="/assets/img/shrines/doom2/mods/doom-nightmare-brutal-doom.png"
+								alt="Brutal Doom">
+						</div>
+						<span class="icon"></span>
 					</div>
-					<video autoplay loop>
-						<source src="https://files.catbox.moe/a50jsc.webm" type="video/webm" lazy="true" />
-					</video>
-					<span><i>sorry if you don't like blood hehe</i></span>
-				</div>
+					<div class="collapsible-content">
+						<p>So.. I guess I'll start with <strong>Brutal Doom</strong> :D</p>
+						<p>
+							This is by no means my favourite DOOM II mod but I gassed it up enough in the Origins
+							section and it was the first DOOM II mod I knew by name so I'll start there (also it's
+							just fun and kinda a precursor to some of my favourite mods in a way).
+						</p>
+						<div class="media-container">
+							<div class="media-header">
+								<h3>loog at this gif <i>b<span>itch</span></i>~!</h3>
+							</div>
+							<video autoplay loop>
+								<source src="https://files.catbox.moe/a50jsc.webm" type="video/webm" lazy="true" />
+							</video>
+							<span><i>sorry if you don't like blood hehe</i></span>
+						</div>
 
-				<p>
-					<strong>Brutal Doom's</strong> main features are the gunplay, ai and excessive gore! Guns
-					have recoil now as well as actual projectiles. A lot of the weapons also have ADS (aim
-					down sights) now, and the ones that don't have an alternate fire mode. These do a lot to
-					make the gunplay more satisfying and modern feeling I feel. There's also just a lot of new
-					guns added and they've all been rebalanced to stay relevant throughout the game so there's
-					more reason to swap weapons often.
-				</p>
+						<p>
+							<strong>Brutal Doom's</strong> main features are the gunplay, ai and excessive gore!
+							Guns
+							have recoil now as well as actual projectiles. A lot of the weapons also have ADS (aim
+							down sights) now, and the ones that don't have an alternate fire mode. These do a lot
+							to
+							make the gunplay more satisfying and modern feeling I feel. There's also just a lot of
+							new
+							guns added and they've all been rebalanced to stay relevant throughout the game so
+							there's
+							more reason to swap weapons often.
+						</p>
 
-				<div class="media-container">
-					<div class="media-header">
-						<h3>New Weapons</h3>
+						<div class="media-container">
+							<div class="media-header">
+								<h3>New Weapons</h3>
+							</div>
+							<video autoplay loop>
+								<source src="https://files.catbox.moe/3863tq.webm" type="video/webm" lazy="true" />
+							</video>
+							<span><i>the boomstick</i></span>
+						</div>
+
+						<p>
+							My favourite weapon is the new double-barrel shotgun (it turns demons into soup :3).
+							It's
+							the epitome of everything good about this mod; the sound is <strong>huuge</strong> and
+							impactful and it leaves a pile of entrails and gibs where the feeble demon before you
+							used
+							to stand :D.
+						</p>
+
+						<p>
+							The enemies are "smarter" now and have more interesting behaviour and animations. You
+							can
+							also perform headshots on enemies now for more damage and they can be dismembered,
+							sawn
+							in
+							half and more! Come on down to the Gib-porium for all your Gibbing needs.
+						</p>
+						<p style="text-align: center;"> ...ye sorry.</p>
+
+						<p>
+							But on that note. <strong>THE GORE!</strong>
+						</p>
+
+						<div class="media-container">
+							<div class="media-header">
+								<h3>ooo~ aaaah~ so Brutal</h3>
+							</div>
+							<video autoplay loop>
+								<source src="https://files.catbox.moe/5x1f0g.webm" type="video/webm" lazy="true" />
+							</video>
+							<span><i>over the top gore</i></span>
+						</div>
+
+						<p>
+							As you can probably tell, the blood and gore has been raised to a spectacular level in
+							this mod. The amount of blood is immediately noticable but beyond that there's also
+							quite
+							impressive blood splatters, gibs and sprite interactions; blood, guts and limbs can be
+							seen dripping from the ceiling and running down walls when you decimate enemies.
+							Enemies
+							can also still be interacted with after death so corpses caught in the crossfire will
+							be
+							damaged further. Beyond this, there's also some gruesome death animations like some
+							zombies dropping to the floor and still fighting back.
+						</p>
+
+						<p>
+							It's worth mentioning I rarely (never) play with just a single mod, even with huge
+							total
+							conversions I tend to try my luck seeing what other small things I can get away with.
+							In
+							the gifs, the following recommneded mods were used:
+						<ul>
+							<li><a class="link external" href="https://www.moddb.com/mods/doom-hd1">Doom HD
+									Texture
+									pack</a></li>
+							<li><a class="link external"
+									href="https://www.moddb.com/mods/brutal-doom/addons/catsvisor-hud-12-for-bd21-more-widescreen">CatsVisor
+									HUD</a></li>
+							<li><a class="link external"
+									href="https://www.moddb.com/mods/brutal-doom/addons/bdbe-flashlight-for-brutal-doom-v21">Brutal
+									Doom
+									Black Edition Flashlight</a></li>
+						</ul>
+						</p>
+						<p>
+							I'll do my best to mention any other noteworthy mods like this even if they aren't the
+							focus.
+						</p>
 					</div>
-					<video autoplay loop>
-						<source src="https://files.catbox.moe/3863tq.webm" type="video/webm" lazy="true" />
-					</video>
-					<span><i>the boomstick</i></span>
 				</div>
 
-				<p>
-					My favourite weapon is the new double-barrel shotgun (it turns demons into soup :3). It's
-					the epitome of everything good about this mod; the sound is <strong>huuge</strong> and
-					impactful and it leaves a pile of entrails and gibs where the feeble demon before you used
-					to stand :D.
-				</p>
-
-				<p>
-					The enemies are "smarter" now and have more interesting behaviour and animations. You can
-					also perform headshots on enemies now for more damage and they can be dismembered, sawn in
-					half and more! Come on down to the Gib-porium for all your Gibbing needs.
-				</p>
-				<p style="text-align: center;"> ...ye sorry.</p>
-
-				<p>
-					But on that note. <strong>THE GORE!</strong>
-				</p>
-
-				<div class="media-container">
-					<div class="media-header">
-						<h3>ooo~ aaaah~ so Brutal</h3>
+				<div class="collapsible-container">
+					<div class="heading-container" onclick="toggleCollapsible(this)">
+						<div class="heading">
+							<img class="heading-item"
+								src="/assets/img/shrines/doom2/mods/doom-nightmare-brutal-doom-.png"
+								alt="Brutal Doom">
+							<img class="heading-item"
+								src="/assets/img/shrines/doom2/mods/doom-nightmare-black-edition.png"
+								alt="Black Edition">
+						</div>
+						<span class="icon"></span>
 					</div>
-					<video autoplay loop>
-						<source src="https://files.catbox.moe/5x1f0g.webm" type="video/webm" lazy="true" />
-					</video>
-					<span><i>over the top gore</i></span>
-				</div>
 
-				<p>
-					As you can probably tell, the blood and gore has been raised to a spectacular level in
-					this mod. The amount of blood is immediately noticable but beyond that there's also quite
-					impressive blood splatters, gibs and sprite interactions; blood, guts and limbs can be
-					seen dripping from the ceiling and running down walls when you decimate enemies. Enemies
-					can also still be interacted with after death so corpses caught in the crossfire will be
-					damaged further. Beyond this, there's also some gruesome death animations like some
-					zombies dropping to the floor and still fighting back.
-				</p>
+					<div class="collapsible-content">
+						<p>
+							As the name suggests, Brutal Doom: Black Edition is based on Brutal Doom with the aim
+							of
+							being more dark and serious. It still retains some fast paced and over the top aspects
+							of Brutal Doom that are inspired by the newer Doom games, but more emphasis was placed
+							on maintaining original Doom's "evil and creepy atmosphere" as the author puts it.
+						</p>
+						<p>
+							And that's it; it modernizes DOOM II a bit like regular Brutal Doom but just has a
+							really cool, darker atmosphere to it akin to what they were going for in Doom 3.
+						</p>
 
-				<div class="soul-divider">
-					<div class="lost-soul"></div>
-				</div>
-				<p>
-					It's worth mentioning I rarely (never) play with just a single mod, even with huge total
-					conversions I tend to try my luck seeing what other small things I can get away with. In
-					the gifs, the following recommneded mods were used:
-				<ul>
-					<li><a class="link external" href="https://www.moddb.com/mods/doom-hd1">Doom HD Texture
-							pack</a></li>
-					<li><a class="link external"
-							href="https://www.moddb.com/mods/brutal-doom/addons/catsvisor-hud-12-for-bd21-more-widescreen">CatsVisor
-							HUD</a></li>
-					<li><a class="link external"
-							href="https://www.moddb.com/mods/brutal-doom/addons/bdbe-flashlight-for-brutal-doom-v21">Brutal
-							Doom
-							Black Edition Flashlight</a></li>
-				</ul>
-				</p>
-				<div style="margin: auto; display: block; width: fit-content;">
-					<img src="/assets/img/const_barrier.gif" alt="">
-					<img src="/assets/img/const_hole.gif" alt="">
-					<img style="transform: rotateY(180deg);" src="/assets/img/const_barrier.gif" alt="">
+						<div style="background-color: rgb(168, 4, 18); color: black; padding: 5px;">
+							<p>
+								Unpopular opinion alert but I really liked Doom 3 because of the atmosphere but
+								probably along with everyone else I got bored of the game cause the gunplay kinda
+								sucked and there's not really enough of a draw from the narritive and story to drive
+								a
+								survival horror vibe which I think felt more like what they were going for with that
+								one. I like that Black Edition kinda gets that darker visual atmosphere but just
+								sticks to being a satisfying shooter still.
+							</p>
+							<p style="text-align: center;">anyway..</p>
+						</div>
+
+						<div class="media-container">
+							<div class="media-header">
+								<h3>Brutal Doom: Black Edition Gameplay</h3>
+							</div>
+							<div class="video-wrapper">
+								<iframe src="https://youtube.com/embed/YWk4_QaBt44" width="100%" height="100%"
+									allowfullscreen></iframe>
+							</div>
+							<span><i>just highlights of two maps</i></span>
+						</div>
+
+						<p>
+							As you can see in the gameplay, it is quite literally darker. It has several options
+							for
+							making the lighting dark and Black Edition comes with a flashlight for this reason. I
+							didn't have the sector lighting settings enabled though for the recording however I
+							was
+							also using D64ified and this makes the game noticibly darker for one reason or another
+							and I think it works well with Black Edition. The Doom64 textures are also widely
+							regarded as the better, grittier versions. There's also nice bloom and light effects
+							that aren't from just GZDoom and I'm not sure if that's from the HD texture pack or
+							the
+							fog effects mod. Therein lies the issue with using a load of mods with any game I
+							suppose; I'm not 100% sure of all the nuances of each mod lmao.
+						</p>
+
+						<p>
+						<ul>
+							<li><a class="link external" href="https://www.moddb.com/mods/the-d64ifier">The
+									D64ifier</a></li>
+							<li><a class="link external"
+									href="https://www.moddb.com/mods/brutal-doom/addons/weapon-sounds-for-brutal-doom-black-editionv335">Weapon
+									Sounds for BD Black Edition</a></li>
+							<li><a class="link external" href="https://www.moddb.com/mods/doom-hd1">Doom HD
+									Texture
+									pack</a></li>
+							<li><a class="link external"
+									href="https://www.moddb.com/mods/brutal-doom/addons/catsvisor-hud-12-for-bd21-more-widescreen">CatsVisor
+									HUD</a></li>
+							<li><a class="link external"
+									href="https://www.moddb.com/addons/doom-liquid-texture-pack">Doom Liquid Texture
+									Pack</a></li>
+							<li><a class="link external"
+									href="https://www.moddb.com/mods/brutal-doom/addons/fog-effects">Fog Effects</a>
+							</li>
+							<li><a class="link external" href="https://www.moddb.com/mods/nashgore-next">NashGore
+									Next + Materials addon</a></li>
+
+						</ul>
+						</p>
+
+						<p>
+							Ye, after writing this I realised I didn't really have the fog effects turned up
+							enough
+							to be noticable which maybe in general is a good thing but I turned the max fog up to
+							10
+							and enabled the random fog level and it makes for a cool atmosphere (10 is a bit high
+							though tbh).
+						</p>
+
+						<div class="soul-divider">
+							<div class="lost-soul"></div>
+						</div>
+						<div style="margin: auto; display: block; width: fit-content;">
+							<img src="/assets/img/const_barrier.gif" alt="">
+							<img src="/assets/img/const_hole.gif" alt="">
+							<img style="transform: rotateY(180deg);" src="/assets/img/const_barrier.gif" alt="">
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div id="hud-background"></div>
 	<div id="hud">
-		<div id="hud-one" class="hud">
+		<img src="/assets/img/shrines/doom2/doom-fullscreen-hud.png" alt="Fullscreen HUD"
+			id="fullscreen-hud">
+		<div id="hud-toggle" onclick="toggleHUD()"><span>open</span></div>
+		<div id="hud-container">
+			<div id="hud-left">
+				<div id="hud-one" class="hud">
 
-		</div>
-		<div id="hud-two" class="hud">
+				</div>
+				<div id="hud-two" class="hud">
 
-		</div>
-		<div id="hud-three" class="hud stack-hud">
-			<div>
-				<a href="https://zdoom.org/index">
-					<img src="https://zdoom.org/assets/images/logo/text_zdoom.png" alt="zdoom"
-						style="height: 20px;">
-				</a>
+				</div>
+				<div id="hud-three" class="hud stack-hud">
+					<div>
+						<a href="https://zdoom.org/index">
+							<img src="https://zdoom.org/assets/images/logo/text_zdoom.png" alt="zdoom">
+						</a>
+					</div>
+					<div>
+						<a href="https://freedoom.github.io/">
+							<img src="https://freedoom.github.io/img/logo.png" alt="freedoom">
+						</a>
+					</div>
+					<div>
+						<a href="https://github.com/Youda008/DoomRunner">
+							<img src="/assets/img/shrines/doom2/doomrunner.webp" alt="DoomRunner">
+						</a>
+					</div>
+				</div>
 			</div>
-			<div>
-				<a href="https://freedoom.github.io/">
-					<img src="https://freedoom.github.io/img/logo.png" alt="freedoom" style="height: 22px;">
-				</a>
-			</div>
-			<div>
-				<a href="https://github.com/Youda008/DoomRunner">
-					<img src="/assets/img/shrines/doom2/doomrunner.webp" alt="DoomRunner"
-						style="height: 28px;">
-				</a>
-			</div>
-		</div>
-		<div id="mugshot-container" class="hud">
-			<a id="mugshot-link" onclick="playButton('player4')" href="#"
-				style="display: block; height: 100%;">
-			</a>
-		</div>
-		<div id="hud-four" class="hud stack-hud">
-			<div style="text-align: center;">
-				<p>Some of my faves from the DOOM II soundtrack played with Shadow sf2</p>
-			</div>
-			<div>
-				<img src="/assets/img/shrines/doom2/doom-small-music.png" alt="Music"
-					style="margin: auto; max-height: 25px; display: block;">
-			</div>
-			<div>
+			<div id="hud-right">
+				<div id="mugshot-container" class="hud">
+					<a id="mugshot-link" onclick="playButton('player4')" href="#"
+						style="display: block; height: 100%;">
+					</a>
+				</div>
+				<div id="hud-four" class="hud stack-hud">
+					<div style="text-align: center;">
+						<p>Some of my faves from the DOOM II soundtrack played with Shadow sf2</p>
+					</div>
+					<img class="hud-title" src="/assets/img/shrines/doom2/doom-small-music.png" alt="Music">
+					<div>
 
-			</div>
-		</div>
-		<div id="hud-five" class="hud">
-			<!-- The healer stalks -->
-			<audio id="player1" class="player" src="https://files.catbox.moe/0w2fj8.mp3"
-				preload="auto"></audio>
-			<!-- Doom -->
-			<audio id="player2" class="player" src="https://files.catbox.moe/qfdjml.mp3"
-				preload="auto"></audio>
-			<!-- Shawn's got the shotgun -->
-			<audio id="player3" class="player" src="https://files.catbox.moe/n89d1g.mp3"
-				preload="auto"></audio>
-			<!-- At Doom's Gate -->
-			<audio id="player4" class="player" src="https://files.catbox.moe/egjd5v.mp3" preload="auto"
-				loop></audio>
+					</div>
+				</div>
+				<div id="hud-five" class="hud">
+					<!-- The healer stalks -->
+					<audio id="player1" class="player" src="https://files.catbox.moe/0w2fj8.mp3"
+						preload="auto"></audio>
+					<!-- Doom -->
+					<audio id="player2" class="player" src="https://files.catbox.moe/qfdjml.mp3"
+						preload="auto"></audio>
+					<!-- Shawn's got the shotgun -->
+					<audio id="player3" class="player" src="https://files.catbox.moe/n89d1g.mp3"
+						preload="auto"></audio>
+					<!-- At Doom's Gate -->
+					<audio id="player4" class="player" src="https://files.catbox.moe/egjd5v.mp3"
+						preload="auto" loop></audio>
 
-			<button id="player1-btn" class="player-btn" onclick="playButton('player1')"></button>
-			<button id="player2-btn" class="player-btn" onclick="playButton('player2')"></button>
-			<button id="player3-btn" class="player-btn" onclick="playButton('player3')"></button>
-		</div>
-		<div id="hud-six" class="hud">
-			<div class="scroll">
-				<img src="/assets/img/shrines/doom2/doom-condensed-the-healer-stalks.png"
-					alt="The Healer Stalks">
-			</div>
-			<div>
-				<img src="/assets/img/shrines/doom2/doom-condensed-doom.png" alt="Doom">
-			</div>
-			<div class="scroll">
-				<img src="/assets/img/shrines/doom2/doom-condensed-shawns-got-the-shotgun.png"
-					alt="Shawn's Got the Shotgun">
+					<button id="player1-btn" class="player-btn" onclick="playButton('player1')"></button>
+					<button id="player2-btn" class="player-btn" onclick="playButton('player2')"></button>
+					<button id="player3-btn" class="player-btn" onclick="playButton('player3')"></button>
+				</div>
+				<div id="hud-six" class="hud">
+					<div class="scroll">
+						<img src="/assets/img/shrines/doom2/doom-condensed-the-healer-stalks.png"
+							alt="The Healer Stalks">
+						<img src="/assets/img/shrines/doom2/doom-condensed-the-healer-stalks.png"
+							alt="The Healer Stalks">
+					</div>
+					<div>
+						<img src="/assets/img/shrines/doom2/doom-condensed-doom.png" alt="Doom">
+					</div>
+					<div class="scroll">
+						<img src="/assets/img/shrines/doom2/doom-condensed-shawns-got-the-shotgun.png"
+							alt="Shawn's Got the Shotgun">
+						<img src="/assets/img/shrines/doom2/doom-condensed-shawns-got-the-shotgun.png"
+							alt="Shawn's Got the Shotgun">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

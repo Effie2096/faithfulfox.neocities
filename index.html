@@ -6,9 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Fox Den</title>
 	<link rel="icon" type="image/x-icon" href="/assets/img/xenia2.png">
-	<script src="script/jquery-3.7.1.min.js"></script>
-	<script src="script/post.js"></script>
+	<script src="/script/jquery-3.7.1.min.js"></script>
+	<script src="/script/post.js"></script>
 	<script src="/script/page_include.js"></script>
+	<script src="/script/toggleToDo.js"></script>
 
 	<script>
 		function getContentTagDropdowns() {
@@ -60,34 +61,52 @@
 		function toggleSidebarRight() {
 			const sidebar = document.getElementsByClassName("sidebar-right")[0];
 			const sidebarRightToggle = sidebar.getElementsByClassName("sidebar-right-toggle-button")[0];
+			sidebarRightToggle.innerHTML = sidebarRightToggle.innerHTML === "expand" ? "close" : "expand";
 			toggleActive(sidebar);
 			toggleActive(sidebarRightToggle);
+		}
+
+		function addCensor(element) {
+			element.querySelectorAll(".censor").forEach((censor) => {
+				censor.addEventListener("click", () => {
+					toggleActive(censor);
+				});
+			});
+
 		}
 
 		window.onload = function () {
 			document.getElementById("chatbox").style.height = "0px";
 
-			const observer = new ResizeObserver((entries) => {
-				for (const entry of entries) {
-					if (entry.contentRect.width !== entry.contentRect.previousWidth ||
-						entry.contentRect.height !== entry.contentRect.previousHeight) {
-						console.log('Flex layout changed!');
-						countContentTags();
-					}
-				}
-			});
-			getContentTagDropdowns().forEach(dropDown => {
-				observer.observe(dropDown);
-			});
-			countContentTags();
+		};
 
-			document.querySelectorAll(".censor").forEach((element) => {
-				element.addEventListener("click", () => {
-					toggleActive(element);
-					removeClassAfterTimeout(element, "active", 3000);
+		document.addEventListener('DOMContentLoaded', function () {
+			const postObserver = new MutationObserver((mutations) => {
+				mutations.forEach((mutation) => {
+					if (mutation.addedNodes.length > 0) {
+						mutation.addedNodes.forEach((node) => {
+							if (node.nodeType === Node.ELEMENT_NODE) {
+								addCensor(node);
+							}
+							if (node.nodeType === Node.ELEMENT_NODE && node.classList.contains('content-footer')) {
+								const tagDropdown = node.querySelector('.content-footer-left .tag-dropdown');
+								if (tagDropdown) {
+									const resizeObserver = new ResizeObserver((entries) => {
+										countContentTags();
+									});
+									resizeObserver.observe(tagDropdown);
+								}
+							}
+						});
+					}
 				});
 			});
-		}
+
+			postObserver.observe(document.getElementById('posts'), {
+				childList: true,
+				subtree: true,
+			});
+		});
 
 		function toggleActive(element) {
 			element.classList.toggle("active");
@@ -150,6 +169,8 @@
 		}
 	</script>
 	<link href="css/style.css" rel="stylesheet">
+	<link href="css/globals.css" rel="stylesheet">
+	<link href="css/scrollbar.css" rel="stylesheet">
 	<link href="css/badges.css" rel="stylesheet">
 </head>
 
@@ -226,15 +247,6 @@
 				</div>
 			</div>
 
-			<script>
-				function toggleToDo() {
-					document.getElementById("updates").classList.toggle("active");
-					document.getElementById("todo-list").classList.toggle("active");
-					document.getElementById("postit").classList.toggle("active");
-					var updateHeading = document.getElementById("update-heading");
-					updateHeading.innerHTML = updateHeading.innerHTML == "To-do" ? "Updates" : "To-do";
-				}
-			</script>
 			<div id="update-container" class="sidebar-content sidebar-content-left">
 				<div id="update-header">
 					<a href="/pages/updates_page.html" style="text-decoration: none; color: black;"
@@ -313,42 +325,46 @@
 			</div>
 
 			<div id="social-stuff">
-				<div>
-					<h3 class="heading">Contact</h3>
+				<div class="social-flex">
 					<div class="contact-section-container">
-						<div id="email-section" class="sidebar-content-right contact-section">
+						<h3 class="heading">Contact</h3>
+						<div class="contact-sections">
+							<div id="email-section" class="sidebar-content-right contact-section">
 
-							<img id="mail-logo" src="/assets/img/mail-fox.png" alt="Fox holding a mail letter.">
+								<img id="mail-logo" src="/assets/img/mail-fox.png" alt="Fox holding a mail letter.">
 
-							<span class="contact-label">faithfulfox@proton.me</span>
+								<span class="contact-label">faithfulfox@proton.me</span>
 
-							<a href="#" class="tooltip click contact-button"
-								onclick="CopyToClipboard('faithfulfox@proton.me');notify('email copied to clipboard', 'info');">
-								<span class="click icon">
-									
-								</span>
-								<span class="tooltiptext" id="myTooltip">
-									Copy Email To Clipboard
-								</span>
-							</a>
-						</div>
-						<div id="cryptography-section" class="sidebar-content-right contact-section">
+								<a href="#" class="tooltip click contact-button" onclick="
+										CopyToClipboard('faithfulfox@proton.me');
+										notify('email copied to clipboard', 'info');">
+									<span class="click icon">
+										
+									</span>
+									<span class="tooltiptext" id="myTooltip">
+										Copy Email To Clipboard
+									</span>
+								</a>
+							</div>
+							<div id="cryptography-section" class="sidebar-content-right contact-section">
 
-							<img id="crypto-logo" class="click" src="/assets/img/crypto-fox.png"
-								alt="Fox over a shield and padlock holding a key.">
-							<span class="contact-label click">PGP Pubkey</span>
-							<a class="tooltip contact-button" href="/zased/gpg_key.txt"
-								download="faithfulfox-PGP-Pubkey.pgp"
-								onclick="copyFile('/zased/gpg_key.txt');notify('downloading pgp pubkey...', 'info');">
-								<span class="click icon"></span>
-								<span class="tooltiptext" id="myTooltip">
-									Download/Copy PGP Pubkey
-								</span>
-							</a>
+								<img id="crypto-logo" class="click" src="/assets/img/crypto-fox.png"
+									alt="Fox over a shield and padlock holding a key.">
+								<span class="contact-label click">PGP Pubkey</span>
+								<a class="tooltip contact-button" href="/zased/gpg_key.txt"
+									download="faithfulfox-PGP-Pubkey.pgp" onclick="
+										copyFile('/zased/gpg_key.txt');
+										notify('downloading pgp pubkey...', 'info');">
+									<span class="click icon"></span>
+									<span class="tooltiptext" id="myTooltip">
+										Download/Copy PGP Pubkey
+									</span>
+								</a>
+							</div>
 						</div>
 					</div>
-					<h3 class="heading">Socials</h3>
 					<div id="socials" class="sidebar-content-right">
+						<h3 class="heading">Socials</h3>
 						<div id="social-badges">
 							<a href="https://tech.lgbt/@effie">
 								<img src="/assets/img/badges/88x31/mastodon.png" alt="mastodon">
@@ -365,24 +381,22 @@
 			</div>
 
 			<div id="webrings">
-				<div class="sidebar-content sidebar-content-right">
-					<h3 class="heading">Webrings</h3>
-					<div id="anarchy" class="webring">
-						<div class="ring-prev">
-							<a href="https://anarchywebring.netlify.app/Fox_Den/previous">
-								
-							</a>
-						</div>
-						<div class="ring-home">
-							<a href="https://anarchywebring.netlify.app/">
-								<img src="/assets/img/webring/hellspawn.png" alt="hellspawn">
-							</a>
-						</div>
-						<div class="ring-next">
-							<a href="https://anarchywebring.netlify.app/Fox_Den/next">
-								
-							</a>
-						</div>
+				<h3 class="heading">Webrings</h3>
+				<div id="anarchy" class="webring">
+					<div class="ring-prev">
+						<a href="https://anarchywebring.netlify.app/Fox_Den/previous">
+							
+						</a>
+					</div>
+					<div class="ring-home">
+						<a href="https://anarchywebring.netlify.app/">
+							<img src="/assets/img/webring/hellspawn.png" alt="hellspawn">
+						</a>
+					</div>
+					<div class="ring-next">
+						<a href="https://anarchywebring.netlify.app/Fox_Den/next">
+							
+						</a>
 					</div>
 				</div>
 			</div>

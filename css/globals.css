@@ -1,0 +1,11 @@
+@import url("/css/fonts.css");
+
+.icon {
+	font-family: "SymbolsNerdFont-Regular";
+}
+
+.video-wrapper {
+	position: relative;
+	width: 99%;
+	padding-bottom: 56.25%;
+}

@@ -23,7 +23,11 @@
 
 	<div id="content-warning-index">
 		<div id="content-warning-header">
-			<h3>Content Warnings</h3>
+			<img src="/assets/img/content_warning/Warning.gif" alt="Warning Sign"
+				style="height: 1.5rem; justify-self: end;">
+			<h3 style="width: fit-content;">Content Warnings</h3>
+			<img src="/assets/img/content_warning/Warning.gif" alt="Warning Sign"
+				style="height: 1.5rem; justify-self: start;">
 		</div>
 		<div id="content-warning-index-items">
 			<div class="content-warning-index-item">
@@ -45,6 +49,14 @@
 				<p>Contains strong or offensive language.</p>
 			</div>
 			<div class="content-warning-index-item">
+				<div class="content-warning volume"></div>
+				<p>Contains loud noises.</p>
+			</div>
+			<div class="content-warning-index-item">
+				<div class="content-warning flashcat"></div>
+				<p>Contains flashing lights.</p>
+			</div>
+			<div class="content-warning-index-item">
 				<div class="content-warning spider"></div>
 				<p>Contains depictions of common critter phobias. &gt;&lt;</p>
 			</div>
@@ -53,6 +65,18 @@
 			<div id="toggle-button" onclick="toggleContentWarnings()">expand</div>
 		</div>
 	</div>
+
+	<script>
+
+		document.addEventListener('DOMContentLoaded', function () {
+			const shrines = document.querySelectorAll('.card').forEach((shrine) => {
+				if (shrine.querySelector('.content-warning')) {
+					shrine.classList.add('has-warnings');
+				}
+			});
+
+		});
+	</script>
 
 	<div id="container">
 		<div id="header">
@@ -67,17 +91,34 @@
 					</a>
 				</div>
 				<div class="card">
-					<a href="/pages/shrines/doom2.html">
-						<div class="content-warning-container">
-							<div class="content-warning blood"></div>
-							<div class="content-warning language"></div>
-							<div class="content-warning violence"></div>
-							<div class="content-warning mobile">
-								<div class="no-entry"></div>
-							</div>
+					<div class="content-warning warning"></div>
+					<div class="content-warnings">
+						<div class="content-warning mobile">
+							<div class="no-entry"></div>
 						</div>
+						<div class="content-warning blood"></div>
+						<div class="content-warning language"></div>
+						<div class="content-warning violence"></div>
+						<div class="content-warning volume"></div>
+						<div class="content-warning flashcat"></div>
+					</div>
+
+					<a href="/pages/shrines/doom2.html">
+
 						<img src="/assets/img/shrines/Doom2.jpg" alt="Doom Two">
 						<div class="title">DOOM2</div>
+					</a>
+				</div>
+				<div class="card soon">
+					<a href="#">
+
+						<img src="/assets/img/shrines/Neovim.png" alt="My Neovim">
+						<div class="title">Neovim</div>
+						<div id="neovim-logo">
+							<img src="/assets/img/shrines/Neovim-logo.svg.png" alt="Neovim Logo" style="
+								opacity: 0.7;
+							">
+						</div>
 					</a>
 				</div>
 			</div>

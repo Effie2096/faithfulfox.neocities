@@ -9,6 +9,7 @@
 	<script src="/script/jquery-3.7.1.min.js"></script>
 	<script src="/script/page_include.js"></script>
 	<script src="/script/random_postits.js"></script>
+	<script src="/script/toggleToDo.js"></script>
 </head>
 
 <body>
@@ -17,8 +18,11 @@
 			<div id="update-container">
 				<div id="update-header">
 					<h3 id="update-heading">Updates</h3>
+					<img id="postit" class="click" src="/assets/img/postit.png" onclick="toggleToDo()"
+						alt="To-do Post it">
 				</div>
 				<div class="active" id="updates" data-include="/pages/updates"></div>
+				<div id="todo-list" data-include="/pages/todo"></div>
 			</div>
 		</div>
 	</div>

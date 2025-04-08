@@ -27,7 +27,14 @@ const directions = {
 	"north-west": [202.6, 247.5],
 };
 
+let lastUpdateTime = performance.now();
+let desiredFPS = 90;
+
 function updatePosition() {
+	const currentTime = performance.now();
+	const deltaTime = (currentTime - lastUpdateTime) / 1000;
+	lastUpdateTime = currentTime;
+
 	let dx = mouseX - petX;
 	let dy = mouseY - petY;
 
@@ -40,17 +47,17 @@ function updatePosition() {
 		let velocityX = Math.cos(angle) * speed;
 		let velocityY = Math.sin(angle) * speed;
 
-		var currentTime = new Date().getTime();
+		var sitCurrentTime = new Date().getTime();
 		if (sit) {
 			// Fox is sitting, don't move yet
-			if (currentTime - lastSitTime > sitTimeout - wakeUpTimeout) {
+			if (sitCurrentTime - lastSitTime > sitTimeout - wakeUpTimeout) {
 				// Add wake up class
 				if (!isWakingUp) {
 					petElement.classList.add("fox-wake");
 					isWakingUp = true;
 				}
 			}
-			if (currentTime - lastSitTime > sitTimeout) {
+			if (sitCurrentTime - lastSitTime > sitTimeout) {
 				// Delay has expired, start following mouse
 				sit = false;
 				isWakingUp = false;
@@ -62,8 +69,8 @@ function updatePosition() {
 			petX += velocityX;
 			petY += velocityY;
 
-			velocity.x = velocityX;
-			velocity.y = velocityY;
+			velocity.x = velocityX * speed * deltaTime;
+			velocity.y = velocityY * speed * deltaTime;
 
 			petElement.style.left = petX + "px";
 			petElement.style.top = petY + "px";
@@ -73,7 +80,7 @@ function updatePosition() {
 		}
 	}
 
-	requestAnimationFrame(updatePosition);
+	setTimeout(updatePosition, 1000 / desiredFPS);
 }
 
 document.addEventListener("mouseout", function (event) {

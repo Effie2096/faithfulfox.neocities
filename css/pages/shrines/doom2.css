@@ -1,19 +1,54 @@
-@import url("/css/fonts.css");
-
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
 :root {
 	--fire-display: none;
+	font-size: 1em;
+	--sprite-size: calc(1 * 10rem);
 }
 
 * {
 	margin: 0;
 	padding: 0;
+	/* transition: 0.2s ease; */
 }
 
 @font-face {
 	font-family: "IBM-DOS-ISO9";
 	src: url("/assets/font/Ac437_IBM_DOS_ISO9.ttf");
+}
+
+.soon,
+.wip {
+	position: relative;
+	overflow: visible;
+}
+
+.soon::after,
+.wip::after {
+	position: absolute;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center center;
+	content: "";
+	top: .8rem;
+	right: 0;
+	transform: rotate(30deg) scale(2);
+	/* font-family: "Monocraft"; */
+	/* height: 6rem; */
+	z-index: 500;
+	pointer-events: none;
+}
+
+.soon::after {
+	background-image: url("/assets/img/shrines/doom2/doom-small-soon.png");
+	width: 1.8rem;
+	height: .9rem;
+}
+
+.wip::after {
+	background-image: url("/assets/img/shrines/doom2/doom-small-wip.png");
+	width: 1.5rem;
+	height: .5rem;
 }
 
 .link {
@@ -29,6 +64,8 @@
 
 #backlink {
 	position: absolute;
+	top: 0;
+	left: 0;
 	font-family: "IBM-DOS-ISO9";
 	font-size: 24px;
 	font-weight: 600;
@@ -40,6 +77,10 @@
 	text-decoration: none;
 }
 
+html {
+	overflow: hidden;
+}
+
 body {
 	/* background-color: rgb(0, 0, 0); */
 	/* background-image: url("/assets/img/shrines/doom2/doom2background.png"); */
@@ -47,61 +88,159 @@ body {
 	background-size: auto 100%;
 	background-position-x: right;
 	height: 100vh;
-	/* overflow: hidden; */
+	margin-bottom: 0;
+	overflow: hidden;
+	display: grid;
+	grid-template-rows: minmax(0, 1fr) auto;
+	justify-items: center;
+	/* grid-auto-rows: min-content; */
+	grid-template-columns: 1fr auto 1fr;
+}
+
+#container {
+	grid-row: 1;
+	grid-column: 2;
+}
+
+#fullscreen-hud {
+	position: absolute;
+	display: none;
+	top: 0;
+	width: 100vw;
+	transform: translateY(-100%);
+	pointer-events: none;
 }
 
 #hud {
-	background-image: url("/assets/img/shrines/doom2/MS-DOS - DOOM DOOM II - HUD.png");
-	background-repeat: no-repeat;
-	background-size: auto 100%;
-	height: 100px;
-	/* width: 100%; */
-	position: fixed;
-	bottom: 0%;
-	left: 50%;
-	transform: translate(-50%, 0);
-	display: flex;
-	flex-direction: row;
-}
+	/* background-image: url("/assets/img/shrines/doom2/MS-DOS - DOOM DOOM II - HUD.png"); */
+	/* background-repeat: no-repeat; */
+	/* background-size: auto 100%; */
 
-#hud-background {
-	display: block;
 	position: relative;
-	background-image: url("/assets/img/shrines/doom2/hud-repeat.png");
-	background-repeat: repeat-x;
-	background-size: auto 100%;
-	background-position-x: center;
-	height: 100px;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
+	display: grid;
+	grid-template-rows: 1rem auto;
+	/* grid-template-columns: 0 auto 0; */
 
-	/* border-top: 100px solid transparent; */
-	/* border-image: url("/assets/img/shrines/doom2/fire-divider.gif") 100 20 1 repeat; */
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+
+	grid-row: 2;
+	grid-column-start: 1;
+	grid-column-end: 4;
+
+	z-index: 900;
 }
 
-#hud-background::before {
+#hud-toggle {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, -100%);
+	grid-row-start: 2;
+	grid-row-end: 2;
+	grid-column: 1 / -1;
+	width: 10rem;
+	background-color: rgba(255, 0, 0, 0.3);
+	border-radius: 10px 10px 0 0;
+	cursor: pointer;
+	text-align: center;
+	z-index: 100;
+}
+
+#hud-toggle span {
+	margin: 0 auto;
+	font-family: "IBM-DOS-ISO9";
+	font-size: 1.2rem;
+	font-weight: 600;
+	width: 100%;
+	color: #fff;
+}
+
+#hud-toggle:hover span {
+	/* transform: scale(1.1); */
+	font-size: 1.3rem;
+}
+
+#hud-toggle span::before,
+#hud-toggle span::after {
+	content: "󰄼";
+	font-family: "SymbolsNerdFont-Regular";
+	transform: rotate(180deg);
+	padding: 0px 10px 0px 10px;
+	display: inline-block;
+}
+
+
+#hud-container::before {
 	content: "";
 	display: var(--fire-display);
 	background-image: url("/assets/img/shrines/doom2/fire-divider.gif"), url("/assets/img/shrines/doom2/fire-divider.gif");
-	background-size: 500px auto, 500px auto;
-	background-position: 0 0, 250px 0;
+	background-size: 338px 42px, 338px 42px;
+	background-position: 0 100%, calc(1.2 * 338px) 100%;
 	background-repeat: repeat-x;
-	height: 100px;
-	/* set the height of the repeated image */
-
+	height: 100%;
 	position: absolute;
-	bottom: 62px;
+	top: 0;
+	transform: translateY(-100%);
 	left: 0;
 	width: 100%;
-	/* z-index: 999; */
+	pointer-events: none;
+}
+
+#hud-container {
+	position: relative;
+	grid-row-start: 2;
+	grid-row-end: 3;
+	/* grid-column-start: 2; */
+	/* grid-column-end: 3; */
+	background-image: url("/assets/img/shrines/doom2/hud-repeat.png");
+	background-repeat: repeat;
+	background-size: auto 100%;
+	background-position-x: center;
+	display: flex;
+	flex-wrap: wrap;
+	width: 100vw;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+#hud-left,
+#hud-right {
+	display: grid;
+	height: 100px;
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+}
+
+#hud-left {
+	background-image: url("/assets/img/shrines/doom2/MS-DOS - DOOM DOOM II - HUD - Left.png");
+	/* width: 44.54828660436137%; */
+	/* flex-basis: 44.54828660436137%; */
+	/* grid-template-columns: 145px 184px 115px; */
+	aspect-ratio: 143 / 32;
+	/* bro.. don't ask */
+	grid-template-columns: repeat(143, 1fr);
+}
+
+#hud-right {
+	background-image: url("/assets/img/shrines/doom2/MS-DOS - DOOM DOOM II - HUD - Right.png");
+	/* width: 55.45171339563863%; */
+	/* flex-basis: 55.45171339563863%; */
+	/* grid-template-columns: 113px 180px 40px 222px; */
+	aspect-ratio: 89 / 16;
+	grid-template-columns: repeat(89, 1fr);
+}
+
+.hud-title {
+	margin: auto;
+	height: 1.5rem;
 }
 
 .hud {
-	flex-grow: 0;
-	flex-shrink: 0;
-	flex-basis: auto;
 	font-family: "Pixelify Sans", sans-serif;
 	color: #fff;
 }
@@ -113,27 +252,49 @@ body {
 }
 
 #hud-one {
-	height: 100%;
-	width: 145px;
+	grid-column-start: 1;
+	grid-column-end: 48;
 }
 
 #hud-two {
-	height: 100%;
-	width: 184px;
+	grid-column-start: 48;
+	grid-column-end: 106;
 }
 
 #hud-three {
-	height: 100%;
-	width: 115px;
+	grid-column-start: 106;
+	grid-column-end: 144;
+	padding-top: .3rem;
 }
 
 #hud-three div {
 	margin: auto;
+	width: 100%;
 	display: block;
 }
 
+#hud-three img {
+	display: block;
+	margin: 0 auto;
+}
+
+#hud-three a {
+	width: 100%;
+	margin: auto;
+	height: 33%;
+}
+
+#hud-three img:first-child {
+	height: 1.5rem;
+}
+
+#hud-three div:not(:first-child) a img {
+	height: 1.8rem;
+}
+
 #mugshot-container {
-	width: 113px;
+	grid-column-start: 1;
+	grid-column-end: 19;
 	/* cursor: pointer; */
 }
 
@@ -141,7 +302,7 @@ body {
 	background-image: url("/assets/img/shrines/doom2/doomguy.gif");
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: 70%;
+	background-size: 62%;
 }
 
 #mugshot-container:hover #mugshot-link {
@@ -158,16 +319,23 @@ body {
 	position: absolute;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
-	height: 100%;
+	flex-wrap: wrap;
+	column-gap: 2rem;
+	width: 100vw;
+	height: fit-content;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	z-index: 999;
 	display: none;
+	pointer-events: none;
 	/* animation: easteregg .2s linear infinite; */
 
 }
 
 #easteregg img {
-	width: 1000px;
+	height: 10rem;
+	/* min-height: 50px; */
 }
 
 @keyframes easteregg {
@@ -181,11 +349,19 @@ body {
 }
 
 #hud-four {
-	width: 180px;
+	grid-column-start: 19;
+	grid-column-end: 48;
+}
+
+#hud-five,
+#hud-six {
+	display: grid;
+	grid-template-rows: repeat(3, .5fr);
 }
 
 #hud-five {
-	width: 40px;
+	grid-column-start: 48;
+	grid-column-end: 54;
 }
 
 #hud-five button {
@@ -195,41 +371,50 @@ body {
 	background-color: inherit;
 	border: none;
 	outline: none;
-	font-size: 18px;
-	margin-left: 15px;
-	padding-top: 10px;
+	font-size: 1rem;
 }
 
 
 #hud-six {
-	width: 222px;
-	padding: 5px;
+	grid-column-start: 54;
+	grid-column-end: 90;
+	padding-left: .3rem;
 }
 
 #hud-six div {
-	background-color: rgba(255, 255, 255, 0.1);
-	width: 90%;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2) 10%, rgba(255, 255, 255, 0.2) 90%, rgba(0, 0, 0, 0));
+	width: 91%;
 	margin: 1px;
-	padding: 6px;
+	padding-left: .5rem;
 	overflow: hidden;
 }
 
 @keyframes text-scroll {
 	from {
-		-moz-transform: translateX(0%);
-		-webkit-transform: translateX(0%);
-		transform: translateX(0%);
+		-moz-transform: translateX(0%) translateY(50%);
+		-webkit-transform: translateX(0%) translateY(50%);
+		transform: translateX(0%) translateY(50%);
 	}
 
 	to {
-		-moz-transform: translateX(-100%);
-		-webkit-transform: translateX(-100%);
-		transform: translateX(-100%);
+		-moz-transform: translateX(-100%) translateY(50%);
+		-webkit-transform: translateX(-100%) translateY(50%);
+		transform: translateX(-100%) translateY(50%);
 	}
 }
 
 #hud-six div img {
-	height: 15px;
+	height: 1rem;
+	transform: translateY(50%);
+}
+
+.scroll {
+	display: flex;
+	color: #b9b9b9;
+}
+
+.scroll img {
+	padding-right: 1rem;
 }
 
 .scroll:hover img {
@@ -259,29 +444,50 @@ i span:hover {
 #container {
 	/* background-color: #fff; */
 	position: relative;
-	margin: auto;
-	width: 1200px;
-	max-height: 82vh;
-	padding: 20px;
-	overflow: hidden;
+	max-width: 1000px;
+	width: 100%;
+	padding: 2rem;
+	overflow-x: visible;
+	box-sizing: border-box;
+	margin-left: 0;
+	margin-right: 0;
+	overflow-x: visible;
+}
+
+#container,
+#content {
+	height: 0;
+	min-height: 100%;
 }
 
 #header {
 	margin: auto;
 	justify-content: center;
 	text-align: center;
-	font-size: 50px;
 	color: white;
+	min-width: 0;
+	padding: .3rem;
+}
+
+#header-logo {
+	width: 100%;
+	max-width: 300px;
+	min-width: 0;
+	/* margin: .3rem; */
+	/* max-height: 235px; */
 }
 
 #content {
 	background-image: linear-gradient(0deg, rgba(255, 0, 0, 0.0), rgba(255, 0, 0, 1.0) 10%, rgba(255, 0, 0, 1.0) 90%, rgba(255, 0, 0, 0.0));
-	margin: auto;
+	position: relative;
+	/* margin: 0 auto; */
+	margin-left: auto;
+	margin-right: auto;
 	margin-bottom: 20px;
-	width: 800px;
-	height: 82vh;
+	max-width: 645px;
 	padding-bottom: 20px;
-	overflow: scroll;
+	overflow-x: visible;
+	overflow-y: auto;
 	scrollbar-width: none;
 }
 
@@ -290,13 +496,14 @@ i span:hover {
 	/* font-optical-sizing: auto; */
 	font-style: normal;
 	font-weight: 500;
-	font-size: 21px;
+	font-size: 1.6rem;
 	font-smooth: never;
 	-webkit-font-smoothing: none;
 	margin: auto;
 	justify-content: center;
 	text-align: justify;
 	text-align-last: center;
+	padding: .5rem .5rem;
 	margin-bottom: 1rem;
 }
 
@@ -314,12 +521,12 @@ i span:hover {
 	border: none;
 	outline: none;
 	cursor: pointer;
-	padding: 8px 16px;
+	padding: .5rem 1.2rem;
 	transition: 0.3s;
 }
 
 .tablinks img {
-	height: 25px;
+	height: 2rem;
 }
 
 #tabs button:hover {
@@ -346,6 +553,7 @@ i span:hover {
 	text-align: center;
 	margin-top: 10px;
 	margin-bottom: 20px;
+	height: fit-content;
 }
 
 .media-container .media-header {
@@ -358,103 +566,91 @@ i span:hover {
 }
 
 .media-container img,
-.media-container video {
+.media-container video,
+.media-container iframe {
 	display: block;
 	width: 95%;
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: 10px;
-	padding-right: 10px;
 }
 
-.heading {
-	box-shadow: white;
+iframe {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	transform: translateX(-50%);
+	border: 0;
 }
 
 #caco-container {
 	position: absolute;
-	z-index: 1;
-	right: 230px;
+	z-index: 500;
 	top: 10%;
+	right: 0;
 }
 
 #hellknight-container {
 	position: absolute;
-	z-index: 1;
-	left: 120px;
-	top: 40%;
+	z-index: 500;
+	left: 0;
+	top: 30%;
 }
 
 #pinky-container {
 	position: absolute;
-	z-index: 1;
-	animation: bobber 0.8s step-start infinite;
-	right: 75px;
+	z-index: 500;
 	top: 72%;
+	right: 0;
 }
 
 .cacodemon {
 	position: absolute;
 	animation: bobber 1.0s step-start infinite;
-}
-
-#cacodemon1 {
-	width: 130px;
-}
-
-#cacodemontuah {
-	width: 210px;
-	left: -40px;
-	opacity: 0%;
-}
-
-#caco-container:hover #cacodemontuah {
-	opacity: 100%;
-}
-
-#caco-container:hover #cacodemon1 {
-	opacity: 0%;
+	transform: translateX(-50%);
+	height: var(--sprite-size);
 }
 
 .hellknight {
 	position: absolute;
 	animation: bobber 1.2s step-start infinite;
+	transform: translateX(-50%) rotatey(180deg);
+	height: calc(var(--sprite-size) * 1.4);
 }
 
-#hellknight {
-	transform: rotatey(180deg) scale(0.8);
-}
-
-#hellknightprincess {
-	transform: rotatey(180deg);
-	width: 200px;
-	left: -40px;
-	top: -40px;
-	opacity: 0%;
-}
-
-#hellknight-container:hover #hellknightprincess {
-	opacity: 100%;
-}
-
-#pinky {
-	width: 180px;
+.pinky {
+	position: absolute;
+	animation: bobber 0.8s step-start infinite;
+	transform: translateX(-50%);
+	height: var(--sprite-size);
 }
 
 #pinkies {
-	position: absolute;
-	width: 240px;
-	right: -60px;
-	top: -20px;
-	display: none;
+	height: calc(var(--sprite-size) * 1.4)
 }
 
-#pinky-container:hover #pinkies {
-	display: block;
+/* #hellknight-container { */
+/* 	transform: rotatey(180deg); */
+/* } */
+
+#caco-container:hover #cacodemon1,
+#pinky-container:hover #pinky,
+#cacodemontuah,
+#hellknightprincess,
+#pinkies,
+#pinky-container.active #cacodemon1,
+#pinky-container.active #pinky {
+	opacity: 0%;
 }
 
-#pinky-container:hover #pinky {
-	display: none;
+#caco-container:hover #cacodemontuah,
+#hellknight-container:hover #hellknightprincess,
+#pinky-container:hover #pinkies,
+#caco-container.active #cacodemontuah,
+#hellknight-container.active #hellknightprincess,
+#pinky-container.active #pinkies {
+	opacity: 100%;
 }
 
 @keyframes bobber {
@@ -587,4 +783,227 @@ i span:hover {
 ul {
 	font-size: 22px;
 	margin-left: 30px;
+}
+
+#content .collapsible-container:not(:first-child)>.heading-container {
+	border-top: 1px solid #000;
+}
+
+.collapsible-container {
+	overflow: hidden;
+	overflow-y: hidden;
+}
+
+.collapsible-container .heading-container {
+	display: grid;
+	grid-template-columns: auto 4rem;
+	height: fit-content;
+	background-color: #990000;
+	cursor: pointer;
+	color: black;
+}
+
+.collapsible-container .heading-container .heading {
+	grid-column: 1;
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 1rem;
+	width: 100%;
+	padding: .3rem;
+}
+
+.collapsible-container .heading-container .heading img {
+	height: 2rem;
+}
+
+.collapsible-container .heading-container .icon {
+	grid-column: 2;
+	justify-self: end;
+	height: 100%;
+	background-color: #6c0000;
+	color: black;
+	margin-left: auto;
+	padding-right: .5rem;
+	padding-left: .5rem;
+	font-size: 2rem;
+	line-height: 2rem;
+	user-select: none;
+}
+
+.collapsible-container .collapsible-content {
+	display: none;
+}
+
+.collapsible-container.active .collapsible-content {
+	display: block;
+}
+
+.collapsible-container.active .heading-container .heading .icon {
+	transform: rotate(180deg);
+}
+
+.collapsible-container.active .heading-container {
+	margin-bottom: .5rem;
+}
+
+@media (max-width: 1004px) {
+
+	#hud-container {
+		background-size: auto 50%;
+	}
+
+}
+
+@media (max-width: 960px) {
+
+	:root {
+		font-size: 16px;
+	}
+
+	.scroll img {
+		-moz-transform: translateX(100%);
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+
+		-moz-animation: text-scroll 7s linear infinite;
+		-webkit-animation: text-scroll 7s linear infinite;
+		animation: text-scroll 7s linear infinite;
+	}
+}
+
+@media (max-width: 720px) {
+	:root {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 690px) {
+	:root {
+		font-size: 15px;
+	}
+
+	body {
+		grid-template-columns: 8% 84% 8%;
+	}
+
+	#easteregg img {
+		height: 9rem;
+	}
+
+	#content {
+		width: 100%;
+		/* max-width: fit-content; */
+	}
+
+	/* #caco-container, */
+	/* #pinky-container { */
+	/* 	right: 8%; */
+	/* } */
+
+}
+
+@media (max-width: 554px) {
+	:root {
+		font-size: 11px;
+	}
+
+	/* #easteregg img { */
+	/* 	height: 9rem; */
+	/* } */
+
+	#hud-left,
+	#hud-right {
+		height: 70px;
+	}
+
+}
+
+@media (max-width: 428px) {
+
+	body {
+		grid-template-columns: 4% 92% 4%;
+	}
+
+	#easteregg img {
+		height: 8rem;
+	}
+
+	#content {
+		margin-top: 10px;
+	}
+}
+
+@media (max-width: 389px) {
+
+	:root {
+		font-size: 9.5px;
+	}
+
+	#hud-left,
+	#hud-right {
+		height: 60px;
+	}
+}
+
+@media (max-width: 333px) {
+
+	:root {
+		font-size: 8px;
+	}
+
+	#hud-left,
+	#hud-right {
+		height: 50px;
+	}
+}
+
+@media (max-height: 750px) {
+
+	body {
+		grid-template-rows: 1fr 0;
+	}
+
+	#fullscreen-hud {
+		display: block;
+	}
+
+	#hud-toggle {
+		display: block;
+	}
+
+	#hud-toggle.active span::before,
+	#hud-toggle.active span::after {
+		transform: rotate(0);
+	}
+
+	#hud.active #fullscreen-hud {
+		display: none;
+	}
+
+	#hud {
+		position: fixed;
+		bottom: 0;
+		grid-template-rows: 1fr 0;
+		width: 100vw;
+		height: fit-content;
+		transform: translateY(100%);
+	}
+
+	#hud.active {
+		transform: translateY(0);
+		grid-template-rows: auto auto;
+	}
+
+	#hud-toggle.active {
+		background-color: rgba(0, 0, 0, 0.3);
+	}
+
+	#hud-container {
+		height: 0;
+	}
+
+	#hud.active #hud-container {
+		height: 100%;
+	}
+
 }
