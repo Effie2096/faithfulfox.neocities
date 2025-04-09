@@ -87,7 +87,8 @@ body {
 	transition-delay: 0.2s;
 }
 
-#shrines .card.has-warnings:hover img {
+#shrines .card.has-warnings:hover img,
+#shrines .card.has-warnings:has(.content-warning.warning.active) img {
 	transition: border-radius 0.2s linear;
 	border-radius: 0.7rem 0rem 0rem 0.7rem;
 	transition-delay: 0.0s;
@@ -98,7 +99,8 @@ body {
 	transition-delay: 0.2s;
 }
 
-#shrines .card.has-warnings:hover {
+#shrines .card.has-warnings:hover,
+#shrines .card.has-warnings:has(.content-warning.warning.active) {
 	margin-left: -1rem;
 	margin-right: 1rem;
 	transition-delay: 0.0s;
@@ -163,20 +165,11 @@ body {
 	z-index: 100;
 }
 
-.card:hover .content-warnings {
+.card:hover .content-warnings,
+.content-warning.warning.active+.content-warnings {
 	width: 2.8rem;
 	transition-delay: 0.2s;
-	/* display: flex; */
-	/* flex-direction: column; */
 }
-
-/* .content-warning-container .content-warning:not(:last-of-type)::after { */
-/* 	position: absolute; */
-/* 	right: -6px; */
-/* 	content: "|"; */
-/* 	color: white; */
-/* 	font-size: 28px; */
-/* } */
 
 .content-warning {
 	position: relative;
