@@ -4,6 +4,7 @@
 	--fire-display: none;
 	font-size: 1em;
 	--sprite-size: calc(1 * 10rem);
+	--hud-scale: calc(1 * 4rem);
 }
 
 * {
@@ -120,6 +121,22 @@ body::after {
 	pointer-events: none;
 }
 
+#fullscreen-hud #health,
+#fullscreen-hud #ammo {
+	position: absolute;
+	bottom: 0;
+}
+
+#fullscreen-hud #health {
+	left: 0;
+	height: var(--hud-scale);
+}
+
+#fullscreen-hud #ammo {
+	right: 0;
+	height: var(--hud-scale);
+}
+
 #hud {
 	/* background-image: url("/assets/img/shrines/doom2/MS-DOS - DOOM DOOM II - HUD.png"); */
 	/* background-repeat: no-repeat; */
@@ -152,6 +169,7 @@ body::after {
 	grid-row-end: 2;
 	grid-column: 1 / -1;
 	width: 10rem;
+	height: 1.5rem;
 	background-color: rgba(255, 0, 0, 0.3);
 	border-radius: 10px 10px 0 0;
 	cursor: pointer;
@@ -602,7 +620,7 @@ iframe {
 #pinky-container {
 	position: absolute;
 	z-index: 500;
-	top: 72%;
+	top: 66%;
 	right: 0;
 }
 
