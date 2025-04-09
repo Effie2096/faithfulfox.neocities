@@ -644,21 +644,25 @@ iframe {
 /* 	transform: rotatey(180deg); */
 /* } */
 
-#caco-container:hover #cacodemon1,
-#pinky-container:hover #pinky,
 #cacodemontuah,
+#caco-container:hover #cacodemon1,
+#caco-container.active #cacodemon1,
+
 #hellknightprincess,
+
 #pinkies,
-#pinky-container.active #cacodemon1,
+#pinky-container:hover #pinky,
 #pinky-container.active #pinky {
 	opacity: 0%;
 }
 
 #caco-container:hover #cacodemontuah,
-#hellknight-container:hover #hellknightprincess,
-#pinky-container:hover #pinkies,
 #caco-container.active #cacodemontuah,
+
+#hellknight-container:hover #hellknightprincess,
 #hellknight-container.active #hellknightprincess,
+
+#pinky-container:hover #pinkies,
 #pinky-container.active #pinkies {
 	opacity: 100%;
 }
