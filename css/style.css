@@ -989,33 +989,7 @@ body:has(#construction:hover) #paradox {
 }
 
 .censor {
-	background-color: rgba(242, 90, 90, 0.5);
-	position: relative;
-	color: black;
-	margin-left: 1px;
-	margin-right: 1px;
-	user-select: none;
 	cursor: var(--cursor-pointer);
-}
-
-.censor::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	transition: 1.5s;
-	background-color: black;
-	border-radius: 0.2rem;
-	opacity: 1.0;
-}
-
-
-.censor.active::before {
-	opacity: 0.2;
-	transition: 0s;
-	user-select: text;
 }
 
 .content-expand {

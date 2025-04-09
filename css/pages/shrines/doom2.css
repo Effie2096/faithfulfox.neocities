@@ -436,18 +436,9 @@ body::after {
 	animation: text-scroll 7s linear infinite;
 }
 
-i span {
-	background-color: black;
-	color: black;
+.censor {
 	margin-left: 1px;
 	margin-right: 1px;
-	transition: 1.5s;
-}
-
-i span:hover {
-	background-color: inherit;
-	color: inherit;
-	transition: 0s;
 }
 
 #container {

@@ -39,4 +39,10 @@ window.onload = function () {
 			toggleActive(container);
 		});
 	});
+
+	document.querySelectorAll(".censor").forEach((censor) => {
+		censor.addEventListener("click", () => {
+			censor.classList.toggle("active");
+		});
+	});
 };
