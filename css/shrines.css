@@ -59,7 +59,7 @@ body {
 }
 
 #shrines-container {
-	height: 80vh;
+	height: 70vh;
 	overflow: scroll;
 	border-radius: 0.7rem;
 	scrollbar-width: none;
@@ -71,9 +71,13 @@ body {
 	gap: 1.4rem;
 }
 
-#shrines .card img {
-	width: 100%;
+#shrines .card .card-image {
+  width: 100%;
 	margin-bottom: 1rem;
+}
+
+#shrines .card .card-image img {
+	width: 100%;
 	border-radius: 0.7rem;
 }
 
@@ -117,12 +121,12 @@ body {
 	font-family: "Monaspace-Neon-Frozen";
 	/* font-family: Tahoma, Georgia; */
 	color: #fff;
-	font-size: 28px;
+	font-size: 1rem;
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	transform: translateY(-50%);
-	margin-bottom: 2px;
+	transform: translateY(-23%);
+/*   margin-bottom: 1rem; */
 	border-bottom-right-radius: 0.7rem;
 	border-bottom-left-radius: 0.7rem;
 	transition: border-radius 0.2s linear;
@@ -211,7 +215,7 @@ body {
 	text-align: center;
 	margin: auto;
 	justify-items: center;
-	padding: 0px 3rem 0px 3rem;
+	padding: 0px 1rem 0px 1rem;
 }
 
 #content-warning-index-items {

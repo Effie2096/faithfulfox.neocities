@@ -1028,5 +1028,9 @@ ul {
 	#hud.active #hud-container {
 		height: 100%;
 	}
+	
+	#content {
+	  min-height: 85%;
+	}
 
 }
