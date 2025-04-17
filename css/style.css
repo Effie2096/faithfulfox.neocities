@@ -917,6 +917,113 @@ body:has(#construction:hover) #paradox {
 	border-radius: 5px;
 }
 
+
+.gallery-card {
+	display: grid;
+	/* grid-template-columns: repeat(2, minmax(0, 1fr)); */
+	/* grid-template-rows: repeat(2, minmax(0, 1fr)); */
+	grid-template-columns: repeat(2, auto);
+	grid-template-rows: repeat(2, auto);
+	gap: 10px;
+}
+
+.gallery-card>div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.gallery-card>div>img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.gallery-card>div:nth-child(2),
+.gallery-card>div:nth-child(3) {
+	aspect-ratio: 1 / 1;
+}
+
+.gallery-card.vertical> :first-child {
+	grid-column: 1 / 2;
+	grid-row: 1 / 3;
+	width: 100%;
+	object-fit: cover;
+}
+
+.gallery-card.horizontal> :first-child {
+	grid-column: 1 / 3;
+	grid-row: 1 / 2;
+	/* aspect-ratio: 2 / 1; */
+	object-fit: cover;
+}
+
+.gallery-card>:nth-child(n+4) {
+	display: none;
+}
+
+
+
+/* .gallery-card { */
+/* 	display: grid; */
+/* 	grid-template-columns: repeat(2, minmax(0, 1fr)); */
+/* 	grid-template-rows: repeat(2, minmax(0, 1fr)); */
+/* 	gap: 10px; */
+/* 	/* adjust the gap to your liking */
+*/
+/* } */
+/**/
+/* .gallery-card>div { */
+/* 	display: flex; */
+/* 	justify-content: center; */
+/* 	align-items: center; */
+/* 	overflow: hidden; */
+/* } */
+/**/
+/* /* .gallery-card>div>img { */
+*/
+/* /* 	width: 100%; */
+*/
+/* /* 	height: 100%; */
+*/
+/* /* 	object-fit: cover; */
+*/
+/* /* } */
+*/
+/**/
+/* .gallery-card> :first-child { */
+/* 	grid-column: 1 / 3; */
+/* 	grid-row: 1 / 2; */
+/* } */
+/**/
+/* .gallery-card.vertical> :first-child { */
+/* 	grid-column: 1 / 2; */
+/* 	grid-row: 1 / 3; */
+/* } */
+/**/
+/* .gallery-card.horizontal> :first-child { */
+/* 	grid-column: 1 / 3; */
+/* 	grid-row: 1 / 2; */
+/* } */
+/**/
+/* .gallery-card.horizontal> :first-child>img { */
+/* 	width: 100%; */
+/* 	object-fit: cover; */
+/* } */
+/**/
+/* .gallery-card> :nth-child(2), */
+/* .gallery-card> :nth-child(3) { */
+/* 	aspect-ratio: 1 / 1; */
+/* 	grid-column: auto; */
+/* 	grid-row: auto; */
+/* } */
+/**/
+/* .gallery-card>:nth-child(n+4) { */
+/* 	display: none; */
+/* } */
+
+
 .media-card img,
 .media-card video {
 	width: 100%;
