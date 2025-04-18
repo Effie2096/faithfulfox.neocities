@@ -9,6 +9,7 @@
 		<script src="/script/post.js"></script>
 		<script src="/script/page_include.js"></script>
 		<script src="/script/toggleToDo.js"></script>
+		<script src="/script/gallery.js"></script>
 
 		<script>
 			function getContentTagDropdowns() {
@@ -88,6 +89,15 @@
 							mutation.addedNodes.forEach((node) => {
 								if (node.nodeType === Node.ELEMENT_NODE) {
 									addCensor(node)
+								}
+								if (
+									node.nodeType === Node.ELEMENT_NODE &&
+									node.classList.contains("content-body")
+								) {
+									const gallery = node.querySelectorAll(".gallery-card")
+									gallery.forEach((gallery) => {
+										setupImageViewer(gallery)
+									})
 								}
 								if (
 									node.nodeType === Node.ELEMENT_NODE &&
