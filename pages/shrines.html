@@ -1,143 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Shrines</title>
+		<link href="/css/shrines.css" rel="stylesheet" />
+		<script>
+			function toggleContentWarnings() {
+				const contentWarnings = document.getElementById("content-warning-index")
+				const toggleButton = document.getElementById("toggle-button")
+				contentWarnings.classList.toggle("active")
+				toggleButton.innerHTML =
+					toggleButton.innerHTML == "expand" ? "close" : "expand"
+			}
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Shrines</title>
-	<link href="/css/shrines.css" rel="stylesheet">
-	<script>
-		function toggleContentWarnings() {
-			const contentWarnings = document.getElementById("content-warning-index");
-			const toggleButton = document.getElementById("toggle-button");
-			contentWarnings.classList.toggle("active");
-			toggleButton.innerHTML = toggleButton.innerHTML == "expand" ? "close" : "expand";
-		}
+			function toggleActive(element) {
+				element.classList.toggle("active")
+			}
+		</script>
+	</head>
 
-		function toggleActive(element) {
-			element.classList.toggle("active");
-		}
-	</script>
-</head>
-
-<body>
-	<div id="backlink">
-		<a href="/index.html">Home</a>
-	</div>
-
-	<div id="content-warning-index">
-		<div id="content-warning-header">
-			<img src="/assets/img/content_warning/Warning.gif" alt="Warning Sign"
-				style="height: 1.5rem; justify-self: end;">
-			<h3 style="width: fit-content;">Content Warnings</h3>
-			<img src="/assets/img/content_warning/Warning.gif" alt="Warning Sign"
-				style="height: 1.5rem; justify-self: start;">
+	<body>
+		<div id="backlink">
+			<a href="/index.html">Home</a>
 		</div>
-		<div id="content-warning-index-items">
-			<div class="content-warning-index-item">
-				<div class="content-warning mobile">
-					<div class="no-entry"></div>
-				</div>
-				<p>Not optimized for small screens (yet).</p>
-			</div>
-			<div class="content-warning-index-item">
-				<div class="content-warning blood"></div>
-				<p>Contains depictions of blood and/or gore.</p>
-			</div>
-			<div class="content-warning-index-item">
-				<div class="content-warning violence"></div>
-				<p>Contains depictions or descriptions of violent acts.</p>
-			</div>
-			<div class="content-warning-index-item">
-				<div class="content-warning language"></div>
-				<p>Contains strong or offensive language.</p>
-			</div>
-			<div class="content-warning-index-item">
-				<div class="content-warning volume"></div>
-				<p>Contains loud noises.</p>
-			</div>
-			<div class="content-warning-index-item">
-				<div class="content-warning flashcat"></div>
-				<p>Contains flashing lights.</p>
-			</div>
-			<div class="content-warning-index-item">
-				<div class="content-warning spider"></div>
-				<p>Contains depictions of common critter phobias. &gt;&lt;</p>
-			</div>
-		</div>
-		<div id="content-warning-index-toggle">
-			<div id="toggle-button" onclick="toggleContentWarnings()">expand</div>
-		</div>
-	</div>
 
-	<script>
-
-		document.addEventListener('DOMContentLoaded', function () {
-			const shrines = document.querySelectorAll('.card').forEach((shrine) => {
-				if (shrine.querySelector('.content-warning')) {
-					shrine.classList.add('has-warnings');
-
-					shrine.querySelector(".content-warning.warning").addEventListener("click", function () {
-						toggleActive(this);
-					});
-				}
-			});
-
-		});
-	</script>
-
-	<div id="container">
-		<div id="header">
-			<h1>Shrines</h1>
-		</div>
-		<div id="shrines-container">
-			<div id="shrines">
-				<div class="card">
-				  <div class="card-image">
-				<a href="/pages/shrines/Foxes.html">
-						<img src="/assets/img/shrines/Foxes.jpg" alt="Foxes">
-						<div class="title">Foxes</div>
-					</a>
+		<div id="content-warning-index">
+			<div id="content-warning-header">
+				<img
+					src="/assets/img/content_warning/Warning.gif"
+					alt="Warning Sign"
+					style="height: 1.5rem; justify-self: end"
+				/>
+				<h3 style="width: fit-content">Content Warnings</h3>
+				<img
+					src="/assets/img/content_warning/Warning.gif"
+					alt="Warning Sign"
+					style="height: 1.5rem; justify-self: start"
+				/>
+			</div>
+			<div id="content-warning-index-items">
+				<div class="content-warning-index-item">
+					<div class="content-warning mobile">
+						<div class="no-entry"></div>
 					</div>
-				  </div>
-				<div class="card">
-				  <div class="card-image">
-				    
-					<div class="content-warning warning"></div>
-					<div class="content-warnings">
-						<div class="content-warning mobile">
-							<div class="no-entry"></div>
+					<p>Not optimized for small screens (yet).</p>
+				</div>
+				<div class="content-warning-index-item">
+					<div class="content-warning blood"></div>
+					<p>Contains depictions of blood and/or gore.</p>
+				</div>
+				<div class="content-warning-index-item">
+					<div class="content-warning violence"></div>
+					<p>Contains depictions or descriptions of violent acts.</p>
+				</div>
+				<div class="content-warning-index-item">
+					<div class="content-warning language"></div>
+					<p>Contains strong or offensive language.</p>
+				</div>
+				<div class="content-warning-index-item">
+					<div class="content-warning volume"></div>
+					<p>Contains loud noises.</p>
+				</div>
+				<div class="content-warning-index-item">
+					<div class="content-warning flashcat"></div>
+					<p>Contains flashing lights.</p>
+				</div>
+				<div class="content-warning-index-item">
+					<div class="content-warning spider"></div>
+					<p>Contains depictions of common critter phobias. &gt;&lt;</p>
+				</div>
+			</div>
+			<div id="content-warning-index-toggle">
+				<div id="toggle-button" onclick="toggleContentWarnings()">expand</div>
+			</div>
+		</div>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const shrines = document.querySelectorAll(".card").forEach((shrine) => {
+					if (shrine.querySelector(".content-warning")) {
+						shrine.classList.add("has-warnings")
+
+						shrine
+							.querySelector(".content-warning.warning")
+							.addEventListener("click", function () {
+								toggleActive(this)
+							})
+					}
+				})
+			})
+		</script>
+
+		<div id="container">
+			<div id="header">
+				<h1>Shrines</h1>
+			</div>
+			<div id="shrines-container">
+				<div id="shrines">
+					<div class="card">
+						<div class="card-image">
+							<a href="/pages/shrines/Foxes.html">
+								<img src="/assets/img/shrines/Foxes.jpg" alt="Foxes" />
+								<div class="title">Foxes</div>
+							</a>
 						</div>
-						<div class="content-warning blood"></div>
-						<div class="content-warning language"></div>
-						<div class="content-warning violence"></div>
-						<div class="content-warning volume"></div>
-						<div class="content-warning flashcat"></div>
 					</div>
+					<div class="card">
+						<div class="card-image">
+							<div class="content-warning warning"></div>
+							<div class="content-warnings">
+								<div class="content-warning mobile">
+									<div class="no-entry"></div>
+								</div>
+								<div class="content-warning blood"></div>
+								<div class="content-warning language"></div>
+								<div class="content-warning violence"></div>
+								<div class="content-warning volume"></div>
+								<div class="content-warning flashcat"></div>
+							</div>
 
-					<a href="/pages/shrines/doom2.html">
-
-						<img src="/assets/img/shrines/Doom2.jpg" alt="Doom Two">
-						<div class="title">DOOM2</div>
-					</a>
-				  </div>
-				</div>
-				<div class="card soon">
-				  <div class="card-image">
-					<a href="#">
-
-						<img src="/assets/img/shrines/Neovim.png" alt="My Neovim">
-						<div class="title">Neovim</div>
-						<div id="neovim-logo">
-							<img src="/assets/img/shrines/Neovim-logo.svg.png" alt="Neovim Logo" style="
-								opacity: 0.7;
-							">
+							<a href="/pages/shrines/doom2.html">
+								<img src="/assets/img/shrines/Doom2.jpg" alt="Doom Two" />
+								<div class="title">DOOM2</div>
+							</a>
 						</div>
-					</a>
+					</div>
+					<div class="card soon">
+						<div class="card-image">
+							<a href="#">
+								<img src="/assets/img/shrines/Neovim.png" alt="My Neovim" />
+								<div class="title">Neovim</div>
+								<div id="neovim-logo">
+									<img
+										src="/assets/img/shrines/Neovim-logo.svg.png"
+										alt="Neovim Logo"
+										style="opacity: 0.7"
+									/>
+								</div>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</body>
+	</body>
 </html>
+

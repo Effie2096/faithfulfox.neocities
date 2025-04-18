@@ -1,35 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-	<link href="/css/pages/badge_page.css" rel="stylesheet">
-	<link href="/css/badges.css" rel="stylesheet">
-	<script src="/script/jquery-3.7.1.min.js"></script>
-	<script>
-		$(function () {
-			var includes = $('[data-include]')
-			$.each(includes, function () {
-				var file = '/pages/' + $(this).data('include') + '.html'
-				$(this).load(file)
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title></title>
+		<link href="/css/pages/badge_page.css" rel="stylesheet" />
+		<link href="/css/badges.css" rel="stylesheet" />
+		<script src="/script/jquery-3.7.1.min.js"></script>
+		<script>
+			$(function () {
+				var includes = $("[data-include]")
+				$.each(includes, function () {
+					var file = "/pages/" + $(this).data("include") + ".html"
+					$(this).load(file)
+				})
 			})
-		});
-	</script>
-</head>
+		</script>
+	</head>
 
-<body>
-	<div id="backlink">
-		<a href="/index.html">Home</a>
-	</div>
-	<div id="header">
-		<h1>Ebic Badges in All Their Glory!</h1>
-	</div>
-	<div id="container">
-		<div id="badges" data-include="badges"></div>
-	</div>
-
-</body>
-
+	<body>
+		<div id="backlink">
+			<a href="/index.html">Home</a>
+		</div>
+		<div id="header">
+			<h1>Ebic Badges in All Their Glory!</h1>
+		</div>
+		<div id="container">
+			<div id="badges" data-include="badges"></div>
+		</div>
+	</body>
 </html>

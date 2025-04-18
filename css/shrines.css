@@ -72,7 +72,7 @@ body {
 }
 
 #shrines .card .card-image {
-  width: 100%;
+	width: 100%;
 	margin-bottom: 1rem;
 }
 
@@ -126,7 +126,7 @@ body {
 	bottom: 0;
 	left: 0;
 	transform: translateY(-23%);
-/*   margin-bottom: 1rem; */
+	/*   margin-bottom: 1rem; */
 	border-bottom-right-radius: 0.7rem;
 	border-bottom-left-radius: 0.7rem;
 	transition: border-radius 0.2s linear;

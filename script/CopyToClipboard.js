@@ -1,31 +1,31 @@
 function CopyToClipboard(content) {
-	var text = "";
+	var text = ""
 	if (typeof content !== "string") {
-		text = document.getElementById(content).textContent;
+		text = document.getElementById(content).textContent
 	} else {
-		text = content;
+		text = content
 	}
-	navigator.clipboard.writeText(text);
+	navigator.clipboard.writeText(text)
 }
 
 async function readFile(filePath) {
 	try {
-		const response = await fetch(filePath);
-		const fileContent = await response.text();
-		return fileContent;
+		const response = await fetch(filePath)
+		const fileContent = await response.text()
+		return fileContent
 	} catch (error) {
-		return -1;
+		return -1
 	}
 }
 
 function copyFile(filePath) {
 	readFile(filePath).then(function (result) {
 		if (result === -1) {
-			notify("Sorry. There was a problem copying the file. :c", "error");
-			return;
+			notify("Sorry. There was a problem copying the file. :c", "error")
+			return
 		}
 
-		CopyToClipboard(result);
-		notify("Copying file contents to clipboard.", "info");
-	});
+		CopyToClipboard(result)
+		notify("Copying file contents to clipboard.", "info")
+	})
 }

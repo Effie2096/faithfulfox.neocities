@@ -964,6 +964,55 @@ body:has(#construction:hover) #paradox {
 	display: none;
 }
 
+.image-viewer-overlay {
+	position: fixed;
+	inset: 0;
+	background-color: rgba(0, 0, 0, 0.9);
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+	display: flex;
+	flex-direction: column;
+}
+
+.image-viewer-img {
+	max-width: 90%;
+	max-height: 80vh;
+	margin-bottom: 20px;
+	transition: opacity 0.3s ease;
+}
+
+.image-viewer-nav {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 3rem;
+	color: white;
+	cursor: pointer;
+	padding: 10px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 50%;
+	user-select: none;
+}
+
+.nav-left {
+	left: 30px;
+}
+
+.nav-right {
+	right: 30px;
+}
+
+.image-viewer-close {
+	position: absolute;
+	top: 20px;
+	right: 30px;
+	font-size: 2rem;
+	color: white;
+	cursor: pointer;
+	background: none;
+	border: none;
+}
 
 
 /* .gallery-card { */
