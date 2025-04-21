@@ -29,7 +29,6 @@ window.onload = function () {
 			}
 		})
 	})
-
 	;[
 		document.getElementById("caco-container"),
 		document.getElementById("hellknight-container"),

@@ -28,9 +28,15 @@ function setupImageViewer(triggerElement) {
 
 function openViewer(imagePairs, startIndex) {
 	let currentIndex = startIndex
+	let touchStartX = 0
+	let touchEndX = 0
 
 	const overlay = document.createElement("div")
 	overlay.className = "image-viewer-overlay"
+
+	const counter = document.createElement("div")
+	counter.className = "image-viewer-counter"
+	overlay.appendChild(counter)
 
 	const img = document.createElement("img")
 	img.className = "image-viewer-img"
@@ -60,6 +66,7 @@ function openViewer(imagePairs, startIndex) {
 	function showImage(index) {
 		currentIndex = (index + imagePairs.length) % imagePairs.length
 		img.src = imagePairs[currentIndex].img.src
+		counter.textContent = `${currentIndex + 1} / ${imagePairs.length}`
 		caption.textContent = imagePairs[currentIndex].caption || ""
 	}
 
@@ -71,4 +78,27 @@ function openViewer(imagePairs, startIndex) {
 	overlay.addEventListener("click", (e) => {
 		if (e.target === overlay) document.body.removeChild(overlay)
 	})
+
+	// Touch event handlers for swipe
+	overlay.addEventListener("touchstart", (e) => {
+		touchStartX = e.changedTouches[0].screenX
+	})
+
+	overlay.addEventListener("touchend", (e) => {
+		touchEndX = e.changedTouches[0].screenX
+		handleSwipe()
+	})
+
+	function handleSwipe() {
+		const swipeDistance = touchEndX - touchStartX
+		const threshold = 50 // Minimum swipe distance
+
+		if (swipeDistance > threshold) {
+			// Swiped right → show previous
+			showImage(currentIndex - 1)
+		} else if (swipeDistance < -threshold) {
+			// Swiped left → show next
+			showImage(currentIndex + 1)
+		}
+	}
 }

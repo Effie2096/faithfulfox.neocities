@@ -131,3 +131,9 @@
 	margin-left: 20px;
 	transform: rotate(-.6deg);
 }
+
+.rss-link {
+	margin-left: 5px;
+	width: fit-content;
+	height: fit-content;
+}

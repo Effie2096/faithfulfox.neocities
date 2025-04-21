@@ -20,6 +20,7 @@
 
 .soon,
 .wip {
+	content: "";
 	position: relative;
 	overflow: visible;
 }
@@ -591,6 +592,22 @@ body::after {
 	width: 95%;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.sentinel {
+	height: 1px;
+	width: 100%;
+	margin-bottom: -1px;
+}
+
+.video-wrapper.sticky {
+	position: fixed;
+	width: 320px;
+	height: 180px;
+	top: 10px;
+	right: 10px;
+	z-index: 9999;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 iframe {
