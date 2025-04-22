@@ -1814,6 +1814,10 @@ body:has(#construction:hover) #paradox {
 		margin-right: auto;
 		z-index: 100;
 	}
+	
+	#update-header {
+	border-radius: 5px 5px 5px 5px;
+	}
 
 	.index-item h3 {
 		display: none;
