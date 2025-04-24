@@ -178,7 +178,6 @@ body {
 	pointer-events: none;
 	user-select: none;
 	z-index: 990;
-	/* background-color: red; */
 }
 
 .notification {
@@ -2021,7 +2020,7 @@ body:has(#construction:hover) #paradox {
 		right: 0;
 		width: 250px;
 		height: 100vh;
-		z-index: 600;
+		z-index: 950;
 		/* background-image: linear-gradient(to left, */
 		/* 		rgba(var(--ruby), 0.9), */
 		/* 		rgba(var(--surface-1), 0.9)); */
