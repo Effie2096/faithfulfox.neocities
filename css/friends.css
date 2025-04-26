@@ -1,8 +1,29 @@
 @import url("/css/fonts.css");
+@import url("/css/friends/anna.css");
+@import url("/css/friends/jesse.css");
+@import url("/css/friends/jared.css");
+
+:root {
+	--page-bg: rgb(255, 200, 255);
+	--friend-page-bg: rgb(250 197 185);
+	--binder-bg: rgb(161 65 60);
+	--bg-annie: rgb(53 118 255);
+	--bg-jesse: rgb(164 83 239);
+	--bg-jared: rgb(235 62 29);
+
+	font-size: 16px;
+}
 
 * {
 	padding: 0px;
-	margin: 0 auto;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body,
+html {
+	height: 100vh;
+	overflow: hidden;
 }
 
 #backlink {
@@ -10,33 +31,600 @@
 	background-color: rgb(115, 171, 171);
 }
 
-#backlink > a {
+#backlink>a {
 	text-decoration: none;
 	color: rgb(255, 255, 0);
 	font-size: 24px;
 	margin: 10px;
 }
 
-#backlink > a::before {
+#backlink>a::before {
 	content: "<";
 	margin-right: 5%;
 }
 
 #container {
-	background-color: rgb(255, 200, 255);
+	background-color: var(--page-bg);
 	margin: auto;
+	height: 100vh;
 }
 
-#friends td {
-	border: 1px solid black;
-	padding: 5px;
+#friends {
+	height: 100%;
+	display: grid;
+	grid-template-rows: 10rem auto;
+	grid-template-columns: repeat(4, 1fr);
+	column-gap: 20px;
+}
+
+#header {
+	grid-column: 2 / 4;
+	grid-row-start: 1;
+	grid-row-end: 2;
+}
+
+#header p {
 	text-align: center;
 }
 
-#friends p {
-	text-align: center;
+#board {
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 3;
+	height: 90%;
 }
 
-#friends table img {
-	max-height: 64px;
+#board .personal-board {
+	position: relative;
+	display: none;
+	height: 100%;
+}
+
+#board .personal-board.active {
+	display: block;
+}
+
+#friends #friend-book {
+	grid-column-start: 3;
+	grid-column-end: 5;
+	grid-row-start: 2;
+	grid-row-end: 3;
+	display: grid;
+	grid-template-columns: 3rem auto 6rem;
+	height: 90%;
+	width: 100%;
+	justify-self: end;
+	margin-top: 1.2rem;
+	padding: 1rem 0 1rem 0;
+	border-radius: 20px 0 0 20px;
+	background-color: var(--binder-bg);
+}
+
+#friends #friend-book #tabs {
+	grid-column-start: 1;
+	grid-column-end: 2;
+	width: 100%;
+	height: 100%;
+}
+
+#friends #friend-book #tabs .friend-tab {
+	position: relative;
+	height: 10rem;
+	width: 2rem;
+	float: right;
+	cursor: pointer;
+}
+
+#friends #friend-book #tabs .friend-tab:first-child {
+	margin-top: 1rem;
+}
+
+#friends #friend-book #tabs #anna {
+	background-color: var(--bg-annie);
+}
+
+#friends #friend-book #tabs #jesse {
+	background-color: var(--bg-jesse);
+}
+
+#friends #friend-book #tabs #jared {
+	background-color: var(--bg-jared);
+}
+
+#friends #friend-book #tabs .friend-tab::before {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 0;
+	border-left: 2rem solid var(--binder-bg);
+	border-top: 1rem solid transparent;
+	border-bottom: 1rem solid transparent;
+	transform: translateY(-50%);
+}
+
+#friends #friend-book #tabs .friend-tab:after {
+	content: "";
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	border-left: 2rem solid var(--binder-bg);
+	border-top: 1rem solid transparent;
+	border-bottom: 1rem solid transparent;
+	transform: translateY(50%);
+}
+
+#friends #friend-book #tabs .friend-tab::before,
+#friends #friend-book #tabs .friend-tab:after {
+	cursor: initial;
+}
+
+#friends #friend-book #tabs .friend-tab span {
+	position: absolute;
+	font-size: 1.5rem;
+	font-family: "Monaspace-Neon-Frozen";
+	writing-mode: vertical-rl;
+	user-select: none;
+	top: 50%;
+	right: .04rem;
+	transform: rotate(180deg) translateY(50%);
+}
+
+#friends #friend-book .friend-page {
+	grid-column-start: 2;
+	grid-column-end: 3;
+
+	display: none;
+	grid-template-columns: repeat(5, auto);
+	grid-template-rows: 12rem 12rem auto;
+	border-radius: .5rem 0rem 0rem .5rem;
+
+	width: 100%;
+	height: 100%;
+	padding-left: 1rem;
+
+	font-family: "Monaspace-Neon-Frozen";
+	background-color: var(--friend-page-bg);
+	background-image: linear-gradient(to bottom, #000 1px, var(--friend-page-bg) 1px);
+	background-size: 95% 3rem;
+	background-attachment: local;
+	background-repeat: repeat-y;
+	background-position: center 1rem;
+	line-height: 3em;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#friends #friend-book .friend-page.active {
+	display: grid;
+}
+
+#friends #friend-book .friend-page .friend-page-head {
+	grid-column-start: 1;
+	grid-column-end: 6;
+	grid-row-start: 1;
+	grid-row-end: 2;
+}
+
+#friends #friend-book .friend-page .friend-page-head .summary {
+	margin-top: 1rem;
+}
+
+#friends #friend-book .friend-page .friend-page-content {
+	grid-column-start: 1;
+	grid-column-end: 6;
+	grid-row-start: 2;
+	grid-row-end: 3;
+}
+
+.friend-page-head .pfp-container {
+	position: relative;
+}
+
+#friends #friend-book #anna-page {
+	border-left: .6rem solid var(--bg-annie);
+}
+
+#anna-page .friend-page-head .pfp-container .swag {
+	display: none;
+}
+
+#anna-page .friend-page-head .pfp-container:hover .swag {
+	display: block;
+}
+
+#anna-page .friend-page-head .pfp-container .sunglasses {
+	position: absolute;
+	width: 3.5rem;
+	top: 4.3rem;
+	left: 5.5rem;
+	transform: rotate(15deg);
+}
+
+#anna-page .friend-page-head .pfp-container .ice {
+	position: absolute;
+	width: 4rem;
+	top: 6rem;
+	left: 3.8rem;
+	transform: rotate(10deg);
+	transform-origin: 50% 0%;
+	animation: swing 2s infinite linear;
+}
+
+@keyframes swing {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	25% {
+		transform: rotate(10deg);
+	}
+
+	50% {
+		transform: rotate(0deg);
+	}
+
+	75% {
+		transform: rotate(-10deg);
+	}
+
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+#anna-page .friend-page-head .pfp-container .weed {
+	position: absolute;
+	width: 6rem;
+	top: 6.1rem;
+	left: 6.7rem;
+	transform: rotate(20deg);
+}
+
+#anna-page .friend-page-head .pfp-container #weed-smoke {
+	position: absolute;
+	width: 10rem;
+	top: -2rem;
+	right: -5rem;
+}
+
+#anna-page .friend-page-head .pfp-container .buthy {
+	position: absolute;
+	width: 5rem;
+	top: 1.5rem;
+	left: 1rem;
+	transform: rotate(-20deg);
+	animation: jitter 0.9s step-start infinite;
+}
+
+@keyframes jitter {
+	0% {
+		transform: rotate(-20deg) translateX(6px);
+	}
+
+	20% {
+		transform: rotate(-12deg) translateY(2px) translateX(9px);
+	}
+
+	40% {
+		transform: rotate(-9deg) translateY(11px) translateX(2px);
+	}
+
+	60% {
+		transform: rotate(-27deg) translateY(5px) translateX(7px);
+	}
+
+	100% {
+		transform: rotate(-22deg) translateY(7px) translateX(1px);
+	}
+}
+
+#anna-page .friend-page-head .pfp-container .sparkle {
+	position: absolute;
+	width: 6rem;
+	top: 0.2rem;
+	left: 0.5rem;
+	transform: rotate(-20deg);
+}
+
+#anna-page .friend-page-head .pfp-container #weed-leaf {
+	position: absolute;
+	width: 3rem;
+	top: 6.5rem;
+	left: 1rem;
+	transform-origin: 50% 50%;
+	animation: da_weed 2s infinite ease-in-out;
+}
+
+@keyframes da_weed {
+	0% {
+		transform: translateY(0rem);
+	}
+
+	50% {
+		transform: translateY(2rem);
+	}
+
+	100% {
+		transform: translateY(0rem);
+	}
+}
+
+#friends #friend-book #jesse-page {
+	border-left: .6rem solid var(--bg-jesse);
+}
+
+#friends #friend-book #jared-page {
+	border-left: .6rem solid var(--bg-jared);
+}
+
+#friends #friend-book .friend-page-bottom {
+	grid-column-start: 1;
+	grid-column-end: 6;
+	grid-row-start: 3;
+	grid-row-end: 4;
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	transform: rotate(2deg);
+
+	width: 97%;
+}
+
+#friends #friend-book .friend-page-bottom::before,
+#friends #friend-book .friend-page-bottom::after {
+	position: absolute;
+	content: "";
+	width: 3rem;
+	height: 1.1rem;
+	background-image: url("/assets/img/tape.png");
+	filter: sepia(100%) hue-rotate(270deg) saturate(2000%) brightness(100%);
+	top: 1.2rem;
+	z-index: 200;
+}
+
+#friends #friend-book .friend-page-bottom::before {
+	left: -1.2rem;
+	transform: rotate(-42deg);
+}
+
+#friends #friend-book .friend-page-bottom::after {
+	transform: rotate(42deg);
+	right: -1rem;
+}
+
+#friends #friend-book .friend-page-bottom .friend-page-bottom-content {
+	height: 100%;
+	width: 100%;
+}
+
+#friends #friend-book #anna-page .friend-page-bottom {
+	background-image: url("/assets/img/friends/torn-paper-blue.png");
+}
+
+#friends #friend-book #jesse-page .friend-page-bottom {
+	background-image: url("/assets/img/friends/torn-paper-green.png");
+}
+
+#friends #friend-book #jared-page .friend-page-bottom {
+	background-image: url("/assets/img/friends/torn-paper-pink.png");
+}
+
+.page-mask {
+	background-color: var(--friend-page-bg);
+}
+
+#friends #friend-book .friend-page .pfp-container {
+	width: 12rem;
+	height: 12rem;
+	float: left;
+	padding: 1rem 1rem 0rem 1rem;
+	margin-left: -1rem;
+}
+
+#friends #friend-book .friend-page .pfp {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transform: rotate(4deg);
+	width: 10rem;
+	height: 10rem;
+}
+
+#friends #friend-book .friend-page .pfp img {
+	width: 100%;
+	height: 100%;
+}
+
+#friends #friend-book .friend-page .pfp::before,
+#friends #friend-book .friend-page .pfp::after {
+	position: absolute;
+	content: "";
+	width: 3rem;
+	height: 1.1rem;
+	background-image: url("/assets/img/tape.png");
+	transform: rotate(-32deg);
+	filter: sepia(100%) hue-rotate(270deg) saturate(2000%) brightness(100%);
+}
+
+#friends #friend-book .friend-page .pfp::before {
+	top: -.2rem;
+	left: -1.2rem;
+}
+
+#friends #friend-book .friend-page .pfp::after {
+	bottom: -.2rem;
+	right: -1rem;
+}
+
+#friends #friend-book .friend-page span {
+	font-family: "Monaspace-Neon-Frozen";
+	font-size: 1.3rem;
+}
+
+#friends #friend-book .friend-page li.field::marker {
+	content: "";
+}
+
+#friends #friend-book .friend-page ul li:first-child {
+	margin-top: 1rem;
+}
+
+#friends #friend-book .friend-page .label {
+	font-family: "Monocraft";
+	margin-right: .3rem;
+}
+
+#friends #friend-book .friend-page .value {
+	margin-right: 1rem;
+	/* float: right; */
+	text-wrap: wrap;
+}
+
+#friends #friend-book #binder {
+	grid-column-start: 3;
+	grid-column-end: 4;
+	width: 100%;
+	height: 100%;
+
+	background-color: var(--binder-bg);
+
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(8, 1fr);
+}
+
+#friends #friend-book #binder #page-right,
+#friends #friend-book #binder #page-left {
+	width: 100%;
+	height: 100%;
+	background-color: var(--friend-page-bg);
+	position: relative;
+}
+
+#friends #friend-book #binder #page-left {
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 9;
+
+	border-radius: 0 .6rem .6rem 0;
+	box-shadow: 10px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#friends #friend-book #binder #page-left-stack,
+#friends #friend-book #binder #page-right-stack {
+	position: absolute;
+	width: 10px;
+	height: 100%;
+
+	background-repeat: repeat-x;
+	background-size: 2px 100%;
+}
+
+#friends #friend-book #binder #page-left-stack {
+	right: 0;
+	background-image: linear-gradient(to right, var(--friend-page-bg) 1px, var(--binder-bg) 1px);
+	border-radius: 0 .6rem .6rem 0;
+}
+
+#friends #friend-book #binder #page-right-stack {
+
+	left: 0;
+	background-image: linear-gradient(to right, var(--binder-bg) 1px, var(--friend-page-bg) 1px);
+	border-radius: .6rem 0 0 .6rem;
+}
+
+#friends #friend-book #binder #page-right {
+	grid-column-start: 4;
+	grid-column-end: 6;
+	grid-row-start: 1;
+	grid-row-end: 9;
+
+	border-radius: .6rem 0 0 .6rem;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#friends #friend-book #binder .ring {
+	grid-column: 1/2;
+	place-self: center;
+	width: 1.2rem;
+	height: 1.2rem;
+	background-color: var(--friend-page-bg);
+	filter: brightness(80%);
+	border-radius: 50%;
+	z-index: 10;
+}
+
+#friends #friend-book #binder .ring.tuah {
+	grid-column: 5/6;
+}
+
+#friends #friend-book #binder .ring:not(.tuah)::before {
+	content: "";
+	position: absolute;
+	top: 46%;
+	left: 28%;
+	transform: translateY(-40%);
+	width: 5.4rem;
+	height: .6rem;
+	background-image: linear-gradient(120deg,
+			#ccc,
+			#aaa,
+			#999,
+			#888,
+			#888,
+			#999,
+			#aaa),
+		linear-gradient(120deg,
+			rgba(204, 204, 204, 0.4),
+			rgba(170, 170, 170, 0.3),
+			rgba(136, 136, 136, 0.2),
+			rgba(102, 102, 102, 0.1),
+			rgba(102, 102, 102, 0.1),
+			rgba(136, 136, 136, 0.2),
+			rgba(170, 170, 170, 0.3));
+	background-blend-mode: multiply;
+	border-radius: .3rem;
+}
+
+@media (max-width: 1300px) {
+	:root {
+		font-size: 15px;
+	}
+}
+
+@media (max-width: 1090px) {
+	:root {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 920px) {
+	#friends #friend-book {
+		max-width: 100%;
+	}
+}
+
+@media (max-width: 810px) {
+	:root {
+		font-size: 14px;
+	}
+
+	#friends #friend-book .friend-page {
+		background-size: 95% 2rem;
+		line-height: 2rem;
+	}
+}
+
+@media (max-width: 570px) {
+	:root {
+		font-size: 10px;
+	}
+}
+
+@media (max-width: 360px) {
+	:root {
+		font-size: 9px;
+	}
 }

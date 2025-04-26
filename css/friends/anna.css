@@ -1,0 +1,55 @@
+#anna-board #lyra-container {
+	position: absolute;
+	width: 1rem;
+	right: 1rem;
+	bottom: 7rem;
+}
+
+#anna-board #lyra-container #lyra {
+	position: absolute;
+	width: 9rem;
+	top: 0rem;
+	right: 0rem;
+}
+
+#anna-board #lyra-container #jack {
+	position: absolute;
+	width: 6rem;
+	top: -1rem;
+	right: 3rem;
+	transform: rotate(-10deg);
+}
+
+#anna-board #lyra-container #mimic {
+	position: absolute;
+	width: 8rem;
+	top: 3rem;
+	right: -2rem;
+	transform: rotateY(180deg);
+}
+
+#anna-board #chubbits {
+	position: absolute;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	right: 8.5rem;
+	bottom: -2.5rem;
+}
+
+#anna-board .bnuy {
+	height: 100%;
+}
+
+#anna-board .reisen {
+	position: absolute;
+	width: 9rem;
+	right: 0rem;
+	top: 1rem;
+}
+
+#anna-board .chrysalis {
+	position: absolute;
+	width: 10rem;
+	left: 1.1rem;
+	top: 2rem;
+}

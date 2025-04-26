@@ -1,0 +1,56 @@
+#jesse-board .yippee {
+	position: absolute;
+	width: 10rem;
+	height: 10rem;
+	top: 7rem;
+	left: 4rem;
+	transform: rotate(-10deg);
+}
+
+#jesse-board .yippee #bnuy-goober {
+	width: 100%;
+}
+
+#jesse-board .jesses-pins {
+	position: absolute;
+	width: 1rem;
+	right: 0rem;
+	bottom: 0rem;
+}
+
+#jesse-board .jesse-pins {
+	position: absolute;
+	width: 5rem;
+}
+
+#jesse-board #illithid {
+	right: 4.1rem;
+	bottom: 4rem;
+}
+
+#jesse-board #monk {
+	right: 5.1rem;
+	bottom: 0rem;
+}
+
+#jesse-board #bard {
+	right: 8.6rem;
+	bottom: 1rem;
+}
+
+#jesse-board #pochita {
+	right: 0;
+	bottom: 0;
+}
+
+#jesse-board #pins1 {
+	width: 10rem;
+	right: 7.1rem;
+	bottom: 3rem;
+}
+
+#jesse-board #doc {
+	width: 5rem;
+	right: -1rem;
+	bottom: 7rem;
+}
