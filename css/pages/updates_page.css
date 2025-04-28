@@ -58,6 +58,9 @@ body {
 
 .postit-note {
 	padding: 8px 5px 0px 5px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	box-shadow: -2px 5px 30px rgba(0, 0, 0, .5);
 }
 
 .postit-pin {

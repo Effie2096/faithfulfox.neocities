@@ -40,6 +40,7 @@
 #update-heading {
 	left: 0;
 	right: 0;
+	cursor: var(--cursor-pointer);
 }
 
 #postit {
@@ -87,7 +88,6 @@
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
 	line-height: 20px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	filter: blur(0.1px);
 }
 

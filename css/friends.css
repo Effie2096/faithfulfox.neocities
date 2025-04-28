@@ -186,11 +186,11 @@ html {
 	font-family: "Monaspace-Neon-Frozen";
 	background-color: var(--friend-page-bg);
 	background-image: linear-gradient(to bottom, #000 1px, var(--friend-page-bg) 1px);
-	background-size: 95% 3rem;
+	background-size: 95% 2rem;
 	background-attachment: local;
 	background-repeat: repeat-y;
 	background-position: center 1rem;
-	line-height: 3em;
+	line-height: 2em;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -598,22 +598,33 @@ html {
 	:root {
 		font-size: 14px;
 	}
+
 }
 
 @media (max-width: 920px) {
+
+	:root {
+		font-size: 13px;
+	}
+
 	#friends #friend-book {
 		max-width: 100%;
+	}
+
+	#friends #friend-book .friend-page {
+		background-size: 95% 2rem;
+		line-height: 1.8em;
 	}
 }
 
 @media (max-width: 810px) {
 	:root {
-		font-size: 14px;
+		font-size: 12px;
 	}
 
 	#friends #friend-book .friend-page {
-		background-size: 95% 2rem;
-		line-height: 2rem;
+		background-size: 95% 1.5rem;
+		line-height: 1.5em;
 	}
 }
 

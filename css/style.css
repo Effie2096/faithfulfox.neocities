@@ -72,11 +72,6 @@ h6 {
 	top: 6px;
 }
 
-.soon::after {
-	top: 16px;
-	left: -9px;
-}
-
 body {
 	font-family: "Monocraft", Arial, sans-serif;
 	margin: 0;
@@ -815,6 +810,8 @@ body:has(#construction:hover) #paradox {
 	margin-bottom: 20px;
 	padding-left: 5px;
 	text-align: justify;
+	text-justify: inter-character;
+	font-size: 1.5rem;
 }
 
 .content-card .accent {
@@ -854,6 +851,10 @@ body:has(#construction:hover) #paradox {
 	padding: 10px;
 	background-color: rgb(var(--ruby));
 	border-radius: 5px;
+}
+
+.media-card img {
+	width: 100%;
 }
 
 
@@ -1078,12 +1079,15 @@ body:has(#construction:hover) #paradox {
 }
 
 .file-download {
-	width: 100px;
+	width: 7rem;
+	max-width: 33%;
 	height: fit-content;
 	border: 1px dashed rgba(235, 235, 235, 0.7);
 	display: grid;
 	grid-template-rows: auto 1fr;
 	overflow: hidden;
+	cursor: var(--cursor-pointer);
+	user-select: none;
 }
 
 .file-download .file-download-icon {
@@ -1094,7 +1098,7 @@ body:has(#construction:hover) #paradox {
 	margin: auto;
 	width: 100%;
 	text-align: center;
-	user-select: none;
+	cursor: inherit;
 }
 
 .file-download a {
@@ -1110,6 +1114,7 @@ body:has(#construction:hover) #paradox {
 	margin: auto;
 	text-align: center;
 	user-select: none;
+	cursor: inherit;
 }
 
 .media-side {
@@ -1858,14 +1863,6 @@ body:has(#construction:hover) #paradox {
 		margin: auto;
 	}
 
-	/* #badges-container { */
-	/* 	grid-template-rows: 99%; */
-	/* } */
-
-	/* #badges { */
-	/* 	display: none; */
-	/* } */
-
 	.ring-next,
 	.ring-prev {
 		padding: 0;
@@ -2067,10 +2064,6 @@ body:has(#construction:hover) #paradox {
 
 	.content-card hr {
 		margin: 4px 0;
-	}
-
-	.content-card p {
-		margin-bottom: 5px;
 	}
 
 	.content-footer-left .tag {

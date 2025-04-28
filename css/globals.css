@@ -70,6 +70,8 @@
 
 .soon::after {
 	content: "SOON!";
+	top: 16px;
+	left: -9px;
 }
 
 .notif-badge::after {

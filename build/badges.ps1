@@ -12,7 +12,7 @@ Function AddImages {
 
 	Add-Content -Path $outfile -Value "<div id=`"$id`" class=`"badge-box`">"
 	foreach ($badge in Get-ChildItem -Path $PSScriptRoot/"../"$path) {
-		Add-Content -Path $outfile -Value "<img src=`"$path$($badge.Name)`" alt=`"$($badge.Name)`">"
+		Add-Content -Path $outfile -Value "<img src=`"$path$($badge.Name)`" alt=`"$($badge.Name)`" loading=`"lazy`">"
 	}
 	Add-Content -Path $outfile -Value '</div>'
 	Add-Content -Path $outfile -Value '<hr/>'
