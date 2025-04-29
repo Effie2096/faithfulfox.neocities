@@ -10,6 +10,7 @@
 	--bg-annie: rgb(53 118 255);
 	--bg-jesse: rgb(164 83 239);
 	--bg-jared: rgb(235 62 29);
+	--page-content-size: 1.5rem;
 
 	font-size: 16px;
 }
@@ -185,13 +186,17 @@ html {
 
 	font-family: "Monaspace-Neon-Frozen";
 	background-color: var(--friend-page-bg);
-	background-image: linear-gradient(to bottom, #000 1px, var(--friend-page-bg) 1px);
-	background-size: 95% 2rem;
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 2px, var(--friend-page-bg) 1px);
+	background-size: 95% var(--page-content-size);
 	background-attachment: local;
 	background-repeat: repeat-y;
-	background-position: center 1rem;
-	line-height: 2em;
+	background-position: center 0.85rem;
+	line-height: var(--page-content-size);
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#friends #friend-book .friend-page p {
+	font-size: var(--page-content-size);
 }
 
 #friends #friend-book .friend-page.active {
@@ -374,22 +379,35 @@ html {
 #friends #friend-book .friend-page-bottom::after {
 	position: absolute;
 	content: "";
-	width: 3rem;
-	height: 1.1rem;
+	width: 5rem;
+	height: 1.2rem;
+	background-position: center;
 	background-image: url("/assets/img/tape.png");
-	filter: sepia(100%) hue-rotate(270deg) saturate(2000%) brightness(100%);
+	background-size: 100% 100%;
 	top: 1.2rem;
 	z-index: 200;
 }
 
 #friends #friend-book .friend-page-bottom::before {
-	left: -1.2rem;
+	left: -1.5rem;
+	top: 0.8rem;
 	transform: rotate(-42deg);
 }
 
 #friends #friend-book .friend-page-bottom::after {
 	transform: rotate(42deg);
-	right: -1rem;
+	right: -1.5rem;
+	top: 0.5rem;
+}
+
+#friends #friend-book #anna-page .friend-page-bottom::before {
+	background-image: url("/assets/img/scrapbook/tape_and_textures/chub_unicorn.jpg");
+	background-position: center -20px;
+	background-size: 100%;
+}
+
+#friends #friend-book #anna-page .friend-page-bottom::after {
+	filter: sepia(100%) hue-rotate(270deg) saturate(2000%) brightness(100%);
 }
 
 #friends #friend-book .friend-page-bottom .friend-page-bottom-content {
@@ -456,9 +474,8 @@ html {
 	right: -1rem;
 }
 
-#friends #friend-book .friend-page span {
+#friends #friend-book .friend-page p {
 	font-family: "Monaspace-Neon-Frozen";
-	font-size: 1.3rem;
 }
 
 #friends #friend-book .friend-page li.field::marker {
@@ -592,6 +609,10 @@ html {
 	:root {
 		font-size: 15px;
 	}
+
+	#friends #friend-book .friend-page {
+		background-size: 95% 1.51rem;
+	}
 }
 
 @media (max-width: 1090px) {
@@ -611,10 +632,6 @@ html {
 		max-width: 100%;
 	}
 
-	#friends #friend-book .friend-page {
-		background-size: 95% 2rem;
-		line-height: 1.8em;
-	}
 }
 
 @media (max-width: 810px) {
@@ -622,10 +639,6 @@ html {
 		font-size: 12px;
 	}
 
-	#friends #friend-book .friend-page {
-		background-size: 95% 1.5rem;
-		line-height: 1.5em;
-	}
 }
 
 @media (max-width: 570px) {
