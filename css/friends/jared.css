@@ -4,6 +4,7 @@
 	aspect-ratio: 1/1;
 	transform: rotate(-10deg);
 }
+
 #jared-board.active #twink-preg {
 	transition-delay: calc(var(--swipe-scale) * 0.2);
 	right: 75%;
@@ -12,8 +13,85 @@
 
 #jared-board #furry-twink-preg {
 	position: absolute;
-	right:0;
-	bottom:0;
+	right: 0;
+	bottom: 0;
 	width: 100%;
 }
+
+#jared-board #seal {
+	position: absolute;
+	width: 20%;
+	aspect-ratio: 1/1;
+	transform: rotate(14deg);
+}
+
+#jared-board.active #seal {
+	transition-delay: calc(var(--swipe-scale) * 0.6);
+	right: 5%;
+	bottom: 68%;
+}
+
+#jared-board #seal-of-approval {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+#jared-board #grubs {
+	position: absolute;
+	width: 40%;
+	aspect-ratio: 16/9;
+}
+
+#jared-board.active #grubs {
+	right: 0%;
+	bottom: 0%;
+	transition-delay: calc(var(--swipe-scale) * 0.4);
+}
+
+#jared-board #grubs .grub {
+	position: absolute;
+}
+
+#jared-board #grubs #grub1 {
+	width: 51%;
+	right: 84%;
+	bottom: -6%;
+}
+
+#jared-board #grubs #grub2 {
+	width: 50%;
+	right: 56%;
+	bottom: -2%;
+}
+
+#jared-board #grubs #grub3 {
+	width: 43%;
+	right: 62%;
+	bottom: 43%;
+}
+
+#jared-board #grubs #grub4 {
+	width: 50%;
+	right: 0%;
+	bottom: 0%;
+}
+
+#jared-board #grubs #grub5 {
+	width: 58%;
+	right: 9%;
+	bottom: 50%;
+}
+
+#jared-board #grubs #grub6 {
+	width: 49%;
+	right: 456;
+	bottom: 61%;
+}
+
+#jared-board #grubs #grub7 {
+	width: 50%;
+	right: 25%;
+	bottom: 0%;
 }
