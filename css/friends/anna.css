@@ -1,62 +1,88 @@
 #anna-board #lyra-container {
 	position: absolute;
-	width: 1rem;
-	right: 1rem;
-	bottom: 7rem;
+	width: 25%;
+	aspect-ratio: 1/1;
+}
+#anna-board.active #lyra-container {
+	right: 0;
+	bottom: 0;
+	transition-delay: calc(var(--swipe-scale) * 0.2);
 }
 
 #anna-board #lyra-container #lyra {
 	position: absolute;
-	width: 9rem;
-	top: 0rem;
-	right: 0rem;
+	width: 80%;
+	bottom: 20%;
+	right: 16%;
 }
 
 #anna-board #lyra-container #jack {
 	position: absolute;
-	width: 6rem;
-	top: -1rem;
-	right: 3rem;
+	width: 53%;
+	bottom: 44%;
+	right: 42%;
 	transform: rotate(-10deg);
 }
 
 #anna-board #lyra-container #mimic {
 	position: absolute;
-	width: 8rem;
-	top: 3rem;
-	right: -2rem;
+	width: 75%;
+	bottom: 0%;
+	right: 0%;
 	transform: rotateY(180deg);
 }
 
 #anna-board #chubbits {
 	position: absolute;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	right: 8.5rem;
-	bottom: -2.5rem;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	width: 14%;
+	aspect-ratio: 11/3;
+}
+#anna-board.active #chubbits {
+	transition-delay: calc(var(--swipe-scale) * 0.4);
+	right: 19%;
+	bottom: 2%;
 }
 
 #anna-board .bnuy {
 	height: 100%;
+	aspect-ratio: 1/1;
 }
 
-#anna-board .reisen {
+#anna-board #reisen {
 	position: absolute;
-	width: 9rem;
-	right: 0rem;
-	top: 1rem;
+	width: 16%;
 }
 
-#anna-board .chrysalis {
+#anna-board.active #reisen {
+	transition-delay: calc(var(--swipe-scale) * 0.6);
+	right: 0%;
+	bottom: 70%;
+}
+
+#anna-board #devious-ponies {
 	position: absolute;
-	width: 10rem;
-	left: 1.1rem;
-	top: 2rem;
+	width: 42%;
+	aspect-ratio: 16/9;
+}
+#anna-board.active #devious-ponies {
+	transition-delay: calc(var(--swipe-scale) * 0.8);
+	right: 55%;
+	bottom: 70%;
 }
 
 #anna-board #nightmare-moon {
 	position: absolute;
-	width: 20rem;
-	left: 4.1em;
-	top: 2.8rem;
+	width: 100%;
+	left: 15%;
+	top: 7%;
+}
+
+#anna-board #chrysalis {
+	position: absolute;
+	width: 50%;
+	left: 0%;
+	top: 0%;
 }

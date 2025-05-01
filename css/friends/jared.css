@@ -1,10 +1,19 @@
 #jared-board #twink-preg {
 	position: absolute;
-	right: 0rem;
-	bottom: 0rem;
+	width: 20%;
+	aspect-ratio: 1/1;
 	transform: rotate(-10deg);
+}
+#jared-board.active #twink-preg {
+	transition-delay: calc(var(--swipe-scale) * 0.2);
+	right: 75%;
+	bottom: 70%;
 }
 
 #jared-board #furry-twink-preg {
-	width: 10rem;
+	position: absolute;
+	right:0;
+	bottom:0;
+	width: 100%;
+}
 }

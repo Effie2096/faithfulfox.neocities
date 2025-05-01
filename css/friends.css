@@ -11,6 +11,7 @@
 	--bg-jesse: rgb(164 83 239);
 	--bg-jared: rgb(235 62 29);
 	--page-content-size: 1.5rem;
+	--swipe-scale: 1s;
 
 	font-size: 16px;
 }
@@ -77,13 +78,24 @@ html {
 }
 
 #board .personal-board {
-	position: relative;
-	display: none;
-	height: 100%;
+	position: absolute;
+	right: 50%;
+	height: 80%;
+	width: 50%;
+	bottom: -36%;
+	transform: translateY(-50%);
 }
 
-#board .personal-board.active {
-	display: block;
+.personal-board .scrap {
+	position: absolute;
+	right: -50%;
+	bottom: 30%;
+	transition: .3s linear;
+	transition-delay: 0s;
+	opacity: 0%;
+}
+.personal-board.active .scrap {
+	opacity: 100%;
 }
 
 #friends #friend-book {
@@ -100,6 +112,7 @@ html {
 	padding: 1rem 0 1rem 0;
 	border-radius: 20px 0 0 20px;
 	background-color: var(--binder-bg);
+	z-index: 500;
 }
 
 #friends #friend-book #tabs {
@@ -192,7 +205,6 @@ html {
 	background-repeat: repeat-y;
 	background-position: center 0.85rem;
 	line-height: var(--page-content-size);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #friends #friend-book .friend-page p {
@@ -227,6 +239,7 @@ html {
 
 #friends #friend-book #anna-page {
 	border-left: .6rem solid var(--bg-annie);
+	z-index: 600;
 }
 
 #anna-page .friend-page-head .pfp-container .swag {
@@ -356,10 +369,12 @@ html {
 
 #friends #friend-book #jesse-page {
 	border-left: .6rem solid var(--bg-jesse);
+	z-index: 620;
 }
 
 #friends #friend-book #jared-page {
 	border-left: .6rem solid var(--bg-jared);
+	z-index: 640;
 }
 
 #friends #friend-book .friend-page-bottom {
