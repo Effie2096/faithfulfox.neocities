@@ -94,6 +94,7 @@ html {
 	transition-delay: 0s;
 	opacity: 0%;
 }
+
 .personal-board.active .scrap {
 	opacity: 100%;
 }
@@ -415,14 +416,27 @@ html {
 	top: 0.5rem;
 }
 
-#friends #friend-book #anna-page .friend-page-bottom::before {
+#friends #friend-book #anna-page .friend-page-bottom::before,
+#friends #friend-book #anna-page .friend-page-bottom::after {
 	background-image: url("/assets/img/scrapbook/tape_and_textures/chub_unicorn.jpg");
 	background-position: center -20px;
 	background-size: 100%;
 }
 
-#friends #friend-book #anna-page .friend-page-bottom::after {
-	filter: sepia(100%) hue-rotate(270deg) saturate(2000%) brightness(100%);
+#friends #friend-book #jesse-page .friend-page-bottom::before,
+#friends #friend-book #jesse-page .friend-page-bottom::after {
+	background-image: url("/assets/img/scrapbook/tape_and_textures/bnuy.jpg");
+	background-position: center center;
+	background-repeat: repeat-x;
+	background-size: contain;
+}
+
+#friends #friend-book #jared-page .friend-page-bottom::before,
+#friends #friend-book #jared-page .friend-page-bottom::after {
+	background-image: url("/assets/img/scrapbook/tape_and_textures/cute-seals.webp");
+	background-position: center;
+	background-repeat: repeat-x;
+	background-size: contain;
 }
 
 #friends #friend-book .friend-page-bottom .friend-page-bottom-content {
