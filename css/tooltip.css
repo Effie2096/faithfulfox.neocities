@@ -1,0 +1,45 @@
+:root {
+	--tooltip-notch-pos: 100%;
+}
+
+.tooltip {
+	position: absolute;
+	width: fit-content;
+	/* max-width: 15rem; */
+	max-height: 4rem;
+	z-index: 900;
+}
+
+.tooltip::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #ffbbf7 transparent transparent transparent;
+}
+
+.tooltip.tooltip-top::after {
+	top: -10px;
+	border-color: transparent transparent #ffbbf7 transparent;
+}
+
+.tooltip .tooltipicon {
+	font-family: "SymbolsNerdFont-Regular";
+	float: left;
+	font-size: 2rem;
+	padding: 0.3rem 0.5rem 0 0.5rem;
+}
+
+.tooltip .tooltiptext {
+	font-family: "Monocraft";
+	background-color: #ffbbf7;
+	color: #000;
+	text-wrap: wrap;
+	font-size: 1rem;
+	border-radius: 6px;
+	padding: .4rem;
+	transition: opacity 0.3s;
+}

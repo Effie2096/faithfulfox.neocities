@@ -76,22 +76,20 @@
 
 .notif-badge::after {
 	content: "+1";
+	position: absolute;
 	color: white;
 	background-color: red;
 	font-family: "Monaspace-Neon-Frozen";
 	text-align: center;
-	padding: auto;
 	user-select: none;
-	padding-top: 2px;
-	padding-bottom: 0;
-	position: absolute;
 	text-shadow: 0.2em 0.2em 5px rgba(0, 0, 0, 0.5);
-	border-radius: 10px;
-	font-size: 10px;
-	width: 16px;
-	height: 14px;
-	right: -14px;
-	bottom: 8px;
+	border-radius: 50%;
+	font-size: .8rem;
+	padding-top: .05rem;
+	width: 1.2rem;
+	height: 1.2rem;
+	right: -0.2rem;
+	bottom: .8rem;
 	z-index: 9;
 }
 

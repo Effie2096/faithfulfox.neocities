@@ -10,6 +10,7 @@
 		<script src="/script/page_include.js"></script>
 		<script src="/script/toggleToDo.js"></script>
 		<script src="/script/gallery.js"></script>
+		<script src="/script/tooltip.js"></script>
 
 		<script>
 			function getContentTagDropdowns() {
@@ -191,6 +192,7 @@
 		<link href="css/globals.css" rel="stylesheet" />
 		<link href="css/scrollbar.css" rel="stylesheet" />
 		<link href="css/badges.css" rel="stylesheet" />
+		<link href="css/tooltip.css" rel="stylesheet" />
 	</head>
 
 	<body>
@@ -443,25 +445,18 @@
 				<div id="my-site">
 					<div id="foxden-badge" class="sidebar-content sidebar-content-right">
 						<a
-							class="tooltip"
 							href="/assets/img/FoxDenLogo.gif"
 							download="FoxDenLogo.gif"
-							onclick='notify(&apos;downloading Fox Den button...&apos;, &apos;info&apos;);
-							notify(&apos;Fox den badge HTML copied to clipboard.&apos;, &apos;info&apos;);
+							onclick="notify('downloading Fox Den button...', 'info');
+							notify('Fox den badge HTML copied to clipboard.', 'info');
 							CopyToClipboard(`
-							&lt;a href="https://faithfulfox.neocities.org/"&gt;
-							&lt;img src="FoxDenLogo.gif" alt="Fox Den Button" width="88px" height="31px"&gt;
+							&lt;a href='https://faithfulfox.neocities.org/'&gt;
+							&lt;img src='FoxDenLogo.gif' alt='Fox Den Button' width='88px' height='31px'&gt;
 							&lt;/a&gt;
-							`)'
+							`)"
+							onmouseover="tooltip(this, 'Get a button for linking to my site :D', '');"
 						>
 							<img src="/assets/img/FoxDenLogo.gif" alt="Fox Den Badge" />
-							<span
-								class="tooltiptext"
-								style="font-weight: normal"
-								id="myTooltip"
-							>
-								Get a button for linking to my site :D
-							</span>
 						</a>
 					</div>
 				</div>
@@ -485,14 +480,16 @@
 
 									<a
 										href="#"
-										class="tooltip click contact-button"
+										class="click contact-button"
 										onclick="
 										CopyToClipboard('faithfulfox@proton.me');
 										notify('email copied to clipboard', 'info');"
 									>
-										<span class="click icon">  </span>
-										<span class="tooltiptext" id="myTooltip">
-											Copy Email To Clipboard
+										<span
+											class="click icon"
+											onmouseover="tooltip(this, 'Copy Email To Clipboard', ' ')"
+										>
+											
 										</span>
 									</a>
 								</div>
@@ -508,17 +505,18 @@
 									/>
 									<span class="contact-label click">PGP Pubkey</span>
 									<a
-										class="tooltip contact-button"
+										class="contact-button"
 										href="/zased/gpg_key.txt"
 										download="faithfulfox-PGP-Pubkey.pgp"
 										onclick="
 										copyFile('/zased/gpg_key.txt');
 										notify('downloading pgp pubkey...', 'info');"
 									>
-										<span class="click icon"></span>
-										<span class="tooltiptext" id="myTooltip">
-											Download/Copy PGP Pubkey
-										</span>
+										<span
+											class="click icon"
+											onmouseover="tooltip(this, 'Download/Copy PGP Pubkey', ' ')"
+											></span
+										>
 									</a>
 								</div>
 							</div>
