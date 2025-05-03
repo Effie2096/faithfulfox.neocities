@@ -4,6 +4,7 @@
 	aspect-ratio: 1/1;
 	transform: rotate(-10deg);
 }
+
 #jesse-board.active #yippee {
 	transition-delay: calc(var(--swipe-scale) * 0.2);
 	bottom: 73%;
@@ -12,17 +13,18 @@
 
 #jesse-board #yippee #bnuy-goober {
 	position: absolute;
-	right:0;
-	bottom:0;
+	right: 0;
+	bottom: 0;
 	width: 100%;
 	height: 100%;
 }
 
 #jesse-board #jesses-pins {
 	position: absolute;
-	height: 30%;
+	width: 37%;
 	aspect-ratio: 11/9;
 }
+
 #jesse-board.active #jesses-pins {
 	transition-delay: calc(var(--swipe-scale) * 0.4);
 	right: 2%;
@@ -63,4 +65,83 @@
 #jesse-board #jesses-pins #doc {
 	right: -3%;
 	bottom: 51%;
+}
+
+#jesse-board #balatro {
+	position: absolute;
+	width: 43%;
+	aspect-ratio: 16/9;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+}
+
+#jesse-board.active #balatro {
+	right: 52%;
+	bottom: 3%;
+	transition-delay: calc(var(--swipe-scale) * 0.6);
+}
+
+#jesse-board #balatro .balatro-card {
+	position: absolute;
+	height: 100%;
+	z-index: 200;
+	transition: .02s linear;
+}
+
+#jesse-board #balatro #jimbo-balatro {
+	right: -8%;
+	bottom: -3%;
+	rotate: 24deg;
+}
+
+#jesse-board #balatro #brain-balatro {
+	right: 16%;
+	rotate: 15deg;
+}
+
+#jesse-board #balatro #chad-balatro {
+	right: 32%;
+	rotate: 8deg;
+}
+
+#jesse-board #balatro #blue-balatro {
+	right: 47%;
+	bottom: -5%;
+	rotate: -10deg;
+}
+
+#jesse-board #balatro #photo-balatro {
+	right: 65%;
+	bottom: -19%;
+	rotate: -20deg;
+}
+
+#jesse-board #balatro .card-trig {
+	height: 100%;
+	width: 100%;
+	z-index: 220;
+}
+
+#jesse-board #balatro #card-trig-1:hover ~ #photo-balatro {
+	z-index: 210;
+	transform: scale(1.1) translateY(-1rem);
+}
+
+#jesse-board #balatro #card-trig-2:hover ~ #blue-balatro {
+	z-index: 210;
+	transform: scale(1.1) translateY(-1rem);
+}
+
+#jesse-board #balatro #card-trig-3:hover ~ #chad-balatro {
+	z-index: 210;
+	transform: scale(1.1) translateY(-1rem);
+}
+
+#jesse-board #balatro #card-trig-4:hover ~ #brain-balatro {
+	z-index: 210;
+	transform: scale(1.1) translateY(-1rem);
+}
+#jesse-board #balatro #card-trig-5:hover ~ #jimbo-balatro {
+	z-index: 210;
+	transform: scale(1.1) translateY(-1rem);
 }
