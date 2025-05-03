@@ -164,11 +164,6 @@ body {
 	/* 16:9, for an aspect ratio of 1:1 change to this value to 100% */
 }
 
-.external::after {
-	font-family: "SymbolsNerdFont-Regular";
-	content: "";
-}
-
 iframe {
 	position: absolute;
 	top: 0;

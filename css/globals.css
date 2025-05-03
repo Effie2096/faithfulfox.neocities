@@ -106,3 +106,16 @@
 		transform: rotate(30deg) scale(1.0);
 	}
 }
+
+.external {
+	position: relative;
+}
+
+.external::after {
+	position: absolute;
+	font-family: "SymbolsNerdFont-Regular";
+	content: "";
+	font-size: 1rem;
+	right: -1rem;
+	top: -0.1rem;
+}
