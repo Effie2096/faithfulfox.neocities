@@ -54,6 +54,10 @@
 	position: absolute;
 }
 
+#jared-board #grubs .grub:hover {
+	transform: scale(1.2);
+}
+
 #jared-board #grubs #grub1 {
 	width: 51%;
 	right: 84%;
