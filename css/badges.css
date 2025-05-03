@@ -1,3 +1,7 @@
+body {
+	position: relative;
+}
+
 .badge-box img {
 	margin: 1px;
 }

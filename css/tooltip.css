@@ -5,8 +5,12 @@
 .tooltip {
 	position: absolute;
 	width: fit-content;
-	/* max-width: 15rem; */
-	max-height: 4rem;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	border-radius: 6px;
+	/* max-height: 4rem; */
+	max-width: 20rem;
+	background-color: #ffbbf7;
 	z-index: 900;
 }
 
@@ -15,31 +19,45 @@
 	position: absolute;
 	top: 100%;
 	left: 50%;
-	margin-left: -5px;
-	border-width: 5px;
+	margin-left: -0.5rem;
+	border-width: 0.5rem;
 	border-style: solid;
 	border-color: #ffbbf7 transparent transparent transparent;
 }
 
 .tooltip.tooltip-top::after {
-	top: -10px;
+	top: -0.5rem;
 	border-color: transparent transparent #ffbbf7 transparent;
 }
 
 .tooltip .tooltipicon {
+	position: relative;
+	grid-column-start: 1;
+	grid-column-end: 2;
+	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+	border-radius: 6px 0 0 6px;
+	background-color: #f979ca;
+	height: 100%;
+	width: 2.8rem;
+}
+
+.tooltip .tooltipicon span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
 	font-family: "SymbolsNerdFont-Regular";
-	float: left;
 	font-size: 2rem;
-	padding: 0.3rem 0.5rem 0 0.5rem;
+	color: white;
 }
 
 .tooltip .tooltiptext {
+	grid-column-start: 2;
+	grid-column-end: 3;
 	font-family: "Monocraft";
-	background-color: #ffbbf7;
 	color: #000;
 	text-wrap: wrap;
 	font-size: 1rem;
-	border-radius: 6px;
 	padding: .4rem;
 	transition: opacity 0.3s;
 }

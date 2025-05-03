@@ -14,8 +14,8 @@ function tooltip(element, text, icon) {
 	}
 
 	const topPos = closeToTop
-		? pos.top + pos.height + 10
-		: pos.top - tooltip.getBoundingClientRect().height - 10
+		? pos.top + pos.height + 15
+		: pos.top - tooltip.getBoundingClientRect().height - 15
 	tooltip.style.top = `${topPos}px`
 
 	element.addEventListener("mouseout", (_event) => {
@@ -28,15 +28,20 @@ var createTooltip = function (text, icon) {
 	tooltip.classList.add("tooltip")
 	tooltip.style.pointerEvents = "none"
 
-	const tooltipIcon = document.createElement("p")
-	tooltipIcon.classList.add("tooltipicon")
-	tooltipIcon.textContent = `${icon}`
+	if (icon) {
+		const tooltipIcon = document.createElement("div")
+		tooltipIcon.classList.add("tooltipicon")
 
-	const tooltipText = document.createElement("p")
+		const iconText = document.createElement("span")
+		iconText.textContent = `${icon}`
+		tooltipIcon.appendChild(iconText)
+		tooltip.appendChild(tooltipIcon)
+	}
+
+	const tooltipText = document.createElement("span")
 	tooltipText.classList.add("tooltiptext")
 	tooltipText.textContent = `${text}`
 
-	tooltip.appendChild(tooltipIcon)
 	tooltip.appendChild(tooltipText)
 
 	return tooltip
