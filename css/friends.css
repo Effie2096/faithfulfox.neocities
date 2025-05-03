@@ -5,13 +5,13 @@
 
 :root {
 	--page-bg: rgb(255, 200, 255);
-	--friend-page-bg: rgb(250 197 185);
+	--friend-page-bg: #faf2e6;
 	--binder-bg: rgb(161 65 60);
 	--bg-annie: rgb(53 118 255);
 	--bg-jesse: rgb(164 83 239);
 	--bg-jared: rgb(235 62 29);
 	--page-content-size: 1.5rem;
-	--swipe-scale: 1s;
+	--swipe-scale: 0.2s;
 
 	font-size: 16px;
 }

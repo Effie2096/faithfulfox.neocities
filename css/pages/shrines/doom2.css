@@ -34,6 +34,7 @@
 	content: "";
 	top: .8rem;
 	right: 0;
+	left: initial;
 	transform: rotate(30deg) scale(2);
 	/* font-family: "Monocraft"; */
 	/* height: 6rem; */
