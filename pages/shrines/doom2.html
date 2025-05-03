@@ -10,53 +10,49 @@
 		<script src="/script/shrines/doom2.js"></script>
 		<script>
 		function openTab(evt, tabName) {
-			// Declare all variables
 			var i, tabcontent, tablinks;
 
-			// Get all elements with class="tabcontent" and hide them
 			tabcontent = document.getElementsByClassName("tab-content");
 			for (i = 0; i < tabcontent.length; i++) {
 				tabcontent[i].style.display = "none";
 			}
 
-			// Get all elements with class="tablinks" and remove the class "active"
 			tablinks = document.getElementsByClassName("tablinks");
 			for (i = 0; i < tablinks.length; i++) {
 				tablinks[i].className = tablinks[i].className.replace(" active", "");
 			}
 
-			// Show the current tab, and add an "active" class to the button that opened the tab
 			document.getElementById(tabName).style.display = "block";
 			evt.currentTarget.className += " active";
 		}
 		</script>
 		<script>
-		function pausePlayers() {
-			document.querySelectorAll('.player').forEach(player => {player.pause()});
-			document.querySelectorAll('.player-btn').forEach(btn => {btn.innerHTML = ""});
+		function pausePlayers(excludePlayer, excludeBtn) {
+			document.querySelectorAll('.player').forEach(player => {
+				if (player !== excludePlayer) {
+					player.pause()
+				}
+			});
+			document.querySelectorAll('.player-btn').forEach(btn => {
+				if (btn !== excludeBtn) {
+					btn.innerHTML = ""
+				}
+			});
 		}
 		function playSecret() {
 			return new Promise(function (resolve) {
 				window.secret.addEventListener('ended', function () {
-					console.log("secret ended");
 					resolve();
 				});
 				window.secret.play();
-				// window.secretHasEnded = false;
 			});
 		}
 		function playButton(name) {
 			var elem = document.getElementById(name);
 			var btn = document.getElementById(`${name}-btn`);
 
-			// Pause all other players
-			document.querySelectorAll('.player').forEach(player => {
-				if (player !== elem) {
-					player.pause();
-				}
-			});
+			pausePlayers(elem, btn);
 
-			// Handle player4's special case
 			if (name === "player4") {
 				const mugshot = document.getElementById("mugshot-link");
 				mugshot.classList.toggle("active");
@@ -64,7 +60,7 @@
 					setTimeout(function () {
 						window.startSound.pause();
 						window.startSound.currentTime = 0;
-					}, 100); // add a 100ms delay
+					}, 100);
 				}
 				if (elem.paused) {
 					// Play start sound before main audio
