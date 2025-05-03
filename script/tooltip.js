@@ -2,9 +2,7 @@ function tooltip(element, text, icon) {
 	icon = icon || ""
 	const pos = element.getBoundingClientRect()
 	const tooltip = createTooltip(text, icon)
-	// const elementPosition = getComputedStyle(element).position
 
-	// element.style.position = "relative"
 	document.getElementsByTagName("body")[0].appendChild(tooltip)
 	tooltip.style.left = `${pos.left - tooltip.getBoundingClientRect().width / 2 + pos.width / 2}px`
 	const closeToTop = pos.top < window.innerHeight / 6
@@ -19,7 +17,10 @@ function tooltip(element, text, icon) {
 	tooltip.style.top = `${topPos}px`
 
 	element.addEventListener("mouseout", (_event) => {
-		tooltip.remove()
+		tooltip.classList.add("removing")
+		setTimeout(() => {
+			tooltip.remove()
+		}, 200)
 	})
 }
 

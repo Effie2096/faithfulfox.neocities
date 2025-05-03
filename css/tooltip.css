@@ -5,13 +5,20 @@
 .tooltip {
 	position: absolute;
 	width: fit-content;
-	display: grid;
-	grid-template-columns: 1fr auto;
-	border-radius: 6px;
-	/* max-height: 4rem; */
 	max-width: 20rem;
+	display: grid;
+	grid-template-columns: auto auto;
+	border-radius: 6px;
+	min-height: 2rem;
+	/* max-height: 4rem; */
 	background-color: #ffbbf7;
 	z-index: 900;
+}
+
+.tooltip.removing {
+	opacity: 0;
+	transition: .2s ease;
+	/* transition-delay: 0.1s; */
 }
 
 .tooltip::after {
@@ -26,7 +33,7 @@
 }
 
 .tooltip.tooltip-top::after {
-	top: -0.5rem;
+	top: -1rem;
 	border-color: transparent transparent #ffbbf7 transparent;
 }
 
@@ -47,7 +54,8 @@
 	left: 50%;
 	transform: translateY(-50%) translateX(-50%);
 	font-family: "SymbolsNerdFont-Regular";
-	font-size: 2rem;
+	font-size: 1.8rem;
+	line-height: 1.8rem;
 	color: white;
 }
 
