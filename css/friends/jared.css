@@ -1,3 +1,7 @@
+#jared-board {
+	border-color: var(--bg-jared);
+}
+
 #jared-board #twink-preg {
 	position: absolute;
 	width: 20%;
@@ -46,7 +50,7 @@
 
 #jared-board.active #grubs {
 	right: 0%;
-	bottom: 0%;
+	bottom: 2%;
 	transition-delay: calc(var(--swipe-scale) * 0.4);
 }
 

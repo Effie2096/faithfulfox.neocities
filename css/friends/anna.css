@@ -1,8 +1,13 @@
+#anna-board {
+	border-color: var(--bg-annie);
+}
+
 #anna-board #lyra-container {
 	position: absolute;
 	width: 25%;
 	aspect-ratio: 1/1;
 }
+
 #anna-board.active #lyra-container {
 	right: 0;
 	bottom: 0;
@@ -40,6 +45,7 @@
 	width: 14%;
 	aspect-ratio: 11/3;
 }
+
 #anna-board.active #chubbits {
 	transition-delay: calc(var(--swipe-scale) * 0.4);
 	right: 19%;
@@ -67,6 +73,7 @@
 	width: 42%;
 	aspect-ratio: 16/9;
 }
+
 #anna-board.active #devious-ponies {
 	transition-delay: calc(var(--swipe-scale) * 0.8);
 	right: 55%;

@@ -1,0 +1,50 @@
+.preview-card {
+	display: grid;
+	grid-template-columns: auto auto;
+	gap: 1.5rem;
+	height: 100%;
+	width: 100%;
+	padding: 1rem;
+}
+
+.preview-card .preview-content {
+	grid-column-start: 1;
+	grid-column-end: 2;
+}
+
+.preview-card .preview-content p {
+	font-family: Helvetica, Arial, sans-serif;
+	margin-bottom: 0.4rem;
+}
+
+.preview-card .preview-content .site_name {
+	font-size: 0.8rem;
+	line-height: 0.8rem;
+	margin-top: -0.4rem;
+}
+
+.preview-card .preview-content .title {
+	font-size: 2rem;
+	line-height: 2rem;
+	font-style: bold;
+}
+
+.preview-card .preview-content .description {
+	font-size: 1rem;
+	line-height: 1rem;
+}
+
+.preview-card .preview-image-container {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	position: relative;
+	height: 10rem;
+	overflow: hidden;
+	aspect-ratio: 1/1;
+	justify-self: end;
+}
+
+.preview-image {
+	width: 100%;
+	height: 100%;
+}
