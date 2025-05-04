@@ -661,6 +661,8 @@ html {
 	height: fit-content;
 	z-index: 900;
 	transition: .7s ease;
+	user-select: none;
+	pointer-events: none;
 }
 
 #anna-page .friend-page-content .field .site:hover~#anna-preview,
