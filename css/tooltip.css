@@ -12,7 +12,7 @@
 	min-height: 2rem;
 	/* max-height: 4rem; */
 	background-color: #ffbbf7;
-	z-index: 900;
+	z-index: 990;
 }
 
 .tooltip.removing {
