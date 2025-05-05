@@ -105,8 +105,8 @@
 
 .image-viewer-img {
 	height: 90%;
-	max-width: 90%;
 	max-height: 80vh;
+	object-fit: cover;
 	margin-bottom: 20px;
 	transition: opacity 0.3s ease;
 }
