@@ -262,14 +262,20 @@ html {
 }
 
 #anna-page .friend-page-head .pfp-container .swag,
-#jesse-page .friend-page-head .pfp-container .swag {
+#jesse-page .friend-page-head .pfp-container .swag,
+#jared-page .friend-page-head .pfp-container .swag {
 	position: absolute;
 	display: none;
 }
 
 #anna-page .friend-page-head .pfp-container:hover .swag,
-#jesse-page .friend-page-head .pfp-container:hover .swag {
+#jesse-page .friend-page-head .pfp-container:hover .swag,
+#jared-page .friend-page-head .pfp-container:hover .swag {
 	display: block;
+}
+
+#jared-page .friend-page-head .pfp-container:hover img {
+	display: none;
 }
 
 #anna-page .friend-page-head .pfp-container .sunglasses {
@@ -387,6 +393,29 @@ html {
 	left: 1rem;
 	width: 7rem;
 	transform: rotate(5deg);
+}
+
+#jared-page .friend-page-head .pfp-container #bm-jiggy {
+	width: 9.2rem;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(4deg) scaleX(1.08);
+}
+
+#jared-page .friend-page-head .pfp-container #rub1,
+#jared-page .friend-page-head .pfp-container #rub2 {
+	width: 4rem;
+	opacity: 0.8;
+}
+
+#jared-page .friend-page-head .pfp-container #rub1 {
+	top: 1.5rem;
+	left: 1rem;
+}
+
+#jared-page .friend-page-head .pfp-container #rub2 {
+	top: 1rem;
+	left: 5.5rem;
 }
 
 #friends #friend-book #jesse-page {
@@ -658,6 +687,7 @@ html {
 	left: 50%;
 	transform: translateX(-50%);
 	width: 40rem;
+	max-width: 100vw;
 	height: fit-content;
 	z-index: 900;
 	transition: .7s ease;
@@ -731,8 +761,6 @@ html {
 		position: absolute;
 		right: 30%;
 		bottom: -150%;
-		transition: .3s linear;
-		transition-delay: 0s;
 		opacity: 0%;
 	}
 }
