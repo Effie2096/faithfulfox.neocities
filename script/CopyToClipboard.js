@@ -1,4 +1,26 @@
-function CopyToClipboard(content) {
+async function checkPerms(permissionName) {
+	try {
+		const permission = await navigator.permissions.query({ name: permissionName });
+
+		if (permission.state !== 'granted') {
+			return false
+		}
+		return true
+	} catch (error) {
+		if (error.name === "TypeError") {
+			return true
+		} 
+	}
+
+}
+
+async function CopyToClipboard(content, message) {
+	if (await checkPerms("clipboard-write") === false) {
+		notify("Clipboard permission not granted.", "error")
+		return
+	}
+
+	var msg = message ? message : "Copied to clipboard."
 	var text = ""
 	if (typeof content !== "string") {
 		text = document.getElementById(content).textContent
@@ -6,6 +28,7 @@ function CopyToClipboard(content) {
 		text = content
 	}
 	navigator.clipboard.writeText(text)
+	notify(`${msg}`)
 }
 
 async function readFile(filePath) {

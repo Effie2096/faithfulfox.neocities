@@ -381,12 +381,11 @@
 							href="/assets/img/FoxDenLogo.gif"
 							download="FoxDenLogo.gif"
 							onclick="notify('downloading Fox Den button...', 'info');
-							notify('Fox den badge HTML copied to clipboard.', 'info');
 							CopyToClipboard(`
 							&lt;a href='https://faithfulfox.neocities.org/'&gt;
 							&lt;img src='FoxDenLogo.gif' alt='Fox Den Button' width='88px' height='31px'&gt;
 							&lt;/a&gt;
-							`)"
+							`, 'Fox den badge HTML copied to clipboard.')"
 							onmouseover="tooltip(this, 'Get a button for linking to my site :D', '');"
 						>
 							<img src="/assets/img/FoxDenLogo.gif" alt="Fox Den Badge" />
@@ -415,8 +414,7 @@
 										href="#"
 										class="click contact-button"
 										onclick="
-										CopyToClipboard('faithfulfox@proton.me');
-										notify('email copied to clipboard', 'default');"
+										CopyToClipboard('faithfulfox@proton.me', 'email copied to clipboard');"
 									>
 										<span
 											class="click icon"
