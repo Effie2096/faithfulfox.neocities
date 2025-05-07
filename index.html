@@ -27,6 +27,7 @@
 		<script src="/script/toggleToDo.js"></script>
 		<script src="/script/gallery.js"></script>
 		<script src="/script/tooltip.js"></script>
+		<script src="/script/notify.js"></script>
 
 		<script>
 			function toggleSidebarRight() {
@@ -118,48 +119,11 @@
 				chatButtonIcon.textContent =
 					chatButtonIcon.textContent === "" ? "" : ""
 			}
-			function notify(message, type) {
-				var notificationSection = document.getElementById("notifications")
-
-				type = typeof type === "undefined" ? "default" : type
-				var notification = document.createElement("div")
-				notification.className = "notification"
-				var notificationTitle = document.createElement("h4")
-				notificationTitle.className = "notification-title"
-				switch (type) {
-					case "error":
-						notification.classList.add("error")
-						notificationTitle.innerHTML = "Error!"
-						break
-					case "info":
-						notification.classList.add("info")
-						notificationTitle.innerHTML = "Erm, btw~"
-						break
-					case "default":
-						notification.classList.add("default")
-						notificationTitle.innerHTML = "Hey, you!"
-						break
-				}
-
-				var notificationMessage = document.createElement("p")
-				notificationMessage.innerHTML = message
-
-				notification.appendChild(notificationTitle)
-				notification.appendChild(notificationMessage)
-
-				notificationSection.prepend(notification)
-
-				setTimeout(function () {
-					notification.classList.add("removing")
-				}, 5000)
-				setTimeout(function () {
-					notification.remove()
-				}, 6000)
-			}
 		</script>
 		<link href="css/style.css" rel="stylesheet" />
 		<link href="css/globals.css" rel="stylesheet" />
 		<link href="css/scrollbar.css" rel="stylesheet" />
+		<link href="css/notification.css" rel="stylesheet" />
 		<link href="css/badges.css" rel="stylesheet" />
 		<link href="css/tooltip.css" rel="stylesheet" />
 	</head>
@@ -452,7 +416,7 @@
 										class="click contact-button"
 										onclick="
 										CopyToClipboard('faithfulfox@proton.me');
-										notify('email copied to clipboard', 'info');"
+										notify('email copied to clipboard', 'default');"
 									>
 										<span
 											class="click icon"

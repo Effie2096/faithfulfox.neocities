@@ -1,0 +1,234 @@
+:root {
+	--notification-width: 22;
+	--notification-height: 4;
+}
+
+#notifications {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: calc(var(--notification-width) * 1rem);
+	height: calc(var(--notification-height) * 1rem);
+	pointer-events: none;
+	user-select: none;
+	z-index: 990;
+}
+
+.notification {
+	width: calc(var(--notification-width) * 1rem);
+	overflow: visible;
+	position: relative;
+}
+
+.notification-inner {
+	display: grid;
+	grid-template-rows: auto auto;
+	margin: .2rem;
+	margin-left: auto;
+	padding: .3rem;
+	padding-left: .5rem;
+	border-radius: .2rem;
+	overflow: hidden;
+}
+
+.notification-header {
+	grid-row-start: 1;
+	grid-row-end: 2;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.notification-body {
+	grid-row-start: 2;
+	grid-row-end: 3;
+	position: relative;
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.notification-header .notification-title {
+	grid-column-start: 1;
+	grid-column-end: 2;
+}
+
+.notification-header .notification-time {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	align-self: end;
+	justify-self: end;
+	padding-right: .2rem;
+	text-align: right;
+
+	font-weight: 600;
+	font-size: .8rem;
+}
+
+.notification-body .notification-message-container {
+	width: calc((var(--notification-width) * 1rem) - 1.4rem);
+	height: fit-content;
+}
+
+.notification.default .notification-inner {
+	background-color: rgba(var(--ruby), 0.8);
+	border-right: .3rem solid rgb(var(--ruby));
+}
+
+.notification.error .notification-inner {
+	background-color: rgba(242, 90, 90, 0.8);
+	border-right: .3rem solid rgb(236 19 19);
+}
+
+.notification.info .notification-inner {
+	background-color: rgba(254, 243, 124, 0.8);
+	border-right: .3rem solid rgb(254 237 18);
+}
+
+.notification h4.notification-title::before {
+	font-family: "SymbolsNerdFont-Regular";
+	margin-right: .5rem;
+}
+
+.notification.error .notification-title::before {
+	content: "";
+}
+
+.notification.info .notification-title::before {
+	content: "";
+}
+
+.notification.default .notification-title::before {
+	content: "";
+}
+
+.notification.fade_on .notification-inner {
+	animation: notification_fade_on .5s ease-in;
+}
+
+.notification.expand_on .notification-inner {
+	animation: notification_expand_on .5s ease-in;
+}
+
+.notification.pop_on .notification-inner {
+	animation: notification_pop_on .5s ease-in;
+}
+
+.notification.fade_off.removing .notification-inner {
+	animation: notification_fade_off 1s ease-out;
+}
+
+.notification.shrink_off.removing .notification-inner {
+	animation: notification_shrink_off 1s ease-out;
+}
+
+.notification.pop_off.removing .notification-inner {
+	animation: notification_pop_off 1s ease-out;
+}
+
+@keyframes notification_fade_off {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+}
+
+@keyframes notification_fade_on {
+	0% {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0%);
+	}
+}
+
+@keyframes notification_shrink_off {
+	0% {
+		opacity: 1;
+		width: calc((var(--notification-width) * 1rem));
+	}
+
+	25% {
+		opacity: 1;
+		width: calc((var(--notification-width) * 1rem) / 6);
+	}
+
+	50%,
+	100% {
+		width: calc((var(--notification-width) * 1rem) / 11);
+	}
+
+	50% {
+		transform: translateX(0%);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+}
+
+@keyframes notification_expand_on {
+	0% {
+		opacity: 0;
+		width: 0rem;
+		transform: translateX(100%);
+	}
+
+	25% {
+		opacity: 0;
+		width: calc((var(--notification-width) * 1rem) / 11);
+		transform: translateX(0%);
+	}
+
+	50%,
+	100% {
+		width: calc((var(--notification-width) * 1rem) / 6);
+	}
+
+	50% {
+		opacity: 1;
+		width: calc(var(--notification-width) * 1rem);
+	}
+
+	100% {
+		opacity: 1;
+		width: calc(var(--notification-width) * 1rem);
+	}
+}
+
+@keyframes notification_pop_on {
+
+	0% {
+		transform: scale(0) translateX(calc(var(--notification-width) * 1rem)) translateY(- (calc(var(--notification-height) * 1rem)));
+	}
+
+	6% {
+		transform: scale(1.1) translateX(-.2rem) translateY(.2rem);
+	}
+
+	8%,
+	100% {
+		transform: scale(1) translateX(0rem) translateY(0rem);
+	}
+}
+
+@keyframes notification_pop_off {
+
+	0% {
+		transform: scale(1);
+	}
+
+	2% {
+		transform: scale(1.1) translateX(-.2rem) translateY(.2rem);
+	}
+
+	6%,
+	100% {
+		transform: scale(0) translateX(calc(var(--notification-width) * 1rem)) translateY(calc(var(--notification-width) * -1rem));
+	}
+}

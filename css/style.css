@@ -165,59 +165,6 @@ body {
 	}
 }
 
-#notifications {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	width: 300px;
-	height: 200px;
-	pointer-events: none;
-	user-select: none;
-	z-index: 990;
-}
-
-.notification {
-	background-color: rgba(var(--ruby), 0.8);
-	margin: 5px;
-	padding: 3px;
-	padding-left: 10px;
-	border-radius: 3px;
-}
-
-.notification.default {
-	background-color: rgba(var(--ruby), 0.8);
-}
-
-.notification.error {
-	background-color: rgba(242, 90, 90, 0.8);
-}
-
-.notification.info {
-	background-color: rgba(254, 243, 124, 0.8);
-}
-
-.notification h4.notification-title::before {
-	font-family: "SymbolsNerdFont-Regular";
-	margin-right: 5px;
-}
-
-.notification.error .notification-title::before {
-	content: "";
-}
-
-.notification.info .notification-title::before {
-	content: "";
-}
-
-.notification.default.notification-title::before {
-	content: "";
-}
-
-.notification.removing {
-	opacity: 0;
-	transition: 1s ease;
-}
-
 .chat-stuff {
 	position: absolute;
 	margin: 10px;
