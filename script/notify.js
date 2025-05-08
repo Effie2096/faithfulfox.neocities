@@ -95,6 +95,8 @@ function notificationSounds(type) {
 	}, remove_time)
 }
 
+var notification_count = 0
+
 function notify(message, type) {
 	var notificationSection = document.getElementById("notifications")
 
@@ -165,6 +167,46 @@ function notify(message, type) {
 		notification.classList.add("removing")
 	}, remove_time)
 	setTimeout(function () {
-		notification.remove()
+		addNotificationToHistory(notification)
+		notification.classList.remove("removing")
 	}, remove_time + 1000)
+}
+
+function notificationCountDisplay() {
+	const notificationCountButton = document.getElementById(
+		"notification-count-button",
+	)
+	if (
+		notification_count === 0 ||
+		document
+			.querySelector("#notifications")
+			.querySelectorAll(".notification:not(.history)").length > 0
+	) {
+		notificationCountButton.classList.remove("active")
+	} else {
+		notificationCountButton.classList.add("active")
+	}
+	setTimeout(function () {
+		notificationCountDisplay()
+	}, 1000)
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+	notificationCountDisplay()
+})
+
+function addNotificationToHistory(notification) {
+	var notificationHistory = document.getElementById("notification-history")
+	var notificationCount = document.getElementById("notification-count")
+	notification.classList.add("history")
+
+	notificationHistory.prepend(notification)
+	notification_count += 1
+	notificationCount.innerHTML = notification_count
+}
+
+function notificationHistoryButton() {
+	historyContainer = document
+		.querySelector("#notification-history")
+		.classList.toggle("active")
 }

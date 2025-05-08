@@ -7,17 +7,17 @@
 	position: absolute;
 	top: 0px;
 	right: 0px;
-	width: calc(var(--notification-width) * 1rem);
+	width: calc(var(--notification-width) * 1rem + .2rem);
 	height: calc(var(--notification-height) * 1rem);
-	pointer-events: none;
-	user-select: none;
 	z-index: 990;
 }
 
-.notification {
+#notifications .notification {
 	width: calc(var(--notification-width) * 1rem);
 	overflow: visible;
 	position: relative;
+	pointer-events: none;
+	user-select: none;
 }
 
 .notification-inner {
@@ -231,4 +231,61 @@
 	100% {
 		transform: scale(0) translateX(calc(var(--notification-width) * 1rem)) translateY(calc(var(--notification-width) * -1rem));
 	}
+}
+
+#notification-history-container {
+	display: grid;
+	position: absolute;
+	top: 0;
+	right: 0;
+	grid-template-rows: auto auto;
+	width: calc(var(--notification-width) + 1rem);
+	padding-left: .2rem;
+	border-radius: .2rem;
+	background-color: rgba(255, 190, 255, 0.8);
+}
+
+#notification-count-button {
+	grid-row-start: 2;
+	grid-row-end: 3;
+	position: absolute;
+	bottom: -2.2rem;
+	right: .2rem;
+	font-size: 0.9rem;
+	background-color: rgba(255, 190, 255, 0.8);
+	border-radius: 50%;
+	width: 2rem;
+	height: 2rem;
+	font-family: "Monaspace-Neon-Frozen";
+	cursor: var(--cursor-pointer);
+	display: none;
+}
+
+#notification-count-button.active {
+	display: block;
+}
+
+#notification-count-button #notification-count {
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	transform: translate(50%, -50%);
+
+	cursor: var(--cursor-pointer);
+	user-select: none;
+}
+
+#notification-history {
+	grid-row-start: 1;
+	grid-row-end: 2;
+	position: relative;
+	width: calc(var(--notification-width) + .5rem);
+	height: 0rem;
+	overflow: scroll;
+	transition: height .5s ease;
+}
+
+#notification-history.active {
+	height: 30rem;
+	max-height: 50vh;
 }
