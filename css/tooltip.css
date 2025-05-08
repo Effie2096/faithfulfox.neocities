@@ -21,7 +21,7 @@
 	/* transition-delay: 0.1s; */
 }
 
-.tooltip::after {
+.tooltip .tooltip-notch {
 	content: "";
 	position: absolute;
 	top: 100%;
@@ -32,8 +32,8 @@
 	border-color: #ffbbf7 transparent transparent transparent;
 }
 
-.tooltip.tooltip-top::after {
-	top: -1rem;
+.tooltip.tooltip-top .tooltip-notch {
+	top: -0.9rem;
 	border-color: transparent transparent #ffbbf7 transparent;
 }
 
