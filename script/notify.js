@@ -265,15 +265,16 @@ function addNotificationToHistory(notification) {
 	notificationHistory.prepend(notification)
 	notification.addEventListener("click", () => {
 		notification.classList.add("removing")
-		notification.remove()
 		out_anim.out.sound.play()
-		notification_count -= 1
-		notificationCount.textContent = notification_count
-
-		if (notification_count === 0) {
-			document.querySelector("#notification-count").classList.remove("active")
-			document.querySelector("#notification-check").classList.add("active")
-		}
+		setTimeout(() => {
+			notification.remove()
+			notification_count -= 1
+			notificationCount.textContent = notification_count
+			if (notification_count === 0) {
+				document.querySelector("#notification-count").classList.remove("active")
+				document.querySelector("#notification-check").classList.add("active")
+			}
+		}, 1000)
 	})
 
 	notification_count += 1

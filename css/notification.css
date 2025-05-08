@@ -49,6 +49,12 @@
 	color: rgb(230 40 60 / 100%)
 }
 
+.notification.history.removing::before,
+.notification.history.removing::after {
+	content: "";
+	background: none;
+}
+
 .notification-inner {
 	display: grid;
 	grid-template-rows: auto auto;
