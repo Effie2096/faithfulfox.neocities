@@ -174,11 +174,26 @@
 		<div id="notifications">
 			<div id="notification-history-container">
 				<div id="notification-history"></div>
-				<div
-					id="notification-count-button"
-					onclick="notificationHistoryButton()"
-				>
-					<span id="notification-count">0</span>
+				<div id="notification-buttons-container">
+					<div
+						id="notification-clear-button"
+						onclick="notificationClearButton()"
+						onmouseover="tooltip(this, 'Clear All', '');"
+					>
+						<span id="notification-clear" class="icon">󰎟</span>
+					</div>
+					<div
+						id="notification-count-button"
+						onclick="notificationHistoryButton()"
+					>
+						<div
+							id="notification-count-container"
+							onmouseover="tooltip(this, 'History Toggle', '');"
+						>
+							<span id="notification-count" class="active">0</span>
+						</div>
+						<span id="notification-check" class="icon"></span>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -90,9 +90,13 @@ function notificationSounds(type) {
 	setTimeout(function () {
 		notification_types[type].sound.play()
 	}, 500)
-	setTimeout(function () {
-		out_anim.out.sound.play()
-	}, remove_time)
+
+	const hist = document.querySelector("#notification-history")
+	if (!hist.classList.contains("active")) {
+		setTimeout(function () {
+			out_anim.out.sound.play()
+		}, remove_time)
+	}
 }
 
 var notification_count = 0
@@ -159,40 +163,98 @@ function notify(message, type) {
 	notificationInner.appendChild(notificationBody)
 
 	notification.appendChild(notificationInner)
-
-	notificationSection.prepend(notification)
+	const hist = document.querySelector("#notification-history")
+	if (hist.classList.contains("active")) {
+		addNotificationToHistory(notification)
+	} else {
+		notificationSection.prepend(notification)
+		setTimeout(function () {
+			notification.classList.add("removing")
+		}, remove_time)
+		setTimeout(function () {
+			addNotificationToHistory(notification)
+			notification.classList.remove("removing")
+		}, remove_time + 1000)
+	}
 
 	notificationSounds(type)
-	setTimeout(function () {
-		notification.classList.add("removing")
-	}, remove_time)
-	setTimeout(function () {
-		addNotificationToHistory(notification)
-		notification.classList.remove("removing")
-	}, remove_time + 1000)
 }
 
+var showing = false
 function notificationCountDisplay() {
 	const notificationCountButton = document.getElementById(
 		"notification-count-button",
 	)
+
+	if (notification_count > 0) {
+		showing = true
+	}
+
 	if (
 		notification_count === 0 ||
 		document
 			.querySelector("#notifications")
 			.querySelectorAll(".notification:not(.history)").length > 0
 	) {
-		notificationCountButton.classList.remove("active")
-	} else {
-		notificationCountButton.classList.add("active")
+		showing = false
 	}
+
+	if (
+		document.querySelector("#notification-history").classList.contains("active")
+	) {
+		showing = true
+	}
+
+	if (
+		document
+			.querySelector("#notification-history")
+			.classList.contains("active") &&
+		notification_count === 0
+	) {
+		showing = true
+	}
+
+	if (showing) {
+		notificationCountButton.classList.add("active")
+	} else {
+		notificationCountButton.classList.remove("active")
+	}
+
 	setTimeout(function () {
 		notificationCountDisplay()
 	}, 1000)
 }
 
+function resizeCount() {
+	const el = document.querySelector("#notification-count-container")
+	if (!el.parentElement) return
+	el.style.setProperty("--count-font-size", "1.4rem")
+	const { width: max_width, height: max_height } = el.getBoundingClientRect()
+	const { width, height } = el.children[0].getBoundingClientRect()
+	el.style.setProperty(
+		"--count-font-size",
+		Math.min(max_width / width, max_height / height) + 0.05 + "rem",
+	)
+}
+
 document.addEventListener("DOMContentLoaded", function () {
 	notificationCountDisplay()
+
+	const countObserver = new MutationObserver((mutations) => {
+		mutations.forEach((mutation) => {
+			if (mutation.addedNodes.length > 0) {
+				mutation.addedNodes.forEach((node) => {
+					if (node.nodeType === Node.TEXT_NODE) {
+						resizeCount()
+					}
+				})
+			}
+		})
+	})
+	countObserver.observe(document.querySelector("#notification-count"), {
+		childList: true,
+		subtree: true,
+	})
 })
 
 function addNotificationToHistory(notification) {
@@ -201,12 +263,44 @@ function addNotificationToHistory(notification) {
 	notification.classList.add("history")
 
 	notificationHistory.prepend(notification)
+	notification.addEventListener("click", () => {
+		notification.classList.add("removing")
+		notification.remove()
+		out_anim.out.sound.play()
+		notification_count -= 1
+		notificationCount.textContent = notification_count
+
+		if (notification_count === 0) {
+			document.querySelector("#notification-count").classList.remove("active")
+			document.querySelector("#notification-check").classList.add("active")
+		}
+	})
+
 	notification_count += 1
-	notificationCount.innerHTML = notification_count
+	notificationCount.textContent = notification_count
+
+	document.querySelector("#notification-count").classList.add("active")
+	document.querySelector("#notification-check").classList.remove("active")
 }
 
 function notificationHistoryButton() {
 	historyContainer = document
 		.querySelector("#notification-history")
 		.classList.toggle("active")
+}
+
+function notificationClearButton() {
+	clearNotifications()
+}
+
+function clearNotifications() {
+	document.querySelectorAll(".notification.history").forEach((notification) => {
+		notification.remove()
+		notification_count = 0
+	})
+	document
+		.querySelector("#notification-history-container")
+		.classList.remove("active")
+	document.querySelector("#notification-count").classList.remove("active")
+	document.querySelector("#notification-check").classList.add("active")
 }
