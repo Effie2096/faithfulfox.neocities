@@ -44,7 +44,6 @@
 	right: 46%;
 	top: 50%;
 	transform: translate(50%, -50%);
-	/* text-align: center; */
 	font-size: 3rem;
 	z-index: 992;
 	color: rgb(230 40 60 / 100%)
@@ -185,25 +184,25 @@
 
 @keyframes notification_shrink_off {
 	0% {
-		opacity: 1;
-		width: (var(--notification-width));
+		width: calc(var(--notification-width));
 	}
 
-	25% {
-		opacity: 1;
+	10% {
 		width: calc((var(--notification-width)) / 6);
 	}
 
-	50%,
-	100% {
+	30% {
 		width: calc((var(--notification-width)) / 11);
+		transform: translateX(100%);
+		opacity: 1;
 	}
 
 	50% {
-		transform: translateX(0%);
+		opacity: 0;
 	}
 
 	100% {
+		width: 0rem;
 		opacity: 0;
 		transform: translateX(100%);
 	}
@@ -216,26 +215,22 @@
 		transform: translateX(100%);
 	}
 
-	25% {
-		opacity: 0;
-		width: calc((var(--notification-width)) / 11);
+	10% {
+		opacity: 1;
+		width: calc(var(--notification-width) / 11);
 		transform: translateX(0%);
 	}
 
-	50%,
-	100% {
-		width: calc((var(--notification-width)) / 6);
-	}
-
-	50% {
+	30% {
 		opacity: 1;
-		width: var(--notification-width);
+		width: calc(var(--notification-width) / 6);
 	}
 
 	100% {
 		opacity: 1;
-		width: var(--notification-width);
+		width: calc(var(--notification-width));
 	}
+
 }
 
 @keyframes notification_pop_on {
