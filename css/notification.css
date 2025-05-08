@@ -34,6 +34,7 @@
 	height: 100%;
 	border-radius: .2rem;
 	background-color: rgb(255, 135, 190, 0.5);
+	z-index: 991;
 }
 
 .notification.history:hover::after {
@@ -45,6 +46,8 @@
 	transform: translate(50%, -50%);
 	/* text-align: center; */
 	font-size: 3rem;
+	z-index: 992;
+	color: rgb(230 40 60 / 100%)
 }
 
 .notification-inner {
