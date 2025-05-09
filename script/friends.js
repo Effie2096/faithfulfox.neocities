@@ -1,4 +1,6 @@
-const friends = document.querySelectorAll(".friend-tab").forEach((friend) => {
+import sounds from "./sounds.js"
+
+document.querySelectorAll(".friend-tab").forEach((friend) => {
 	friend.addEventListener("click", () => {
 		document.querySelectorAll(".friend-page").forEach((page) => {
 			page.classList.remove("active")
@@ -9,10 +11,11 @@ const friends = document.querySelectorAll(".friend-tab").forEach((friend) => {
 		addPins()
 		document.querySelector(`#${friend.id}-page`).classList.add("active")
 		document.querySelector(`#${friend.id}-board`).classList.add("active")
+		sounds.swoosh.audio.play()
 	})
 })
 
-function addPins() {
+var addPins = function () {
 	document.querySelectorAll(".personal-board .pin").forEach((pin) => {
 		if (!pin.querySelector(".pin-img")) {
 			const pinImg = document.createElement("img")
