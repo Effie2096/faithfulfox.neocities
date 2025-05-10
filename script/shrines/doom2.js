@@ -1,3 +1,44 @@
+function openTab(evt, tabName) {
+	var i, tabcontent, tablinks
+
+	tabcontent = document.getElementsByClassName("tab-content")
+	for (i = 0; i < tabcontent.length; i++) {
+		tabcontent[i].style.display = "none"
+	}
+
+	tablinks = document.getElementsByClassName("tablinks")
+	for (i = 0; i < tablinks.length; i++) {
+		tablinks[i].className = tablinks[i].className.replace(" active", "")
+	}
+
+	document.getElementById(tabName).style.display = "block"
+	evt.currentTarget.className += " active"
+}
+
+function toggleCollapsible(caller) {
+	const collapsibles = document
+		.querySelectorAll(".collapsible-container")
+		.forEach((collapsible) => {
+			if (collapsible !== caller.parentNode) {
+				collapsible.classList.remove("active")
+			}
+		})
+	caller.parentNode.classList.toggle("active")
+}
+
+function toggleHUD() {
+	const hud = document.getElementById("hud")
+	const hudToggle = document.getElementById("hud-toggle")
+	hudToggle.querySelector("span").innerHTML =
+		hudToggle.innerHTML === "open" ? "close" : "close"
+	toggleActive(hud)
+	toggleActive(hudToggle)
+}
+
+function toggleActive(element) {
+	element.classList.toggle("active")
+}
+
 window.onload = function () {
 	window.secretHasEnded = false
 	window.startSound = new Audio("https://files.catbox.moe/s1s1k8.mp3")
@@ -45,3 +86,5 @@ window.onload = function () {
 		})
 	})
 }
+
+document.getElementById("defaultOpen").click()

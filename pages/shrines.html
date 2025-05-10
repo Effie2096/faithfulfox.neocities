@@ -5,19 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Shrines</title>
 		<link href="/css/shrines.css" rel="stylesheet" />
-		<script>
-			function toggleContentWarnings() {
-				const contentWarnings = document.getElementById("content-warning-index")
-				const toggleButton = document.getElementById("toggle-button")
-				contentWarnings.classList.toggle("active")
-				toggleButton.innerHTML =
-					toggleButton.innerHTML == "expand" ? "close" : "expand"
-			}
 
-			function toggleActive(element) {
-				element.classList.toggle("active")
-			}
-		</script>
+		<script src="/script/pages/shrines.js"></script>
 	</head>
 
 	<body>
@@ -75,22 +64,6 @@
 				<div id="toggle-button" onclick="toggleContentWarnings()">expand</div>
 			</div>
 		</div>
-
-		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				const shrines = document.querySelectorAll(".card").forEach((shrine) => {
-					if (shrine.querySelector(".content-warning")) {
-						shrine.classList.add("has-warnings")
-
-						shrine
-							.querySelector(".content-warning.warning")
-							.addEventListener("click", function () {
-								toggleActive(this)
-							})
-					}
-				})
-			})
-		</script>
 
 		<div id="container">
 			<div id="header">

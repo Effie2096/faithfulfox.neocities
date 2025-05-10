@@ -8,120 +8,7 @@
 		<link href="/css/globals.css" rel="stylesheet">
 		<link href="/css/pages/shrines/doom2.css" rel="stylesheet">
 		<script src="/script/shrines/doom2.js"></script>
-		<script>
-		function openTab(evt, tabName) {
-			var i, tabcontent, tablinks;
-
-			tabcontent = document.getElementsByClassName("tab-content");
-			for (i = 0; i < tabcontent.length; i++) {
-				tabcontent[i].style.display = "none";
-			}
-
-			tablinks = document.getElementsByClassName("tablinks");
-			for (i = 0; i < tablinks.length; i++) {
-				tablinks[i].className = tablinks[i].className.replace(" active", "");
-			}
-
-			document.getElementById(tabName).style.display = "block";
-			evt.currentTarget.className += " active";
-		}
-		</script>
-		<script>
-		function pausePlayers(excludePlayer, excludeBtn) {
-			document.querySelectorAll('.player').forEach(player => {
-				if (player !== excludePlayer) {
-					player.pause()
-				}
-			});
-			document.querySelectorAll('.player-btn').forEach(btn => {
-				if (btn !== excludeBtn) {
-					btn.innerHTML = ""
-				}
-			});
-		}
-		function playSecret() {
-			return new Promise(function (resolve) {
-				window.secret.addEventListener('ended', function () {
-					resolve();
-				});
-				window.secret.play();
-			});
-		}
-		function playButton(name) {
-			var elem = document.getElementById(name);
-			var btn = document.getElementById(`${name}-btn`);
-
-			pausePlayers(elem, btn);
-
-			if (name === "player4") {
-				const mugshot = document.getElementById("mugshot-link");
-				mugshot.classList.toggle("active");
-				if (window.startSound.currentTime > 0 && !window.startSound.paused) {
-					setTimeout(function () {
-						window.startSound.pause();
-						window.startSound.currentTime = 0;
-					}, 100);
-				}
-				if (elem.paused) {
-					// Play start sound before main audio
-					window.startSound.play();
-					window.startSound.addEventListener('ended', function () {
-						elem.play();
-					});
-				} else {
-					// Play pause sound when paused
-					window.pauseSound.play();
-					elem.pause();
-					elem.currentTime = 0;
-				}
-			} else {
-				// Play or pause the main audio
-				if (elem.paused) {
-					elem.play();
-					btn.innerHTML = '';
-				} else {
-					elem.pause();
-					btn.innerHTML = '';
-				}
-			}
-		}
-		function easteregg(player) {
-			var egg = document.getElementById("easteregg");
-			const hudBackground = document.querySelector('#hud');
-			if (player.paused) {
-				document.body.style.backgroundImage = "url('/assets/img/shrines/doom2/doom2background.jpg')";
-				document.body.style.animation = "";
-				egg.style.display = "none";
-				hudBackground.style.setProperty('--fire-display', 'none');
-			} else {
-				document.body.style.backgroundImage = "";
-				document.body.style.animation = "easteregg 0.2s linear infinite";
-				egg.style.display = "flex";
-				hudBackground.style.setProperty('--fire-display', 'block');
-			}
-		}
-
-		function toggleCollapsible(caller) {
-			const collapsibles = document.querySelectorAll('.collapsible-container').forEach((collapsible) => {
-				if (collapsible !== caller.parentNode) {
-					collapsible.classList.remove("active");
-				}
-			});
-			caller.parentNode.classList.toggle("active");
-		}
-
-		function toggleHUD() {
-			const hud = document.getElementById("hud");
-			const hudToggle = document.getElementById("hud-toggle");
-			hudToggle.querySelector("span").innerHTML = hudToggle.innerHTML === "open" ? "close" : "close";
-			toggleActive(hud);
-			toggleActive(hudToggle);
-		}
-
-		function toggleActive(element) {
-			element.classList.toggle("active");
-		}
-		</script>
+		<script src="/script/shrines/doom2_music.js"></script>
 	</head>
 
 	<body>
@@ -556,9 +443,5 @@
 				</div>
 			</div>
 		</div>
-		<script>
-		document.getElementById("defaultOpen").click();
-		</script>
 	</body>
-
 </html>

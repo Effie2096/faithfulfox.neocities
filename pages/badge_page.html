@@ -7,17 +7,10 @@
 		<link href="/css/pages/badge_page.css" rel="stylesheet" />
 		<link href="/css/badges.css" rel="stylesheet" />
 		<link href="/css/tooltip.css" rel="stylesheet" />
+
 		<script src="/script/jquery-3.7.1.min.js"></script>
+		<script src="/script/page_include.js"></script>
 		<script src="/script/tooltip.js"></script>
-		<script>
-			$(function () {
-				var includes = $("[data-include]")
-				$.each(includes, function () {
-					var file = "/pages/" + $(this).data("include") + ".html"
-					$(this).load(file)
-				})
-			})
-		</script>
 	</head>
 
 	<body>
