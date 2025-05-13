@@ -1,21 +1,19 @@
 import { sounds } from "./sounds.js"
 
-const friends = document.querySelectorAll(".friend-tab").forEach((friend) => {
+document.querySelectorAll(".friend-tab").forEach((friend) => {
 	friend.addEventListener("click", () => {
-		if (
-			document.querySelector(`#${friend.id}-page`).classList.contains("active")
-		) {
+		const friend_page = document.querySelector(`#${friend.id}-page`)
+		if (friend_page.classList.contains("active")) {
 			return
 		}
 
-		document.querySelectorAll(".friend-page").forEach((page) => {
-			page.classList.remove("active")
-		})
-		document.querySelectorAll(".personal-board").forEach((board) => {
-			board.classList.remove("active")
-		})
-		addPins()
-		document.querySelector(`#${friend.id}-page`).classList.add("active")
+		document
+			.querySelectorAll(".friend-page, .personal-board")
+			.forEach((friend_item) => {
+				friend_item.classList.remove("active")
+			})
+
+		friend_page.classList.add("active")
 		document.querySelector(`#${friend.id}-board`).classList.add("active")
 
 		sounds.swoosh_fast.audio.play()
