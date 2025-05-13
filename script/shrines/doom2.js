@@ -87,4 +87,6 @@ window.onload = function () {
 	})
 }
 
-document.getElementById("defaultOpen").click()
+document.addEventListener("DOMContentLoaded", function () {
+	document.querySelector("#defaultOpen").click()
+})
