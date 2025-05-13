@@ -2,6 +2,12 @@ import { sounds } from "./sounds.js"
 
 const friends = document.querySelectorAll(".friend-tab").forEach((friend) => {
 	friend.addEventListener("click", () => {
+		if (
+			document.querySelector(`#${friend.id}-page`).classList.contains("active")
+		) {
+			return
+		}
+
 		document.querySelectorAll(".friend-page").forEach((page) => {
 			page.classList.remove("active")
 		})
