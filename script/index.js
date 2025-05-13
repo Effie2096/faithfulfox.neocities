@@ -1,3 +1,11 @@
+import {
+	notify,
+	notificationHistoryButton,
+	notificationClearButton,
+} from "./notify.js"
+
+import { CopyToClipboard, copyFile } from "./CopyToClipboard.js"
+
 function toggleSidebarRight() {
 	const sidebar = document.getElementsByClassName("sidebar-right")[0]
 	const sidebarRightToggle = sidebar.getElementsByClassName(
@@ -15,6 +23,23 @@ function addCensor(element) {
 			toggleActive(censor)
 		})
 	})
+}
+
+function toggleActive(element) {
+	element.classList.toggle("active")
+}
+
+function toggleChat() {
+	var chatContainer = document.getElementById("chatbox")
+	var chatButton = document.getElementById("chat-btn")
+	var chatButtonIcon = document.querySelector("#chat-btn span")
+	const stylea = "10px 10px 0px 0px"
+	const styleb = "10px 10px 10px 10px"
+	chatContainer.style.height =
+		chatContainer.style.height === "0px" ? "450px" : "0px"
+	chatButton.style.borderRadius =
+		chatButton.style.borderRadius === stylea ? styleb : stylea
+	chatButtonIcon.textContent = chatButtonIcon.textContent === "" ? "" : ""
 }
 
 window.onload = function () {
@@ -46,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 							".content-footer-left .tag-dropdown",
 						)
 						if (tagDropdown) {
-							const resizeObserver = new ResizeObserver((entries) => {
+							const resizeObserver = new ResizeObserver(() => {
 								countContentTags()
 							})
 							resizeObserver.observe(tagDropdown)
@@ -61,28 +86,53 @@ document.addEventListener("DOMContentLoaded", function () {
 		childList: true,
 		subtree: true,
 	})
+
+	document.querySelectorAll(".toggleable").forEach((toggleable) => {
+		toggleable.addEventListener("click", () => {
+			toggleActive(toggleable)
+		})
+	})
+
+	document
+		.querySelector("#sidebar-right-toggle")
+		.addEventListener("click", () => {
+			toggleSidebarRight()
+		})
+
+	document
+		.querySelector("#cryptography-section .contact-button")
+		.addEventListener("click", () => {
+			copyFile("/zased/gpg_key.txt")
+			notify("downloading pgp pubkey...", "info")
+		})
+	document
+		.querySelector("#email-section .contact-button")
+		.addEventListener("click", () => {
+			CopyToClipboard("faithfulfox@proton.me", "email copied to clipboard!")
+		})
+	document.querySelector("#foxden-badge a").addEventListener("click", () => {
+		notify("downloading Fox Den button...", "info")
+		CopyToClipboard(
+			`
+&lt;a href='https://faithfulfox.neocities.org/'&gt;
+&lt;img src='FoxDenLogo.gif' alt='Fox Den Button' width='88px' height='31px'&gt;
+&lt;/a&gt;
+`,
+			"Fox den badge HTML copied to clipboard.",
+		)
+	})
+
+	document.querySelector("#chat-btn").addEventListener("click", () => {
+		toggleChat()
+	})
+	document
+		.querySelector("#notification-clear-button")
+		.addEventListener("click", () => {
+			notificationClearButton()
+		})
+	document
+		.querySelector("#notification-count-button")
+		.addEventListener("click", () => {
+			notificationHistoryButton()
+		})
 })
-
-function toggleActive(element) {
-	element.classList.toggle("active")
-}
-
-function removeClassAfterTimeout(element, className, timeout) {
-	setTimeout(function () {
-		element.classList.remove(className)
-	}, timeout)
-}
-
-function toggleChat() {
-	// toggle the visibility of the "chat-container" div
-	var chatContainer = document.getElementById("chatbox")
-	var chatButton = document.getElementById("chat-btn")
-	var chatButtonIcon = document.querySelector("#chat-btn span")
-	const stylea = "10px 10px 0px 0px"
-	const styleb = "10px 10px 10px 10px"
-	chatContainer.style.height =
-		chatContainer.style.height === "0px" ? "450px" : "0px"
-	chatButton.style.borderRadius =
-		chatButton.style.borderRadius === stylea ? styleb : stylea
-	chatButtonIcon.textContent = chatButtonIcon.textContent === "" ? "" : ""
-}

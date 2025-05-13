@@ -101,7 +101,7 @@ function notificationSounds(type) {
 
 var notification_count = 0
 
-function notify(message, type) {
+export function notify(message, type) {
 	var notificationSection = document.getElementById("notifications")
 
 	type = typeof type === "undefined" ? "default" : type
@@ -284,13 +284,11 @@ function addNotificationToHistory(notification) {
 	document.querySelector("#notification-check").classList.remove("active")
 }
 
-function notificationHistoryButton() {
-	historyContainer = document
-		.querySelector("#notification-history")
-		.classList.toggle("active")
+export function notificationHistoryButton() {
+	document.querySelector("#notification-history").classList.toggle("active")
 }
 
-function notificationClearButton() {
+export function notificationClearButton() {
 	clearNotifications()
 }
 

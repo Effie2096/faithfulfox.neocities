@@ -1,21 +1,24 @@
+import { notify } from "./notify.js"
+
 async function checkPerms(permissionName) {
 	try {
-		const permission = await navigator.permissions.query({ name: permissionName });
+		const permission = await navigator.permissions.query({
+			name: permissionName,
+		})
 
-		if (permission.state !== 'granted') {
+		if (permission.state !== "granted") {
 			return false
 		}
 		return true
 	} catch (error) {
 		if (error.name === "TypeError") {
 			return true
-		} 
+		}
 	}
-
 }
 
-async function CopyToClipboard(content, message) {
-	if (await checkPerms("clipboard-write") === false) {
+export async function CopyToClipboard(content, message) {
+	if ((await checkPerms("clipboard-write")) === false) {
 		notify("Clipboard permission not granted.", "error")
 		return
 	}
@@ -41,7 +44,7 @@ async function readFile(filePath) {
 	}
 }
 
-function copyFile(filePath) {
+export function copyFile(filePath) {
 	readFile(filePath).then(function (result) {
 		if (result === -1) {
 			notify("Sorry. There was a problem copying the file. :c", "error")
