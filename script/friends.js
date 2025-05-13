@@ -1,3 +1,5 @@
+import { sounds } from "./sounds.js"
+
 const friends = document.querySelectorAll(".friend-tab").forEach((friend) => {
 	friend.addEventListener("click", () => {
 		document.querySelectorAll(".friend-page").forEach((page) => {
@@ -9,6 +11,8 @@ const friends = document.querySelectorAll(".friend-tab").forEach((friend) => {
 		addPins()
 		document.querySelector(`#${friend.id}-page`).classList.add("active")
 		document.querySelector(`#${friend.id}-board`).classList.add("active")
+
+		sounds.swoosh_fast.audio.play()
 	})
 })
 
