@@ -27,8 +27,10 @@ function playButton(name) {
 	pausePlayers(elem, btn)
 
 	if (name === "player4") {
-		const mugshot = document.getElementById("mugshot-link")
+		const mugshot = document.querySelector("#mugshot-link")
 		mugshot.classList.toggle("active")
+		// always restart easteregg music
+		elem.currentTime = 0
 		if (window.startSound.currentTime > 0 && !window.startSound.paused) {
 			setTimeout(function () {
 				window.startSound.pause()
@@ -45,9 +47,9 @@ function playButton(name) {
 			// Play pause sound when paused
 			window.pauseSound.play()
 			elem.pause()
-			elem.currentTime = 0
 		}
 	} else {
+		document.querySelector("#mugshot-link").classList.remove("active")
 		// Play or pause the main audio
 		if (elem.paused) {
 			elem.play()
