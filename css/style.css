@@ -1209,7 +1209,7 @@ body:has(#construction:hover) #paradox {
 #social-badges {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: left;
+	justify-content: center;
 	padding-top: 0.5rem;
 	width: 109%;
 }
@@ -1573,7 +1573,6 @@ body:has(#construction:hover) #paradox {
 	}
 
 	#social-badges {
-		justify-content: center;
 		margin-left: -2px;
 		width: 100%;
 	}
