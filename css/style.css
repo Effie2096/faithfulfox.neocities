@@ -1000,6 +1000,94 @@ body:has(#construction:hover) #paradox {
 	margin-top: -17px;
 }
 
+.content-footer .timestamp-dropdown {
+	position: absolute;
+	overflow: hidden;
+	min-width: 10.5rem;
+	width: 10.5rem;
+	margin-top: -.2rem;
+	padding-top: .2rem;
+	margin-right: -.5rem;
+	padding-right: .5rem;
+	padding-bottom: .2rem;
+	right: 0;
+	z-index: 8;
+	max-height: 1.8rem;
+	border-radius: .5rem;
+	transition: linear .2s;
+}
+
+.content-footer .timestamp-dropdown .post-timestamp {
+	position: relative;
+	user-select: none;
+	cursor: var(--cursor-default);
+}
+
+.content-footer .timestamp-dropdown .post-timestamp::before {
+	position: absolute;
+	font-family: "SymbolsNerdFont-Regular";
+	opacity: 0%;
+	top: -.2rem;
+	left: -1.5rem;
+	transition: linear .2s;
+}
+
+.content-footer .timestamp-dropdown .post-posted .post-timestamp::before {
+	font-size: 1.4rem;
+	content: "󰅐 ";
+}
+
+.content-footer .timestamp-dropdown>.post-update~.post-update .post-timestamp::before {
+	content: "├";
+}
+
+.content-footer .timestamp-dropdown>.post-update:last-of-type .post-timestamp::before {
+	content: "└";
+}
+
+.content-footer .timestamp-dropdown>.post-update:nth-child(2) .post-timestamp::before,
+.content-footer .timestamp-dropdown>.post-update .post-timestamp::before {
+	font-size: 1.55rem;
+	content: "󰚰 ";
+}
+
+.update-badge {
+	position: absolute;
+	color: white;
+	background-color: red;
+	font-family: "Monaspace-Neon-Frozen";
+	text-align: center;
+	user-select: none;
+	text-shadow: 0.2em 0.2em 5px rgba(0, 0, 0, 0.5);
+	border-radius: 50%;
+	font-size: .7rem;
+	padding-top: .05rem;
+	width: 1.1rem;
+	height: 1.1rem;
+	right: -0.8rem;
+	bottom: .5rem;
+	z-index: 9;
+	transition: linear .2s;
+}
+
+.content-footer-right:hover .timestamp-dropdown,
+.timestamp-dropdown:hover {
+	max-height: 428px;
+	transition: linear .2s;
+	background-color: rgb(var(--ruby));
+	outline: black solid 1.1px;
+}
+
+.content-footer-right:hover .timestamp-dropdown .post-timestamp::before,
+.timestamp-dropdown:hover .post-timestamp::before {
+	opacity: 100%;
+	transition: linear .2s;
+}
+
+.content-footer-right:hover .update-badge,
+.timestamp-dropdown:hover .update-badge {
+	opacity: 0%;
+}
 
 .content-footer-left .tag {
 	position: relative;
@@ -1024,9 +1112,6 @@ body:has(#construction:hover) #paradox {
 }
 
 .content-footer-left .tag-count {
-	/* position: absolute; */
-	/* right: -27px; */
-	/* top: 0; */
 	font-family: "Monaspace-Neon-Frozen";
 	text-align: center;
 	background-color: rgba(231, 227, 227, 0.8);
@@ -1034,7 +1119,6 @@ body:has(#construction:hover) #paradox {
 	padding-right: 3px;
 	border-radius: 10px;
 	margin: 2px;
-	/* margin-left: 3px; */
 	transition: cubic-bezier(0.75, 0.13, 0.39, 1.15) .2s;
 }
 

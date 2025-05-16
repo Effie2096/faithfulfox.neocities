@@ -75,3 +75,35 @@ function countContentTags() {
 		}
 	})
 }
+
+function getContentUpdateDropdowns() {
+	var postContainer = document.getElementById("posts")
+	var timestampDropdowns = Array.from(
+		postContainer.querySelectorAll(".content-card"),
+	).map((post) => {
+		const dropdown = post.querySelector(".timestamp-dropdown")
+		return dropdown
+	})
+	return timestampDropdowns
+}
+
+function countContentUpdates() {
+  const updateDropdowns = getContentUpdateDropdowns()
+  updateDropdowns.forEach((updateDropdown) => {
+
+		if (updateDropdown) {
+			const updateBadgeFound = updateDropdown.parentElement.querySelector(".update-badge")
+			if (updateBadgeFound) {
+				updateBadgeFound.remove()
+			}
+
+			var postUpdates = updateDropdown.querySelectorAll(".post-update")
+			if (postUpdates.length > 0) {
+				const updateBadge = document.createElement("div")
+				updateBadge.classList.add("update-badge")
+				updateBadge.innerHTML = `+${postUpdates.length}`
+				updateDropdown.parentElement.appendChild(updateBadge)
+			}
+		}
+  })
+}

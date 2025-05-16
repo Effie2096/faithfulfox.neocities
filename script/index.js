@@ -76,6 +76,12 @@ document.addEventListener("DOMContentLoaded", function () {
 							})
 							resizeObserver.observe(tagDropdown)
 						}
+						const updateDropdown = node.querySelector(
+							".content-footer-right .timestamp-dropdown",
+						)
+						if (updateDropdown) {
+							countContentUpdates()
+						}
 					}
 				})
 			}
