@@ -81,6 +81,12 @@ document.addEventListener("DOMContentLoaded", function () {
 						)
 						if (updateDropdown) {
 							countContentUpdates()
+							node.querySelectorAll(".post-timestamp").forEach((timestamp) => {
+								const fmt_time = document.createElement("span")
+								fmt_time.classList.add("post-timestamp-formatted")
+								fmt_time.textContent = shortDate(timestamp.textContent)
+								timestamp.parentElement.appendChild(fmt_time)
+							})
 						}
 					}
 				})

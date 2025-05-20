@@ -1037,13 +1037,13 @@ body:has(#construction:hover) #paradox {
 	transition: linear .2s;
 }
 
-.content-footer .timestamp-dropdown .post-timestamp {
+.content-footer .timestamp-dropdown .post-timestamp-formatted {
 	position: relative;
 	user-select: none;
 	cursor: var(--cursor-default);
 }
 
-.content-footer .timestamp-dropdown .post-timestamp::before {
+.content-footer .timestamp-dropdown .post-timestamp-formatted::before {
 	position: absolute;
 	font-family: "SymbolsNerdFont-Regular";
 	opacity: 0%;
@@ -1052,21 +1052,21 @@ body:has(#construction:hover) #paradox {
 	transition: linear .2s;
 }
 
-.content-footer .timestamp-dropdown .post-posted .post-timestamp::before {
+.content-footer .timestamp-dropdown .post-posted .post-timestamp-formatted::before {
 	font-size: 1.4rem;
 	content: "󰅐 ";
 }
 
-.content-footer .timestamp-dropdown>.post-update~.post-update .post-timestamp::before {
+.content-footer .timestamp-dropdown>.post-update~.post-update .post-timestamp-formatted::before {
 	content: "├";
 }
 
-.content-footer .timestamp-dropdown>.post-update:last-of-type .post-timestamp::before {
+.content-footer .timestamp-dropdown>.post-update:last-of-type .post-timestamp-formatted::before {
 	content: "└";
 }
 
-.content-footer .timestamp-dropdown>.post-update:nth-child(2) .post-timestamp::before,
-.content-footer .timestamp-dropdown>.post-update .post-timestamp::before {
+.content-footer .timestamp-dropdown>.post-update:nth-child(2) .post-timestamp-formatted::before,
+.content-footer .timestamp-dropdown>.post-update .post-timestamp-formatted::before {
 	font-size: 1.55rem;
 	content: "󰚰 ";
 }
@@ -1098,8 +1098,12 @@ body:has(#construction:hover) #paradox {
 	outline: black solid 1.1px;
 }
 
-.content-footer-right:hover .timestamp-dropdown .post-timestamp::before,
-.timestamp-dropdown:hover .post-timestamp::before {
+.content-footer-right .post-timestamp {
+	display: none;
+}
+
+.content-footer-right:hover .timestamp-dropdown .post-timestamp-formatted::before,
+.timestamp-dropdown:hover .post-timestamp-formatted::before {
 	opacity: 100%;
 	transition: linear .2s;
 }
