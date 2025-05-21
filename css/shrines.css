@@ -340,7 +340,7 @@ body {
 	transition: border-radius 0.2s ease;
 	transition-delay: 0.2s;
 
-	background-image: url("/assets/img/content_warning/Warning1.png");
+	background-image: url("/assets/img/content_warning/Warning.png");
 }
 
 .card:hover .warning {
@@ -352,7 +352,7 @@ body {
 }
 
 .mobile {
-	background-image: url("/assets/img/content_warning/Mobile1.png");
+	background-image: url("/assets/img/content_warning/Mobile.png");
 }
 
 .mobile:hover {
@@ -360,7 +360,7 @@ body {
 }
 
 .violence {
-	background-image: url("/assets/img/content_warning/Violence1.png");
+	background-image: url("/assets/img/content_warning/Violence.png");
 }
 
 .violence:hover {
@@ -368,7 +368,7 @@ body {
 }
 
 .blood {
-	background-image: url("/assets/img/content_warning/Blood1.png");
+	background-image: url("/assets/img/content_warning/Blood.png");
 }
 
 .blood:hover {
@@ -376,7 +376,7 @@ body {
 }
 
 .language {
-	background-image: url("/assets/img/content_warning/Language1.png");
+	background-image: url("/assets/img/content_warning/Language.png");
 }
 
 .language:hover {
@@ -384,7 +384,7 @@ body {
 }
 
 .spider {
-	background-image: url("/assets/img/content_warning/Spider1.png");
+	background-image: url("/assets/img/content_warning/Spider.png");
 }
 
 .spider:hover {
@@ -392,7 +392,7 @@ body {
 }
 
 .volume {
-	background-image: url("/assets/img/content_warning/Volume1.png");
+	background-image: url("/assets/img/content_warning/Volume.png");
 }
 
 .volume:hover {
@@ -400,7 +400,7 @@ body {
 }
 
 .flashcat {
-	background-image: url("/assets/img/content_warning/FlashCat1.png");
+	background-image: url("/assets/img/content_warning/FlashCat.png");
 }
 
 .flashcat:hover {
