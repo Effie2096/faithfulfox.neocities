@@ -7,6 +7,8 @@ import { shortDate } from "./utils/time_format.js"
 
 import { CopyToClipboard, copyFile } from "./CopyToClipboard.js"
 
+window.notify = notify
+
 function toggleSidebarRight() {
 	const sidebar = document.getElementsByClassName("sidebar-right")[0]
 	const sidebarRightToggle = sidebar.getElementsByClassName(

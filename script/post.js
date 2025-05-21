@@ -88,11 +88,11 @@ function getContentUpdateDropdowns() {
 }
 
 function countContentUpdates() {
-  const updateDropdowns = getContentUpdateDropdowns()
-  updateDropdowns.forEach((updateDropdown) => {
-
+	const updateDropdowns = getContentUpdateDropdowns()
+	updateDropdowns.forEach((updateDropdown) => {
 		if (updateDropdown) {
-			const updateBadgeFound = updateDropdown.parentElement.querySelector(".update-badge")
+			const updateBadgeFound =
+				updateDropdown.parentElement.querySelector(".update-badge")
 			if (updateBadgeFound) {
 				updateBadgeFound.remove()
 			}
@@ -105,5 +105,5 @@ function countContentUpdates() {
 				updateDropdown.parentElement.appendChild(updateBadge)
 			}
 		}
-  })
+	})
 }
