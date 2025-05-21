@@ -1,3 +1,19 @@
+const dayStrings = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+const monthStrings = [
+	"Jan",
+	"Feb",
+	"Mar",
+	"Apr",
+	"May",
+	"Jun",
+	"Jul",
+	"Aug",
+	"Sep",
+	"Oct",
+	"Nov",
+	"Dec",
+]
+
 // add a leading 0 to a number if it is only one digit
 function addLeadingZero(num) {
 	num = num.toString()
@@ -5,23 +21,7 @@ function addLeadingZero(num) {
 	return num
 }
 
-function buildRFC822Date(dateString) {
-	const dayStrings = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-	const monthStrings = [
-		"Jan",
-		"Feb",
-		"Mar",
-		"Apr",
-		"May",
-		"Jun",
-		"Jul",
-		"Aug",
-		"Sep",
-		"Oct",
-		"Nov",
-		"Dec",
-	]
-
+export function buildRFC822Date(dateString) {
 	const timeStamp = Date.parse(dateString)
 	const date = new Date(timeStamp)
 
@@ -36,22 +36,7 @@ function buildRFC822Date(dateString) {
 	return `${day}, ${dayNumber} ${month} ${year} ${time} ${timezone}`
 }
 
-function shortDate(dateString) {
-	const monthStrings = [
-		"Jan",
-		"Feb",
-		"Mar",
-		"Apr",
-		"May",
-		"Jun",
-		"Jul",
-		"Aug",
-		"Sep",
-		"Oct",
-		"Nov",
-		"Dec",
-	]
-
+export function shortDate(dateString, showTime = false) {
 	const timeStamp = Date.parse(dateString)
 	const date = new Date(timeStamp)
 
@@ -59,5 +44,7 @@ function shortDate(dateString) {
 	const month = monthStrings[date.getMonth()]
 	const year = date.getFullYear()
 
-	return `${dayNumber} ${month} ${year}`
+	const time = `${addLeadingZero(date.getHours())}:${addLeadingZero(date.getMinutes())}`
+
+	return `${dayNumber} ${month}, ${year} ${showTime ? time : ""}`
 }
