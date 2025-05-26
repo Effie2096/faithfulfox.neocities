@@ -765,12 +765,22 @@ body:has(#construction:hover) #paradox {
 }
 
 .content-head {
-	display: flex;
+	display: grid;
+	grid-template-columns: minmax(5rem, 76px) auto;
 }
 
-.content-head>img {
-	max-height: 64px;
+.content-head .content-head-image-container {
+	height: 6rem;
+	max-height: 76px;
+	aspect-ratio: 1/1;
 	border-radius: .5rem;
+	overflow: hidden;
+	position: relative;
+}
+
+.content-head .content-head-image-container>img {
+	object-fit: contain;
+	height: 100%;
 }
 
 .content-card h2 {
