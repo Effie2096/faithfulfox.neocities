@@ -919,7 +919,6 @@ body:has(#construction:hover) #paradox {
 
 .file-download .file-download-icon img {
 	object-fit: cover;
-	object-position: 25% 25%;
 	height: 100%;
 	background-color: rgb(var(--ruby));
 	z-index: 5;
