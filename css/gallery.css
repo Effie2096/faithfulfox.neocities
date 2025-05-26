@@ -82,6 +82,10 @@
 	grid-row: 2 / 3;
 }
 
+.gallery-card.dual-side {
+	display: flex;
+}
+
 .image-viewer-overlay {
 	position: fixed;
 	inset: 0;
