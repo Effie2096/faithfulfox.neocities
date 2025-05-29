@@ -9,6 +9,7 @@
 	--friend-page-bg: #faf2e6;
 	--binder-bg: rgb(161 65 60);
 	--bg-annie: rgb(53 118 255);
+	--bg-shyni: rgb(255 255 45);
 	--bg-jesse: rgb(164 83 239);
 	--bg-jared: rgb(235 62 29);
 	--page-content-size: 1.5rem;
@@ -155,6 +156,10 @@ html {
 	background-color: var(--bg-annie);
 }
 
+#friends #friend-book #tabs #shyni {
+	background-color: var(--bg-shyni);
+}
+
 #friends #friend-book #tabs #jesse {
 	background-color: var(--bg-jesse);
 }
@@ -259,6 +264,11 @@ html {
 #friends #friend-book #anna-page {
 	border-left: .6rem solid var(--bg-annie);
 	z-index: 600;
+}
+
+#friends #friend-book #shyni-page {
+	border-left: .6rem solid var(--bg-shyni);
+	z-index: 610;
 }
 
 #anna-page .friend-page-head .pfp-container .swag,
@@ -498,6 +508,10 @@ html {
 	background-image: url("/assets/img/friends/torn-paper-blue.png");
 }
 
+#friends #friend-book #shyni-page .friend-page-bottom {
+	background-image: url("/assets/img/friends/torn-paper-yellow.png");
+}
+
 #friends #friend-book #jesse-page .friend-page-bottom {
 	background-image: url("/assets/img/friends/torn-paper-green.png");
 }
@@ -696,6 +710,7 @@ html {
 }
 
 #anna-page .friend-page-content .field .site:hover~#anna-preview,
+#shyni-page .friend-page-content .field .site:hover~#shyni-preview,
 #jesse-page .friend-page-content .field .site:hover~#jesse-preview,
 #jared-page .friend-page-content .field .site:hover~#jared-preview {
 	opacity: 100%;
@@ -705,6 +720,11 @@ html {
 #anna-preview .preview-card {
 	border: 2px solid rgb(75 75 75);
 	background-color: var(--bg-annie);
+}
+
+#shyni-preview .preview-card {
+	border: 2px solid rgb(75 75 75);
+	background-color: var(--bg-shyni);
 }
 
 #jesse-preview .preview-card {
