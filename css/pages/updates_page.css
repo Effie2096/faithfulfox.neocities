@@ -29,6 +29,23 @@ body {
 	outline-offset: -5px;
 }
 
+#backlink {
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	z-index: 990;
+}
+
+#backlink img {
+	width: 5rem;
+	aspect-ratio: 1/1;
+	transform: rotate(-15deg);
+}
+
+#backlink:hover {
+	transform: scale(1.1);
+}
+
 #container {
 	width: 30%;
 	min-width: 320px;
