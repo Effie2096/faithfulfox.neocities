@@ -34,6 +34,7 @@ html {
 #backlink {
 	position: absolute;
 	background-color: rgb(115, 171, 171);
+	z-index: 990;
 }
 
 #backlink>a {
