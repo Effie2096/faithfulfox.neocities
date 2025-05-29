@@ -25,7 +25,7 @@ add_images() {
     id=$2
     echo "<div id=\"$id\" class=\"badge-box\">" >> $outfile
     for badge in "$path"*; do
-        echo "<img src=\"$path${badge##*/}\" alt=\"${badge##*/}\" onmouseover=\"tooltip(this, '${badge##*/}')\" loading=\"lazy\">" >> $outfile
+        echo "<img src=\"/$path${badge##*/}\" alt=\"${badge##*/}\" onmouseover=\"tooltip(this, '${badge##*/}')\" loading=\"lazy\">" >> $outfile
     done
     echo '</div>' >> $outfile
     echo '<hr/>' >> $outfile
