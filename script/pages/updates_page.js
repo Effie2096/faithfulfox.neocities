@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		})
 	})
+
 	updatesObserver.observe(document.getElementById("updates"), {
 		childList: true,
 		subtree: true,
