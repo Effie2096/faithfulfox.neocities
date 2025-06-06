@@ -87,14 +87,26 @@ function drawImages() {
 	}
 }
 
+let updateInterval = null
+let drawInterval = null
 function createExplosion(x, y) {
 	explosion.images = []
 	explosion.speed = explosion.speed
 	for (let i = 0; i < explosion.numImages; i++) {
 		createImage(x, y)
 	}
-	setInterval(updateImages, 16)
-	setInterval(drawImages, 16)
+
+	// Clear existing intervals if they exist
+	if (updateInterval) {
+		clearInterval(updateInterval)
+	}
+	if (drawInterval) {
+		clearInterval(drawInterval)
+	}
+
+	// Set new intervals
+	updateInterval = setInterval(updateImages, 16)
+	drawInterval = setInterval(drawImages, 16)
 }
 
 document.addEventListener("click", (event) => {
