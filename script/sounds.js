@@ -35,9 +35,9 @@ export const sounds = {
 		audio: new Audio("https://files.catbox.moe/5ncv72.wav"),
 		volume: 0.5,
 	},
-}
+};
 
 for (const sound in sounds) {
-	sounds[sound].audio.volume = sounds[sound].volume * 0.1
-	sounds[sound].audio.preload = "auto"
+	sounds[sound].audio.volume = sounds[sound].volume * 0.1;
+	sounds[sound].audio.preload = "auto";
 }

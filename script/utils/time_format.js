@@ -1,4 +1,4 @@
-const dayStrings = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+const dayStrings = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const monthStrings = [
 	"Jan",
 	"Feb",
@@ -12,39 +12,39 @@ const monthStrings = [
 	"Oct",
 	"Nov",
 	"Dec",
-]
+];
 
 // add a leading 0 to a number if it is only one digit
 function addLeadingZero(num) {
-	num = num.toString()
-	while (num.length < 2) num = "0" + num
-	return num
+	num = num.toString();
+	while (num.length < 2) num = `0${num}`;
+	return num;
 }
 
 export function buildRFC822Date(dateString) {
-	const timeStamp = Date.parse(dateString)
-	const date = new Date(timeStamp)
+	const timeStamp = Date.parse(dateString);
+	const date = new Date(timeStamp);
 
-	const day = dayStrings[date.getDay()]
-	const dayNumber = addLeadingZero(date.getDate())
-	const month = monthStrings[date.getMonth()]
-	const year = date.getFullYear()
-	const time = `${addLeadingZero(date.getHours())}:${addLeadingZero(date.getMinutes())}:00`
-	const timezone = date.getTimezoneOffset() === 0 ? "GMT" : "BST"
+	const day = dayStrings[date.getDay()];
+	const dayNumber = addLeadingZero(date.getDate());
+	const month = monthStrings[date.getMonth()];
+	const year = date.getFullYear();
+	const time = `${addLeadingZero(date.getHours())}:${addLeadingZero(date.getMinutes())}:00`;
+	const timezone = date.getTimezoneOffset() === 0 ? "GMT" : "BST";
 
 	//Wed, 02 Oct 2002 13:00:00 GMT
-	return `${day}, ${dayNumber} ${month} ${year} ${time} ${timezone}`
+	return `${day}, ${dayNumber} ${month} ${year} ${time} ${timezone}`;
 }
 
 export function shortDate(dateString, showTime = false) {
-	const timeStamp = Date.parse(dateString)
-	const date = new Date(timeStamp)
+	const timeStamp = Date.parse(dateString);
+	const date = new Date(timeStamp);
 
-	const dayNumber = addLeadingZero(date.getDate())
-	const month = monthStrings[date.getMonth()]
-	const year = date.getFullYear()
+	const dayNumber = addLeadingZero(date.getDate());
+	const month = monthStrings[date.getMonth()];
+	const year = date.getFullYear();
 
-	const time = `${addLeadingZero(date.getHours())}:${addLeadingZero(date.getMinutes())}`
+	const time = `${addLeadingZero(date.getHours())}:${addLeadingZero(date.getMinutes())}`;
 
-	return `${dayNumber} ${month}, ${year} ${showTime ? time : ""}`
+	return `${dayNumber} ${month}, ${year} ${showTime ? time : ""}`;
 }

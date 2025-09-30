@@ -1,0 +1,16 @@
+{
+	"files": {
+		"includes": ["**", "!**/*.min.js"]
+	},
+	"formatter": {},
+	"javascript": {
+		"formatter": {
+			"attributePosition": "multiline"
+		}
+	},
+	"json": {
+		"formatter": {
+			"trailingCommas": "none"
+		}
+	}
+}

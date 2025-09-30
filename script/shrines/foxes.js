@@ -1,18 +1,18 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 	document.querySelectorAll(".gallery-card").forEach((gallery) => {
-		setupImageViewer(gallery)
-	})
+		setupImageViewer(gallery);
+	});
 
-	const canvas = document.getElementById("canvas")
-	const ctx = canvas.getContext("2d")
+	const canvas = document.getElementById("canvas");
+	const ctx = canvas.getContext("2d");
 
-	canvas.width = window.innerWidth
-	canvas.height = window.innerHeight
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
 
-	const images = []
-	const numImages = 10
-	const radius = 20
-	let imagesLoaded = 0
+	const images = [];
+	const numImages = 10;
+	const radius = 20;
+	let imagesLoaded = 0;
 
 	for (let i = 0; i < numImages; i++) {
 		const image = {
@@ -21,33 +21,33 @@ document.addEventListener("DOMContentLoaded", function () {
 			vx: Math.random() * 4 - 2,
 			vy: Math.random() * 4 - 2,
 			img: new Image(),
-		}
-		image.img.src = "/assets/img/fox sit.webp"
-		image.img.onload = function () {
-			imagesLoaded++
+		};
+		image.img.src = "/assets/img/fox sit.webp";
+		image.img.onload = () => {
+			imagesLoaded++;
 			if (imagesLoaded === numImages) {
-				draw()
+				draw();
 			}
-		}
-		images.push(image)
+		};
+		images.push(image);
 	}
 
 	function draw() {
-		ctx.clearRect(0, 0, canvas.width, canvas.height)
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		for (let i = 0; i < images.length; i++) {
-			const image = images[i]
-			ctx.drawImage(image.img, image.x, image.y, radius * 2, radius * 2)
+			const image = images[i];
+			ctx.drawImage(image.img, image.x, image.y, radius * 2, radius * 2);
 
-			image.x += image.vx
-			image.y += image.vy
+			image.x += image.vx;
+			image.y += image.vy;
 
 			if (image.x + radius * 2 > canvas.width || image.x < 0) {
-				image.vx = -image.vx
+				image.vx = -image.vx;
 			}
 			if (image.y + radius * 2 > canvas.height || image.y < 0) {
-				image.vy = -image.vy
+				image.vy = -image.vy;
 			}
 		}
-		requestAnimationFrame(draw)
+		requestAnimationFrame(draw);
 	}
-})
+});
