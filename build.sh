@@ -55,7 +55,7 @@ call_script() {
 	depth=$((depth - 1))
 }
 
-call_script ./build/badges_page.sh
+call_script ./badges_page.sh
 copy_static_files
 
 notify "Build Complete" "success"
