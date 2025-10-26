@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
 
 :root {
 	--fire-display: none;
@@ -32,7 +32,7 @@
 	background-size: contain;
 	background-position: center center;
 	content: "";
-	top: .8rem;
+	top: 0.8rem;
 	right: 0;
 	left: initial;
 	transform: rotate(30deg) scale(2);
@@ -45,13 +45,13 @@
 .soon::after {
 	background-image: url("/assets/img/shrines/doom2/doom-small-soon.png");
 	width: 1.8rem;
-	height: .9rem;
+	height: 0.9rem;
 }
 
 .wip::after {
 	background-image: url("/assets/img/shrines/doom2/doom-small-wip.png");
 	width: 1.5rem;
-	height: .5rem;
+	height: 0.5rem;
 }
 
 .link {
@@ -98,7 +98,7 @@ body::after {
 	height: 0;
 	overflow: hidden;
 	z-index: -1;
-	content: url("/assets/img/shrines/doom2/devious_doomer.png")
+	content: url("/assets/img/shrines/doom2/devious_doomer.png");
 }
 
 #container {
@@ -189,13 +189,18 @@ body::after {
 	display: inline-block;
 }
 
-
 #hud-container::before {
 	content: "";
 	display: var(--fire-display);
-	background-image: url("/assets/img/shrines/doom2/fire-divider.gif"), url("/assets/img/shrines/doom2/fire-divider.gif");
-	background-size: 338px 42px, 338px 42px;
-	background-position: 0 100%, calc(1.2 * 338px) 100%;
+	background-image:
+		url("/assets/img/shrines/doom2/fire-divider.gif"),
+		url("/assets/img/shrines/doom2/fire-divider.gif");
+	background-size:
+		338px 42px,
+		338px 42px;
+	background-position:
+		0 100%,
+		calc(1.2 * 338px) 100%;
 	background-repeat: repeat-x;
 	height: 100%;
 	position: absolute;
@@ -274,7 +279,7 @@ body::after {
 #hud-three {
 	grid-column-start: 106;
 	grid-column-end: 144;
-	padding-top: .3rem;
+	padding-top: 0.3rem;
 }
 
 #hud-three div {
@@ -340,7 +345,6 @@ body::after {
 	display: none;
 	pointer-events: none;
 	/* animation: easteregg .2s linear infinite; */
-
 }
 
 #easteregg img {
@@ -366,7 +370,7 @@ body::after {
 #hud-five,
 #hud-six {
 	display: grid;
-	grid-template-rows: repeat(3, .5fr);
+	grid-template-rows: repeat(3, 0.5fr);
 }
 
 #hud-five {
@@ -384,18 +388,23 @@ body::after {
 	font-size: 1rem;
 }
 
-
 #hud-six {
 	grid-column-start: 54;
 	grid-column-end: 90;
-	padding-left: .3rem;
+	padding-left: 0.3rem;
 }
 
 #hud-six div {
-	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2) 10%, rgba(255, 255, 255, 0.2) 90%, rgba(0, 0, 0, 0));
+	background-image: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0),
+		rgba(255, 255, 255, 0.2) 10%,
+		rgba(255, 255, 255, 0.2) 90%,
+		rgba(0, 0, 0, 0)
+	);
 	width: 91%;
 	margin: 1px;
-	padding-left: .5rem;
+	padding-left: 0.5rem;
 	overflow: hidden;
 }
 
@@ -448,7 +457,6 @@ body::after {
 	max-width: 1000px;
 	width: 100%;
 	padding: 2rem;
-	overflow-x: visible;
 	box-sizing: border-box;
 	margin-left: 0;
 	margin-right: 0;
@@ -467,7 +475,7 @@ body::after {
 	text-align: center;
 	color: white;
 	min-width: 0;
-	padding: .3rem;
+	padding: 0.3rem;
 }
 
 #header-logo {
@@ -479,7 +487,13 @@ body::after {
 }
 
 #content {
-	background-image: linear-gradient(0deg, rgba(255, 0, 0, 0.0), rgba(255, 0, 0, 1.0) 10%, rgba(255, 0, 0, 1.0) 90%, rgba(255, 0, 0, 0.0));
+	background-image: linear-gradient(
+		0deg,
+		rgba(255, 0, 0, 0),
+		rgba(255, 0, 0, 1) 10%,
+		rgba(255, 0, 0, 1) 90%,
+		rgba(255, 0, 0, 0)
+	);
 	position: relative;
 	/* margin: 0 auto; */
 	margin-left: auto;
@@ -498,13 +512,12 @@ body::after {
 	font-style: normal;
 	font-weight: 500;
 	font-size: 1.6rem;
-	font-smooth: never;
 	-webkit-font-smoothing: none;
 	margin: auto;
 	justify-content: center;
 	text-align: justify;
 	text-align-last: center;
-	padding: .5rem .5rem;
+	padding: 0.5rem 0.5rem;
 	margin-bottom: 1rem;
 }
 
@@ -523,7 +536,7 @@ body::after {
 	border: none;
 	outline: none;
 	cursor: pointer;
-	padding: .5rem 1.2rem;
+	padding: 0.5rem 1.2rem;
 	transition: 0.3s;
 }
 
@@ -625,7 +638,7 @@ iframe {
 
 .cacodemon {
 	position: absolute;
-	animation: bobber 1.0s step-start infinite;
+	animation: bobber 1s step-start infinite;
 	transform: translateX(-50%);
 	height: var(--sprite-size);
 }
@@ -645,7 +658,7 @@ iframe {
 }
 
 #pinkies {
-	height: calc(var(--sprite-size) * 1.4)
+	height: calc(var(--sprite-size) * 1.4);
 }
 
 /* #hellknight-container { */
@@ -655,9 +668,7 @@ iframe {
 #cacodemontuah,
 #caco-container:hover #cacodemon1,
 #caco-container.active #cacodemon1,
-
 #hellknightprincess,
-
 #pinkies,
 #pinky-container:hover #pinky,
 #pinky-container.active #pinky {
@@ -666,17 +677,14 @@ iframe {
 
 #caco-container:hover #cacodemontuah,
 #caco-container.active #cacodemontuah,
-
 #hellknight-container:hover #hellknightprincess,
 #hellknight-container.active #hellknightprincess,
-
 #pinky-container:hover #pinkies,
 #pinky-container.active #pinkies {
 	opacity: 100%;
 }
 
 @keyframes bobber {
-
 	0%,
 	50%,
 	100% {
@@ -718,7 +726,6 @@ iframe {
 }
 
 @keyframes lostsoul {
-
 	0% {
 		background-image: url("/assets/img/shrines/doom2/lost_soul/Lost_Soul_side.png");
 		transform: translateX(-40%) rotateY(-180deg);
@@ -756,8 +763,6 @@ iframe {
 		animation-timing-function: linear;
 	}
 
-
-
 	50% {
 		background-image: url("/assets/img/shrines/doom2/lost_soul/Lost_Soul_side.png");
 	}
@@ -793,8 +798,6 @@ iframe {
 		animation-timing-function: linear;
 	}
 
-
-
 	100% {
 		background-image: url("/assets/img/shrines/doom2/lost_soul/Lost_Soul_side.png");
 		transform: translateX(-40%) rotateY(-180deg);
@@ -807,7 +810,7 @@ ul {
 	margin-left: 30px;
 }
 
-#content .collapsible-container:not(:first-child)>.heading-container {
+#content .collapsible-container:not(:first-child) > .heading-container {
 	border-top: 1px solid #000;
 }
 
@@ -831,7 +834,7 @@ ul {
 	flex-wrap: wrap;
 	column-gap: 1rem;
 	width: 100%;
-	padding: .3rem;
+	padding: 0.3rem;
 }
 
 .collapsible-container .heading-container .heading img {
@@ -845,8 +848,8 @@ ul {
 	background-color: #6c0000;
 	color: black;
 	margin-left: auto;
-	padding-right: .5rem;
-	padding-left: .5rem;
+	padding-right: 0.5rem;
+	padding-left: 0.5rem;
 	font-size: 2rem;
 	line-height: 2rem;
 	user-select: none;
@@ -865,19 +868,16 @@ ul {
 }
 
 .collapsible-container.active .heading-container {
-	margin-bottom: .5rem;
+	margin-bottom: 0.5rem;
 }
 
 @media (max-width: 1004px) {
-
 	#hud-container {
 		background-size: auto 50%;
 	}
-
 }
 
 @media (max-width: 960px) {
-
 	:root {
 		font-size: 16px;
 	}
@@ -921,7 +921,6 @@ ul {
 	/* #pinky-container { */
 	/* 	right: 8%; */
 	/* } */
-
 }
 
 @media (max-width: 554px) {
@@ -937,11 +936,9 @@ ul {
 	#hud-right {
 		height: 70px;
 	}
-
 }
 
 @media (max-width: 428px) {
-
 	body {
 		grid-template-columns: 4% 92% 4%;
 	}
@@ -956,7 +953,6 @@ ul {
 }
 
 @media (max-width: 389px) {
-
 	:root {
 		font-size: 9.5px;
 	}
@@ -968,7 +964,6 @@ ul {
 }
 
 @media (max-width: 333px) {
-
 	:root {
 		font-size: 8px;
 	}
@@ -980,7 +975,6 @@ ul {
 }
 
 @media (max-height: 750px) {
-
 	body {
 		grid-template-rows: 1fr 0;
 	}
@@ -1031,5 +1025,4 @@ ul {
 	#content {
 		min-height: 85%;
 	}
-
 }

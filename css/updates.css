@@ -68,7 +68,6 @@
 	padding: 5px;
 	overflow: scroll;
 	scrollbar-width: none;
-	padding: 5px;
 }
 
 #updates.active,
@@ -92,12 +91,12 @@
 }
 
 #todo-list ul,
-.update ul {
+#updates ul {
 	padding-left: 30px;
 }
 
 #todo-list ul li::marker {
-	content: "🦊"
+	content: "🦊";
 }
 
 .update {
@@ -124,12 +123,12 @@
 
 #updates .update:nth-child(even) {
 	margin-right: 20px;
-	transform: rotate(.7deg);
+	transform: rotate(0.7deg);
 }
 
 #updates .update:nth-child(odd) {
 	margin-left: 20px;
-	transform: rotate(-.6deg);
+	transform: rotate(-0.6deg);
 }
 
 .rss-link {

@@ -34,7 +34,7 @@ function toggleActive(element) {
 function toggleChat() {
 	var chatContainer = document.getElementById("chatbox");
 	var chatButton = document.getElementById("chat-btn");
-	var chatButtonIcon = document.querySelector("#chat-btn span");
+	var chatButtonIcon = document.querySelector("#chat-btn span.icon");
 	const stylea = "10px 10px 0px 0px";
 	const styleb = "10px 10px 10px 10px";
 	chatContainer.style.height =

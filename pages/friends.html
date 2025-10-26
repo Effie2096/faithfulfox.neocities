@@ -1,13 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Effie's Friends</title>
-		<link href="/css/friends.css" rel="stylesheet" />
-		<link href="/css/friends/site_preview_card.css" rel="stylesheet" />
+		<link href="/css/friends.css" rel="stylesheet">
+		<link href="/css/friends/site_preview_card.css" rel="stylesheet">
 		<script src="/script/jquery-3.7.1.min.js"></script>
 		<script src="/script/page_include.js"></script>
+		<script src="/script/friends.js" type="module"></script>
 	</head>
 
 	<body>
@@ -17,12 +18,10 @@
 		<div id="container">
 			<div id="friends">
 				<div id="header">
-					<p
-						style="
+					<p style="
 							font-family: &quot;The Heart of Everything Demo&quot;;
 							font-size: 5rem;
-						"
-					>
+						">
 						Friends
 					</p>
 					<p style="font-size: 1rem">
@@ -33,156 +32,49 @@
 				<div id="board">
 					<div id="anna-board" class="personal-board active">
 						<div id="lyra-container" class="scrap">
-							<img
-								id="mimic"
-								src="/assets/img/friends/anna/Symbol_of_Avarice_(DSIII).png"
-								alt="mimic"
-								loading="lazy"
-							/>
-							<img
-								id="jack"
-								src="/assets/img/friends/anna/jack.png"
-								alt="jack"
-								loading="lazy"
-							/>
-							<img
-								id="lyra"
-								src="/assets/img/friends/anna/lyra.png"
-								alt="lyra with tha acog"
-								loading="lazy"
-							/>
+							<img id="mimic" src="/assets/img/friends/anna/Symbol_of_Avarice_(DSIII).png" alt="mimic" loading="lazy">
+							<img id="jack" src="/assets/img/friends/anna/jack.png" alt="jack" loading="lazy">
+							<img id="lyra" src="/assets/img/friends/anna/lyra.png" alt="lyra with tha acog" loading="lazy">
 						</div>
 						<div id="chubbits" class="scrap">
-							<img
-								class="bnuy"
-								src="/assets/img/BIB1A.gif"
-								alt="bnuy"
-								loading="lazy"
-							/>
-							<img
-								class="bnuy"
-								src="/assets/img/BIB1B.gif"
-								alt="bnuy"
-								loading="lazy"
-							/>
-							<img
-								class="bnuy"
-								src="/assets/img/BIB1C.gif"
-								alt="bnuy"
-								loading="lazy"
-							/>
+							<img class="bnuy" src="/assets/img/BIB1A.gif" alt="bnuy" loading="lazy">
+							<img class="bnuy" src="/assets/img/BIB1B.gif" alt="bnuy" loading="lazy">
+							<img class="bnuy" src="/assets/img/BIB1C.gif" alt="bnuy" loading="lazy">
 						</div>
-						<img
-							id="reisen"
-							class="scrap"
-							src="/assets/img/reisen.gif"
-							alt="reisen"
-							loading="lazy"
-						/>
+						<img id="reisen" class="scrap" src="/assets/img/reisen.gif" alt="reisen" loading="lazy">
 						<div id="devious-ponies" class="scrap">
-							<img
-								id="nightmare-moon"
-								src="/assets/img/friends/anna/Nightmare_Moon.png"
-								alt="Nightmare Moon"
-								loading="lazy"
-							/>
-							<img
-								id="chrysalis"
-								src="/assets/img/friends/anna/chrysalis.png"
-								alt="Chrysalis"
-								loading="lazy"
-							/>
+							<img id="nightmare-moon" src="/assets/img/friends/anna/Nightmare_Moon.png" alt="Nightmare Moon" loading="lazy">
+							<img id="chrysalis" src="/assets/img/friends/anna/chrysalis.png" alt="Chrysalis" loading="lazy">
 						</div>
 					</div>
 
 					<div id="shyni-board" class="personal-board">
 						<div id="poppee-container" class="pin scrap">
-							<img
-								id="poppee"
-								src="/assets/img/friends/shyni/poppee.png"
-								alt="Poppee"
-								loading="lazy"
-							/>
+							<img id="poppee" src="/assets/img/friends/shyni/poppee.png" alt="Poppee" loading="lazy">
 						</div>
 						<div id="haruhi-container" class="scrap">
-							<img
-								id="haruhi"
-								src="/assets/img/friends/shyni/haruhi_suzumiya2.gif"
-								alt="Haruhi"
-								loading="lazy"
-							/>
+							<img id="haruhi" src="/assets/img/friends/shyni/haruhi_suzumiya2.gif" alt="Haruhi" loading="lazy">
 						</div>
 						<div id="vodka-container" class="scrap">
-							<img
-								id="vodka"
-								src="/assets/img/friends/shyni/baby_vodka.png"
-								alt="Vodka"
-								loading="lazy"
-							/>
+							<img id="vodka" src="/assets/img/friends/shyni/baby_vodka.png" alt="Vodka" loading="lazy">
 						</div>
 						<div id="csm-container" class="scrap">
-							<img
-								id="power"
-								src="/assets/img/friends/shyni/power.png"
-								alt="Power"
-								loading="lazy"
-							/>
+							<img id="power" src="/assets/img/friends/shyni/power.png" alt="Power" loading="lazy">
 						</div>
 					</div>
 
 					<div id="jesse-board" class="personal-board">
 						<div id="yippee" class="pin scrap">
-							<img
-								id="bnuy-goober"
-								src="/assets/img/friends/jesse/yippee.jpg"
-								alt="yippee"
-								loading="lazy"
-							/>
+							<img id="bnuy-goober" src="/assets/img/friends/jesse/yippee.jpg" alt="yippee" loading="lazy">
 						</div>
 
 						<div id="jesses-pins" class="scrap">
-							<img
-								id="pins1"
-								class="jesse-pins"
-								src="/assets/img/friends/jesse/pins/pins1.png"
-								alt="pins1"
-								loading="lazy"
-							/>
-							<img
-								id="bard"
-								class="jesse-pins"
-								src="/assets/img/friends/jesse/pins/bard.png"
-								alt="bard"
-								loading="lazy"
-							/>
-							<img
-								id="illithid"
-								class="jesse-pins"
-								src="/assets/img/friends/jesse/pins/illithid.png"
-								alt="illithid"
-								loading="lazy"
-							/>
-							<img
-								id="monk"
-								class="jesse-pins"
-								src="/assets/img/friends/jesse/pins/monk.png"
-								alt="monk"
-								loading="lazy"
-							/>
-							<img
-								id="doc"
-								class="jesse-pins"
-								src="/assets/img/friends/jesse/pins/doc.png"
-								alt="doc"
-								loading="lazy"
-							/>
-							<img
-								id="pochita"
-								class="jesse-pins"
-								src="/assets/img/friends/jesse/pins/pochita.png"
-								alt="pochita"
-								loading="lazy"
-							/>
+							<img id="pins1" class="jesse-pins" src="/assets/img/friends/jesse/pins/pins1.png" alt="pins1" loading="lazy">
+							<img id="bard" class="jesse-pins" src="/assets/img/friends/jesse/pins/bard.png" alt="bard" loading="lazy">
+							<img id="illithid" class="jesse-pins" src="/assets/img/friends/jesse/pins/illithid.png" alt="illithid" loading="lazy">
+							<img id="monk" class="jesse-pins" src="/assets/img/friends/jesse/pins/monk.png" alt="monk" loading="lazy">
+							<img id="doc" class="jesse-pins" src="/assets/img/friends/jesse/pins/doc.png" alt="doc" loading="lazy">
+							<img id="pochita" class="jesse-pins" src="/assets/img/friends/jesse/pins/pochita.png" alt="pochita" loading="lazy">
 						</div>
 						<div id="balatro" class="scrap">
 							<div class="card-trig" id="card-trig-1"></div>
@@ -190,111 +82,29 @@
 							<div class="card-trig" id="card-trig-3"></div>
 							<div class="card-trig" id="card-trig-4"></div>
 							<div class="card-trig" id="card-trig-5"></div>
-							<img
-								id="jimbo-balatro"
-								class="balatro-card"
-								src="/assets/img/friends/jesse/balatro/Jimbo_Balatro.png"
-								alt="balatro"
-								loading="lazy"
-							/>
-							<img
-								id="brain-balatro"
-								class="balatro-card"
-								src="/assets/img/friends/jesse/balatro/Brainstorm.webp"
-								alt="balatro"
-								loading="lazy"
-							/>
-							<img
-								id="chad-balatro"
-								class="balatro-card"
-								src="/assets/img/friends/jesse/balatro/Hanging_Chad.webp"
-								alt="balatro"
-								loading="lazy"
-							/>
-							<img
-								id="blue-balatro"
-								class="balatro-card"
-								src="/assets/img/friends/jesse/balatro/Blueprint.webp"
-								alt="balatro"
-								loading="lazy"
-							/>
-							<img
-								id="photo-balatro"
-								class="balatro-card"
-								src="/assets/img/friends/jesse/balatro/Photograph.png"
-								alt="balatro"
-								loading="lazy"
-							/>
+							<img id="jimbo-balatro" class="balatro-card" src="/assets/img/friends/jesse/balatro/Jimbo_Balatro.png" alt="balatro" loading="lazy">
+							<img id="brain-balatro" class="balatro-card" src="/assets/img/friends/jesse/balatro/Brainstorm.webp" alt="balatro" loading="lazy">
+							<img id="chad-balatro" class="balatro-card" src="/assets/img/friends/jesse/balatro/Hanging_Chad.webp" alt="balatro" loading="lazy">
+							<img id="blue-balatro" class="balatro-card" src="/assets/img/friends/jesse/balatro/Blueprint.webp" alt="balatro" loading="lazy">
+							<img id="photo-balatro" class="balatro-card" src="/assets/img/friends/jesse/balatro/Photograph.png" alt="balatro" loading="lazy">
 						</div>
 					</div>
 
 					<div id="jared-board" class="personal-board">
 						<div id="twink-preg" class="pin scrap">
-							<img
-								id="furry-twink-preg"
-								src="/assets/img/friends/jared/twink-preg.jpg"
-								alt="twink furry pregnancy"
-								loading="lazy"
-							/>
+							<img id="furry-twink-preg" src="/assets/img/friends/jared/twink-preg.jpg" alt="twink furry pregnancy" loading="lazy">
 						</div>
 						<div id="seal" class="pin scrap">
-							<img
-								id="seal-of-approval"
-								src="/assets/img/friends/jared/seal-of-approval.jpg"
-								alt="seal of approval"
-								loading="lazy"
-							/>
+							<img id="seal-of-approval" src="/assets/img/friends/jared/seal-of-approval.jpg" alt="seal of approval" loading="lazy">
 						</div>
 						<div id="grubs" class="scrap">
-							<img
-								id="grub1"
-								class="grub"
-								src="/assets/img/friends/jared/grub1.png"
-								alt="grub"
-								loading="lazy"
-							/>
-							<img
-								id="grub6"
-								class="grub"
-								src="/assets/img/friends/jared/grub6.png"
-								alt="grub"
-								loading="lazy"
-							/>
-							<img
-								id="grub3"
-								class="grub"
-								src="/assets/img/friends/jared/grub3.png"
-								alt="grub"
-								loading="lazy"
-							/>
-							<img
-								id="grub5"
-								class="grub"
-								src="/assets/img/friends/jared/grub5.png"
-								alt="grub"
-								loading="lazy"
-							/>
-							<img
-								id="grub2"
-								class="grub"
-								src="/assets/img/friends/jared/grub2.png"
-								alt="grub"
-								loading="lazy"
-							/>
-							<img
-								id="grub7"
-								class="grub"
-								src="/assets/img/friends/jared/grub7.png"
-								alt="grub"
-								loading="lazy"
-							/>
-							<img
-								id="grub4"
-								class="grub"
-								src="/assets/img/friends/jared/grub4.png"
-								alt="grub"
-								loading="lazy"
-							/>
+							<img id="grub1" class="grub" src="/assets/img/friends/jared/grub1.png" alt="grub" loading="lazy">
+							<img id="grub6" class="grub" src="/assets/img/friends/jared/grub6.png" alt="grub" loading="lazy">
+							<img id="grub3" class="grub" src="/assets/img/friends/jared/grub3.png" alt="grub" loading="lazy">
+							<img id="grub5" class="grub" src="/assets/img/friends/jared/grub5.png" alt="grub" loading="lazy">
+							<img id="grub2" class="grub" src="/assets/img/friends/jared/grub2.png" alt="grub" loading="lazy">
+							<img id="grub7" class="grub" src="/assets/img/friends/jared/grub7.png" alt="grub" loading="lazy">
+							<img id="grub4" class="grub" src="/assets/img/friends/jared/grub4.png" alt="grub" loading="lazy">
 						</div>
 					</div>
 				</div>
@@ -317,52 +127,15 @@
 						<div class="friend-page-head">
 							<div class="pfp-container page-mask">
 								<div class="pfp">
-									<img src="/assets/img/pb.webp" alt="Princess Bubblegum" />
+									<img src="/assets/img/pb.webp" alt="Princess Bubblegum">
 								</div>
-								<img
-									class="swag sunglasses"
-									src="/assets/img/friends/anna/sunglasses.png"
-									alt="sunglasses"
-									loading="lazy"
-								/>
-								<img
-									class="swag ice"
-									src="/assets/img/friends/anna/ice-so-hard-it-clowns.png"
-									alt="the ice"
-									loading="lazy"
-								/>
-								<img
-									class="swag weed"
-									src="/assets/img/friends/anna/blunt-png-42505.png"
-									alt="PHAT RUNT"
-									loading="lazy"
-								/>
-								<img
-									id="weed-smoke"
-									class="swag"
-									src="/assets/img/friends/anna/smoke.gif"
-									alt="smoke"
-									loading="lazy"
-								/>
-								<img
-									class="swag buthy"
-									src="/assets/img/friends/anna/swag.png"
-									alt="swag"
-									loading="lazy"
-								/>
-								<img
-									class="swag sparkle"
-									src="/assets/img/friends/anna/sparkle-overlay.gif"
-									alt="sparkle"
-									loading="lazy"
-								/>
-								<img
-									id="weed-leaf"
-									class="swag"
-									src="/assets/img/friends/anna/weed-leaf.gif"
-									alt="weed leaf"
-									loading="lazy"
-								/>
+								<img class="swag sunglasses" src="/assets/img/friends/anna/sunglasses.png" alt="sunglasses" loading="lazy">
+								<img class="swag ice" src="/assets/img/friends/anna/ice-so-hard-it-clowns.png" alt="the ice" loading="lazy">
+								<img class="swag weed" src="/assets/img/friends/anna/blunt-png-42505.png" alt="PHAT RUNT" loading="lazy">
+								<img id="weed-smoke" class="swag" src="/assets/img/friends/anna/smoke.gif" alt="smoke" loading="lazy">
+								<img class="swag buthy" src="/assets/img/friends/anna/swag.png" alt="swag" loading="lazy">
+								<img class="swag sparkle" src="/assets/img/friends/anna/sparkle-overlay.gif" alt="sparkle" loading="lazy">
+								<img id="weed-leaf" class="swag" src="/assets/img/friends/anna/weed-leaf.gif" alt="weed leaf" loading="lazy">
 							</div>
 							<div class="summary">
 								<p>
@@ -375,29 +148,26 @@
 							<ul>
 								<li class="field">
 									<p class="name">
-										<span class="label">Name:</span
-										><span class="value">Anna</span>
+										<span class="label">Name:</span><span class="value">Anna</span>
 									</p>
 								</li>
 								<li class="field">
 									<p class="alias">
-										<span class="label">Alias':</span
-										><span class="value">Annie</span>
+										<span class="label">Alias':</span><span class="value">Annie</span>
 									</p>
 								</li>
 								<li class="field">
 									<p class="site">
 										<span class="label">Site:</span>
 										<span class="value">
-											<a href="https://annarchy.neocities.org/" class="external"
-												>annarchy.neocities</a
-											>
+											<a href="https://annarchy.neocities.org/"
+											   class="external"
+											>annarchy.neocities</a>
 										</span>
 									</p>
-									<div
-										id="anna-preview"
-										class="site-preview"
-										data-include="/pages/friends/anna_preview"
+									<div id="anna-preview"
+									     class="site-preview"
+									     data-include="/pages/friends/anna_preview"
 									></div>
 								</li>
 							</ul>
@@ -411,8 +181,7 @@
 						<div class="friend-page-head">
 							<div class="pfp-container page-mask">
 								<div class="pfp">
-									<div
-										style="
+									<div style="
 											width: 100%;
 											height: 100%;
 											overflow: hidden;
@@ -420,8 +189,7 @@
 											background-position: center 0px;
 											background-size: 20rem;
 											background-repeat: no-repeat;
-										"
-									></div>
+										"></div>
 								</div>
 							</div>
 							<div class="summary">
@@ -435,31 +203,26 @@
 							<ul>
 								<li class="field">
 									<p class="name">
-										<span class="label">Name:</span
-										><span class="value">Shyniaise</span>
+										<span class="label">Name:</span><span class="value">Shyniaise</span>
 									</p>
 								</li>
 								<li class="field">
 									<p class="alias">
-										<span class="label">Alias':</span
-										><span class="value">Shyni</span>
+										<span class="label">Alias':</span><span class="value">Shyni</span>
 									</p>
 								</li>
 								<li class="field">
 									<p class="site">
 										<span class="label">Site:</span>
 										<span class="value">
-											<a
-												href="https://shyniaise.neocities.org/"
-												class="external"
-												>shyniaise.neocities</a
-											>
+											<a href="https://shyniaise.neocities.org/"
+											   class="external"
+											>shyniaise.neocities</a>
 										</span>
 									</p>
-									<div
-										id="shyni-preview"
-										class="site-preview"
-										data-include="/pages/friends/shyni_preview"
+									<div id="shyni-preview"
+									     class="site-preview"
+									     data-include="/pages/friends/shyni_preview"
 									></div>
 								</li>
 							</ul>
@@ -473,8 +236,7 @@
 						<div class="friend-page-head">
 							<div class="pfp-container page-mask">
 								<div class="pfp">
-									<div
-										style="
+									<div style="
 											width: 100%;
 											height: 100%;
 											overflow: hidden;
@@ -482,16 +244,9 @@
 											background-position: center;
 											background-size: 20rem;
 											background-repeat: no-repeat;
-										"
-									></div>
+										"></div>
 								</div>
-								<img
-									id="lollipop"
-									class="swag"
-									src="/assets/img/friends/jesse/kawaii-lollipop.png"
-									alt="lollipop"
-									loading="lazy"
-								/>
+								<img id="lollipop" class="swag" src="/assets/img/friends/jesse/kawaii-lollipop.png" alt="lollipop" loading="lazy">
 							</div>
 							<div class="summary">
 								<p>Cool ebic yapper.</p>
@@ -501,32 +256,28 @@
 							<ul>
 								<li class="field">
 									<p class="name">
-										<span class="label">Name:</span
-										><span class="value">Jesse</span>
+										<span class="label">Name:</span><span class="value">Jesse</span>
 									</p>
 								</li>
 								<li class="field">
 									<p class="alias">
-										<span class="label">Alias':</span
-										><span class="value">Term, Termie</span>
+										<span class="label">Alias':</span><span class="value">Term, Termie</span>
 									</p>
 								</li>
 								<li class="field">
 									<p class="site">
 										<span class="label">Site:</span>
 										<span class="value">
-											<a
-												href="https://thzeterminator.neocities.org/"
-												class="external"
+											<a href="https://thzeterminator.neocities.org/"
+											   class="external"
 											>
-												thzeterminator.neocities</a
-											>
+												thzeterminator.neocities
+											</a>
 										</span>
 									</p>
-									<div
-										id="jesse-preview"
-										class="site-preview"
-										data-include="/pages/friends/jesse_preview"
+									<div id="jesse-preview"
+									     class="site-preview"
+									     data-include="/pages/friends/jesse_preview"
 									></div>
 								</li>
 							</ul>
@@ -539,38 +290,16 @@
 					<div id="jared-page" class="friend-page">
 						<div class="friend-page-head">
 							<div class="pfp-container page-mask">
-								<div
-									class="pfp"
-									style="
+								<div class="pfp"
+								     style="
 										background-image: url(&quot;/assets/img/slow-star.gif&quot;);
 									"
 								>
-									<img
-										src="/assets/img/friends/jared/Blackmage-ff1-gba.png"
-										alt="Black Mage"
-									/>
+									<img src="/assets/img/friends/jared/Blackmage-ff1-gba.png" alt="Black Mage">
 								</div>
-								<img
-									id="bm-jiggy"
-									class="swag"
-									src="/assets/img/friends/jared/bmdance_gif.gif"
-									alt="Black Mage"
-									loading="lazy"
-								/>
-								<img
-									id="rub1"
-									class="swag"
-									src="/assets/img/friends/jared/RUB.gif"
-									alt="spell"
-									loading="lazy"
-								/>
-								<img
-									id="rub2"
-									class="swag"
-									src="/assets/img/friends/jared/RUB.gif"
-									alt="spell"
-									loading="lazy"
-								/>
+								<img id="bm-jiggy" class="swag" src="/assets/img/friends/jared/bmdance_gif.gif" alt="Black Mage" loading="lazy">
+								<img id="rub1" class="swag" src="/assets/img/friends/jared/RUB.gif" alt="spell" loading="lazy">
+								<img id="rub2" class="swag" src="/assets/img/friends/jared/RUB.gif" alt="spell" loading="lazy">
 							</div>
 							<div class="summary">
 								<p>Hilarious cool duude who's also a sexy gwub 🦭:3</p>
@@ -581,31 +310,26 @@
 							<ul>
 								<li class="field">
 									<p class="name">
-										<span class="label">Name:</span
-										><span class="value">Jared</span>
+										<span class="label">Name:</span><span class="value">Jared</span>
 									</p>
 								</li>
 								<li class="field">
 									<p class="alias">
-										<span class="label">Alias':</span
-										><span class="value">The Grub</span>
+										<span class="label">Alias':</span><span class="value">The Grub</span>
 									</p>
 								</li>
 								<li class="field">
 									<p class="site">
 										<span class="label">Site:</span>
 										<span class="value">
-											<a
-												href="https://grubtopia.neocities.org/"
-												class="external"
-												>grubtopia.neocities</a
-											>
+											<a href="https://grubtopia.neocities.org/"
+											   class="external"
+											>grubtopia.neocities</a>
 										</span>
 									</p>
-									<div
-										id="jared-preview"
-										class="site-preview"
-										data-include="/pages/friends/jared_preview"
+									<div id="jared-preview"
+									     class="site-preview"
+									     data-include="/pages/friends/jared_preview"
 									></div>
 								</li>
 							</ul>
@@ -634,5 +358,4 @@
 			</div>
 		</div>
 	</body>
-	<script src="/script/friends.js" type="module"></script>
 </html>

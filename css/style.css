@@ -7,12 +7,14 @@
 	--surface-2: 193, 255, 155;
 	--page-height: 720px;
 	--edge-color: 220, 125, 175;
-	--edge-thickness: .4rem;
+	--edge-thickness: 0.4rem;
 
-	font-size: 1.0em;
+	font-size: 1em;
 
 	--background-opacity: 0.5;
-	--side-grad: rgba(var(--ruby), var(--background-opacity)), rgba(var(--surface-1), var(--background-opacity));
+	--side-grad:
+		rgba(var(--ruby), var(--background-opacity)),
+		rgba(var(--surface-1), var(--background-opacity));
 
 	--cursor-default: url("/assets/img/cursor/berry_cursor.png"), auto;
 	--cursor-pointer: url("/assets/img/cursor/berry_cursor_link.png"), pointer;
@@ -53,7 +55,7 @@ button,
 }
 
 .link:hover::after {
-	opacity: 1.0;
+	opacity: 1;
 	animation: bounce 0.7s infinite cubic-bezier(0.5, 0.5, 0.5, 1.5);
 }
 
@@ -94,9 +96,19 @@ body {
 	right: 50%;
 	bottom: 0;
 	width: 300px;
-	background-image: linear-gradient(to right, #d20f39, #fe640b, #df8e1d, #40a02b, #04a5e5, #8839ef);
+	background-image: linear-gradient(
+		to right,
+		#d20f39,
+		#fe640b,
+		#df8e1d,
+		#40a02b,
+		#04a5e5,
+		#8839ef
+	);
 	background-size: 400% 400%;
-	animation: rainbow 5s ease infinite, rainbow-reverse 5s ease infinite;
+	animation:
+		rainbow 5s ease infinite,
+		rainbow-reverse 5s ease infinite;
 	animation-delay: 0s, 5s;
 	text-align: center;
 	border-radius: 10px;
@@ -123,7 +135,11 @@ body {
 	grid-template-columns: 1fr auto 1fr;
 	color: red;
 	margin: auto;
-	text-shadow: -1px 0px 0px #000, 1px 0px 0px #000, 0px -1px 0px #000, 0px 1px 0px #000;
+	text-shadow:
+		-1px 0px 0px #000,
+		1px 0px 0px #000,
+		0px -1px 0px #000,
+		0px 1px 0px #000;
 	justify-items: center;
 	overflow: hidden;
 }
@@ -132,7 +148,7 @@ body {
 	text-align: center;
 	font-size: 1.6rem;
 	margin-top: 25px;
-	margin-left: 15px
+	margin-left: 15px;
 }
 
 .warning-header img {
@@ -142,7 +158,11 @@ body {
 
 #health-warning p {
 	color: #fff;
-	text-shadow: -1px 0px 0px #aaaaaa, 1px 0px 0px #aaaaaa, 0px -1px 0px #aaaaaa, 0px 1px 0px #aaaaaa;
+	text-shadow:
+		-1px 0px 0px #aaaaaa,
+		1px 0px 0px #aaaaaa,
+		0px -1px 0px #aaaaaa,
+		0px 1px 0px #aaaaaa;
 	font-size: 0.8rem;
 }
 
@@ -179,7 +199,7 @@ body {
 #chatbox {
 	border-radius: 10px 10px 10px 10px;
 	height: 0px;
-	transition: ease .2s;
+	transition: ease 0.2s;
 }
 
 #chat-btn-container {
@@ -507,11 +527,11 @@ body:has(#construction:hover) #paradox {
 	margin-top: 30px;
 }
 
-.header>* {
+.header > * {
 	padding: 10px 10px;
 }
 
-.header>img {
+.header > img {
 	max-height: 132%;
 }
 
@@ -553,7 +573,12 @@ body:has(#construction:hover) #paradox {
 	grid-row-end: 3;
 	justify-self: center;
 	width: 70%;
-	background-image: linear-gradient(90deg, rgba(var(--ruby), 0.5), rgba(var(--surface-1), 0.5), rgba(var(--ruby), 0.5));
+	background-image: linear-gradient(
+		90deg,
+		rgba(var(--ruby), 0.5),
+		rgba(var(--surface-1), 0.5),
+		rgba(var(--ruby), 0.5)
+	);
 	box-shadow: 0 0 30px rgba(var(--ruby), 0.8);
 	margin-top: 10px;
 	text-align: center;
@@ -581,7 +606,6 @@ body:has(#construction:hover) #paradox {
 	grid-row-end: 3;
 	position: relative;
 	min-width: 525px;
-	position: relative;
 	background-color: rgba(var(--surface-1), 0.5);
 	margin-top: 0px;
 
@@ -613,11 +637,12 @@ body:has(#construction:hover) #paradox {
 	position: relative;
 	grid-template-rows: 50% 50%;
 	width: 100%;
-	background-image: linear-gradient(to right,
-			rgba(var(--ruby), var(--background-opacity)),
-			rgba(var(--surface-1), var(--background-opacity)));
+	background-image: linear-gradient(
+		to right,
+		rgba(var(--ruby), var(--background-opacity)),
+		rgba(var(--surface-1), var(--background-opacity))
+	);
 	border-radius: 10px 0px 0px 10px;
-	position: relative;
 
 	border-top: var(--edge-thickness) solid rgb(var(--edge-color));
 	border-left: var(--edge-thickness) solid rgb(var(--edge-color));
@@ -629,7 +654,8 @@ body:has(#construction:hover) #paradox {
 	content: "";
 	height: 5rem;
 	bottom: calc(-5rem - var(--edge-thickness));
-	box-shadow: var(--edge-thickness) calc(var(--edge-thickness) * -1) 0 0 rgb(var(--edge-color));
+	box-shadow: var(--edge-thickness) calc(var(--edge-thickness) * -1) 0 0
+		rgb(var(--edge-color));
 	width: 100%;
 	border-top-right-radius: 10px;
 }
@@ -648,14 +674,16 @@ body:has(#construction:hover) #paradox {
 	position: relative;
 	grid-template-columns: 0% 100%;
 	grid-template-rows: 60px 35% 15% 40%;
-	background-image: linear-gradient(to left,
-			rgba(var(--ruby), var(--background-opacity)),
-			rgba(var(--surface-1), var(--background-opacity)));
+	background-image: linear-gradient(
+		to left,
+		rgba(var(--ruby), var(--background-opacity)),
+		rgba(var(--surface-1), var(--background-opacity))
+	);
 	overflow: visible;
 	border-radius: 0px 10px 10px 0px;
 
-	padding-right: .5rem;
-	padding-bottom: .5rem;
+	padding-right: 0.5rem;
+	padding-bottom: 0.5rem;
 
 	border-top: var(--edge-thickness) solid rgb(var(--edge-color));
 	border-right: var(--edge-thickness) solid rgb(var(--edge-color));
@@ -673,9 +701,11 @@ body:has(#construction:hover) #paradox {
 	justify-self: center;
 	align-self: center;
 	user-select: none;
-	background-image: linear-gradient(to left,
-			rgba(var(--ruby), 0.9),
-			rgba(var(--surface-1), 0.9));
+	background-image: linear-gradient(
+		to left,
+		rgba(var(--ruby), 0.9),
+		rgba(var(--surface-1), 0.9)
+	);
 	width: 100%;
 	height: 132px;
 	padding-top: 50%;
@@ -683,7 +713,6 @@ body:has(#construction:hover) #paradox {
 	padding-left: 3px;
 	border-radius: 5px 0px 0px 5px;
 }
-
 
 .sidebar-right-toggle-button {
 	font-size: 1.2rem;
@@ -725,7 +754,6 @@ body:has(#construction:hover) #paradox {
 	top: 5rem;
 }
 
-
 .sidebar-right p {
 	margin-bottom: 5px;
 }
@@ -749,8 +777,8 @@ body:has(#construction:hover) #paradox {
 	background-repeat: no-repeat;
 	background-position: center;
 	position: absolute;
-	top: .2rem;
-	right: .2rem;
+	top: 0.2rem;
+	right: 0.2rem;
 	width: 2.5rem;
 	height: 2.5rem;
 }
@@ -775,13 +803,13 @@ body:has(#construction:hover) #paradox {
 .content-head .content-head-image-container {
 	height: 6rem;
 	max-height: 76px;
-	aspect-ratio: 1/1;
-	border-radius: .5rem;
+	aspect-ratio: 1 / 1;
+	border-radius: 0.5rem;
 	overflow: hidden;
 	position: relative;
 }
 
-.content-head .content-head-image-container>img {
+.content-head .content-head-image-container > img {
 	object-fit: contain;
 	height: 100%;
 }
@@ -827,7 +855,7 @@ body:has(#construction:hover) #paradox {
 	overflow-y: hidden;
 	max-height: 0;
 	transition-property: max-height;
-	transition-duration: .8s;
+	transition-duration: 0.8s;
 	transition-timing-function: cubic-bezier(0.19, 1, 0.22, 2);
 }
 
@@ -844,7 +872,7 @@ body:has(#construction:hover) #paradox {
 	display: grid;
 	grid-template-columns: 1fr auto;
 	width: 100%;
-	padding-bottom: .2rem;
+	padding-bottom: 0.2rem;
 }
 
 .media-card-title h4 {
@@ -891,7 +919,7 @@ body:has(#construction:hover) #paradox {
 }
 
 .file-download {
-	aspect-ratio: 1/1.19;
+	aspect-ratio: 1 / 1.19;
 	border: 1px dashed rgba(235, 235, 235, 0.7);
 	background-color: rgba(235, 235, 235, 0.2);
 	text-decoration: none;
@@ -940,7 +968,7 @@ body:has(#construction:hover) #paradox {
 	opacity: 70%;
 	z-index: -1;
 	transform: translate(-50%, -50%);
-	text-shadow: -.3rem .3rem 0 rgba(0, 0, 0, 0.3);
+	text-shadow: -0.3rem 0.3rem 0 rgba(0, 0, 0, 0.3);
 }
 
 .file-download.image-download .file-download-icon::before {
@@ -1033,7 +1061,10 @@ body:has(#construction:hover) #paradox {
 
 .hidden-content-expand {
 	display: none;
-	background-image: radial-gradient(rgba(var(--ruby), 0.5), rgba(var(--ruby), 0) 80%);
+	background-image: radial-gradient(
+		rgba(var(--ruby), 0.5),
+		rgba(var(--ruby), 0) 80%
+	);
 }
 
 .content-expand::before,
@@ -1134,16 +1165,16 @@ body:has(#construction:hover) #paradox {
 	overflow: hidden;
 	min-width: 10.5rem;
 	width: 10.5rem;
-	margin-top: -.2rem;
-	padding-top: .2rem;
-	margin-right: -.5rem;
-	padding-right: .5rem;
-	padding-bottom: .2rem;
+	margin-top: -0.2rem;
+	padding-top: 0.2rem;
+	margin-right: -0.5rem;
+	padding-right: 0.5rem;
+	padding-bottom: 0.2rem;
 	right: 0;
 	z-index: 8;
 	max-height: 1.8rem;
-	border-radius: .5rem;
-	transition: linear .2s;
+	border-radius: 0.5rem;
+	transition: linear 0.2s;
 }
 
 .content-footer .timestamp-dropdown .post-timestamp-formatted {
@@ -1156,26 +1187,42 @@ body:has(#construction:hover) #paradox {
 	position: absolute;
 	font-family: "SymbolsNerdFont-Regular";
 	opacity: 0%;
-	top: -.2rem;
+	top: -0.2rem;
 	left: -1.5rem;
-	transition: linear .2s;
+	transition: linear 0.2s;
 }
 
-.content-footer .timestamp-dropdown .post-posted .post-timestamp-formatted::before {
+.content-footer
+	.timestamp-dropdown
+	.post-posted
+	.post-timestamp-formatted::before {
 	font-size: 1.4rem;
 	content: "󰅐 ";
 }
 
-.content-footer .timestamp-dropdown>.post-update~.post-update .post-timestamp-formatted::before {
+.content-footer
+	.timestamp-dropdown
+	> .post-update
+	~ .post-update
+	.post-timestamp-formatted::before {
 	content: "├";
 }
 
-.content-footer .timestamp-dropdown>.post-update:last-of-type .post-timestamp-formatted::before {
+.content-footer
+	.timestamp-dropdown
+	> .post-update:last-of-type
+	.post-timestamp-formatted::before {
 	content: "└";
 }
 
-.content-footer .timestamp-dropdown>.post-update:nth-child(2) .post-timestamp-formatted::before,
-.content-footer .timestamp-dropdown>.post-update .post-timestamp-formatted::before {
+.content-footer
+	.timestamp-dropdown
+	> .post-update:nth-child(2)
+	.post-timestamp-formatted::before,
+.content-footer
+	.timestamp-dropdown
+	> .post-update
+	.post-timestamp-formatted::before {
 	font-size: 1.55rem;
 	content: "󰚰 ";
 }
@@ -1189,20 +1236,20 @@ body:has(#construction:hover) #paradox {
 	user-select: none;
 	text-shadow: 0.2em 0.2em 5px rgba(0, 0, 0, 0.5);
 	border-radius: 50%;
-	font-size: .7rem;
-	padding-top: .05rem;
+	font-size: 0.7rem;
+	padding-top: 0.05rem;
 	width: 1.1rem;
 	height: 1.1rem;
 	right: -0.8rem;
-	bottom: .5rem;
+	bottom: 0.5rem;
 	z-index: 9;
-	transition: linear .2s;
+	transition: linear 0.2s;
 }
 
 .content-footer-right:hover .timestamp-dropdown,
 .timestamp-dropdown:hover {
 	max-height: 428px;
-	transition: linear .2s;
+	transition: linear 0.2s;
 	background-color: rgb(var(--ruby));
 	outline: black solid 1.1px;
 }
@@ -1211,10 +1258,12 @@ body:has(#construction:hover) #paradox {
 	display: none;
 }
 
-.content-footer-right:hover .timestamp-dropdown .post-timestamp-formatted::before,
+.content-footer-right:hover
+	.timestamp-dropdown
+	.post-timestamp-formatted::before,
 .timestamp-dropdown:hover .post-timestamp-formatted::before {
 	opacity: 100%;
-	transition: linear .2s;
+	transition: linear 0.2s;
 }
 
 .content-footer-right:hover .update-badge,
@@ -1226,7 +1275,7 @@ body:has(#construction:hover) #paradox {
 	position: relative;
 	font-family: "Monaspace-Neon-Frozen";
 	text-align: center;
-	background-color: rgba(var(--ruby), 1.0);
+	background-color: rgba(var(--ruby), 1);
 	padding-top: 3px;
 	padding-bottom: 5px;
 	padding-right: 10px;
@@ -1241,7 +1290,7 @@ body:has(#construction:hover) #paradox {
 }
 
 .content-footer-left .tag:before {
-	content: "#"
+	content: "#";
 }
 
 .content-footer-left .tag-count {
@@ -1252,7 +1301,7 @@ body:has(#construction:hover) #paradox {
 	padding-right: 3px;
 	border-radius: 10px;
 	margin: 2px;
-	transition: cubic-bezier(0.75, 0.13, 0.39, 1.15) .2s;
+	transition: cubic-bezier(0.75, 0.13, 0.39, 1.15) 0.2s;
 }
 
 .content-footer-left .tag-count:before {
@@ -1271,7 +1320,7 @@ body:has(#construction:hover) #paradox {
 	margin-top: -5px;
 	z-index: 8;
 	max-height: 27px;
-	transition: cubic-bezier(0.075, 0.2, 0.165, 0.12) .8s;
+	transition: cubic-bezier(0.075, 0.2, 0.165, 0.12) 0.8s;
 }
 
 .content-footer-left:hover .tag-dropdown,
@@ -1308,7 +1357,7 @@ body:has(#construction:hover) #paradox {
 	opacity: 0.5;
 }
 
-.sidebar-content>a {
+.sidebar-content > a {
 	display: flex;
 	color: #000;
 	text-decoration: none;
@@ -1345,7 +1394,7 @@ body:has(#construction:hover) #paradox {
 	font-size: 3rem;
 	margin-top: -9px;
 	margin-bottom: 0px;
-	margin-left: 10px
+	margin-left: 10px;
 }
 
 .index-item-image {
@@ -1417,6 +1466,10 @@ body:has(#construction:hover) #paradox {
 	display: flex;
 	align-items: center;
 	width: 100%;
+}
+
+.heading {
+	text-align: center;
 }
 
 #socials .heading {
@@ -1533,7 +1586,11 @@ body:has(#construction:hover) #paradox {
 	text-align: center;
 	max-height: 50px;
 	height: 50px;
-	background-image: linear-gradient(0deg, rgba(var(--ruby)), rgba(var(--surface-1)));
+	background-image: linear-gradient(
+		0deg,
+		rgba(var(--ruby)),
+		rgba(var(--surface-1))
+	);
 	opacity: 80%;
 	border-radius: 8px;
 }
@@ -1661,7 +1718,6 @@ body:has(#construction:hover) #paradox {
 }
 
 @media (max-width: 1323px) {
-
 	.container {
 		grid-template-columns: 1% 20% 58% 20% 1%;
 	}
@@ -1707,7 +1763,7 @@ body:has(#construction:hover) #paradox {
 		overflow-y: scroll;
 	}
 
-	.index-item+.new::after {
+	.index-item + .new::after {
 		right: -8px;
 		top: 18px;
 	}
@@ -1778,10 +1834,6 @@ body:has(#construction:hover) #paradox {
 		margin: 0;
 	}
 
-	.heading {
-		text-align: center;
-	}
-
 	.contact-section-container {
 		justify-content: center;
 		margin-left: -5px;
@@ -1832,7 +1884,6 @@ body:has(#construction:hover) #paradox {
 }
 
 @media (max-width: 940px) {
-
 	.sidebar-right {
 		grid-template-rows: 60px 2fr 2fr 70px;
 	}
@@ -1860,7 +1911,6 @@ body:has(#construction:hover) #paradox {
 		width: 270px;
 		min-width: 270px;
 	}
-
 }
 
 @media (max-width: 761px) {
@@ -1897,7 +1947,7 @@ body:has(#construction:hover) #paradox {
 		padding: 1px;
 	}
 
-	.index-item+.new::after {
+	.index-item + .new::after {
 		right: -8px;
 		top: 12px;
 	}
@@ -1920,9 +1970,11 @@ body:has(#construction:hover) #paradox {
 	#my-site,
 	#social-stuff,
 	#webrings {
-		background-image: linear-gradient(to left,
-				rgba(var(--ruby), 0.9),
-				rgba(var(--surface-1), 0.9));
+		background-image: linear-gradient(
+			to left,
+			rgba(var(--ruby), 0.9),
+			rgba(var(--surface-1), 0.9)
+		);
 	}
 
 	#webrings {
@@ -1942,7 +1994,7 @@ body:has(#construction:hover) #paradox {
 		margin: 6px;
 		height: 105%;
 		min-height: 56px;
-		margin-top: .6rem;
+		margin-top: 0.6rem;
 	}
 
 	.main-content {
@@ -1979,7 +2031,7 @@ body:has(#construction:hover) #paradox {
 		height: 48px;
 		margin: 0;
 		padding: 0;
-		margin-top: .3rem;
+		margin-top: 0.3rem;
 		margin-left: -0.4rem;
 	}
 
@@ -2024,14 +2076,12 @@ body:has(#construction:hover) #paradox {
 }
 
 @media (max-height: 818px) {
-
 	.sidebar-right {
 		overflow-y: scroll;
 	}
 }
 
 @media (max-height: 818px) and (min-width: 761px) {
-
 	#based-bnuy {
 		display: none;
 	}
@@ -2097,11 +2147,9 @@ body:has(#construction:hover) #paradox {
 	#badges {
 		display: none;
 	}
-
 }
 
 @media (min-width: 1323px) and (max-height: 818px) {
-
 	.sidebar-left {
 		grid-template-rows: auto 85px;
 	}
@@ -2116,7 +2164,6 @@ body:has(#construction:hover) #paradox {
 }
 
 @media (max-width: 761px) and (max-height: 600px) {
-
 	.sidebar-right {
 		grid-template-rows: 60px 2fr 2fr 70px;
 	}
@@ -2155,7 +2202,6 @@ body:has(#construction:hover) #paradox {
 }
 
 @media (max-height: 453px) {
-
 	.container {
 		grid-template-rows: 20% 62% 12% 3%;
 	}

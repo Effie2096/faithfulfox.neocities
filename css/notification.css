@@ -1,5 +1,5 @@
 :root {
-	--notification-width: 22 * 1rem;
+	--notification-width: 22rem;
 	--notification-height: 4;
 	--count-font-size: 1.4rem;
 }
@@ -8,7 +8,7 @@
 	position: absolute;
 	top: 0px;
 	right: 0px;
-	width: calc(var(--notification-width) + .2rem);
+	width: calc(var(--notification-width) + 0.2rem);
 	height: 0px;
 	z-index: 990;
 }
@@ -22,7 +22,7 @@
 
 .notification.history:hover {
 	cursor: var(--cursor-pointer);
-	scale: 1.01
+	scale: 1.01;
 }
 
 .notification.history:hover::before {
@@ -32,7 +32,7 @@
 	top: 0;
 	width: 100%;
 	height: 100%;
-	border-radius: .2rem;
+	border-radius: 0.2rem;
 	background-color: rgb(255, 135, 190, 0.5);
 	z-index: 991;
 }
@@ -46,7 +46,7 @@
 	transform: translate(50%, -50%);
 	font-size: 3rem;
 	z-index: 992;
-	color: rgb(230 40 60 / 100%)
+	color: rgb(230 40 60 / 100%);
 }
 
 .notification.history.removing::before,
@@ -58,11 +58,11 @@
 .notification-inner {
 	display: grid;
 	grid-template-rows: auto auto;
-	margin: .2rem;
+	margin: 0.2rem;
 	margin-left: auto;
-	padding: .3rem;
-	padding-left: .5rem;
-	border-radius: .2rem;
+	padding: 0.3rem;
+	padding-left: 0.5rem;
+	border-radius: 0.2rem;
 	overflow: hidden;
 }
 
@@ -90,11 +90,11 @@
 	grid-column-end: 3;
 	align-self: end;
 	justify-self: end;
-	padding-right: .2rem;
+	padding-right: 0.2rem;
 	text-align: right;
 
 	font-weight: 600;
-	font-size: .8rem;
+	font-size: 0.8rem;
 }
 
 .notification-body .notification-message-container {
@@ -104,17 +104,17 @@
 
 .notification.default .notification-inner {
 	background-color: rgba(var(--ruby), 0.8);
-	border-right: .3rem solid rgb(var(--ruby));
+	border-right: 0.3rem solid rgb(var(--ruby));
 }
 
 .notification.error .notification-inner {
 	background-color: rgba(242, 90, 90, 0.8);
-	border-right: .3rem solid rgb(236 19 19);
+	border-right: 0.3rem solid rgb(236 19 19);
 }
 
 .notification.info .notification-inner {
 	background-color: rgba(254, 243, 124, 0.8);
-	border-right: .3rem solid rgb(254 237 18);
+	border-right: 0.3rem solid rgb(254 237 18);
 }
 
 .notification .notification-title,
@@ -126,7 +126,7 @@
 
 .notification .notification-title::before {
 	font-family: "SymbolsNerdFont-Regular";
-	margin-right: .5rem;
+	margin-right: 0.5rem;
 }
 
 .notification.error .notification-title::before {
@@ -142,15 +142,15 @@
 }
 
 .notification.fade_on .notification-inner {
-	animation: notification_fade_on .5s ease-in;
+	animation: notification_fade_on 0.5s ease-in;
 }
 
 .notification.expand_on .notification-inner {
-	animation: notification_expand_on .5s ease-in;
+	animation: notification_expand_on 0.5s ease-in;
 }
 
 .notification.pop_on .notification-inner {
-	animation: notification_pop_on .5s ease-in;
+	animation: notification_pop_on 0.5s ease-in;
 }
 
 .notification.fade_off.removing .notification-inner {
@@ -241,17 +241,16 @@
 		opacity: 1;
 		width: calc(var(--notification-width));
 	}
-
 }
 
 @keyframes notification_pop_on {
-
 	0% {
-		transform: scale(0) translateX(calc(var(--notification-width))) translateY((calc(var(--notification-height) * -1rem)));
+		transform: scale(0) translateX(calc(var(--notification-width)))
+			translateY((calc(var(--notification-height) * -1rem)));
 	}
 
 	6% {
-		transform: scale(1.1) translateX(-.2rem) translateY(.2rem);
+		transform: scale(1.1) translateX(-0.2rem) translateY(0.2rem);
 	}
 
 	8%,
@@ -261,18 +260,18 @@
 }
 
 @keyframes notification_pop_off {
-
 	0% {
 		transform: scale(1);
 	}
 
 	2% {
-		transform: scale(1.1) translateX(-.2rem) translateY(.2rem);
+		transform: scale(1.1) translateX(-0.2rem) translateY(0.2rem);
 	}
 
 	6%,
 	100% {
-		transform: scale(0) translateX(calc(var(--notification-width))) translateY(calc(var(--notification-height) * -1rem));
+		transform: scale(0) translateX(calc(var(--notification-width)))
+			translateY(calc(var(--notification-height) * -1rem));
 	}
 }
 
@@ -282,18 +281,18 @@
 	top: 0;
 	right: 0;
 	grid-template-rows: auto auto;
-	width: calc(var(--notification-width) + .2rem);
-	padding-left: .2rem;
-	border-radius: .2rem;
+	width: calc(var(--notification-width) + 0.2rem);
+	padding-left: 0.2rem;
+	border-radius: 0.2rem;
 	background-color: rgba(255, 190, 255, 0.8);
 }
 
 #notification-buttons-container {
 	position: absolute;
 	bottom: -2.2rem;
-	right: .2rem;
+	right: 0.2rem;
 	display: flex;
-	gap: .2rem;
+	gap: 0.2rem;
 	width: var(--notification-width);
 }
 
@@ -375,7 +374,7 @@
 	width: var(--notification-width);
 	height: 0rem;
 	overflow: scroll;
-	transition: height .5s ease;
+	transition: height 0.5s ease;
 }
 
 #notification-history.active {
@@ -383,7 +382,9 @@
 	max-height: 50vh;
 }
 
-#notification-history.active~#notification-buttons-container #notification-clear-button {
+#notification-history.active
+	~ #notification-buttons-container
+	#notification-clear-button {
 	opacity: 1;
 	pointer-events: all;
 }
