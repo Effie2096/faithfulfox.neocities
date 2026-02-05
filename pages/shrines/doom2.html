@@ -6,9 +6,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Doom2</title>
 		<link href="/css/globals.css" rel="stylesheet">
+		<link href="/css/codeblock.css" rel="stylesheet">
+		<link href="/css/foldervis.css" rel="stylesheet">
 		<link href="/css/pages/shrines/doom2.css" rel="stylesheet">
 		<script src="/script/shrines/doom2.js"></script>
 		<script src="/script/shrines/doom2_music.js"></script>
+
+		<script src="/script/syntaxHighlight.js"></script>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const shellCode = document.querySelectorAll(".codeblock.shell > code");
+				shellCode.forEach((codeBlock) => {
+					syntaxHighlight(codeBlock, "shell");
+					});
+					});
+		</script>
 	</head>
 
 	<body>
@@ -18,24 +31,57 @@
 		<div id="container">
 
 			<div id="easteregg">
-				<img class="at-dooms-gate" src="/assets/img/shrines/doom2/doom-nightmare-at.png" alt="At">
-				<img class="at-dooms-gate" src="/assets/img/shrines/doom2/doom-nightmare-dooms.png" alt="Doom's">
-				<img class="at-dooms-gate" src="/assets/img/shrines/doom2/doom-nightmare-gate.png" alt="Gate">
+				<img class="at-dooms-gate"
+				     src="/assets/img/shrines/doom2/doom-nightmare-at.png"
+				     alt="At"
+				>
+				<img class="at-dooms-gate"
+				     src="/assets/img/shrines/doom2/doom-nightmare-dooms.png"
+				     alt="Doom's"
+				>
+				<img class="at-dooms-gate"
+				     src="/assets/img/shrines/doom2/doom-nightmare-gate.png"
+				     alt="Gate"
+				>
 			</div>
 
 			<div id="caco-container">
-				<img src="/assets/img/shrines/doom2/Cacodemon_sprite.png" alt="Cacodemon" id="cacodemon1" class="sprite cacodemon">
-				<img src="/assets/img/shrines/doom2/Cacodemon_sprite_pog.png" alt="Cacodemon" id="cacodemontuah" class="sprite cacodemon">
+				<img src="/assets/img/shrines/doom2/Cacodemon_sprite.png"
+				     alt="Cacodemon"
+				     id="cacodemon1"
+				     class="sprite cacodemon"
+				>
+				<img src="/assets/img/shrines/doom2/Cacodemon_sprite_pog.png"
+				     alt="Cacodemon"
+				     id="cacodemontuah"
+				     class="sprite cacodemon"
+				>
 			</div>
 
 			<div id="hellknight-container">
-				<img src="/assets/img/shrines/doom2/Hellknight_sprite.png" alt="Hellknight" id="hellknight" class="sprite hellknight">
-				<img src="/assets/img/shrines/doom2/Hellknight_sprite_pretty.png" alt="Hellknight" id="hellknightprincess" class="sprite hellknight">
+				<img src="/assets/img/shrines/doom2/Hellknight_sprite.png"
+				     alt="Hellknight"
+				     id="hellknight"
+				     class="sprite hellknight"
+				>
+				<img src="/assets/img/shrines/doom2/Hellknight_sprite_pretty.png"
+				     alt="Hellknight"
+				     id="hellknightprincess"
+				     class="sprite hellknight"
+				>
 			</div>
 
 			<div id="pinky-container">
-				<img src=" /assets/img/shrines/doom2/Doom_Demon.gif" alt="Pinky" id="pinky" class="sprite pinky">
-				<img src="/assets/img/shrines/doom2/pinkies.png" alt="Pinky" id="pinkies" class="sprite pinky">
+				<img src=" /assets/img/shrines/doom2/Doom_Demon.gif"
+				     alt="Pinky"
+				     id="pinky"
+				     class="sprite pinky"
+				>
+				<img src="/assets/img/shrines/doom2/pinkies.png"
+				     alt="Pinky"
+				     id="pinkies"
+				     class="sprite pinky"
+				>
 			</div>
 
 			<div id="content">
@@ -50,76 +96,45 @@
 					<button class="tablinks wip" onclick="openTab(event, 'mods')">
 						<img src="/assets/img/shrines/doom2/doom-bigupper-mods.png" alt="Mods">
 					</button>
-					<button class="tablinks soon">
+					<button class="tablinks wip" onclick="openTab(event, 'setup')">
 						<img src="/assets/img/shrines/doom2/doom-bigupper-setup.png" alt="Setup">
 					</button>
 				</div>
 				<div id="origins" class="tab-content">
 					<p>
-						I never played DOOM or DOOM II back when they came out (they came out before I was born
-						&gt;&lt;) or when growing up for that matter. My first experience playing them for the
-						first time was when my ebic friend <strong>
+						I never played DOOM or DOOM II back when they came out (they came out before I was born &gt;&lt;) or when growing up for that matter. My first experience playing them for the first time was when my ebic friend <b>
 							Annie
-						</strong>
-						just randomly decided we were
-						going to play it one time. She helped me get a couple mods and showed me how to run it all
-						using the Zandronum source port (I didn't know what the <i>f<span class="censor">uck</span></i>
-						that was at the time either lol) so we could play it
-						together. We used doomseeker iirc to play with each other and she hosted 'cause my
-						internet was (is) <i>a<span class="censor">ss</span></i>.
+						</b>
+						just randomly decided we were going to play it one time. She helped me get a couple mods and showed me how to run it all using the Zandronum source port (I didn't know what the <i>f<span class="censor">uck</span></i>
+						that was at the time either lol) so we could play it together. We used doomseeker iirc to play with each other and she hosted 'cause my internet was (is) <i>a<span class="censor">ss</span></i>.
 					</p>
 					<p>
-						All I remember was we had a cool hub world with npcs; We played some weird map where we
-						walked into a fleshy walled cavern that stuck with me and then we tried some wave defense
-						mode for a bit that we didn't last very long in lol.
+						All I remember was we had a cool hub world with npcs; We played some weird map where we walked into a fleshy walled cavern that stuck with me and then we tried some wave defense mode for a bit that we didn't last very long in lol.
 					</p>
 					<p>
-						One of the other mods she had me download was <strong>Brutal Doom</strong>
-						(ye, sounds
-						ebic), which I think we used in multiplayer (I still have a preset called "BrutalDoomSP"
-						for it in the launcher I use.. I feel like past me wouldn't have felt the need to specify
-						Single Player in the name if we <i>hadn't</i>
-						used it in multiplayer.. but then again I am
-						a bit of a tupid <i>b<span class="censor">itch</span></i>). This mod changes the gunplay
-						and adds sick, OTT blood effects, bullet projectiles, different animations and behaviour
-						for enemies.. it changes the game a lot despite not really adding much in the way of
-						content. It just makes the game feel way more like a modern FPS in such a satisfying way
-						that I think I can single handedly attribute my DOOM II modding addiction to this one mod.
+						One of the other mods she had me download was <b>Brutal Doom</b>
+						(ye, sounds ebic), which I think we used in multiplayer (I still have a preset called "BrutalDoomSP" for it in the launcher I use.. I feel like past me wouldn't have felt the need to specify Single Player in the name if we <i>hadn't</i>
+						used it in multiplayer.. but then again I am a bit of a tupid <i>b<span class="censor">itch</span></i>). This mod changes the gunplay and adds sick, OTT blood effects, bullet projectiles, different animations and behaviour for enemies.. it changes the game a lot despite not really adding much in the way of content. It just makes the game feel way more like a modern FPS in such a satisfying way that I think I can single handedly attribute my DOOM II modding addiction to this one mod.
 					</p>
-					<div style="background-color: rgb(168, 4, 18); color: black; padding: 5px;">
+					<div class="callout">
 						<p>
 							Quick aside: I <i>think</i>
-							there was some controversy about <strong>Brutal
-								Doom</strong>
+							there was some controversy about <b>Brutal Doom</b>
 							or rather the mod author being an <i>a<span class="censor">ss</span>hole</i>
-							and/or stealing from other mods? (do your own
-							research). Not gonna dwell on it here but some people let that sort of stuff influence
-							them so I thought I'd mention it. I personally don't care about that sort of stuff with
-							anything and don't let artists' personalities or actions influence my enjoyment of their
-							creatons if I can help it so ye I don't wanna hear it lmao.
+							and/or stealing from other mods? (do your own research). Not gonna dwell on it here but some people let that sort of stuff influence them so I thought I'd mention it. I personally don't care about that sort of stuff with anything and don't let artists' personalities or actions influence my enjoyment of their creatons if I can help it so ye I don't wanna hear it lmao.
 						</p>
 						<p>
-							smol aside aside: there's also just some DOOM purists who hate anything that changes the
-							core gameplay too much.. going as far as malding if you so much as have weapon reloading
-							in your game lmao.. ye I don't need to say much else on that.
+							smol aside aside: there's also just some DOOM purists who hate anything that changes the core gameplay too much.. going as far as malding if you so much as have weapon reloading in your game lmao.. ye I don't need to say much else on that.
 						</p>
 					</div>
 
 					<p style="margin-top: 20px;">Back to our scheduled reminiscing.</p>
 					<p>
-						<strong>Annie</strong>
-						was very busy around about the time she introduced me to the game
-						so we only played it once and in hindsight I really don't know why she decided we were
-						going to play DOOM because she's literally never played it again since I think and lowkey
-						bullies me on occasion to this day for playing it lmao.
+						<b>Annie</b>
+						was very busy around about the time she introduced me to the game so we only played it once and in hindsight I really don't know why she decided we were going to play DOOM because she's literally never played it again since I think and lowkey bullies me on occasion to this day for playing it lmao.
 					</p>
 					<p>
-						Fast forward a couple years now I guess and I unironically think DOOM II is the game I've
-						sank the most time into over the last like two years at the time of writing this.. so I
-						guess you could say I like the game. Again, the vanilla expericence is a bit dry and dated
-						on it's own tbh (although there's some novelty to playing it with just keyboard for a
-						little bit) but some of the mods for it, especially total conversions really help the core
-						gameplay flourish (wtf am I even saying at this point?).
+						Fast forward a couple years now I guess and I unironically think DOOM II is the game I've sank the most time into over the last like two years at the time of writing this.. so I guess you could say I like the game. Again, the vanilla expericence is a bit dry and dated on it's own tbh (although there's some novelty to playing it with just keyboard for a little bit) but some of the mods for it, especially total conversions really help the core gameplay flourish (wtf am I even saying at this point?).
 					</p>
 				</div>
 				<div id="mods" class="tab-content">
@@ -132,12 +147,10 @@
 							<span class="icon"></span>
 						</div>
 						<div class="collapsible-content">
-							<p>So.. I guess I'll start with <strong>Brutal Doom</strong>
+							<p>So.. I guess I'll start with <b>Brutal Doom</b>
 								:D</p>
 							<p>
-								This is by no means my favourite DOOM II mod but I gassed it up enough in the Origins
-								section and it was the first DOOM II mod I knew by name so I'll start there (also it's
-								just fun and kinda a precursor to some of my favourite mods in a way).
+								This is by no means my favourite DOOM II mod but I gassed it up enough in the Origins section and it was the first DOOM II mod I knew by name so I'll start there (also it's just fun and kinda a precursor to some of my favourite mods in a way).
 							</p>
 							<div class="media-container">
 								<div class="media-header">
@@ -150,17 +163,8 @@
 							</div>
 
 							<p>
-								<strong>Brutal Doom's</strong>
-								main features are the gunplay, ai and excessive gore!
-								Guns
-								have recoil now as well as actual projectiles. A lot of the weapons also have ADS (aim
-								down sights) now, and the ones that don't have an alternate fire mode. These do a lot
-								to
-								make the gunplay more satisfying and modern feeling I feel. There's also just a lot of
-								new
-								guns added and they've all been rebalanced to stay relevant throughout the game so
-								there's
-								more reason to swap weapons often.
+								<b>Brutal Doom's</b>
+								main features are the gunplay, ai and excessive gore! Guns have recoil now as well as actual projectiles. A lot of the weapons also have ADS (aim down sights) now, and the ones that don't have an alternate fire mode. These do a lot to make the gunplay more satisfying and modern feeling I feel. There's also just a lot of new guns added and they've all been rebalanced to stay relevant throughout the game so there's more reason to swap weapons often.
 							</p>
 
 							<div class="media-container">
@@ -174,29 +178,19 @@
 							</div>
 
 							<p>
-								My favourite weapon is the new double-barrel shotgun (it turns demons into soup :3).
-								It's
-								the epitome of everything good about this mod; the sound is <strong>huuge</strong>
-								and
-								impactful and it leaves a pile of entrails and gibs where the feeble demon before you
-								used
-								to stand :D.
+								My favourite weapon is the new double-barrel shotgun (it turns demons into soup :3). It's the epitome of everything good about this mod; the sound is <b>huuge</b>
+								and impactful and it leaves a pile of entrails and gibs where the feeble demon before you used to stand :D.
 							</p>
 
 							<p>
-								The enemies are "smarter" now and have more interesting behaviour and animations. You
-								can
-								also perform headshots on enemies now for more damage and they can be dismembered,
-								sawn
-								in
-								half and more! Come on down to the Gib-porium for all your Gibbing needs.
+								The enemies are "smarter" now and have more interesting behaviour and animations. You can also perform headshots on enemies now for more damage and they can be dismembered, sawn in half and more! Come on down to the Gib-porium for all your Gibbing needs.
 							</p>
 							<p style="text-align: center;">
 								...ye sorry.
 							</p>
 
 							<p>
-								But on that note. <strong>THE GORE!</strong>
+								But on that note. <b>THE GORE!</b>
 							</p>
 
 							<div class="media-container">
@@ -210,24 +204,11 @@
 							</div>
 
 							<p>
-								As you can probably tell, the blood and gore has been raised to a spectacular level in
-								this mod. The amount of blood is immediately noticeable but beyond that there's also
-								quite
-								impressive blood splatters, gibs and sprite interactions; blood, guts and limbs can be
-								seen dripping from the ceiling and running down walls when you decimate enemies.
-								Enemies
-								can also still be interacted with after death so corpses caught in the crossfire will
-								be
-								damaged further. Beyond this, there's also some gruesome death animations like some
-								zombies dropping to the floor and still fighting back.
+								As you can probably tell, the blood and gore has been raised to a spectacular level in this mod. The amount of blood is immediately noticeable but beyond that there's also quite impressive blood splatters, gibs and sprite interactions; blood, guts and limbs can be seen dripping from the ceiling and running down walls when you decimate enemies. Enemies can also still be interacted with after death so corpses caught in the crossfire will be damaged further. Beyond this, there's also some gruesome death animations like some zombies dropping to the floor and still fighting back.
 							</p>
 
 							<p>
-								It's worth mentioning I rarely (never) play with just a single mod, even with huge
-								total
-								conversions I tend to try my luck seeing what other small things I can get away with.
-								In
-								the gifs, the following recommended mods were used:
+								It's worth mentioning I rarely (never) play with just a single mod, even with huge total conversions I tend to try my luck seeing what other small things I can get away with. In the gifs, the following recommended mods were used:
 							</p>
 							<ul>
 								<li><a class="link external" href="https://www.moddb.com/mods/doom-hd1">
@@ -242,8 +223,7 @@
 							</ul>
 							<p></p>
 							<p>
-								I'll do my best to mention any other noteworthy mods like this even if they aren't the
-								focus.
+								I'll do my best to mention any other noteworthy mods like this even if they aren't the focus.
 							</p>
 						</div>
 					</div>
@@ -259,26 +239,15 @@
 
 						<div class="collapsible-content">
 							<p>
-								As the name suggests, Brutal Doom: Black Edition is based on Brutal Doom with the aim
-								of
-								being more dark and serious. It still retains some fast paced and over the top aspects
-								of Brutal Doom that are inspired by the newer Doom games, but more emphasis was placed
-								on maintaining original Doom's "evil and creepy atmosphere" as the author puts it.
+								As the name suggests, Brutal Doom: Black Edition is based on Brutal Doom with the aim of being more dark and serious. It still retains some fast paced and over the top aspects of Brutal Doom that are inspired by the newer Doom games, but more emphasis was placed on maintaining original Doom's "evil and creepy atmosphere" as the author puts it.
 							</p>
 							<p>
-								And that's it; it modernizes DOOM II a bit like regular Brutal Doom but just has a
-								really cool, darker atmosphere to it akin to what they were going for in Doom 3.
+								And that's it; it modernizes DOOM II a bit like regular Brutal Doom but just has a really cool, darker atmosphere to it akin to what they were going for in Doom 3.
 							</p>
 
-							<div style="background-color: rgb(168, 4, 18); color: black; padding: 5px;">
+							<div class="callout">
 								<p>
-									Unpopular opinion alert but I really liked Doom 3 because of the atmosphere but
-									probably along with everyone else I got bored of the game cause the gunplay kinda
-									sucked and there's not really enough of a draw from the narritive and story to drive
-									a
-									survival horror vibe which I think felt more like what they were going for with that
-									one. I like that Black Edition kinda gets that darker visual atmosphere but just
-									sticks to being a satisfying shooter still.
+									Unpopular opinion alert but I really liked Doom 3 because of the atmosphere but probably along with everyone else I got bored of the game cause the gunplay kinda sucked and there's not really enough of a draw from the narritive and story to drive a survival horror vibe which I think felt more like what they were going for with that one. I like that Black Edition kinda gets that darker visual atmosphere but just sticks to being a satisfying shooter still.
 								</p>
 								<p style="text-align: center;">anyway..</p>
 							</div>
@@ -297,18 +266,7 @@
 							</div>
 
 							<p>
-								As you can see in the gameplay, it is quite literally darker. It has several options
-								for
-								making the lighting dark and Black Edition comes with a flashlight for this reason. I
-								didn't have the sector lighting settings enabled though for the recording however I
-								was
-								also using D64ified and this makes the game noticibly darker for one reason or another
-								and I think it works well with Black Edition. The Doom64 textures are also widely
-								regarded as the better, grittier versions. There's also nice bloom and light effects
-								that aren't from just GZDoom and I'm not sure if that's from the HD texture pack or
-								the
-								fog effects mod. Therein lies the issue with using a load of mods with any game I
-								suppose; I'm not 100% sure of all the nuances of each mod lmao.
+								As you can see in the gameplay, it is quite literally darker. It has several options for making the lighting dark and Black Edition comes with a flashlight for this reason. I didn't have the sector lighting settings enabled though for the recording however I was also using D64ified and this makes the game noticibly darker for one reason or another and I think it works well with Black Edition. The Doom64 textures are also widely regarded as the better, grittier versions. There's also nice bloom and light effects that aren't from just GZDoom and I'm not sure if that's from the HD texture pack or the fog effects mod. Therein lies the issue with using a load of mods with any game I suppose; I'm not 100% sure of all the nuances of each mod lmao.
 							</p>
 
 							<ul>
@@ -338,12 +296,7 @@
 							<p></p>
 
 							<p>
-								Ye, after writing this I realised I didn't really have the fog effects turned up
-								enough
-								to be noticeable which maybe in general is a good thing but I turned the max fog up to
-								10
-								and enabled the random fog level and it makes for a cool atmosphere (10 is a bit high
-								though tbh).
+								Ye, after writing this I realised I didn't really have the fog effects turned up enough to be noticeable which maybe in general is a good thing but I turned the max fog up to 10 and enabled the random fog level and it makes for a cool atmosphere (10 is a bit high though tbh).
 							</p>
 
 							<div class="soul-divider">
@@ -353,6 +306,222 @@
 								<img src="/assets/img/const_barrier.gif" alt="">
 								<img src="/assets/img/const_hole.gif" alt="">
 								<img style="transform: rotateY(180deg);" src="/assets/img/const_barrier.gif" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="setup" class="tab-content">
+					<p>
+						Doom 2 can still be a lot of fun with a few mods! The experiences you can have on this game vary greatly from just making the game better to total conversions that completely make the game new :D
+					</p>
+					<p>
+						With that said, as is the case with many games, it can be a bit daunting starting from scratch and figuring out what you need and how to mod. So, I figured I'd write about how I mod the game in the hopes people will give it a try and enjoy the many things this game has to offer ^^
+					</p>
+					<p>
+						(Skip to the :Guide: section if you want links and setup instructions. Read any of the prior sections if there's something you're confused about the specific elements.)
+					</p>
+
+					<!-- Getting The Game -->
+					<div class="collapsible-container">
+						<div class="heading-container" onclick="toggleCollapsible(this)">
+							<div class="heading">
+								<!-- TODO: get images for these titles <Effie2096> -->
+								<!-- <img src="/assets/img/shrines/doom2/mods/doom-nightmare-brutal-doom.png" alt="Brutal Doom"> -->
+								<p>Getting The Game</p>
+							</div>
+							<span class="icon"></span>
+						</div>
+						<div class="collapsible-content">
+							<p>
+								To be able to play and mod Doom 2, you obviously need a copy of the game first.. However, it's a bit weird because, where with most games you just get the game, put mods in (and/or get a mod loader first), with doom and this setup all we really care about obtaining from the game are the data files called <b>WADs</b>.
+							</p>
+
+							<div class="callout">
+								<p>
+									<b>WAD</b>
+									is a file extension that stands for <b>W</b>here's <b>A</b>ll the <b>D</b>ata (or something like that lol). This is effectively just the assets, levels etc. for the game which would be loaded by the engine. There are two variants you might encounter; <b>IWAD</b>
+									and <b>PWAD</b>:
+								</p>
+								<ul>
+									<li>
+										<b>IWADs</b>
+										are <b>I</b>nternal <b>WADs</b>; these generally contain all the files the engine <i>needs</i>
+										to play the game. Base levels, sounds, graphics etc.
+									</li>
+									<li>
+										<b>PWADS</b>
+										are <b>P</b>atch <b>WADs</b>; these would have originally been how you modded the game by <i>"patching"</i>
+										on extra content :D
+									</li>
+								</ul>
+								<p>
+									Just know that if a source states something like <i>"get an IWAD"</i>
+									or <i>"put your IWAD in this folder"</i>, they mean the <b>DOOM2.WAD</b>
+									(or equivelent..)
+								</p>
+							</div>
+							<p>
+								You just need to source the <b>DOOM2.WAD</b>
+								file any way that suits you best. To my knowledge, if you buy the game off of steam/gog etc., you are able to go to the directory the game is installed and find the <b>.WAD</b>
+								there :D
+							</p>
+							<p>
+								<strong>OR</strong>
+							</p>
+							<p>
+								You can download <b>Freedoom</b>; a free/libre set of assets for the game.
+							</p>
+						</div>
+					</div>
+
+					<!-- Source Ports -->
+					<div class="collapsible-container">
+						<div class="heading-container" onclick="toggleCollapsible(this)">
+							<div class="heading">
+								<!-- TODO: get images for these titles <Effie2096> -->
+								<!-- <img src="/assets/img/shrines/doom2/mods/doom-nightmare-brutal-doom.png" alt="Brutal Doom"> -->
+								<p>Source Ports</p>
+							</div>
+							<span class="icon"></span>
+						</div>
+						<div class="collapsible-content">
+							<p>
+								<i>Why do we only care about an assets <b>.WAD</b>
+									file? How do we <strong>play</strong>
+									the game?</i>
+							</p>
+							<p>
+								Well, that's where a <b>source port</b>
+								comes in!
+							</p>
+
+							<div class="callout">
+								<p>
+									id Software actually released the source code to DOOM many moons ago lol so it's completely okay to just download and play the engine. It's just the assets that are proprietary :D and if we use something like <b>freedoom</b>
+									then you can legitemately play modded doom absolutely free &gt;&lt;
+								</p>
+							</div>
+
+							<p>
+								<b>Source Ports</b>
+								are the actual game engine we run. Although there are a variety of them, the only ones we care about for now are descendants of <b>ZDoom</b>.
+							</p>
+							<p>
+								The latest continuation of <b>ZDoom</b>
+								is <b>UZDoom</b>. Up until recently, the main one was GZDoom but some s<span class="censor">hit</span>
+								happened and now the main fork is UZDoom. We pass our <b>WADs</b>
+								and mods to UZDoom and boom we gaming!
+							</p>
+							<p>
+								A Source port gives us a bunch of benefits immediately like newer renderers such as Vulkan, mouse look and a bunch of other stuff. Even if you just ran UZDoom with DOOM.WAD, you'd already be having a considerably better (my opinion) time than just playing the original and we haven't even added any mods yet.
+							</p>
+							<p>
+								If you would like to try play DOOM2 with friends, there is also <b>Zandronum</b>. Along with it's variations, <b>Zandronum</b>
+								is another ZDoom fork with an emphasis on multiplayer. Unfortunately, because it's a seperate fork of ZDoom, you have to find mods that explicitely support Zandronum to use in multiplayer. The site claims it supports old ZDoom and GZDoom mods so ig it's just more recent modifications to GZDoom means newer mods may or may not work for both so that's something you have to check on a per mod basis ^^
+							</p>
+							<p>
+								The recommended and latest fork of Zandronum is <b>QZandronum</b>.
+							</p>
+						</div>
+					</div>
+
+					<!-- Launchers -->
+					<div class="collapsible-container">
+						<div class="heading-container" onclick="toggleCollapsible(this)">
+							<div class="heading">
+								<!-- TODO: get images for these titles <Effie2096> -->
+								<!-- <img src="/assets/img/shrines/doom2/mods/doom-nightmare-brutal-doom.png" alt="Brutal Doom"> -->
+								<p>Launchers</p>
+							</div>
+							<span class="icon"></span>
+						</div>
+						<div class="collapsible-content">
+							<p>
+								<i>I have a <b>source port</b>
+									and an <b>iwad</b>, erm how do I play the game?</i>
+							</p>
+							<p>
+								To play the game, the most basic setup you can have is to just put your IWADs in the same directory as the UZDoom executable, if you have mods, drag and drop them onto it, otherwise just run it.
+							</p>
+							<p>
+								However, there's a few problems with this..
+							</p>
+							<ul>
+								<li>
+									What if we want multiple, specific sets of mods? Selecting the correct ones every time is annoying and error prone.
+								</li>
+								<li>
+									Our save games and config will default to one location and be shared among all mod lists.
+								</li>
+							</ul>
+							<p>
+								ZDoom and it's predecessors can take command line parameters to specify all of these things. This means you can write very simple shell scripts for each of your mod lists/setups.
+							</p>
+							<div class="codeblock shell">
+								<h3 class="code-title">Shell</h3>
+								<code>
+									./uzdoom.exe -config "./Config.ini" -iwad "./DOOM2.WAD" -file "../path/to/mod.pk3" "../path/to/moremod.pk3" -savedir "../path/to/saves/"
+								</code>
+							</div>
+							<p>
+								...but that's annoying. I don't wanna write scripts, I wanna <b>GAME</b>.
+							</p>
+							<p>
+								That's where <b>Launchers</b>
+								come in :3
+							</p>
+							<p>
+								Launchers allow you to select your iwad, mods and maps and generally save them as presets to swap between them at will. The command required to play will be created for you and you can just run the game from the launcher. Although there are a few of these, my favourite is <b>Doom Runner</b>.
+							</p>
+						</div>
+					</div>
+
+					<!-- Guide -->
+					<div class="collapsible-container">
+						<div class="heading-container" onclick="toggleCollapsible(this)">
+							<div class="heading">
+								<!-- TODO: get images for these titles <Effie2096> -->
+								<!-- <img src="/assets/img/shrines/doom2/mods/doom-nightmare-brutal-doom.png" alt="Brutal Doom"> -->
+								<p>Guide</p>
+							</div>
+							<span class="icon"></span>
+						</div>
+						<div class="collapsible-content">
+							<p>
+								Right. Time for a setup guide :D Here I will cover:
+							</p>
+							<ul>
+								<li>Folder Structure/Staying Organized</li>
+								<li>IWADs</li>
+								<li>UZDoom</li>
+								<li>DoomRunner/Settings</li>
+							</ul>
+							<h2>Getting organized</h2>
+							<p>
+								It's <b>highly</b>
+								recommended you create separate folders for everything to make it easier to keep track of things. It can be tempting to just <i>throw everything in one folder and fix it later</i>.. but in my experience, later never comes, only regret and pain..
+							</p>
+							<div class="folderblock">
+								<pre>
+<span class="folder">DOOM2</span>
+┣ <span class="folder">IWADS</span>
+┃ ┣ <span class="file">DOOM2.WAD</span>
+┃ ┣ <span class="file">freedoom1.wad</span>
+┃ ┗ <span class="file">freedoom2.wad</span>
+┣ <span class="folder">launchers</span>
+┃ ┗ <span class="folder">DoomRunner</span>
+┃   ┗ <span class="exe">DoomRunner.exe</span>
+┣ <span class="folder">maps</span>
+┃ ┗ <span class="archive">map.(wad|pk3|zip)</span>
+┣ <span class="folder">mods</span>
+┃ ┗ <span class="folderfile">mod.(wad|pk3|zip|folder)</span>
+┗ <span class="folder">source_ports</span>
+  ┗ <span class="folder">zdoom</span>
+    ┣ <span class="folder">configs</span>
+    ┣ <span class="folder">data</span>
+    ┗ <span class="folder">uzdoom</span>
+      ┗ <span class="exe">uzdoom.exe</span>
+</pre>
 							</div>
 						</div>
 					</div>

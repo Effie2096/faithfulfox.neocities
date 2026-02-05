@@ -1,0 +1,60 @@
+:root {
+	--code-block-background: rgb(50, 52, 73);
+	--code-block-foreground: rgb(235, 250, 250);
+	--code-block-subtext: rgb(112, 129, 208);
+	--code-block-pink: rgb(242, 101, 181);
+	--code-block-purple: rgb(164, 140, 242);
+	--code-block-red: rgb(241, 108, 117);
+	--code-block-yellow: rgb(241, 252, 121);
+	--code-block-green: rgb(55, 244, 153);
+	--code-block-blue: rgb(4, 209, 249);
+}
+
+@font-face {
+	font-family: "IosevkaTermNF";
+	src: url("/assets/font/IosevkaTermNerdFont-Regular.ttf");
+}
+
+.folderblock {
+	background-color: var(--code-block-background);
+	border-radius: 10px;
+	padding: 1em;
+	padding-top: 0.5em;
+	margin-bottom: 1em;
+}
+
+.folderblock pre {
+	font-family: "IosevkaTermNF", monospace;
+	font-size: 1.1em;
+	color: var(--code-block-subtext);
+}
+
+.folderblock pre span {
+	color: var(--code-block-foreground);
+	margin-left: -0.24em;
+}
+
+.folderblock pre span::before {
+	margin-right: 0.2em;
+}
+
+.folderblock pre span.folder::before {
+	content: " ";
+	color: var(--code-block-yellow);
+}
+.folderblock pre span.file::before {
+	content: " ";
+	color: var(--code-block-foreround);
+}
+.folderblock pre span.exe::before {
+	content: " ";
+	color: var(--code-block-blue);
+}
+.folderblock pre span.archive::before {
+	content: " ";
+	color: var(--code-block-red);
+}
+.folderblock pre span.folderfile::before {
+	content: "󱧶 ";
+	color: var(--code-block-purple);
+}

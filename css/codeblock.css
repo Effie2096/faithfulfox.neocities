@@ -1,0 +1,88 @@
+:root {
+	--code-block-background: rgb(50, 52, 73);
+	--code-block-foreground: rgb(235, 250, 250);
+	--code-block-subtext: rgb(112, 129, 208);
+	--code-block-pink: rgb(242, 101, 181);
+	--code-block-purple: rgb(164, 140, 242);
+	--code-block-red: rgb(241, 108, 117);
+	--code-block-yellow: rgb(241, 252, 121);
+	--code-block-green: rgb(55, 244, 153);
+	--code-block-blue: rgb(4, 209, 249);
+}
+
+@font-face {
+	font-family: "IosevkaTermNF";
+	src: url("/assets/font/IosevkaTermNerdFont-Regular.ttf");
+}
+
+.codeblock {
+	background-color: var(--code-block-background);
+	border-radius: 10px;
+	padding: 1em;
+	padding-top: 0.5em;
+
+	display: grid;
+	grid-template-rows: auto auto;
+	margin-bottom: 1em;
+}
+
+.codeblock > code,
+.codeblock > pre,
+.codeblock > samp,
+.codeblock > var {
+	color: var(--code-block-foreground);
+	font-family: "IosevkaTermNF", monospace;
+	font-size: 1em;
+	margin: auto;
+	padding-left: 1em;
+	text-indent: -1em;
+	white-space: pre-wrap;
+}
+
+.codeblock > .code-title {
+	color: var(--code-block-foreground);
+	font-family: Consolas, sans-serif;
+	font-size: 1em;
+	padding: 0px;
+	padding-bottom: 0.2em;
+	margin: 0px;
+	pointer-events: none;
+	user-select: none;
+}
+
+.codeblock > code::before,
+.codeblock > pre::before,
+.codeblock > samp::before,
+.codeblock > var::before {
+	font-family: "IosevkaTermNF", monospace;
+	font-size: 1em;
+	pointer-events: none;
+	user-select: none;
+}
+
+.codeblock.shell > code::before,
+.codeblock.shell > pre::before,
+.codeblock.shell > samp::before,
+.codeblock.shell > var::before {
+	content: " ";
+	color: var(--code-block-purple);
+}
+
+.codeblock.shell > .code-title::before {
+	content: " ";
+	color: var(--code-block-green);
+	padding-right: 0.2em;
+	font-family: "IosevkaTermNF", monospace;
+}
+
+.syntax {
+	white-space: nowrap;
+}
+
+.codeblock .string {
+	color: var(--code-block-green);
+}
+
+.codeblock.shell .flag {
+	color: var(--code-block-subtext);
+}
