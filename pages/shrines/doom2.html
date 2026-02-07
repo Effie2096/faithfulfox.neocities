@@ -325,9 +325,7 @@
 					<div class="collapsible-container">
 						<div class="heading-container" onclick="toggleCollapsible(this)">
 							<div class="heading">
-								<!-- TODO: get images for these titles <Effie2096> -->
-								<!-- <img src="/assets/img/shrines/doom2/mods/doom-nightmare-brutal-doom.png" alt="Brutal Doom"> -->
-								<p>Getting The Game</p>
+								<img src="/assets/img/shrines/doom2/doom-nightmare-the-game.png" alt="The Game">
 							</div>
 							<span class="icon"></span>
 						</div>
@@ -378,9 +376,7 @@
 					<div class="collapsible-container">
 						<div class="heading-container" onclick="toggleCollapsible(this)">
 							<div class="heading">
-								<!-- TODO: get images for these titles <Effie2096> -->
-								<!-- <img src="/assets/img/shrines/doom2/mods/doom-nightmare-brutal-doom.png" alt="Brutal Doom"> -->
-								<p>Source Ports</p>
+								<img src="/assets/img/shrines/doom2/doom-nightmare-source-ports.png" alt="Source Ports">
 							</div>
 							<span class="icon"></span>
 						</div>
@@ -429,9 +425,7 @@
 					<div class="collapsible-container">
 						<div class="heading-container" onclick="toggleCollapsible(this)">
 							<div class="heading">
-								<!-- TODO: get images for these titles <Effie2096> -->
-								<!-- <img src="/assets/img/shrines/doom2/mods/doom-nightmare-brutal-doom.png" alt="Brutal Doom"> -->
-								<p>Launchers</p>
+								<img src="/assets/img/shrines/doom2/doom-nightmare-launchers.png" alt="Launchers">
 							</div>
 							<span class="icon"></span>
 						</div>
@@ -480,9 +474,7 @@
 					<div class="collapsible-container">
 						<div class="heading-container" onclick="toggleCollapsible(this)">
 							<div class="heading">
-								<!-- TODO: get images for these titles <Effie2096> -->
-								<!-- <img src="/assets/img/shrines/doom2/mods/doom-nightmare-brutal-doom.png" alt="Brutal Doom"> -->
-								<p>Guide</p>
+								<img src="/assets/img/shrines/doom2/doom-nightmare-guide.png" alt="Guide">
 							</div>
 							<span class="icon"></span>
 						</div>
@@ -496,11 +488,288 @@
 								<li>UZDoom</li>
 								<li>DoomRunner/Settings</li>
 							</ul>
-							<h2>Getting organized</h2>
+							<h2 class="heading">Getting organized</h2>
 							<p>
 								It's <b>highly</b>
 								recommended you create separate folders for everything to make it easier to keep track of things. It can be tempting to just <i>throw everything in one folder and fix it later</i>.. but in my experience, later never comes, only regret and pain..
 							</p>
+							<div class="folderblock">
+								<pre>
+<span class="folder">DOOM2</span>
+┣ <span class="folder">IWADS</span>
+┣ <span class="folder">launchers</span>
+┃ ┗ <span class="folder">DoomRunner</span>
+┣ <span class="folder">maps</span>
+┣ <span class="folder">mods</span>
+┣ <span class="folder">media</span>
+┃ ┗ <span class="folder">screenshots</span>
+┗ <span class="folder">source_ports</span>
+  ┗ <span class="folder">zdoom</span>
+    ┣ <span class="folder">configs</span>
+    ┗ <span class="folder">data</span>
+</pre>
+							</div>
+							<p>
+								This is the bare minimum folders we will work with. It's your call if you just wanna be lazy and throw it together or add more but this is basically what I have for now.
+							</p>
+
+							<h2 class="heading">Look at my WAD💰</h2>
+							<p>
+								Now we need the game assets. Either buy the game from your local store (steam, GOG, etc.) or download the IWADs from <a href="https://freedoom.github.io/" target="_blank">freedoom</a>.
+							</p>
+							<p>
+								If you buy the game, you can just go to the directory the game is installed in and find the IWADs. For steam, this should be as easy as going to your Library, right-click the game &gt; Manage &gt; Browse Local Files
+							</p>
+							<p>
+								I've never used GOG at the time of writing this so idk how to get to it from there haha but I'm sure it's similar.
+							</p>
+
+							<p>
+								Once you have obtained the goods, put them in the <b>IWADS</b>
+								folder you created :D
+							</p>
+
+							<div class="folderblock">
+								<pre>
+<span class="folder">DOOM2</span>
+┣ <span class="folder">IWADS</span>
+┃ ┣ <span class="file">DOOM2.WAD</span>
+┃ ┣ <span class="file">freedoom1.wad</span>
+┃ ┣ <span class="file">freedoom2.wad</span>
+┃ ┗ <span class="file">freedm.wad</span> (optional)
+...
+</pre>
+							</div>
+
+							<h2 class="heading">Engine🚂</h2>
+
+							<p>
+								Next up is UZDoom. You can download this from <a href="https://zdoom.org/downloads" target="_blank">ZDoom</a>
+								or <a href="https://github.com/uzdoom/uzdoom/releases" target="_blank">Github</a>.
+							</p>
+
+							<p>
+								Either way you will get a zip archive with the files. Unzip it and put it in the <i>source_ports/zdoom/<b>UZDoom-{version}/</b></i>
+							</p>
+							<div class="callout">
+								<p>
+									Note the version part; The archive will come named with the version you downloaded. I suggest you keep it like that and don't replace older versions with newer ones. As I mentioned earlier, G/UZDoom are actually quite elaborate at this point and enable a lot of new features that modders can take advantage of but this does mean that I have ran into mod setups working for older versions and crashing if I use a newer version so I just keep a couple versions around. They're quite small so I think it's ok.
+								</p>
+							</div>
+
+							<div class="folderblock">
+								<pre>
+<span class="folder">DOOM2</span>
+┣ <span class="folder">source_ports</span>
+┃ ┗ <span class="folder">zdoom</span>
+┃   ┣ <span class="folder">configs</span>
+┃   ┣ <span class="folder">data</span>
+┃   ┣ <span class="folder"></span>&lt;other versions (eventually)&gt;
+┃   ┗ <span class="folder">UZDoom-{version}</span>
+┃     ┣ <span class="file"></span>...
+┃     ┗ <span class="exe">uzdoom.exe</span>
+...
+</pre>
+							</div>
+
+							<h2 class="heading">Launcher</h2>
+
+							<p>
+								And finally, the launcher; <b>DoomRunner</b>.
+							</p>
+							<p>
+								You can download this also from <a href="https://github.com/Youda008/DoomRunner/releases" target="_blank">Github</a>.
+							</p>
+
+							<p>
+								This will just be an executable file but it will also be zipped. Unzip it and put it in <i>launchers/<b>DoomRunner/</b></i>.
+							</p>
+
+							<div class="folderblock">
+								<pre>
+<span class="folder">DOOM2</span>
+┣ <span class="folder">launchers</span>
+┃ ┗ <span class="folder">DoomRunner</span>
+┃   ┗ <span class="exe">DoomRunner.exe</span>
+...
+</pre>
+							</div>
+
+							<p>Run DoomRunner <b>NOW</b>!</p>
+							<p>There's a little bit of setup before we can actually start creating presets and playing. Don't worry about all the options yet.</p>
+							<p>At the top left, click "Menu" &gt; "Initial Setup" and a dialog will pop up.</p>
+
+							<p>
+								Under the Doom Engines, click the green (+) button and navigate to <i>source_ports/zdoom/UZDoom-{version}</i>
+								and select the uzdoom executable to add it. It will have opened another dialog where you can name the engine and change it's options. We want to:
+							</p>
+							<ul>
+								<li>Add/make sure the version is in the name. This will help you distinguish between them later.</li>
+								<li>Change the "Config Directory" to <b>source_ports/zdoom/configs</b></li>
+								<li>Change the "Data Directory" to <b>source_ports/zdoom/data</b></li>
+								<li>Make sure the "Engine Family" is ZDoom</li>
+							</ul>
+							<p>
+								Once you've done that, click ok and it'll be added to the list :D Any time in the future you want to add another version, repeat this step, just adding a new entry.
+							</p>
+							<p>
+								The other steps in this dialog are pretty self explanatory.
+							</p>
+							<ul>
+								<li>"Directory with community maps" &gt; browse to our "maps" folder.</li>
+								<li style="background-image: none;">(we don't have any maps yet but if we add the folder now and put them there they'll show up :D)</li>
+								<li>"Locate your IWADs" &gt; browse to our "IWADS" folder and also check "Auto-update IWAD list from directory"</li>
+							</ul>
+
+							<p>
+								It's worth noting here, in the Engine and IWAD lists, you can right-click an entry and select "Set As Default" to have them be selected for every new preset :D But it only saves you a couple clicks so up to you.
+							</p>
+
+							<p>and we're done with this dialog :D</p>
+							<p>
+								One final thing before we can make any presets. The main UI has tabs along the top. Click "Data Directories" and on this page, check "Use preset name" for Save dir and Demo dir. This will keep your saves in separate folders named after the presets. This ensures your auto saves of other presets aren't overwritten when preset hopping. You could also check the box for the Screenshot dir to keep them organized by preset, but a good setup to make it easier to browse and backup your media is to have just the saves separate and specify a shared "media" folder with a subfolder for screens respectively.
+							</p>
+							<p>
+								Unfortunately, only checking the "Use preset name" box is mirrored across all presets. Specifying a path has to be done for each preset (at the time of writing this). To work around this, thankfully there is a way to specify global arguments that will be applied to all presets.
+							</p>
+							<p>
+								Navigate back to the "Files" tab, and at the bottom of the page, there are a couple text boxes to add "Additional arguments". Put the following in the one marked "[global]":
+							</p>
+
+							<div class="codeblock shell">
+								<h3 class="code-title">Shell</h3>
+								<code>
+									-shotdir "..\..\..\media\screenshots"
+								</code>
+							</div>
+							<p>
+								This way, all presets will put their screenshots in the same folder and we only have to specify it once.
+							</p>
+							<div class="callout">
+								<p>
+									If all the paths having a load of dots and slashes is confusing you, it's because all the paths used in the commands need to be either absolute (relative to the root of the drive) <b>OR</b>
+									relative to where the engine executable is. If you've followed along, our uzdoom.exe is <b>three</b>
+									folders deep from our top level DOOM2 folder where we've set everything up. Hence the <b>three</b>
+									"..\" in the above flag. If you've deviated at all from my suggestions (which is totally fine), you might want to double check any relative paths are correct. ^^
+								</p>
+							</div>
+
+							<h2 class="heading">Presets</h2>
+
+							<p>
+								The doom runner ui is pretty self-explainatory also but I'll walk through making a default "Vanilla" preset seeing how we don't have any mods or maps yet. The sections are numbered:
+							</p>
+							<ol>
+								<li><b>Create Preset:</b>
+								Click the green (+) button and name it "Default" (or whatever you want). Make sure it's selected</li>
+								<li><b>Select Engine:</b>
+								From the drop down, select the UZDoom we added.</li>
+								<li><b>Select IWAD:</b>
+								Select DOOM2.WAD (or freedoom1.wad)</li>
+								<li><b>Select map pack:</b>
+								You would pick a map here once you get some.</li>
+								<li><b>Select Config:</b>
+								Navigate to your <b>source_ports/zdoom/configs</b>
+								folder and create a file called <i>Default.ini</i>. I like to name these the same as the preset name to avoid confusion. It should show up here now. Everytime you make a new preset you could repeat this step to create a clean new config, however we'll set some basic defaults in the aptly name "Default" config and use the "copy config" button next to the drop down with this config selected and name it the new Preset to carry over these defaults.
+								(that is if, s<span class="censor">hitty</span>
+								Windows would give it permission to create the files -.- try this, if it doesn't work ye just go to the folder and create a new one or copy the default and rename it..)</li>
+								<li><b>Add mods:</b>
+								You would click the "add a mode file" or "add a directory with an extracted mod" and select as many mods as you want here (again, if we had any).</li>
+							</ol>
+
+							<p>Now, you should be able to click "Launch" in the bottom right to play the game :D</p>
+
+							<div class="callout">
+								<p>
+									Once the game launches, click once or press a key to bring up the menu and go to options. We don't need to change much from the UZDoom defaults but if we want to be efficient (lazy), we don't want to set things we care about every time so it's better to have this "bare minimum base". You can skip this if you don't care and just hit new game and rip and tear~ &gt;&lt;
+								</p>
+								<ul>
+									<li><b>Player Setup:</b>
+									Set your Name and change any of the other setting you care about here.</li>
+									<li><b>Sound Options:</b>
+									Get your levels right. The default on my setup is <i>wayy</i>
+									too loud haha so ye it's very convenient setting this once. Might be worth getting in game to change these so you actually have continuous music to adjust.</li>
+									<li><b>Display Options:</b>
+									change any settings in here you want. There used to be more in here I'd change but the defaults became a bit better with UZDoom (looking at you texture filtering -.-) but ye some the settings aren't maxed in dynamic lights for example so look around in here.</li>
+									<li><b>Set Video Mode:</b>
+									here you can toggle fullscreen, set your max fps, vsync. At the bottom, choose a resolution preset or if your desired resolution isn't in there, set it manually then click "Apply Changes" with your desired windowed mode.</li>
+								</ul>
+								<p>
+									Anything else you'd want to change for specific use cases per preset.
+								</p>
+							</div>
+
+							<p>Your settings will be saved to the config when you exit the game.</p>
+
+							<p>Buuut..</p>
+							<p>You now have a working doom setup!🥳</p>
+
+							<p>
+								From here, obviously you're gonna want to get some mods. Because as much as I kind of find old games charming and novel, barebones doom is a bit hard to stick with for long haha.
+							</p>
+
+							<h2 class="heading">Adding Mods</h2>
+
+							<p>
+								In the files tab, same as before make a new Preset and name it "Project Brutality 3.0" or PB3 or whatever. In the config section, select the Default config and click the copy button to the right and change the name to be the same as the preset.
+							</p>
+
+							<p>
+								Now download the following mods and put them in the <b>mods</b>
+								folder.
+							</p>
+							<ul>
+								<li><a class="link external" href="https://www.moddb.com/mods/project-brutality/downloads/project-brutality-3">Download Project Brutality - ModDB</a></li>
+								<li><a class="link external" href="https://www.moddb.com/mods/brutal-doom/addons/catsvisor-hud-12-for-bd21-more-widescreen">Download CatsVisor HUD 1.10.11 - ModDB</a></li>
+								<li><a class="link external" href="https://www.moddb.com/mods/corruption-cards/downloads/corruptioncards-v63b">Download CorruptionCards v6.3b - ModDB</a></li>
+								<li><a class="link external" href="https://www.moddb.com/mods/brutal-doom/addons/doom-ii-metal-soundtrack-addon">Download Doom II Metal Soundtrack Addon - ModDB</a></li>
+								<li><a class="link external" href="https://github.com/Boondorl/Universal-Weapon-Sway">Universal Weapon Sway - GitHub</a></li>
+							</ul>
+							<p>
+								Of course these go in the "mods" folder, however I also suggest having categorized sub folders in mods which I regret not doing now that I have several hundred mods, some of which the names give me no indicationn as to what the heck they are lmao. So, again if you can be bothered, I suggest:
+							</p>
+							<ul>
+								<li>Make folders for mod categories</li>
+								<li>rename mods if the file downloaded is abreviated beyond future you's comprehension lmao</li>
+							</ul>
+
+							<div class="folderblock">
+								<pre>
+<span class="folder">DOOM2</span>
+┣ <span class="folder">mods</span>
+┃ ┣ <span class="folder">hud</span>
+┃ ┃ ┣ <span class="file">CatsVisorBASE1.10.11.pk3</span>
+┃ ┃ ┗ <span class="file">CatsVisorC.10.11_dynamic.pk3</span>
+┃ ┣ <span class="folder">gameplay</span>
+┃ ┃ ┣ <span class="file">Project_Brutality.pk3</span>
+┃ ┃ ┣ <span class="file">CorruptionCards-v6.3b.pk3</span>
+┃ ┃ ┗ <span class="folderfile">Universal-Weapon-Sway-master.(zip|folder)</span>
+┃ ┗ <span class="folder">music</span>
+┃   ┗ <span class="file">DoomIImetalost.wad</span>
+...
+</pre>
+							</div>
+
+							<div class="callout">
+								<p>
+									You may notice there are a variety of file types here, one of which I've even noted it could be zip or a folder (depending on how you get it). Well there is the original wad format; this the the <b>PWADs</b>
+									I mentioned earlier. These are the original mod format if I'm not mistaken. However, UZDoom also supports loading <b>.zip</b>
+									archives as well as folders so we can add those to doomrunner. But what about .pk3? These are actually the most common format you'll find doom2 mods in these days and you'd be forgiven for thinking this is some specific format because that was the point; .pk3 files are in fact <i>literally</i>
+									renamed .zip files.. people started doing this long ago so that users weren't tempted or thought they had to extract their zipped mods and because .pk3 was made the f<span class="censor">uck</span>
+									up, that guaranteed peoples archiving software wouldn't offer to open these :D and ye because compressed archives are just, well, compressed files and folders it need no explaining that you can just add a directory containing an uncompressed mod and that will load all the same ^^
+								</p>
+							</div>
+
+							<p>
+								And while we're at it let's get a map.
+							</p>
+							<ul>
+								<li><a class="link external" href="https://www.moddb.com/games/doom-ii/downloads/eday-vanilla-for-vanilla-and-mods">Download EDAY 2019 Vanilla Finalized - ModDB</a></li>
+							</ul>
+							<p>And yes this goes in the <b>maps</b>
+								folder.</p>
+
+							<h2 class="heading">Final Folder Structure</h2>
 							<div class="folderblock">
 								<pre>
 <span class="folder">DOOM2</span>
@@ -512,9 +781,19 @@
 ┃ ┗ <span class="folder">DoomRunner</span>
 ┃   ┗ <span class="exe">DoomRunner.exe</span>
 ┣ <span class="folder">maps</span>
-┃ ┗ <span class="archive">map.(wad|pk3|zip)</span>
+┃ ┗ <span class="archive">EDAY VANILLA .pk3</span>
 ┣ <span class="folder">mods</span>
-┃ ┗ <span class="folderfile">mod.(wad|pk3|zip|folder)</span>
+┃ ┣ <span class="folder">hud</span>
+┃ ┃ ┣ <span class="file">CatsVisorBASE1.10.11.pk3</span>
+┃ ┃ ┗ <span class="file">CatsVisorC.10.11_dynamic.pk3</span>
+┃ ┣ <span class="folder">gameplay</span>
+┃ ┃ ┣ <span class="file">Project_Brutality.pk3</span>
+┃ ┃ ┣ <span class="file">CorruptionCards-v6.3b.pk3</span>
+┃ ┃ ┗ <span class="folderfile">Universal-Weapon-Sway-master.(zip|folder)</span>
+┃ ┗ <span class="folder">music</span>
+┃   ┗ <span class="file">DoomIImetalost.wad</span>
+┣ <span class="folder">media</span>
+┃ ┗ <span class="folder">screenshots</span>
 ┗ <span class="folder">source_ports</span>
   ┗ <span class="folder">zdoom</span>
     ┣ <span class="folder">configs</span>
@@ -523,9 +802,25 @@
       ┗ <span class="exe">uzdoom.exe</span>
 </pre>
 							</div>
+
+							<p>
+								Now back in doom runner, under the "Add Mods" section, you can click the "add a mod file" or "add a directory with an extracted mod" buttons to add the mods obviously. But this list also dictates the load order of your mods which can matter.
+							</p>
+
+							<p>
+								As a rule of thumb, you want your main mod at the top (main generally being the mod that changes the most/what you're basing the list off of), then you want mods that add new content, gameplay and textures. After that you can put music and sounds. Then finally hud mods tend to be best last. We have so few mods here you could get away with any order probably but as you add more, you may run into problems.
+							</p>
+
+							<p>
+								And that's it :D I could get into specific setting for these mods but honestly they're personal preference and this is already long enough lmao so ya
+							</p>
+							<p>
+								Happy Modding. Hope you have fun Mwah~<br>(check the mods tab for more mod recommendations &gt;&lt;)
+							</p>
 						</div>
 					</div>
 				</div>
+				<!-- end setup -->
 			</div>
 		</div>
 		<div id="hud">

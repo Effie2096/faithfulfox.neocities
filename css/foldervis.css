@@ -27,6 +27,10 @@
 	font-family: "IosevkaTermNF", monospace;
 	font-size: 1.1em;
 	color: var(--code-block-subtext);
+	pointer-events: none;
+	-moz-pointer-events: none;
+	user-select: none;
+	-moz-user-select: none;
 }
 
 .folderblock pre span {

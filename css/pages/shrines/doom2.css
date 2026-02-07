@@ -506,7 +506,7 @@ body::after {
 	scrollbar-width: none;
 }
 
-#content :is(h1, h2, h3, h4, h5, h6) {
+#content .heading {
 	font-family: "IBM-DOS-ISO9";
 	font-style: normal;
 	font-weight: 600;
@@ -516,7 +516,8 @@ body::after {
 }
 
 #content p,
-#content li {
+#content li,
+#content ol {
 	font-family: "IBM-DOS-ISO9";
 	/* font-optical-sizing: auto; */
 	font-style: normal;
@@ -528,12 +529,13 @@ body::after {
 }
 
 #content p,
-#content ul {
+#content ul,
+#content ol {
 	margin-bottom: 1rem;
 }
 
 #content p,
-#content :is(h1, h2, h3, h4, h5, h6) {
+#content .heading {
 	padding: 0.5rem 0.5rem;
 }
 
@@ -544,16 +546,18 @@ body::after {
 
 #content ul {
 	padding-right: 0.5rem;
-	margin-left: 0.5em;
 }
 
-#content li {
+#content ul li {
 	list-style: none;
 	padding: 0px 1.8em;
 	background-image: url("/assets/img/shrines/doom2/lost_soul/Lost_Soul_diag.png");
 	background-repeat: no-repeat;
-	background-position: left center;
+	background-position: left top -0.3em;
 	background-size: 1.5em;
+}
+#content ol {
+	padding-left: 1.7em;
 }
 
 .callout {
@@ -646,7 +650,7 @@ body::after {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-iframe {
+.video-wrapper iframe {
 	position: absolute;
 	top: 0;
 	left: 50%;
@@ -950,23 +954,18 @@ iframe {
 
 	#content {
 		width: 100%;
-		/* max-width: fit-content; */
 	}
 
-	/* #caco-container, */
-	/* #pinky-container { */
-	/* 	right: 8%; */
-	/* } */
+	.mod-widgets iframe {
+		transform: scale(0.6);
+		-webkit-transform: scale(0.6);
+	}
 }
 
 @media (max-width: 554px) {
 	:root {
 		font-size: 11px;
 	}
-
-	/* #easteregg img { */
-	/* 	height: 9rem; */
-	/* } */
 
 	#hud-left,
 	#hud-right {

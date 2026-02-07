@@ -33,7 +33,6 @@
 	color: var(--code-block-foreground);
 	font-family: "IosevkaTermNF", monospace;
 	font-size: 1em;
-	margin: auto;
 	padding-left: 1em;
 	text-indent: -1em;
 	white-space: pre-wrap;
@@ -47,7 +46,9 @@
 	padding-bottom: 0.2em;
 	margin: 0px;
 	pointer-events: none;
+	-moz-pointer-events: none;
 	user-select: none;
+	-moz-user-select: none;
 }
 
 .codeblock > code::before,
@@ -57,7 +58,9 @@
 	font-family: "IosevkaTermNF", monospace;
 	font-size: 1em;
 	pointer-events: none;
+	-moz-pointer-events: none;
 	user-select: none;
+	-moz-user-select: none;
 }
 
 .codeblock.shell > code::before,
