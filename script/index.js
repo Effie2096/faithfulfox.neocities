@@ -32,21 +32,13 @@ function toggleActive(element) {
 }
 
 function toggleChat() {
-	var chatContainer = document.getElementById("chatbox");
-	var chatButton = document.getElementById("chat-btn");
+	var chatBtnContainer = document.getElementById("chat-btn-container");
+	var chatContainer = document.getElementById("chat-container");
 	var chatButtonIcon = document.querySelector("#chat-btn span.icon");
-	const stylea = "10px 10px 0px 0px";
-	const styleb = "10px 10px 10px 10px";
-	chatContainer.style.height =
-		chatContainer.style.height === "0px" ? "450px" : "0px";
-	chatButton.style.borderRadius =
-		chatButton.style.borderRadius === stylea ? styleb : stylea;
+	toggleActive(chatBtnContainer);
+	toggleActive(chatContainer);
 	chatButtonIcon.textContent = chatButtonIcon.textContent === "" ? "" : "";
 }
-
-window.onload = () => {
-	document.getElementById("chatbox").style.height = "0px";
-};
 
 document.addEventListener("DOMContentLoaded", () => {
 	const postObserver = new MutationObserver((mutations) => {

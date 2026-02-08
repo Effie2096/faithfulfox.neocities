@@ -96,20 +96,7 @@ body {
 	right: 50%;
 	bottom: 0;
 	width: 300px;
-	background-image: linear-gradient(
-		to right,
-		#d20f39,
-		#fe640b,
-		#df8e1d,
-		#40a02b,
-		#04a5e5,
-		#8839ef
-	);
 	background-size: 400% 400%;
-	animation:
-		rainbow 5s ease infinite,
-		rainbow-reverse 5s ease infinite;
-	animation-delay: 0s, 5s;
 	text-align: center;
 	border-radius: 10px;
 	margin-bottom: -38px;
@@ -166,26 +153,6 @@ body {
 	font-size: 0.8rem;
 }
 
-@keyframes rainbow {
-	0% {
-		background-position: 0% 0%;
-	}
-
-	100% {
-		background-position: 100% 100%;
-	}
-}
-
-@keyframes rainbow-reverse {
-	0% {
-		background-position: 100% 100%;
-	}
-
-	100% {
-		background-position: 0% 0%;
-	}
-}
-
 .chat-stuff {
 	position: absolute;
 	margin: 10px;
@@ -206,12 +173,15 @@ body {
 	z-index: 901;
 }
 
+#chat-container.chat-stuff.active > #chatbox {
+	height: 450px;
+}
+
 #chat-btn {
 	margin: 0px;
 	border: none;
 	border-radius: 10px 10px 10px 10px;
 	cursor: var(--cursor-pointer);
-	background-color: rgb(var(--ruby));
 	font-size: 1.3rem;
 	-webkit-transition: 0s;
 	-moz-transition: 0s;
@@ -226,6 +196,57 @@ body {
 	-ms-transition: 0.2s;
 	-o-transition: 0.2s;
 	transition: 0.2s;
+}
+
+#chat-btn-container.chat-stuff.active > #chat-btn {
+	border-radius: 10px 10px 10px 10px;
+}
+
+.attention {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	background-size: 100% 100%;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+.attention.arrow {
+	background-image: url("/assets/img/red_arrow.png");
+}
+
+#chat-btn-container.chat-stuff.active > .attention.arrow {
+	display: none;
+}
+
+.rainbow-bg {
+	animation: rainbow-bg 2.5s linear;
+	animation-iteration-count: infinite;
+}
+
+@keyframes rainbow-bg {
+	100%,
+	0% {
+		background-color: rgb(210 15 57);
+	}
+	10% {
+		background-color: rgb(254 100 11);
+	}
+	20% {
+		background-color: rgb(223 142 29);
+	}
+	40% {
+		background-color: rgb(64 160 43);
+	}
+	60% {
+		background-color: rgb(4 165 229);
+	}
+	80% {
+		background-color: rgb(136 57 239);
+	}
 }
 
 #pet {
@@ -2063,8 +2084,6 @@ body:has(#construction:hover) #paradox {
 
 	.chat-stuff {
 		margin: 5px;
-		left: 50%;
-		transform: translateX(-50%);
 	}
 }
 
