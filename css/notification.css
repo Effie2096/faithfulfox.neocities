@@ -293,7 +293,6 @@
 	right: 0.2rem;
 	display: flex;
 	gap: 0.2rem;
-	width: var(--notification-width);
 }
 
 #notification-count-button,
@@ -304,14 +303,12 @@
 	width: 2rem;
 	height: 2rem;
 	cursor: var(--cursor-pointer);
-	opacity: 0;
-	pointer-events: none;
+	display: none;
 }
 
 #notification-count-button.active,
 #notification-clear-button.active {
-	opacity: 1;
-	pointer-events: all;
+	display: block;
 }
 
 #notification-count,
@@ -343,24 +340,17 @@
 
 #notification-count,
 #notification-check {
-	opacity: 0;
-	pointer-events: none;
+	display: none;
 }
 
 #notification-count.active,
-#notification-check.active {
-	opacity: 1;
-	pointer-events: all;
+#notification-check.active,
+#notification-clear.active {
+	display: block;
 }
 
 #notification-count {
 	font-family: "Monaspace-Neon-Frozen";
-}
-
-#notification-count.active,
-#notification-clear.active {
-	opacity: 1;
-	pointer-events: all;
 }
 
 #notification-clear-button #notification-clear {
@@ -385,6 +375,5 @@
 #notification-history.active
 	~ #notification-buttons-container
 	#notification-clear-button {
-	opacity: 1;
-	pointer-events: all;
+	display: block;
 }
