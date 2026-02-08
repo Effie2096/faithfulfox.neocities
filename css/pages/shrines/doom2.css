@@ -506,7 +506,7 @@ body::after {
 	scrollbar-width: none;
 }
 
-#content .heading {
+#content .sub-heading {
 	font-family: "IBM-DOS-ISO9";
 	font-style: normal;
 	font-weight: 600;
