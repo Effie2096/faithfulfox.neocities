@@ -15,14 +15,14 @@
 	background-color: rgb(115, 171, 171);
 }
 
-#backlink>a {
+#backlink > a {
 	text-decoration: none;
 	color: rgb(255, 255, 0);
 	font-size: 24px;
 	margin: 10px;
 }
 
-#backlink>a::before {
+#backlink > a::before {
 	content: "<";
 	margin-right: 5%;
 }
@@ -47,7 +47,7 @@ body {
 	margin: auto;
 }
 
-.header>* {
+.header > * {
 	padding: 10px 10px;
 }
 
@@ -157,9 +157,6 @@ body {
 	overflow-x: hidden;
 	scrollbar-width: none;
 	height: calc(100% - 4px);
-	flex-basis: 100%;
-	flex-grow: 1;
-	flex-shrink: 0;
 	background-color: rgba(0, 0, 0, 0.8);
 	border-radius: 0rem 0.3rem 0.3rem 0rem;
 	position: absolute;
@@ -171,7 +168,7 @@ body {
 }
 
 .card:hover .content-warnings,
-.content-warning.warning.active+.content-warnings {
+.content-warning.warning.active + .content-warnings {
 	width: 2.8rem;
 	transition-delay: 0.2s;
 }
@@ -292,7 +289,8 @@ body {
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
-	filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1)) contrast(1.2) brightness(10) drop-shadow(0 0 10px rgba(255, 255, 255, 1)) hue-rotate(90deg) blur(5px);
+	filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1)) contrast(1.2) brightness(10)
+		drop-shadow(0 0 10px rgba(255, 255, 255, 1)) hue-rotate(90deg) blur(5px);
 	/* transform: scale(1.1); */
 	z-index: -1;
 }

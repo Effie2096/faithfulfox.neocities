@@ -842,9 +842,29 @@ body:has(#construction:hover) #paradox {
 	font-size: 2rem;
 }
 
-.content-card p {
+.content-card :is(p, h3, h4, h5, h6) {
 	margin-bottom: 20px;
 	padding-left: 5px;
+}
+
+.content-card :is(h3, h4, h5, h6) {
+	font-family: "Monocraft", Arial, sans-serif;
+}
+
+.content-card h3 {
+	font-size: 1.9rem;
+}
+.content-card h4 {
+	font-size: 1.8rem;
+}
+.content-card h5 {
+	font-size: 1.7rem;
+}
+.content-card h6 {
+	font-size: 1.6rem;
+}
+
+.content-card p {
 	text-align: justify;
 	text-justify: inter-character;
 	font-size: 1.5rem;
@@ -1057,10 +1077,16 @@ body:has(#construction:hover) #paradox {
 }
 
 .content-body.active {
-	max-height: 10000px;
+	max-height: 50vh;
 	transition-property: max-height;
-	transition-duration: 1.8s;
+	transition-duration: 0.2s;
 	transition-timing-function: ease;
+	overflow-y: scroll;
+
+	padding-right: 20px;
+	margin-right: -15px;
+
+	scrollbar-width: initial;
 }
 
 .censor {

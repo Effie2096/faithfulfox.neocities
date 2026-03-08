@@ -20,7 +20,7 @@ function toggleSidebarRight() {
 }
 
 function addCensor(element) {
-	element.querySelectorAll(".censor").forEach((censor) => {
+	element.querySelectorAll(".censor, .spoiler").forEach((censor) => {
 		censor.addEventListener("click", () => {
 			toggleActive(censor);
 		});
