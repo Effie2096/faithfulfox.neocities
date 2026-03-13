@@ -10,6 +10,8 @@ script/
 zased/
 "
 
+site_dir="site/"
+
 Color_Off="\033[0m"
 declare -A colors=(
 	["Black"]="\033[0;30m"
@@ -42,10 +44,9 @@ notify() {
 }
 
 copy_static_files() {
-	site_folder="site/"
 	for file in $static_files; do
-		notify "copying ${file} to ${site_folder}"
-		cp --recursive --update --preserve --force "$file" "$site_folder"
+		notify "copying ${file} to ${site_dir}"
+		cp --recursive --update --preserve --force "$file" "$site_dir"
 	done
 }
 
@@ -55,7 +56,39 @@ call_script() {
 	depth=$((depth - 1))
 }
 
-call_script ./badges_page.sh
+notify "Generating Badges Page..."
+
+badges80="assets/img/badges/80x15/"
+badges150="assets/img/badges/150x20/"
+badges88="assets/img/badges/88x31/"
+stamps="assets/img/badges/stamps/"
+
+badges_file=$site_dir"/pages/badges.html"
+
+# make folder and file if doesn't exist
+if [ ! -d "$site_dir" ]; then
+    notify "creating $badges_file" "info"
+    mkdir -p "$site_dir" && touch "$badges_file"
+fi
+
+# always clear file
+true > $badges_file
+
+add_images() {
+    path=$1
+    id=$2
+    echo "<div id=\"$id\" class=\"badge-box\">" >> $badges_file
+    for badge in "$path"*; do
+        echo "<img src=\"/$path${badge##*/}\" alt=\"${badge##*/}\" onmouseover=\"tooltip(this, '${badge##*/}')\" loading=\"lazy\">" >> $badges_file
+    done
+    echo '</div>' >> $badges_file
+    echo '<hr/>' >> $badges_file
+}
+
+add_images $badges80 "smol"
+add_images $badges150 "skinny"
+add_images $badges88 "normal"
+add_images $stamps "stamps"
 copy_static_files
 
 notify "Build Complete" "success"
