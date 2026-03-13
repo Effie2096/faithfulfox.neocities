@@ -811,9 +811,30 @@ body:has(#construction:hover) #paradox {
 .content-card {
 	background-color: rgba(var(--surface-2), 0.6);
 	padding: 20px;
-	border: 1px solid rgba(var(--surface-2), 0.6);
 	border-radius: 10px;
 	margin-bottom: 10px;
+	position: relative;
+}
+
+.content-warnings {
+	left: unset;
+	right: 0;
+	border-radius: 0.3rem 0 0.3rem 0;
+	min-height: 2.5rem;
+	top: 2.5rem;
+	max-height: calc(100% - 2.5rem);
+	height: fit-content;
+	background-color: rgba(var(--ruby), 0.8);
+}
+.content-warning.warning {
+	border-radius: 0px 10px 0px 0px;
+	background-color: unset;
+}
+
+.content-warning.warning:hover + .content-warnings,
+.content-warnings:hover {
+	width: 2.8rem;
+	transition-delay: 0.2s;
 }
 
 .content-head {
@@ -1475,7 +1496,7 @@ body:has(#construction:hover) #paradox {
 .contact-section {
 	position: relative;
 	margin-top: 5px;
-	margin-right: 10px;
+	margin-right: 8px;
 }
 
 .contact-label {
