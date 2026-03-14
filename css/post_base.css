@@ -1,0 +1,30 @@
+@import url("/css/globals.css");
+
+:root {
+	--ruby: 205, 120, 170;
+	--surface-1: 219, 132, 55;
+	--surface-2: 193, 255, 155;
+
+	font-size: 1em;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 40rem;
+	margin: auto;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: 1rem;
+}

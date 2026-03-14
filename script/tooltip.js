@@ -5,7 +5,7 @@ function tooltip(element, text, icon) {
 	const tooltip = createTooltip(text, icon);
 
 	document.getElementsByTagName("body")[0].appendChild(tooltip);
-	tooltip.style.left = `${pos.left - tooltip.getBoundingClientRect().width / 2 + pos.width / 2}px`;
+	tooltip.style.left = `${pos.left - tooltip.getBoundingClientRect().width / 2 + pos.width / 2 + window.scrollX}px`;
 	const closeToTop = pos.top < window.innerHeight / 6;
 
 	if (closeToTop) {
@@ -15,7 +15,7 @@ function tooltip(element, text, icon) {
 	const topPos = closeToTop
 		? pos.top + pos.height + 15
 		: pos.top - tooltip.getBoundingClientRect().height - 15;
-	tooltip.style.top = `${topPos}px`;
+	tooltip.style.top = `${topPos + window.scrollY}px`;
 
 	if (
 		tooltip.getBoundingClientRect().x + tooltip.getBoundingClientRect().width >

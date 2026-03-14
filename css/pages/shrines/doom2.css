@@ -605,6 +605,11 @@ body::after {
 	overflow-x: hidden;
 }
 
+.video-wrapper {
+	position: relative;
+	width: 99%;
+	padding-bottom: 56.25%;
+}
 .media-container {
 	background-color: rgba(168, 51, 74, 0.5);
 	width: 100%;

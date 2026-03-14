@@ -1,4 +1,6 @@
 import { CopyToClipboard, copyFile } from "./CopyToClipboard.js";
+import { censorElementDescendants } from "./censor.js";
+import { toggleActive } from "./globals.js";
 import {
 	notificationClearButton,
 	notificationHistoryButton,
@@ -19,18 +21,6 @@ function toggleSidebarRight() {
 	toggleActive(sidebarRightToggle);
 }
 
-function addCensor(element) {
-	element.querySelectorAll(".censor, .spoiler").forEach((censor) => {
-		censor.addEventListener("click", () => {
-			toggleActive(censor);
-		});
-	});
-}
-
-function toggleActive(element) {
-	element.classList.toggle("active");
-}
-
 function toggleChat() {
 	var chatBtnContainer = document.getElementById("chat-btn-container");
 	var chatContainer = document.getElementById("chat-container");
@@ -46,11 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (mutation.addedNodes.length > 0) {
 				mutation.addedNodes.forEach((node) => {
 					if (node.nodeType === Node.ELEMENT_NODE) {
-						addCensor(node);
+						censorElementDescendants(node);
 					}
 					if (
 						node.nodeType === Node.ELEMENT_NODE &&
-						node.classList.contains("content-body")
+						node.classList.contains("content-preview")
 					) {
 						const gallery = node.querySelectorAll(".gallery-card");
 						gallery.forEach((gallery) => {

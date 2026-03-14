@@ -1,7 +1,7 @@
 // biome-ignore lint/correctness/noUnusedVariables: referenced from HTML attribute
 function expandPost(caller) {
 	var postContainer = caller.closest(".content-card");
-	var postBody = postContainer.getElementsByClassName("content-body")[0];
+	var postBody = postContainer.getElementsByClassName("content-preview")[0];
 	postBody.classList.toggle("active");
 
 	var expandButtons = postContainer.querySelectorAll(".content-expand");
