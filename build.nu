@@ -103,15 +103,7 @@ def generate-badges-page [] {
     | each {|badge|
       let name = ($badge.name | path basename)
       let src = ($path | path join $name)
-      (
-        '<img src="/'
-        + $src
-        + '" alt="'
-        + $name
-        + '" onmouseover="tooltip(this, '''
-          + $name
-          + ''')" loading="lazy">'
-      )
+      ($"<img src=\"/($src)\" alt=\"($name)\" onmouseover=\"tooltip\(this, '($name)'\)\" loading=\"lazy\">")
       | save --append $badges_outfile
     }
 
