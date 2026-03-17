@@ -916,16 +916,10 @@ body:has(#construction:hover) #paradox {
 .content-preview {
 	overflow-y: hidden;
 	max-height: 0;
-	transition-property: max-height;
-	transition-duration: 0.8s;
-	transition-timing-function: cubic-bezier(0.19, 1, 0.22, 2);
 }
 
 .content-preview.active {
 	max-height: 50vh;
-	transition-property: max-height;
-	transition-duration: 0.2s;
-	transition-timing-function: ease;
 	overflow-y: scroll;
 
 	padding-right: 20px;
@@ -939,9 +933,18 @@ body:has(#construction:hover) #paradox {
 }
 
 .content-card .full-post-link {
-	width: fit-content;
+	justify-content: center;
+	display: grid;
+	width: 100%;
+	height: 2rem;
 	margin: auto;
 	margin-bottom: 1rem;
+	padding-top: 3px;
+
+	background-image: radial-gradient(
+		rgba(var(--ruby), 0.5),
+		rgba(var(--ruby), 0) 80%
+	);
 }
 
 .content-expand {
@@ -959,17 +962,12 @@ body:has(#construction:hover) #paradox {
 
 .hidden-content-expand {
 	display: none;
-	background-image: radial-gradient(
-		rgba(var(--ruby), 0.5),
-		rgba(var(--ruby), 0) 80%
-	);
 }
 
 .content-expand::before,
 .content-expand::after {
 	font-family: "SymbolsNerdFont-Regular";
 	content: "󰄼";
-	padding-bottom: 2px;
 }
 
 .content-expand:hover {
@@ -994,7 +992,7 @@ body:has(#construction:hover) #paradox {
 	margin-top: 19px;
 }
 
-.content-footer .expand-border {
+.expand-border {
 	border-top: 3px dashed rgba(var(--ruby));
 	width: 100%;
 	margin-top: 17px;
@@ -1033,14 +1031,18 @@ body:has(#construction:hover) #paradox {
 	font-size: 0.8rem;
 }
 
+.hidden-content-expand,
+.content-footer-center {
+	grid-template-columns: 1fr 70px 1fr;
+	width: 100%;
+}
+
 .content-footer-center {
 	grid-row: 1;
 	grid-column-start: 1;
 	grid-column-end: 4;
 	display: grid;
-	grid-template-columns: 1fr 70px 1fr;
-	margin: -20px auto 20px auto;
-	width: 100%;
+	margin: -19px auto 20px auto;
 }
 
 .content-footer-right {

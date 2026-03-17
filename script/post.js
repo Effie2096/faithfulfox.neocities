@@ -7,12 +7,15 @@ function expandPost(caller) {
 	var expandButtons = postContainer.querySelectorAll(".content-expand");
 	expandButtons.forEach((button) => {
 		button.classList.toggle("active");
-		if (button.classList.contains("hidden-content-expand")) {
-			button.style.display =
-				button.style.display === "block" ? "none" : "block";
-		}
+
 		button.innerHTML = button.innerHTML === " less " ? " more " : " less ";
 	});
+
+	var hiddenExpand = postContainer.getElementsByClassName(
+		"hidden-content-expand",
+	)[0];
+	hiddenExpand.style.display =
+		hiddenExpand.style.display === "grid" ? "none" : "grid";
 
 	postContainer
 		.getElementsByClassName("content-footer")[0]
