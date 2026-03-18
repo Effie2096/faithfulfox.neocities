@@ -4,24 +4,33 @@ body {
 
 .badge-box img {
 	margin: 1px;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-ms-transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
 }
 
+/* 80x15 */
 #badges #smol img {
-	width: 80px;
-	height: 15px;
+	aspect-ratio: 16 / 3;
+	max-width: 80px;
 }
 
+/* 150x20 */
 #badges #skinny img {
-	width: 150px;
-	height: 20px;
+	aspect-ratio: 15 / 2;
+	max-width: 150px;
 }
 
+/* 88x31 */
 #badges #normal img {
-	width: 88px;
-	height: 31px;
+	aspect-ratio: 2.839 / 1;
+	max-width: 88px;
 }
 
+/* 99x56 */
 #badges #stamps img {
-	width: 99px;
-	height: 56px;
+	aspect-ratio: 1.768 / 1;
+	max-width: 99px;
 }
