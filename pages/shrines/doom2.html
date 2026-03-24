@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Doom2</title>
 		<link href="/css/globals.css" rel="stylesheet">
+		<link href="/css/colorschemes/eldritch.css" rel="stylesheet">
 		<link href="/css/codeblock.css" rel="stylesheet">
 		<link href="/css/foldervis.css" rel="stylesheet">
 		<link href="/css/pages/shrines/doom2.css" rel="stylesheet">
@@ -14,13 +15,20 @@
 
 		<script src="/script/syntaxHighlight.js"></script>
 
-		<script>
+		<script type="module">
+			import { CopyToClipboard } from "/script/CopyToClipboard.js";
 			document.addEventListener("DOMContentLoaded", () => {
-				const shellCode = document.querySelectorAll(".codeblock.shell > code");
-				shellCode.forEach((codeBlock) => {
-					syntaxHighlight(codeBlock, "shell");
-					});
-					});
+				document.querySelectorAll(".codeblock.shell.sh").forEach((codeBlock) => { syntaxHighlight(codeBlock, "sh"); });
+				document
+				.querySelectorAll("div.codeblock")
+				.forEach((codeBlock) => {
+					const code = codeBlock.querySelector("code").textContent;
+					codeBlock.querySelector(".code-copy")
+					.addEventListener("click", () => {
+						CopyToClipboard(code, "code copied!");
+						});
+						})
+						});
 		</script>
 	</head>
 
@@ -453,12 +461,18 @@
 							<p>
 								ZDoom and it's predecessors can take command line parameters to specify all of these things. This means you can write very simple shell scripts for each of your mod lists/setups.
 							</p>
-							<div class="codeblock shell">
-								<h3 class="code-title">Shell</h3>
-								<code>
-									./uzdoom.exe -config "./Config.ini" -iwad "./DOOM2.WAD" -file "../path/to/mod.pk3" "../path/to/moremod.pk3" -savedir "../path/to/saves/"
-								</code>
+
+							<div class="codeblock shell sh">
+								<div class="code-header">
+									<span class="code-title"></span>
+									<span class="code-desc">example uzdoom commandline</span>
+									<span class="code-copy click"
+									      onmouseover="tooltip(this, 'Copy code')"
+									></span>
+								</div>
+								<code>./uzdoom.exe -config "./Config.ini" -iwad "./DOOM2.WAD" -file "../path/to/mod.pk3" "../path/to/moremod.pk3" -savedir "../path/to/saves/"</code>
 							</div>
+
 							<p>
 								...but that's annoying. I don't wanna write scripts, I wanna <b>GAME</b>.
 							</p>
@@ -637,13 +651,17 @@
 							<p>
 								Navigate back to the "Files" tab, and at the bottom of the page, there are a couple text boxes to add "Additional arguments". Put the following in the one marked "[global]":
 							</p>
-
-							<div class="codeblock shell">
-								<h3 class="code-title">Shell</h3>
-								<code>
-									-shotdir "..\..\..\media\screenshots"
-								</code>
+							<div class="codeblock shell sh">
+								<div class="code-header">
+									<span class="code-title"></span>
+									<span class="code-desc">flag for screenshots folder</span>
+									<span class="code-copy click"
+									      onmouseover="tooltip(this, 'Copy code')"
+									></span>
+								</div>
+								<code>-shotdir "..\..\..\media\screenshots"</code>
 							</div>
+
 							<p>
 								This way, all presets will put their screenshots in the same folder and we only have to specify it once.
 							</p>

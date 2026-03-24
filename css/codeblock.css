@@ -1,54 +1,112 @@
-:root {
-	--code-block-background: rgb(50, 52, 73);
-	--code-block-foreground: rgb(235, 250, 250);
-	--code-block-subtext: rgb(112, 129, 208);
-	--code-block-pink: rgb(242, 101, 181);
-	--code-block-purple: rgb(164, 140, 242);
-	--code-block-red: rgb(241, 108, 117);
-	--code-block-yellow: rgb(241, 252, 121);
-	--code-block-green: rgb(55, 244, 153);
-	--code-block-blue: rgb(4, 209, 249);
-}
+@import url("/css/fonts.css");
 
-@font-face {
-	font-family: "IosevkaTermNF";
-	src: url("/assets/font/IosevkaTermNerdFont-Regular.ttf");
+:root {
+	--code-block-background: var(--colorscheme-surface);
+	--code-block-foreground: var(--colorscheme-fg);
+	--code-block-surface: var(--colorscheme-surface-dark);
+	--code-block-subtext: var(--colorscheme-yellow-dark);
+	--code-block-pink: var(--colorscheme-pink);
+	--code-block-purple: var(--colorscheme-purple);
+	--code-block-red: var(--colorscheme-red);
+	--code-block-yellow: var(--colorscheme-yellow);
+	--code-block-green: var(--colorscheme-green-light);
+	--code-block-blue: var(--colorscheme-cyan);
 }
 
 .codeblock {
 	background-color: var(--code-block-background);
 	border-radius: 10px;
 	padding: 1em;
-	padding-top: 0.5em;
+	padding-top: 1.5em;
 
 	display: grid;
 	grid-template-rows: auto auto;
 	margin-bottom: 1em;
+
+	position: relative;
+}
+.codeblock.inline {
+	border-radius: 5px;
+	padding: 0 0.3em;
+	display: inline-block;
+	margin: 0;
 }
 
-.codeblock > code,
-.codeblock > pre,
-.codeblock > samp,
-.codeblock > var {
+.codeblock code,
+.codeblock pre,
+.codeblock samp,
+.codeblock var,
+.commandline {
 	color: var(--code-block-foreground);
 	font-family: "IosevkaTermNF", monospace;
-	font-size: 1em;
+}
+
+.codeblock:not(.inline) > code,
+.codeblock:not(.inline) > pre,
+.codeblock:not(.inline) > samp,
+.codeblock:not(.inline) > var {
 	padding-left: 1em;
-	text-indent: -1em;
+}
+.codeblock:not(.inline) > code,
+.codeblock:not(.inline) > pre,
+.codeblock:not(.inline) > samp,
+.codeblock:not(.inline) > var,
+.commandline {
+	font-size: 1em;
+	tab-size: 2;
 	white-space: pre-wrap;
 }
 
-.codeblock > .code-title {
-	color: var(--code-block-foreground);
-	font-family: Consolas, sans-serif;
-	font-size: 1em;
-	padding: 0px;
-	padding-bottom: 0.2em;
-	margin: 0px;
-	pointer-events: none;
-	-moz-pointer-events: none;
+.codeblock .code-header {
+	display: grid;
+	grid-template-columns: fit-content(10em) 1fr 1em;
+	position: absolute;
+	width: 100%;
+	padding-left: 1em;
+	padding-right: 0.5em;
+	padding-top: 0.2em;
 	user-select: none;
 	-moz-user-select: none;
+}
+
+.codeblock .code-header .code-desc,
+.codeblock .code-header .code-copy {
+	opacity: 0;
+	font-size: 0.9em;
+	transition: 0.3s ease;
+}
+
+.codeblock:hover .code-header .code-desc,
+.codeblock:hover .code-header .code-copy {
+	opacity: 100%;
+	transition: 0.1s ease-out;
+}
+
+.codeblock .code-title {
+	color: var(--code-block-foreground);
+	font-family: Consolas, sans-serif;
+	font-weight: bold;
+	padding: 0px;
+	margin: 0px;
+}
+
+.codeblock .code-desc {
+	color: var(--code-block-subtext);
+	font-style: italic;
+	text-align: center;
+}
+
+.codeblock .code-copy {
+	position: relative;
+}
+.codeblock .code-copy:after {
+	position: absolute;
+	width: 1em;
+	right: 0;
+	top: 0;
+	content: " ";
+	font-family: "IosevkaTermNF";
+	color: var(--code-block-foreground);
 }
 
 .codeblock > code::before,
@@ -63,29 +121,163 @@
 	-moz-user-select: none;
 }
 
-.codeblock.shell > code::before,
-.codeblock.shell > pre::before,
-.codeblock.shell > samp::before,
-.codeblock.shell > var::before {
+.codeblock.shell:not(.inline) > code,
+.codeblock.shell:not(.inline) > pre,
+.codeblock.shell:not(.inline) > samp,
+.codeblock.shell:not(.inline) > var {
+	text-indent: -1em;
+}
+
+.codeblock.shell:not(.inline) > code::before,
+.codeblock.shell:not(.inline) > pre::before,
+.codeblock.shell:not(.inline) > samp::before,
+.codeblock.shell:not(.inline) > var::before {
 	content: " ";
 	color: var(--code-block-purple);
 }
 
-.codeblock.shell > .code-title::before {
+.codeblock .code-title::before,
+.codeblock .code-title::after {
+	font-family: "IosevkaTermNF", monospace;
+	padding-right: 0.2em;
+}
+
+.codeblock.shell:is(.sh, .nu) .code-title::before {
 	content: " ";
 	color: var(--code-block-green);
-	padding-right: 0.2em;
-	font-family: "IosevkaTermNF", monospace;
+}
+.codeblock.shell.sh .code-title::after {
+	content: "Sh";
+}
+.codeblock.shell.nu .code-title::after {
+	content: "Nu";
+}
+
+.codeblock.css .code-title::before {
+	content: " ";
+	color: var(--code-block-yellow);
+}
+.codeblock.css .code-title::after {
+	content: "Css";
 }
 
 .syntax {
-	white-space: nowrap;
+	overflow-wrap: anywhere;
+	white-space: pre-wrap;
 }
 
-.codeblock .string {
+.syntax:not(.ws) {
+	white-space: pre;
+}
+.syntax.ws {
+	position: relative;
+	opacity: 0.4;
+	pointer-events: none;
+}
+.codeblock:not(:hover) .syntax.ws::before {
+	opacity: 0;
+}
+.syntax.ws::before {
+	position: absolute;
+	top: 0;
+	color: var(--code-block-nontext);
+}
+.shell .syntax.ws::before {
+	left: 1em;
+}
+
+.syntax.ws.space::before {
+	content: "·";
+}
+
+.syntax.ws.tab::before {
+	content: "→";
+}
+
+.syntax.ws.indent.tab::before {
+	border-left: 2px solid var(--code-block-pink);
+	left: 0.2em;
+}
+.codeblock.shell .syntax.ws.indent.tab::before {
+	text-indent: 0;
+}
+
+.syntax.ws.newline::before {
+	content: "↵";
+}
+.commandline .syntax.ws::before {
+	content: none;
+}
+
+.syntax.word {
+	color: var(--code-block-foreground);
+}
+
+.syntax.element {
+	color: var(--code-block-pink);
+}
+
+.syntax.string {
 	color: var(--code-block-green);
 }
 
-.codeblock.shell .flag {
+.syntax.flag {
 	color: var(--code-block-subtext);
+}
+
+.syntax.exe {
+	color: var(--code-block-blue);
+}
+
+.syntax.file {
+	color: var(--code-block-red);
+}
+
+.syntax.pipe {
+	color: var(--code-block-pink);
+}
+
+.syntax.cont {
+	color: var(--code-block-pink);
+}
+
+.syntax.redirect {
+	color: var(--code-block-purple);
+}
+
+.syntax.null {
+	color: var(--code-block-nontext);
+}
+
+.syntax.number {
+	color: var(--code-block-orange);
+}
+
+.syntax.class {
+	color: var(--code-block-blue);
+}
+
+.syntax.pseudo {
+	color: var(--code-block-purple);
+}
+
+.syntax.property {
+	color: var(--code-block-yellow);
+}
+
+.syntax.combinator {
+	color: var(--code-block-pink);
+}
+
+.syntax.unit {
+	color: var(--code-block-orange);
+}
+
+.syntax.var {
+	color: var(--code-block-yellow);
+}
+
+.syntax.comment {
+	color: var(--code-block-nontext);
+	font-style: italic;
 }

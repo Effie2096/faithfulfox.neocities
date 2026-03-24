@@ -819,7 +819,7 @@ body:has(#construction:hover) #paradox {
 .content-warnings {
 	left: unset;
 	right: 0;
-	border-radius: 0.3rem 0 0.3rem 0;
+	border-radius: 0.3rem 0 0.3rem 0.3rem;
 	min-height: 2.5rem;
 	top: 2.5rem;
 	max-height: calc(100% - 2.5rem);
@@ -981,6 +981,16 @@ body:has(#construction:hover) #paradox {
 	display: inline-block;
 }
 
+.expand-border {
+	border-top: 3px dashed rgba(var(--ruby));
+	width: 100%;
+	margin-top: 17px;
+}
+
+.hidden-content-expand .expand-border {
+	border-top: 3px solid rgba(var(--ruby));
+}
+
 .content-footer {
 	display: grid;
 	position: relative;
@@ -992,18 +1002,12 @@ body:has(#construction:hover) #paradox {
 	margin-top: 19px;
 }
 
-.expand-border {
-	border-top: 3px dashed rgba(var(--ruby));
-	width: 100%;
-	margin-top: 17px;
-}
-
 .content-footer-section {
 	margin: auto;
 }
 
 .content-footer.active .expand-border {
-	border-top: 2px solid rgba(var(--ruby));
+	border-top: 3px solid rgba(var(--ruby));
 }
 
 .expand-border-left {
@@ -1465,7 +1469,6 @@ body:has(#construction:hover) #paradox {
 	max-height: 365px;
 	background-color: rgba(255, 150, 210, 0.4);
 	border-radius: 10px;
-	padding: 5px;
 	grid-column-start: 2;
 	grid-column-end: 2;
 	grid-row-start: 4;
@@ -1492,7 +1495,7 @@ body:has(#construction:hover) #paradox {
 		rgba(var(--surface-1))
 	);
 	opacity: 80%;
-	border-radius: 8px;
+	border-radius: 8px 8px 0 0;
 }
 
 #badges-header .heading {
@@ -1735,7 +1738,6 @@ body:has(#construction:hover) #paradox {
 	}
 
 	.contact-section-container {
-		justify-content: center;
 		margin-left: -5px;
 	}
 
@@ -1789,10 +1791,12 @@ body:has(#construction:hover) #paradox {
 	}
 
 	#badges-container {
-		height: 100%;
 		align-self: end;
 	}
 
+	#badges-header {
+		border-radius: 10px;
+	}
 	#badges {
 		display: none;
 	}

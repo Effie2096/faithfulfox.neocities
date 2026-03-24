@@ -142,14 +142,4 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.querySelector("#chat-btn").addEventListener("click", () => {
 		toggleChat();
 	});
-	document
-		.querySelector("#notification-clear-button")
-		.addEventListener("click", () => {
-			notificationClearButton();
-		});
-	document
-		.querySelector("#notification-count-button")
-		.addEventListener("click", () => {
-			notificationHistoryButton();
-		});
 });

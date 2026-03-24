@@ -8,7 +8,9 @@
 
 		<script type="module">
 			import { addCensors } from "/script/censor.js"
-			addCensors()
+			window.onload = () => {
+				addCensors()
+			}
 		</script>
 	</head>
 	<body>

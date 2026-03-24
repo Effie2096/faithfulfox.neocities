@@ -121,3 +121,20 @@
 	right: -1.1rem;
 	top: -0.2rem;
 }
+
+.click {
+	cursor: pointer;
+}
+
+@keyframes blinking {
+	0%,
+	100% {
+		opacity: 100%;
+	}
+	50% {
+		opacity: 0%;
+	}
+}
+.blink {
+	animation: blinking 1s infinite;
+}

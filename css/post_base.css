@@ -16,6 +16,8 @@
 
 body {
 	width: 40rem;
+	max-width: 100%;
+	min-width: 18rem;
 	margin: auto;
 }
 
@@ -25,6 +27,16 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+ul,
+ol {
 	margin-bottom: 1rem;
+}
+ul :is(ul, ol),
+ol :is(ul, ol) {
+	margin-bottom: 0;
+}
+
+.content-body {
+	margin-top: 2rem;
 }

@@ -1,5 +1,7 @@
+@import url("/css/fonts.css");
+
 :root {
-	--code-block-background: rgb(50, 52, 73);
+	--code-block-background: rgb(33, 35, 55);
 	--code-block-foreground: rgb(235, 250, 250);
 	--code-block-subtext: rgb(112, 129, 208);
 	--code-block-pink: rgb(242, 101, 181);
@@ -8,11 +10,6 @@
 	--code-block-yellow: rgb(241, 252, 121);
 	--code-block-green: rgb(55, 244, 153);
 	--code-block-blue: rgb(4, 209, 249);
-}
-
-@font-face {
-	font-family: "IosevkaTermNF";
-	src: url("/assets/font/IosevkaTermNerdFont-Regular.ttf");
 }
 
 .folderblock {

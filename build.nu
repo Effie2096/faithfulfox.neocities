@@ -119,6 +119,7 @@ def generate-badges-page [] {
 let static_files = [
   "index.html"
   "robots.txt"
+  "favicon.ico"
   "assets"
   "css"
   "pages"

@@ -17,3 +17,8 @@
 	font-family: "Monaspace-Neon-Frozen";
 	src: url("/assets/font/MonaspaceRadonFrozen-Regular.ttf");
 }
+
+@font-face {
+	font-family: "IosevkaTermNF";
+	src: url("/assets/font/IosevkaTermNerdFont-Regular.ttf");
+}

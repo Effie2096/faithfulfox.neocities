@@ -263,3 +263,16 @@ function clearNotifications() {
 	document.querySelector("#notification-count").classList.remove("active");
 	document.querySelector("#notification-check").classList.add("active");
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+	document
+		.querySelector("#notification-clear-button")
+		.addEventListener("click", () => {
+			notificationClearButton();
+		});
+	document
+		.querySelector("#notification-count-button")
+		.addEventListener("click", () => {
+			notificationHistoryButton();
+		});
+});
