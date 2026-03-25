@@ -311,6 +311,36 @@
 	display: block;
 }
 
+#notification-count-button:hover::after,
+#notification-clear-button:hover::after {
+	font-family: "SymbolsNerdFont-Regular";
+	font-size: 2em;
+
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 1em;
+	height: 1em;
+	line-height: 1.1em;
+
+	pointer-events: none;
+
+	background-color: rgb(var(--ruby));
+	border-radius: 0.5em;
+}
+#notification-count-button:hover::after {
+	content: " ";
+}
+#notification-history.active
+	+ #notification-buttons-container
+	#notification-count-button:hover::after {
+	content: " ";
+}
+#notification-clear-button:hover::after {
+	content: "";
+	text-align: center;
+}
+
 #notification-count,
 #notification-check,
 #notification-clear {
