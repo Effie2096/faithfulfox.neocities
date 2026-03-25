@@ -169,6 +169,14 @@
 	content: "Css";
 }
 
+.codeblock.html .code-title::before {
+	content: " ";
+	color: var(--code-block-orange);
+}
+.codeblock.html .code-title::after {
+	content: "Html";
+}
+
 .syntax {
 	overflow-wrap: anywhere;
 	white-space: pre-wrap;
@@ -285,7 +293,19 @@
 	color: var(--code-block-yellow);
 }
 
+.syntax:is(.comment, .placeholder) {
+	color: var(--code-block-nontext);
+	font-style: italic;
+}
+
 .syntax.comment {
 	color: var(--code-block-nontext);
 	font-style: italic;
+}
+
+.html .syntax.tag {
+	color: var(--code-block-purple);
+}
+.html .syntax.attribute {
+	color: var(--code-block-cyan);
 }

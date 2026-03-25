@@ -47,6 +47,18 @@ const LANGUAGES = {
 		space: `\\s`,
 		other: `.`,
 	},
+	html: {
+		string: `"(?:\\\\.|[^"\\\\])*"`,
+		attribute: `[a-z-]+(?=\\s*=\\s*)`,
+		unit: `(?<=\\d)(?:${buildUnits([UNIT_MAP.length, UNIT_MAP.angles, UNIT_MAP.percent])})\\b`,
+		number: `(?<=[-+]?)\\d+(\\.\\d+)?`,
+		placeholder: `(\\.\\.\\.)`,
+		comment: `<!--(.|\\n|\\r)*-->`,
+		word: `[a-zA-Z-]+`,
+		indent: `^[\\ |\\t]`,
+		space: `\\s`,
+		other: `.`,
+	},
 	css: {
 		string: `"(?:\\\\.|[^"\\\\])*"`,
 		class: `\\.[a-zA-Z][a-zA-Z0-9_-]+`,
@@ -179,6 +191,42 @@ function assignRoles(tokens, lang) {
 			}
 			break;
 		}
+		case "html": {
+			let expectTag = false;
+			let atLineStart = true;
+
+			for (const token of tokens) {
+				if (token.value === "<") {
+					expectTag = true;
+					continue;
+				}
+
+				if (token.value === "\n") {
+					atLineStart = true;
+					continue;
+				}
+				if (atLineStart && token.type === "space") {
+					token.role = "indent";
+					continue;
+				}
+				if (token.type !== "space") {
+					atLineStart = false;
+				}
+
+				if (token.type === "word") {
+					if (expectTag) {
+						token.role = "tag";
+						expectTag = false;
+					} else {
+						token.role = "word";
+					}
+				} else {
+					token.role = token.type;
+				}
+			}
+
+			break;
+		}
 		case "css": {
 			let mode = "selector";
 			let atLineStart = true;
@@ -242,7 +290,7 @@ function buildRegex(tokens) {
 	);
 }
 
-function render(tokens) {
+function render(tokens, lang = "sh") {
 	return tokens
 		.map((t) => {
 			if (t.role === "indent") {
@@ -250,19 +298,27 @@ function render(tokens) {
 				return `<span class="syntax ws indent ${cls}">${t.value}</span>`;
 			}
 			const cls = t.role || t.type;
-			if (cls === "interpolated") {
-				const langTokenizer = getTokenizer("nu");
-				const innerTokens = assignRoles(
-					langTokenizer(t.value.substring(2, t.value.length - 1), "nu"),
-				);
-				const innerSpans = innerTokens.map((innerToken) => {
-					const inCls = innerToken.role || innerToken.type;
-					if (inCls === "other" || inCls === "word") {
-						return `<span class="syntax string">${innerToken.value}</span>`;
-					}
-					return `<span class="syntax ${inCls}">${innerToken.value}</span>`;
-				});
-				return `<span class="syntax ${cls}"><span class="syntax	string">${t.value.substring(0, 2)}</span>${innerSpans.join("")}<span class="syntax string">${t.value.substring(t.value.length - 1, t.value.length)}</span></span>`;
+			if (lang === "nu") {
+				if (cls === "interpolated") {
+					const langTokenizer = getTokenizer("nu");
+					const innerTokens = assignRoles(
+						langTokenizer(t.value.substring(2, t.value.length - 1), "nu"),
+					);
+					const innerSpans = innerTokens.map((innerToken) => {
+						const inCls = innerToken.role || innerToken.type;
+						if (inCls === "other" || inCls === "word") {
+							return `<span class="syntax string">${innerToken.value}</span>`;
+						}
+						return `<span class="syntax ${inCls}">${innerToken.value}</span>`;
+					});
+					return `<span class="syntax ${cls}"><span class="syntax	string">${t.value.substring(0, 2)}</span>${innerSpans.join("")}<span class="syntax string">${t.value.substring(t.value.length - 1, t.value.length)}</span></span>`;
+				}
+			}
+			if (lang === "html") {
+				if (cls === "comment") {
+					const comment_content = t.value.substring(4, t.value.length - 3);
+					return `<span class="syntax comment">&lt;!--${comment_content}--&gt;</span>`;
+				}
 			}
 			if (cls === "space") {
 				if (t.value === " ") {
@@ -289,5 +345,5 @@ function syntaxHighlight(element, lang = "sh") {
 
 	const langTokenizer = getTokenizer(lang);
 	const tokens = assignRoles(langTokenizer(elementText), lang);
-	codeElement.innerHTML = render(tokens);
+	codeElement.innerHTML = render(tokens, lang);
 }
