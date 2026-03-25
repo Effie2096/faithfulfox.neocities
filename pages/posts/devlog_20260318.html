@@ -20,7 +20,7 @@
 				addCensors()
 				document.querySelectorAll(".codeblock.shell.sh, .commandline.sh").forEach((block) => {syntaxHighlight(block, "sh")});
 				document.querySelectorAll(".codeblock.shell.nu, .commandline.nu").forEach((block) => {syntaxHighlight(block, "nu")});
-				document.querySelectorAll(".codeblock.css").forEach((codeBlock) => {syntaxHighlight(codeBlock, "css")});
+				document.querySelectorAll(".codeblock.html").forEach((codeBlock) => {syntaxHighlight(codeBlock, "html")});
 				})
 				
 				document
@@ -39,6 +39,7 @@
 		<div id="backlink">
 			<a href="/index.html">cd ~</a>
 		</div>
+
 		<div id="notifications">
 			<div id="notification-history-container">
 				<div id="notification-history"></div>
@@ -59,18 +60,23 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="content-body">
-			<h3>Dev Log</h3>
+			<h1>Dev Log</h1>
+
 			<section>
+
 				<div class="prompt-divider">
 					<span class="prompt-left">dev/tools</span>
 					<span class="prompt-right"><span class="timestamp">21:07:51</span></span>
 				</div>
-				<h4 class="commandline nu">cat -s media_files.md</h4>
+				<h2 class="commandline nu">cat -s media_files.md</h2>
+
 				<p>When working on any websites, you'll generally have to convert and compress a lot of media files. I don't know how other people do it but for this I recommend familiarising yourself with `image magick` and `ffmpeg` :3 These afford you a lot of control over manipulating images, videos and audio and because they're commandline tools, they're very easy to automate.</p>
 
 				<span class="prompt-left"></span>
-				<h5 class="commandline nu">cd media; cat gifs_suck.md</h5>
+				<h3 class="commandline nu">cd media; cat gifs_suck.md</h3>
+
 				<p>Take the following gifs I have on the <a href="/pages/shrines/doom2.html">DOOM2 Shrine</a>. Their size, considering their length and quality is laughable.. With limited space on neocities, let's convert and compress them (they were captured as gifs so there's not much more quality to be lost lmao).</p>
 
 				<span class="prompt-left"></span>
@@ -109,7 +115,7 @@
 				</table>
 
 				<span class="prompt-left"></span>
-				<p class="commandline nu">cat ffmpeg_basic_conversion.md</p>
+				<h4 class="commandline nu">cat ffmpeg_basic_conversion.md</h4>
 
 				<p>This is the basic structure of the ffmpeg command I use for converting and compressing webms.</p>
 
@@ -222,9 +228,30 @@ ffmpeg -i input.mp4 -c:v libvpx-vp9 -b:v 2M -pass 2 -c:a libopus output.webm</co
 					<tr><td>8</td><td>BrutalDoom1.gif</td><td>file</td><td>33.2MB</td><td>a yearago</td></tr>
 				</table>
 			</section>
+
 			<section>
 
+				<span class="prompt-left"></span>
+				<h3 class="commandline nu">cat what_about_images.md</h3>
+
+				<p>In a similar vein, <em>image magick</em>
+					can be used to convert and edit image formats. It's capable of so much more than that&mdash;you can use it to swap colors, remove backgrounds and generate whole new images even&mdash;but for now I just use it in much the same way I use ffmpeg; conversion and/or compression.</p>
+
 				<div class="codeblock shell sh">
+					<div class="code-header">
+						<span class="code-title"></span>
+						<span class="code-desc">the most basic magick command</span>
+						<span class="code-copy click"
+						      onmouseover="tooltip(this, 'Copy code')"
+						></span>
+					</div>
+					<code>magick input.png out.webp</code>
+				</div>
+
+				<p>I haven't gotten around to converting and compressing much images for my site so I don't have any before and afters to put here just yet.</p>
+
+				<p>The one exception is the site favicon</p>
+				<div class="codeblock html">
 					<div class="code-header">
 						<span class="code-title"></span>
 						<span class="code-desc"></span>
@@ -232,7 +259,26 @@ ffmpeg -i input.mp4 -c:v libvpx-vp9 -b:v 2M -pass 2 -c:a libopus output.webm</co
 						      onmouseover="tooltip(this, 'Copy code')"
 						></span>
 					</div>
-					<pre><code>magick convert -background transparent "image.png" -define icon:auto-resize=16,24,32,48,64,72,96,128,256 "image.ico"</code></pre>
+					<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+	&lt;head&gt;
+		...
+		&lt;link rel="icon" type="image/x-icon" href="/favicon.ico"&gt; &lt;!-- site favourite icon --&gt;
+		...
+	&lt;/head&gt;
+&lt;/html&gt;</code></pre>
+				</div>
+				<p>Although you can specify a path to any supported file format, a few things explicitely expect a "favicon.ico" at the root to associate with your website. I'm a stickler for defaults so that's where I put it.</p>
+
+				<div class="codeblock shell sh">
+					<div class="code-header">
+						<span class="code-title"></span>
+						<span class="code-desc">convert png to ico with multiple sizes</span>
+						<span class="code-copy click"
+						      onmouseover="tooltip(this, 'Copy code')"
+						></span>
+					</div>
+					<code>magick convert -background transparent "image.png" -define icon:auto-resize=16,24,32,48,64,72,96,128,256 "image.ico"</code>
 				</div>
 			</section>
 		</div>
