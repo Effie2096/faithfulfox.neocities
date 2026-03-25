@@ -181,7 +181,7 @@ li > :is(ul, ol) {
 
 .ls-output.nu {
 	border: solid;
-	border-color: var(--colorscheme-float-dark);
+	border-color: var(--colorscheme-float);
 	border-radius: 0.5rem;
 }
 
@@ -196,12 +196,12 @@ li > :is(ul, ol) {
 
 .ls-output.nu th + th,
 .ls-output.nu td + td {
-	border-left: solid var(--colorscheme-float-dark);
+	border-left: solid var(--colorscheme-float);
 }
 
 .ls-output.nu > thead tr th {
 	text-align: center;
-	border-bottom: solid var(--colorscheme-float-dark);
+	border-bottom: solid var(--colorscheme-float);
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
 }

@@ -3,14 +3,17 @@
 :root {
 	--code-block-background: var(--colorscheme-surface);
 	--code-block-foreground: var(--colorscheme-fg);
+	--code-block-nontext: var(--colorscheme-fg-dark);
 	--code-block-surface: var(--colorscheme-surface-dark);
-	--code-block-subtext: var(--colorscheme-yellow-dark);
+	--code-block-subtext: var(--colorscheme-fg-light);
+	--code-block-red: var(--colorscheme-red-light);
+	--code-block-green: var(--colorscheme-green);
+	--code-block-blue: var(--colorscheme-blue);
+	--code-block-cyan: var(--colorscheme-cyan);
 	--code-block-pink: var(--colorscheme-pink);
 	--code-block-purple: var(--colorscheme-purple);
-	--code-block-red: var(--colorscheme-red);
 	--code-block-yellow: var(--colorscheme-yellow);
-	--code-block-green: var(--colorscheme-green-light);
-	--code-block-blue: var(--colorscheme-cyan);
+	--code-block-orange: var(--colorscheme-orange);
 }
 
 .codeblock {
@@ -63,8 +66,9 @@
 	position: absolute;
 	width: 100%;
 	padding-left: 1em;
-	padding-right: 0.5em;
-	padding-top: 0.2em;
+	padding-right: 0.2em;
+	padding-top: 0.12em;
+	border-radius: 10px 10px 0 0;
 	user-select: none;
 	-moz-user-select: none;
 }
@@ -80,6 +84,10 @@
 .codeblock:hover .code-header .code-copy {
 	opacity: 100%;
 	transition: 0.1s ease-out;
+}
+
+.codeblock:hover .code-header {
+	background-color: var(--code-block-surface);
 }
 
 .codeblock .code-title {
@@ -222,11 +230,11 @@
 }
 
 .syntax.flag {
-	color: var(--code-block-subtext);
+	color: var(--code-block-blue);
 }
 
 .syntax.exe {
-	color: var(--code-block-blue);
+	color: var(--code-block-cyan);
 }
 
 .syntax.file {
