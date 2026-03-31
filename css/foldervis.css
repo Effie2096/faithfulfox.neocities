@@ -1,4 +1,7 @@
-@import url("/css/fonts.css");
+@font-face {
+	font-family: "IosevkaTermNF";
+	src: url("/assets/font/IosevkaTermNerdFont-Regular.ttf");
+}
 
 :root {
 	--code-block-background: rgb(33, 35, 55);

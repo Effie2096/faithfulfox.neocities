@@ -1,10 +1,4 @@
-@import url("/css/globals.css");
-
 :root {
-	--ruby: 205, 120, 170;
-	--surface-1: 219, 132, 55;
-	--surface-2: 193, 255, 155;
-
 	font-size: 1em;
 }
 
@@ -15,10 +9,29 @@
 }
 
 body {
-	width: 40rem;
-	max-width: 100%;
-	min-width: 18rem;
-	margin: auto;
+	background-color: var(--colorscheme-bg);
+}
+
+.content-body {
+	color: var(--colorscheme-fg);
+	padding: 2em;
+}
+
+#backlink {
+	position: absolute;
+	background-color: var(--colorscheme-surface);
+}
+
+#backlink > a {
+	text-decoration: none;
+	color: var(--colorscheme-fg-light);
+	font-size: 24px;
+	margin: 10px;
+}
+
+#backlink > a::before {
+	content: "<";
+	margin-right: 5%;
 }
 
 p,
@@ -38,5 +51,8 @@ ol :is(ul, ol) {
 }
 
 .content-body {
-	margin-top: 2rem;
+	margin: auto;
+	width: 40rem;
+	max-width: 100%;
+	min-width: 16rem;
 }

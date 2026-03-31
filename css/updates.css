@@ -3,7 +3,7 @@
 	grid-template-rows: 50px auto;
 	height: 94%;
 	/* max-height: 325px; */
-	border: 2px solid #bed0be;
+	border: 2px solid color-mix(var(--colorscheme-surface), transparent 40%);
 	border-radius: 10px;
 }
 
@@ -12,7 +12,7 @@
 	font-family: "Monocraft";
 	display: flex;
 	flex-wrap: wrap;
-	background-color: rgba(190, 208, 190, 0.7);
+	background-color: color-mix(var(--colorscheme-surface), transparent 50%);
 	border-radius: 5px 5px 0px 0px;
 	width: 100%;
 }
@@ -33,7 +33,7 @@
 	padding: 5px 0px;
 	text-align: center;
 	margin: auto;
-	/* margin-right: 52px; */
+	text-decoration: none;
 	align-items: center;
 }
 
@@ -41,6 +41,7 @@
 	left: 0;
 	right: 0;
 	cursor: var(--cursor-pointer);
+	color: var(--colorscheme-fg);
 }
 
 #postit {
@@ -74,35 +75,94 @@
 #todo-list.active {
 	display: block;
 }
-
-#todo-list,
-.postit-note {
-	font-family: "Monaspace-Neon-Frozen";
+#todo-list {
 	background-image: linear-gradient(to bottom, #000 1px, #f2d05c 1px);
 	background-size: 100% 20px;
 	background-attachment: local;
 	background-repeat: repeat-y;
 	background-position: 0 5px;
-	/* border: 1px solid #000; */
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
+}
+#todo-list,
+.postit-note {
+	font-family: "Monaspace-Neon-Frozen";
+	color: black;
+
 	line-height: 20px;
 	filter: blur(0.1px);
 }
 
+.postit-note {
+	background-color: #f2d05c;
+	position: relative;
+	padding: 1.2em 0.8em 0.1em 0.3em;
+}
+
+.postit-note.optional:after {
+	content: "?";
+	font-size: 1.5em;
+	position: absolute;
+	top: 0.2em;
+	right: 0.1em;
+}
+
+.postit-note > span > span {
+	color: black;
+}
+
+#todo-list ul li:is(.complete, .cancelled) > span,
+.postit-note:is(.complete, .cancelled) > span {
+	text-decoration: line-through;
+	text-decoration-thickness: 3px;
+}
+
 #todo-list ul,
 #updates ul {
-	padding-left: 30px;
+	padding-left: 1em;
+}
+
+#todo-list ul li {
+	padding-left: 0.5em;
 }
 
 #todo-list ul li::marker {
-	content: "🦊";
+	content: "󰄱";
+	color: black;
+
+	font-family: "SymbolsNerdFont-Regular";
+	font-size: 1.1em;
+	line-height: 1em;
+}
+#todo-list ul li.complete::marker {
+	content: "󰱒";
+	color: #118224;
+}
+
+#todo-list ul li.cancelled::marker {
+	content: "󰅘";
+}
+#todo-list ul li.cancelled::marker,
+#todo-list ul li.cancelled > span,
+.postit-note.cancelled > span {
+	color: #c90909;
+}
+#todo-list ul li.in-progress::marker {
+	content: "";
+	color: #a28d01;
+}
+#todo-list ul li.optional::marker {
+	content: "";
+}
+#todo-list ul li.optional::marker,
+.postit-note.optional:after {
+	color: #158282;
 }
 
 .update {
 	font-family: "Monocraft";
-	background-color: rgb(255, 216, 223);
-	outline: 4px dashed rgba(191, 219, 195, 1);
+	background-color: var(--colorscheme-surface-light);
+	outline: 4px dashed color-mix(var(--colorscheme-surface), transparent 30%);
 	border-radius: 5px;
 	margin-left: 3px;
 	margin-right: 3px;

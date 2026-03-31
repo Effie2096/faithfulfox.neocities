@@ -1,0 +1,53 @@
+:root {
+	color-scheme: light dark;
+
+	--colorscheme-bg: light-dark(hsl(53 66% 84%), hsl(0 5% 9%));
+	--colorscheme-bg_light: light-dark(hsl(45 54% 77%), hsl(0 2% 16%));
+	--colorscheme-bg_dark: light-dark(hsl(48 39% 77%), hsl(60 9% 6%));
+
+	--colorscheme-fg: light-dark(hsl(240 9% 36%), hsl(120 5% 78%));
+	--colorscheme-fg_light: light-dark(hsl(52 35% 80%), hsl(210 38% 21%));
+	--colorscheme-fg_dark: light-dark(hsl(240 23% 34%), hsl(51 29% 68%));
+
+	--colorscheme-float: light-dark(hsl(48 37% 74%), hsl(0 4% 5%));
+	--colorscheme-float_light: light-dark(hsl(207 33% 71%), hsl(207 39% 29%));
+	--colorscheme-float_dark: light-dark(hsl(205 38% 83%), hsl(210 38% 21%));
+
+	--colorscheme-surface: light-dark(hsl(48 39% 77%), hsl(60 9% 6%));
+	--colorscheme-surface_light: light-dark(hsl(48 43% 80%), hsl(40 8% 11%));
+	--colorscheme-surface_dark: light-dark(hsl(48 37% 74%), hsl(0 4% 5%));
+
+	--colorscheme-accent: hsl(337 48% 66%);
+
+	--colorscheme-red: hsl(0 80% 52%);
+	--colorscheme-red_light: hsl(358 100% 68%);
+	--colorscheme-red_dark: hsl(0 80% 52%);
+
+	--colorscheme-green: hsl(93 36% 58%);
+	--colorscheme-green_light: hsl(104 33% 75%);
+	--colorscheme-green_dark: hsl(104 21% 47%);
+
+	--colorscheme-blue: hsl(219 53% 67%);
+	--colorscheme-blue_light: hsl(207 33% 71%);
+	--colorscheme-blue_dark: hsl(217 34% 46%);
+
+	--colorscheme-cyan: hsl(196 42% 64%);
+	--colorscheme-cyan_light: hsl(182 39% 74%);
+	--colorscheme-cyan_dark: hsl(168 21% 57%);
+
+	--colorscheme-pink: hsl(337 48% 66%);
+	--colorscheme-pink_light: hsl(337 36% 53%);
+	--colorscheme-pink_dark: hsl(284 10% 63%);
+
+	--colorscheme-purple: hsl(260 27% 41%);
+	--colorscheme-purple_light: hsl(263 31% 61%);
+	--colorscheme-purple_dark: hsl(240 23% 34%);
+
+	--colorscheme-yellow: hsl(41 100% 44%);
+	--colorscheme-yellow_light: hsl(42 87% 77%);
+	--colorscheme-yellow_dark: hsl(40 28% 40%);
+
+	--colorscheme-orange: hsl(35 100% 46%);
+	--colorscheme-orange_light: hsl(24 100% 70%);
+	--colorscheme-orange_dark: hsl(32 100% 40%);
+}

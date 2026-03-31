@@ -4,10 +4,16 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Shrines</title>
+		<link href="/css/colorschemes/foxden.css" rel="stylesheet">
+		<link href="/css/globals.css" rel="stylesheet">
+
 		<link rel="stylesheet" href="/css/content_warnings.css">
+		<link rel="stylesheet" href="/css/tooltip.css">
+
 		<link href="/css/shrines.css" rel="stylesheet">
 
 		<script src="/script/pages/shrines.js"></script>
+		<script src="/script/tooltip.js"></script>
 	</head>
 
 	<body>
@@ -17,9 +23,9 @@
 
 		<div id="content-warning-index">
 			<div id="content-warning-header">
-				<img src="/assets/img/content_warning/Warning.gif" alt="Warning Sign" style="height: 1.5rem; justify-self: end">
-				<h3 style="width: fit-content">Content Warnings</h3>
-				<img src="/assets/img/content_warning/Warning.gif" alt="Warning Sign" style="height: 1.5rem; justify-self: start">
+				<img src="/assets/img/content_warning/Warning.gif" alt="Warning Sign">
+				<h3>Content Warnings</h3>
+				<img src="/assets/img/content_warning/Warning.gif" alt="Warning Sign">
 			</div>
 			<div id="content-warning-index-items">
 				<div class="content-warning-index-item">
@@ -68,6 +74,7 @@
 			</div>
 			<div id="shrines-container">
 				<div id="shrines">
+
 					<div class="card">
 						<div class="card-image">
 							<a href="/pages/shrines/Foxes.html">
@@ -76,18 +83,19 @@
 							</a>
 						</div>
 					</div>
+
 					<div class="card">
 						<div class="card-image">
 							<div class="content-warning warning"></div>
 							<div class="content-warnings">
-								<div class="content-warning mobile">
+								<div class="content-warning mobile" onmouseover="tooltip(this, 'Not mobile friendly')">
 									<div class="no-entry"></div>
 								</div>
-								<div class="content-warning blood"></div>
-								<div class="content-warning language"></div>
-								<div class="content-warning violence"></div>
-								<div class="content-warning volume"></div>
-								<div class="content-warning flashcat"></div>
+								<div class="content-warning blood" onmouseover="tooltip(this, 'Blood')"></div>
+								<div class="content-warning language" onmouseover="tooltip(this, 'Bad Language')"></div>
+								<div class="content-warning violence" onmouseover="tooltip(this, 'Violence')"></div>
+								<div class="content-warning volume" onmouseover="tooltip(this, 'Volume')"></div>
+								<div class="content-warning flashcat" onmouseover="tooltip(this, 'Flashing Images')"></div>
 							</div>
 
 							<a href="/pages/shrines/doom2.html">
@@ -96,13 +104,14 @@
 							</a>
 						</div>
 					</div>
+
 					<div class="card soon">
 						<div class="card-image">
 							<a href="#">
 								<img src="/assets/img/shrines/Neovim.png" alt="My Neovim">
 								<div class="title">Neovim</div>
 								<div id="neovim-logo">
-									<img src="/assets/img/shrines/Neovim-logo.svg.png" alt="Neovim Logo" style="opacity: 0.7">
+									<img src="/assets/img/shrines/Neovim-logo.svg.png" alt="Neovim Logo">
 								</div>
 							</a>
 						</div>

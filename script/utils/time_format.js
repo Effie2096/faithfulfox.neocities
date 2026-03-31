@@ -48,3 +48,33 @@ export function shortDate(dateString, showTime = false) {
 
 	return `${dayNumber} ${month}, ${year} ${showTime ? time : ""}`;
 }
+
+export function sinceNow(dateString) {
+	const timeStamp = Date.parse(dateString);
+	const date = new Date(timeStamp);
+
+	// const second = date.getUTCSeconds()
+	// const minute = date.getUTCMinutes()
+	// const hour = date.getUTCHours()
+
+	// const dayNumber = addLeadingZero(date.getUTCDate());
+	// const month = monthStrings[date.getUTCMonth()];
+	// const year = date.getUTCFullYear();
+
+	const start = Temporal.PlainDateTime.from(dateString);
+	const now = Temporal.Now.plainDateTimeISO();
+
+	const elapsed = now.since(start);
+
+	const units = ["years", "months", "days", "hours", "minutes", "seconds"];
+
+	for (const key of units) {
+		const value = elapsed[key];
+
+		if (key === "seconds" ? value >= 10 : value >= 1) {
+			return `${value} ${value > 1 ? key : key.toString().replace(/s$/, "")} ago`;
+		}
+	}
+
+	return "now";
+}

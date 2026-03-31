@@ -1,19 +1,51 @@
-@import url("/css/fonts.css");
+@font-face {
+	font-family: "IosevkaTermNF";
+	src: url("/assets/font/IosevkaTermNerdFont-Regular.ttf");
+}
 
 :root {
-	--code-block-background: var(--colorscheme-surface);
-	--code-block-foreground: var(--colorscheme-fg);
-	--code-block-nontext: var(--colorscheme-fg-dark);
-	--code-block-surface: var(--colorscheme-surface-dark);
+	--code-block-background: var(--colorscheme-surface-dark);
+	--code-block-foreground: var(--colorscheme-fg-light);
+	--code-block-nontext: color-mix(var(--colorscheme-fg-dark), transparent);
+	--code-block-surface: color-mix(
+		var(--colorscheme-surface-light),
+		transparent 60%
+	);
+
 	--code-block-subtext: var(--colorscheme-fg-light);
-	--code-block-red: var(--colorscheme-red-light);
-	--code-block-green: var(--colorscheme-green);
-	--code-block-blue: var(--colorscheme-blue);
-	--code-block-cyan: var(--colorscheme-cyan);
-	--code-block-pink: var(--colorscheme-pink);
-	--code-block-purple: var(--colorscheme-purple);
-	--code-block-yellow: var(--colorscheme-yellow);
-	--code-block-orange: var(--colorscheme-orange);
+
+	--code-block-red: light-dark(
+		var(--colorscheme-red-dark),
+		var(--colorscheme-red-light)
+	);
+	--code-block-green: light-dark(
+		var(--colorscheme-green-dark),
+		var(--colorscheme-green-light)
+	);
+	--code-block-blue: light-dark(
+		var(--colorscheme-blue-dark),
+		var(--colorscheme-blue-light)
+	);
+	--code-block-cyan: light-dark(
+		var(--colorscheme-cyan-dark),
+		var(--colorscheme-cyan-light)
+	);
+	--code-block-pink: light-dark(
+		var(--colorscheme-pink-dark),
+		var(--colorscheme-pink-light)
+	);
+	--code-block-purple: light-dark(
+		var(--colorscheme-purple-dark),
+		var(--colorscheme-purple-light)
+	);
+	--code-block-yellow: light-dark(
+		var(--colorscheme-yellow-dark),
+		var(--colorscheme-yellow-light)
+	);
+	--code-block-orange: light-dark(
+		var(--colorscheme-orange-dark),
+		var(--colorscheme-orange-light)
+	);
 }
 
 .codeblock {
@@ -28,6 +60,7 @@
 
 	position: relative;
 }
+
 .codeblock.inline {
 	border-radius: 5px;
 	padding: 0 0.3em;
@@ -50,6 +83,7 @@
 .codeblock:not(.inline) > var {
 	padding-left: 1em;
 }
+
 .codeblock:not(.inline) > code,
 .codeblock:not(.inline) > pre,
 .codeblock:not(.inline) > samp,
@@ -107,6 +141,7 @@
 .codeblock .code-copy {
 	position: relative;
 }
+
 .codeblock .code-copy:after {
 	position: absolute;
 	width: 1em;
@@ -152,27 +187,31 @@
 
 .codeblock.shell:is(.sh, .nu) .code-title::before {
 	content: " ";
-	color: var(--code-block-green);
+	color: var(--colorscheme-green);
 }
+
 .codeblock.shell.sh .code-title::after {
 	content: "Sh";
 }
+
 .codeblock.shell.nu .code-title::after {
 	content: "Nu";
 }
 
 .codeblock.css .code-title::before {
 	content: " ";
-	color: var(--code-block-yellow);
+	color: var(--colorscheme-yellow);
 }
+
 .codeblock.css .code-title::after {
 	content: "Css";
 }
 
 .codeblock.html .code-title::before {
 	content: " ";
-	color: var(--code-block-orange);
+	color: var(--colorscheme-orange);
 }
+
 .codeblock.html .code-title::after {
 	content: "Html";
 }
@@ -185,19 +224,23 @@
 .syntax:not(.ws) {
 	white-space: pre;
 }
+
 .syntax.ws {
 	position: relative;
 	opacity: 0.4;
 	pointer-events: none;
 }
+
 .codeblock:not(:hover) .syntax.ws::before {
 	opacity: 0;
 }
+
 .syntax.ws::before {
 	position: absolute;
 	top: 0;
 	color: var(--code-block-nontext);
 }
+
 .shell .syntax.ws::before {
 	left: 1em;
 }
@@ -214,6 +257,7 @@
 	border-left: 2px solid var(--code-block-pink);
 	left: 0.2em;
 }
+
 .codeblock.shell .syntax.ws.indent.tab::before {
 	text-indent: 0;
 }
@@ -221,6 +265,7 @@
 .syntax.ws.newline::before {
 	content: "↵";
 }
+
 .commandline .syntax.ws::before {
 	content: none;
 }
@@ -306,6 +351,7 @@
 .html .syntax.tag {
 	color: var(--code-block-purple);
 }
+
 .html .syntax.attribute {
 	color: var(--code-block-cyan);
 }

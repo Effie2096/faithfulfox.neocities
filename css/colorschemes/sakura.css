@@ -1,0 +1,53 @@
+:root {
+	color-scheme: light dark;
+
+	--colorscheme-bg: light-dark(hsl(300 6% 86%), hsl(300 6% 8%));
+	--colorscheme-bg-light: light-dark(hsl(300 6% 90%), hsl(300 8% 18%));
+	--colorscheme-bg-dark: light-dark(hsl(300 8% 82%), hsl(300 6% 14%));
+
+	--colorscheme-fg: light-dark(hsl(0 25% 35%), hsl(0 25% 80%));
+	--colorscheme-fg-light: light-dark(hsl(0 25% 40%), hsl(0 15% 65%));
+	--colorscheme-fg-dark: light-dark(hsl(0 15% 45%), hsl(0 25% 70%));
+
+	--colorscheme-float: light-dark(hsl(310 15% 75%), hsl(310 12% 20%));
+	--colorscheme-float-light: light-dark(hsl(310 5% 85%), hsl(310 12% 20%));
+	--colorscheme-float-dark: light-dark(hsl(310 15% 75%), hsl(310 6% 12%));
+
+	--colorscheme-surface: light-dark(hsl(310 15% 70%), hsl(310 15% 25%));
+	--colorscheme-surface-light: light-dark(hsl(310 15% 75%), hsl(310 15% 38%));
+	--colorscheme-surface-dark: light-dark(hsl(310 20% 60%), hsl(308 15% 21%));
+
+	--colorscheme-accent: light-dark(hsl(340 40% 50%), hsl(340 35% 65%));
+
+	--colorscheme-red: light-dark(hsl(7 55% 45%), hsl(7 55% 50%));
+	--colorscheme-red-light: light-dark(hsl(7 55% 45%), hsl(7 63% 58%));
+	--colorscheme-red-dark: light-dark(hsl(7 45% 70%), hsl(7 55% 20%));
+
+	--colorscheme-green: light-dark(hsl(150 35% 45%), hsl(150 35% 60%));
+	--colorscheme-green-light: light-dark(hsl(150 35% 70%), hsl(143 43% 67%));
+	--colorscheme-green-dark: light-dark(hsl(150 35% 35%), hsl(150 35% 20%));
+
+	--colorscheme-blue: light-dark(hsl(218 42% 50%), hsl(225 44% 49%));
+	--colorscheme-blue-light: light-dark(hsl(218 57% 65%), hsl(224 61% 60%));
+	--colorscheme-blue-dark: light-dark(hsl(218 54% 40%), hsl(225 52% 40%));
+
+	--colorscheme-cyan: light-dark(hsl(175 43% 50%), hsl(168 35% 50%));
+	--colorscheme-cyan-light: light-dark(hsl(177 52% 64%), hsl(168 49% 62%));
+	--colorscheme-cyan-dark: light-dark(hsl(177 36% 42%), hsl(168 51% 40%));
+
+	--colorscheme-pink: light-dark(hsl(340 35% 55%), hsl(340 35% 55%));
+	--colorscheme-pink-light: light-dark(hsl(340 30% 60%), hsl(340 35% 65%));
+	--colorscheme-pink-dark: light-dark(hsl(340 40% 50%), hsl(340 30% 45%));
+
+	--colorscheme-purple: light-dark(hsl(270 40% 50%), hsl(270 40% 55%));
+	--colorscheme-purple-light: light-dark(hsl(270 35% 55%), hsl(270 50% 65%));
+	--colorscheme-purple-dark: light-dark(hsl(270 50% 45%), hsl(270 35% 20%));
+
+	--colorscheme-yellow: light-dark(hsl(40 45% 36%), hsl(40 40% 60%));
+	--colorscheme-yellow-light: light-dark(hsl(40 45% 70%), hsl(40 40% 30%));
+	--colorscheme-yellow-dark: light-dark(hsl(40 45% 30%), hsl(40 40% 20%));
+
+	--colorscheme-orange: light-dark(hsl(31 66% 40%), hsl(36 58% 51%));
+	--colorscheme-orange-light: light-dark(hsl(31 66% 56%), hsl(28 61% 63%));
+	--colorscheme-orange-dark: light-dark(hsl(31 66% 30%), hsl(32 62% 49%));
+}

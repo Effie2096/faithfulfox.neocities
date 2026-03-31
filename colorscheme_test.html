@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Color Contrast Lab</title>
+
+		<link rel="stylesheet" href="./css/colorschemes/foxden.css">
+		<style>
+			body{
+				font-family:system-ui,sans-serif;
+				margin:0;
+				padding:32px;
+				background:var(--colorscheme-bg);
+				color:var(--colorscheme-fg);
+			}
+			
+			h1{margin-bottom:28px}
+			h2{margin:40px 0 12px}
+			
+			.grid{
+				display:grid;
+				grid-template-columns:repeat(3,minmax(200px,1fr));
+				gap:10px;
+				padding:14px;
+				border-radius:12px;
+			}
+			
+			.sample{
+				padding:10px;
+				border-radius:8px;
+				font-size:14px;
+				border:2px solid transparent;
+			}
+			
+			.sample.fail{
+				border-color:#ff5252;
+			}
+			
+			.sample.pass{
+				border-color:#4caf50;
+			}
+			
+			.sample code{
+				font-size:11px;
+				opacity:.75;
+				display:block;
+			}
+			
+			.text{margin-top:4px}
+			
+			.badge{
+				font-size:11px;
+				margin-top:4px;
+			}
+			
+			.layer-demo{
+				padding:18px;
+				border-radius:12px;
+				margin-bottom:16px;
+			}
+			
+			.inner{
+				padding:16px;
+				border-radius:10px;
+				margin-top:10px;
+			}
+			
+			.matrix{
+				display:grid;
+				grid-auto-columns:120px;
+				overflow:auto;
+				border-radius:10px;
+			}
+			
+			.matrix-row{
+				display:grid;
+				grid-template-columns:160px repeat(auto-fill,120px);
+			}
+			
+			.matrix-cell{
+				padding:6px;
+				margin: 4px;
+				font-size:12px;
+				border:1px solid rgba(0,0,0,.15);
+			}
+		</style>
+	</head>
+	<body>
+
+		<h1>Color Contrast Lab</h1>
+
+		<script>
+
+			const tokens=[
+			"bg-dark",        "bg",      "bg-light",
+			"surface-dark",   "surface", "surface-light",
+			"float-dark",     "float",   "float-light",
+			"fg-dark",        "fg",      "fg-light",
+			"red-dark",       "red",     "red-light",
+			"green-dark",     "green",   "green-light",
+			"blue-dark",      "blue",    "blue-light",
+			"cyan-dark",      "cyan",    "cyan-light",
+			"pink-dark",      "pink",    "pink-light",
+			"purple-dark",    "purple",  "purple-light",
+			"yellow-dark",    "yellow",  "yellow-light",
+			"orange-dark",    "orange",  "orange-light",
+			
+			"accent",
+			];
+			
+			const textColors=tokens.filter(c=>!c.startsWith("bg")&&!c.startsWith("surface")&&!c.startsWith("float"));
+			
+			const backgrounds=[
+			"bg",
+			"bg-light",
+			"bg-dark",
+			"surface",
+			"surface-light",
+			"surface-dark",
+			"float",
+			"float-light",
+			"float-dark"
+			];
+			
+			function getColor(v){
+				return getComputedStyle(document.documentElement)
+				.getPropertyValue(v).trim();
+			}
+			
+			/* WCAG math */
+			
+			function luminance(r,g,b){
+				const a=[r,g,b].map(v=>{
+					v/=255;
+					return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);
+					});
+					return 0.2126*a[0]+0.7152*a[1]+0.0722*a[2];
+				}
+				
+				function parseColor(color){
+					
+					const el=document.createElement("div");
+					el.style.color=color;
+					document.body.appendChild(el);
+					
+					const computed=getComputedStyle(el).color;
+					document.body.removeChild(el);
+					
+					const m=computed.match(/\d+/g).map(Number);
+					
+					return {r:m[0],g:m[1],b:m[2]};
+				}
+				
+				function contrast(c1,c2){
+					const a=parseColor(c1);
+					const b=parseColor(c2);
+					const l1=luminance(a.r,a.g,a.b);
+					const l2=luminance(b.r,b.g,b.b);
+					const bright=Math.max(l1,l2);
+					const dark=Math.min(l1,l2);
+					return (bright+0.05)/(dark+0.05);
+				}
+				
+				function badge(r){
+					const aa=r>=4.5;
+					const aaa=r>=7;
+					return `contrast ${r.toFixed(2)} | AA ${aa?'✓':'✗'} AAA ${aaa?'✓':'✗'}`;
+				}
+				
+				/* Background sections */
+				
+				backgrounds.forEach(bg=>{
+					
+					const section=document.createElement("section");
+					
+					const h=document.createElement("h2");
+					h.textContent=`Background: --colorscheme-${bg}`;
+					section.appendChild(h);
+					
+					const grid=document.createElement("div");
+					grid.className="grid";
+					grid.style.background=`var(--colorscheme-${bg})`;
+					
+					const bgColor=getColor(`--colorscheme-${bg}`);
+					
+					textColors.forEach(color=>{
+						
+						const textColor=getColor(`--colorscheme-${color}`);
+						const r=contrast(textColor,bgColor);
+						
+						const card=document.createElement("div");
+						card.className="sample "+(r>=4.5?"pass":"fail");
+						card.style.color=`var(--colorscheme-${color})`;
+						
+						card.innerHTML=`
+						<code>--colorscheme-${color}</code>
+						<div class="text">The quick brown fox</div>
+						<div class="badge">${badge(r)}</div>
+						`;
+						
+						grid.appendChild(card);
+						
+						});
+						
+						section.appendChild(grid);
+						document.body.appendChild(section);
+						
+						});
+						
+						/* Layer demos */
+						
+						function layer(title,bg,light,dark){
+							
+							const section=document.createElement("section");
+							
+							const h=document.createElement("h2");
+							h.textContent=title;
+							section.appendChild(h);
+							
+							const outer=document.createElement("div");
+							outer.className="layer-demo";
+							outer.style.background=`var(--colorscheme-${bg})`;
+							
+							outer.innerHTML=`Outer: --colorscheme-${bg}`;
+							
+							const a=document.createElement("div");
+							a.className="inner";
+							a.style.background=`var(--colorscheme-${light})`;
+							a.textContent=`Inner: --colorscheme-${light}`;
+							
+							const b=document.createElement("div");
+							b.className="inner";
+							b.style.background=`var(--colorscheme-${dark})`;
+							b.textContent=`Inner: --colorscheme-${dark}`;
+							
+							outer.appendChild(a);
+							outer.appendChild(b);
+							
+							section.appendChild(outer);
+							
+							document.body.appendChild(section);
+							
+						}
+						
+						layer("Surface Layer Demo","surface","surface-light","surface-dark");
+						layer("Float Layer Demo","float","float-light","float-dark");
+						
+						/* Full token matrix */
+						
+						const matrixSection=document.createElement("section");
+						
+						const mh=document.createElement("h2");
+						mh.textContent="Full Token Matrix (Text vs Background)";
+						matrixSection.appendChild(mh);
+						
+						const matrix=document.createElement("div");
+						matrix.className="matrix";
+						
+						tokens.forEach(bg=>{
+							
+							const row=document.createElement("div");
+							row.className="matrix-row";
+							
+							const label=document.createElement("div");
+							label.className="matrix-cell";
+							label.textContent=`bg: ${bg}`;
+							row.appendChild(label);
+							
+							const bgColor=getColor(`--colorscheme-${bg}`);
+							
+							tokens.forEach(text=>{
+								
+								const textColor=getColor(`--colorscheme-${text}`);
+								
+								const r=contrast(textColor,bgColor);
+								
+								const cell=document.createElement("div");
+								cell.className="matrix-cell";
+								cell.style.background=`var(--colorscheme-${bg})`;
+								cell.style.color=`var(--colorscheme-${text})`;
+								
+								if(r<4.5) {
+									cell.style.outline="2px solid #ff5252";
+									} else {
+										cell.style.outline="2px solid #13eb00";
+									}
+									
+									// cell.textContent="Aa";
+									cell.textContent = `${r.toFixed(1)} ${text}`;
+									
+									row.appendChild(cell);
+									
+									});
+									
+									matrix.appendChild(row);
+									
+									});
+									
+									matrixSection.appendChild(matrix);
+									document.body.appendChild(matrixSection);
+									
+									/* ---------- detect color variables ---------- */
+									
+									function detectCSSVars(prefixes){
+										
+										const styles = getComputedStyle(document.documentElement);
+										const vars = {};
+										
+										for (let i = 0; i < styles.length; i++) {
+											
+											const name = styles[i];
+											
+											if (prefixes.some(p => name.startsWith(p))) {
+												
+												const value = styles.getPropertyValue(name).trim();
+												
+												if (value) vars[name] = value;
+												
+											}
+											
+										}
+										
+										return vars;
+									}
+									
+									/* ---------- section ---------- */
+									
+									const paletteSection=document.createElement("section");
+									
+									const title=document.createElement("h2");
+									title.textContent="Base Palette Explorer";
+									paletteSection.appendChild(title);
+									
+									const paletteGrid=document.createElement("div");
+									paletteGrid.className="grid";
+									
+									paletteSection.appendChild(paletteGrid);
+									document.body.appendChild(paletteSection);
+									
+									/* ---------- generate swatches ---------- */
+									
+									const vars = detectCSSVars([
+									"--foxden-",
+									]);
+									
+									Object.entries(vars).forEach(([name,value])=>{
+										
+										const swatch=document.createElement("div");
+										swatch.className="sample";
+										swatch.style.background=`var(${name})`;
+										
+										const fg=getColor("--colorscheme-fg") || "#fff";
+										
+										swatch.style.color=fg;
+										
+										swatch.innerHTML=`
+										<code>${name}</code>
+										<div class="text">Aa Bb Cc</div>
+										`;
+										
+										paletteGrid.appendChild(swatch);
+										
+										});
+										
+										/* ---------- contrast preview ---------- */
+										
+										const previewSection=document.createElement("section");
+										
+										const pt=document.createElement("h2");
+										pt.textContent="Palette vs Theme Backgrounds";
+										previewSection.appendChild(pt);
+										
+										const previewGrid=document.createElement("div");
+										previewGrid.className="grid";
+										
+										previewSection.appendChild(previewGrid);
+										document.body.appendChild(previewSection);
+										
+										const themeBGs=[
+										"--colorscheme-bg",
+										"--colorscheme-bg-dark",
+										"--colorscheme-bg-light",
+										"--colorscheme-surface",
+										"--colorscheme-surface-dark",
+										"--colorscheme-surface-light",
+										"--colorscheme-float",
+										"--colorscheme-float-dark",
+										"--colorscheme-float-light",
+										];
+										
+										themeBGs.forEach(bg=>{
+											const h=document.createElement("h3")
+											
+											h.textContent=`Background: ${bg}`;
+											h.style.gridColumnStart=1
+											h.style.gridColumnEnd=4
+											previewGrid.appendChild(h);
+											Object.entries(vars).forEach(([name,value])=>{
+												
+												const bgColor=getColor(bg);
+												const textColor=getColor(name);
+												
+												if(!textColor) return;
+												
+												const r=contrast(textColor,bgColor);
+												
+												const card=document.createElement("div");
+												card.className="sample "+(r>=4.5?"pass":"fail");
+												
+												card.style.background=`var(${bg})`;
+												card.style.color=`var(${name})`;
+												
+												card.innerHTML=`
+												<code>${name} on ${bg}</code>
+												<div class="text">Sample text</div>
+												<div class="badge">${badge(r)}</div>
+												`;
+												
+												previewGrid.appendChild(card);
+												
+												});
+												
+												});
+		</script>
+	</body>
+</html>

@@ -5,19 +5,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	const divWidth = 150;
 	const divHeight = 150;
-	const offset = 0;
+	const offset = 50;
 
 	function getRandomX() {
 		const bodyWidth = document.body.offsetWidth;
-		const validRegionWidth = bodyWidth - divWidth + offset * 2;
-		const offsetSide = Math.floor(Math.random() * validRegionWidth) - offset;
+		const validRegionWidth = bodyWidth - divWidth - offset * 2;
+		const offsetSide = Math.floor(Math.random() * validRegionWidth) + offset;
 		return offsetSide;
 	}
 
 	function getRandomY() {
 		const bodyHeight = document.body.offsetHeight;
-		const validRegionHeight = bodyHeight - divHeight + offset * 2;
-		const offsetTop = Math.floor(Math.random() * validRegionHeight) - offset;
+		const validRegionHeight = bodyHeight - divHeight - offset * 2;
+		const offsetTop = Math.floor(Math.random() * validRegionHeight) + offset;
 		return offsetTop;
 	}
 
@@ -79,12 +79,19 @@ document.addEventListener("DOMContentLoaded", () => {
 					if (attempts < maxAttempts) {
 						const newDivElement = document.createElement("div");
 						newDivElement.classList.add("postit-note");
+						if (liElements[i].classList.length !== 0) {
+							newDivElement.classList.add(liElements[i].classList);
+						}
 						newDivElement.style.position = "absolute";
 						newDivElement.style.left = `${newDiv.x}px`;
 						newDivElement.style.top = `${newDiv.y}px`;
 						newDivElement.style.width = `${divWidth}px`;
 						newDivElement.style.height = `${divHeight}px`;
-						newDivElement.textContent = liElements[i].textContent;
+						const styleSpan = document.createElement("span");
+						const postitText = document.createElement("span");
+						postitText.textContent = liElements[i].textContent;
+						styleSpan.appendChild(postitText);
+						newDivElement.appendChild(styleSpan);
 
 						const rotation = Math.floor(Math.random() * 20) - 10;
 						newDivElement.style.transform = `rotate(${rotation}deg)`;

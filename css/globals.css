@@ -5,9 +5,9 @@
 }
 
 .censor {
-	background-color: black;
+	background-color: var(--colorscheme-fg);
 	position: relative;
-	color: black;
+	color: var(--colorscheme-fg);
 	margin-left: 1px;
 	margin-right: 1px;
 	user-select: none;
@@ -17,7 +17,7 @@
 
 .censor.active,
 .censor:active {
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: color-mix(var(--colorscheme-fg), transparent 90%);
 	user-select: text;
 	transition: 0s;
 }
@@ -54,7 +54,7 @@
 	font-family: "Monocraft", Arial, sans-serif;
 	font-size: 1.5rem;
 	position: absolute;
-	text-shadow: 0.2em 0.2em 5px rgba(0, 0, 0, 0.5);
+	text-shadow: 0.2em 0.2em 5px color-mix(var(--colorscheme-fg), transparent 90%);
 	transform: rotate(30deg);
 	pointer-events: none;
 }
@@ -73,7 +73,7 @@
 .soon::after {
 	content: "SOON!";
 	top: 16px;
-	left: -9px;
+	right: -1em;
 }
 
 .notif-badge::after {
@@ -111,14 +111,15 @@
 
 .external {
 	position: relative;
+	color: var(--colorscheme-accent);
 }
 
 .external::after {
 	position: absolute;
 	font-family: "SymbolsNerdFont-Regular";
 	content: "";
-	font-size: 0.9rem;
-	right: -1.1rem;
+	font-size: 0.6rem;
+	right: -0.6rem;
 	top: -0.2rem;
 }
 

@@ -1,7 +1,3 @@
-body {
-	position: relative;
-}
-
 .badge-box img {
 	margin: 1px;
 	image-rendering: -moz-crisp-edges; /* Firefox */

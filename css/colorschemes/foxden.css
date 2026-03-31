@@ -1,0 +1,141 @@
+:root {
+	/* palette */
+	--foxden-epiphora: hsl(0 75% 10%);
+	--foxden-sweet-berry: hsl(0 79% 36%);
+	--foxden-fur: hsl(0 71% 45%);
+	--foxden-hunt: hsl(0 61% 51%);
+	--foxden-goji: hsl(0 71% 60%);
+	--foxden-moss: hsl(81 63% 18%);
+	--foxden-pine: hsl(91 45% 25%);
+	--foxden-fern: hsl(100 55% 36%);
+	--foxden-dew: hsl(97 100% 80%);
+	--foxden-lapis: hsl(208 85% 37%);
+	--foxden-river: hsl(198 89% 52%);
+	--foxden-sky: hsl(196 89% 70%);
+	--foxden-moon: hsl(196 100% 84%);
+	--foxden-winter: hsl(181 61% 43%);
+	--foxden-mildew: hsl(161 90% 29%);
+	--foxden-brook: hsl(177 63% 67%);
+	--foxden-stream: hsl(167 70% 80%);
+	--foxden-ice: hsl(168 88% 87%);
+	--foxden-roseblush: hsl(335 86% 88%);
+	--foxden-paw: hsl(339 72% 80%);
+	--foxden-tame: hsl(326 100% 79%);
+	--foxden-lily: hsl(328 58% 68%);
+	--foxden-hyacinth: hsl(326 68% 45%);
+	--foxden-wild: hsl(338 72% 63%);
+	--foxden-plum: hsl(338 53% 20%);
+	--foxden-dusk: hsl(264 43% 58%);
+	--foxden-violet: hsl(263 50% 50%);
+	--foxden-twighlight: hsl(268 42% 30%);
+	--foxden-shadow: hsl(266 41% 19%);
+	--foxden-sand: hsl(46 91% 82%);
+	--foxden-meadow: hsl(52 94% 69%);
+	--foxden-buttercup: hsl(52 97% 58%);
+	--foxden-sandstone: hsl(52 99% 42%);
+	--foxden-loam: hsl(50.4, 98.5%, 26.1%);
+	--foxden-artic: hsl(199 94% 94%);
+	--foxden-whisker: hsl(288 24% 96%);
+	--foxden-coat: hsl(300 7% 92%);
+	--foxden-pelt: hsl(230, 7%, 84%);
+	--foxden-trunk: hsl(15 56% 47%);
+	--foxden-vulpine: hsl(13 90% 27%);
+	--foxden-root: hsl(15 44% 28%);
+	--foxden-tail: hsl(21 70% 9%);
+	--foxden-burrow: hsl(21 70% 4%);
+	--foxden-amber: hsl(32 91% 55%);
+	--foxden-sionnach: hsl(23 94% 50%);
+	--foxden-autumn: hsl(16 82% 49%);
+	--foxden-copper: hsl(8 31% 54%);
+
+	color-scheme: light dark;
+
+	/* kit fox foxden-burrow fennec */
+	--colorscheme-bg: light-dark(var(--foxden-coat), var(--foxden-epiphora));
+	--colorscheme-bg-light: light-dark(var(--foxden-whisker), var(--foxden-tail));
+	--colorscheme-bg-dark: light-dark(var(--foxden-pelt), var(--foxden-burrow));
+	--colorscheme-fg: light-dark(var(--foxden-burrow), var(--foxden-coat));
+	--colorscheme-fg-light: light-dark(var(--foxden-root), var(--foxden-whisker));
+	--colorscheme-fg-dark: light-dark(var(--foxden-shadow), var(--foxden-pelt));
+
+	--colorscheme-float: light-dark(var(--foxden-paw), var(--foxden-hyacinth));
+	--colorscheme-float-light: light-dark(
+		var(--foxden-roseblush),
+		var(--foxden-wild)
+	);
+	--colorscheme-float-dark: light-dark(var(--foxden-lily), var(--foxden-plum));
+
+	--colorscheme-surface: light-dark(var(--foxden-dew), var(--foxden-dusk));
+	--colorscheme-surface-light: light-dark(
+		var(--foxden-roseblush),
+		var(--foxden-twighlight)
+	);
+	--colorscheme-surface-dark: light-dark(
+		var(--foxden-lily),
+		var(--foxden-shadow)
+	);
+
+	--colorscheme-accent: var(--foxden-hyacinth);
+
+	--colorscheme-red: light-dark(var(--foxden-fur), var(--foxden-hunt));
+	--colorscheme-red-light: light-dark(var(--foxden-hunt), var(--foxden-goji));
+	--colorscheme-red-dark: light-dark(
+		var(--foxden-sweet-berry),
+		var(--foxden-fur)
+	);
+
+	--colorscheme-green: light-dark(var(--foxden-pine), var(--foxden-fern));
+	--colorscheme-green-light: light-dark(var(--foxden-fern), var(--foxden-dew));
+	--colorscheme-green-dark: light-dark(var(--foxden-moss), var(--foxden-pine));
+
+	--colorscheme-blue: light-dark(var(--foxden-river), var(--foxden-sky));
+	--colorscheme-blue-light: light-dark(var(--foxden-sky), var(--foxden-moon));
+	--colorscheme-blue-dark: light-dark(var(--foxden-lapis), var(--foxden-river));
+
+	--colorscheme-cyan: light-dark(var(--foxden-brook), var(--foxden-stream));
+	--colorscheme-cyan-light: light-dark(var(--foxden-stream), var(--foxden-ice));
+	--colorscheme-cyan-dark: light-dark(
+		var(--foxden-mildew),
+		var(--foxden-winter)
+	);
+
+	--colorscheme-pink: light-dark(var(--foxden-wild), var(--foxden-tame));
+	--colorscheme-pink-light: light-dark(var(--foxden-paw), var(--foxden-lily));
+	--colorscheme-pink-dark: light-dark(
+		var(--foxden-hyacinth),
+		var(--foxden-wild)
+	);
+
+	--colorscheme-purple: light-dark(var(--foxden-violet), var(--foxden-violet));
+	--colorscheme-purple-light: light-dark(
+		var(--foxden-twighlight),
+		var(--foxden-dusk)
+	);
+	--colorscheme-purple-dark: light-dark(
+		var(--foxden-shadow),
+		var(--foxden-twighlight)
+	);
+
+	--colorscheme-yellow: light-dark(var(--foxden-loam), var(--foxden-buttercup));
+	--colorscheme-yellow-light: light-dark(
+		var(--foxden-trunk),
+		var(--foxden-sand)
+	);
+	--colorscheme-yellow-dark: light-dark(
+		var(--foxden-vulpine),
+		var(--foxden-sandstone)
+	);
+
+	--colorscheme-orange: light-dark(
+		var(--foxden-sionnach),
+		var(--foxden-sionnach)
+	);
+	--colorscheme-orange-light: light-dark(
+		var(--foxden-amber),
+		var(--foxden-amber)
+	);
+	--colorscheme-orange-dark: light-dark(
+		var(--foxden-autumn),
+		var(--foxden-vulpine)
+	);
+}

@@ -8,6 +8,7 @@
 	position: fixed;
 	top: 0px;
 	right: 0px;
+	color: light-dark(var(--colorscheme-fg), var(--colorscheme-bg-light));
 	width: calc(var(--notification-width) + 0.2rem);
 	height: 0px;
 	z-index: 990;
@@ -18,6 +19,10 @@
 	overflow: visible;
 	position: relative;
 	cursor: var(--cursor-pointer);
+}
+
+#notifications .notification :is(h4, p:last-of-type) {
+	margin: 0;
 }
 
 .notification.history:hover {
@@ -33,7 +38,8 @@
 	width: 100%;
 	height: 100%;
 	border-radius: 0.2rem;
-	background-color: rgb(255, 135, 190, 0.5);
+	background-color: var(--colorscheme-float-dark);
+	opacity: 50%;
 	z-index: 991;
 }
 
@@ -46,7 +52,7 @@
 	transform: translate(50%, -50%);
 	font-size: 3rem;
 	z-index: 992;
-	color: rgb(230 40 60 / 100%);
+	color: var(--colorscheme-red-dark);
 }
 
 .notification.history.removing::before,
@@ -77,6 +83,7 @@
 	grid-row-start: 2;
 	grid-row-end: 3;
 	position: relative;
+	padding-top: 0.2em;
 	border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -103,22 +110,23 @@
 }
 
 .notification.default .notification-inner {
-	background-color: rgba(var(--ruby), 0.8);
-	border-right: 0.3rem solid rgb(var(--ruby));
+	background-color: var(--colorscheme-float-light);
+	border-right: 0.3rem solid var(--colorscheme-float-dark);
 }
 
 .notification.error .notification-inner {
-	background-color: rgba(242, 90, 90, 0.8);
-	border-right: 0.3rem solid rgb(236 19 19);
+	background-color: var(--colorscheme-red);
+	border-right: 0.3rem solid var(--colorscheme-red-dark);
 }
 
 .notification.info .notification-inner {
-	background-color: rgba(254, 243, 124, 0.8);
-	border-right: 0.3rem solid rgb(254 237 18);
+	background-color: var(--colorscheme-yellow-light);
+	border-right: 0.3rem solid var(--colorscheme-yellow);
 }
 
 .notification .notification-title,
 .notification .notification-time,
+	color: var(--colorscheme-bg);
 .notification .notification-message {
 	user-select: none;
 	cursor: var(--cursor-pointer);
@@ -284,7 +292,7 @@
 	width: calc(var(--notification-width) + 0.2rem);
 	padding-left: 0.2rem;
 	border-radius: 0.2rem;
-	background-color: rgba(255, 190, 255, 0.8);
+	background-color: var(--colorscheme-float);
 }
 
 #notification-buttons-container {
@@ -293,12 +301,13 @@
 	right: 0.2rem;
 	display: flex;
 	gap: 0.2rem;
+color: var(--colorscheme-fg);
 }
 
 #notification-count-button,
 #notification-clear-button {
 	position: relative;
-	background-color: rgba(255, 190, 255, 0.8);
+	background-color: var(--colorscheme-float-light);
 	border-radius: 50%;
 	width: 2rem;
 	height: 2rem;
@@ -321,11 +330,11 @@
 	top: 0;
 	width: 1em;
 	height: 1em;
-	line-height: 1.1em;
+	line-height: 1em;
 
 	pointer-events: none;
 
-	background-color: rgb(var(--ruby));
+	background-color: var(--colorscheme-float-dark);
 	border-radius: 0.5em;
 }
 #notification-count-button:hover::after {

@@ -11,13 +11,13 @@
 	border-radius: 6px;
 	min-height: 2rem;
 	/* max-height: 4rem; */
-	background-color: #ffbbf7;
+	background-color: var(--colorscheme-surface-light);
 	z-index: 990;
 }
 
 .tooltip.removing {
 	opacity: 0;
-	transition: .2s ease;
+	transition: 0.2s ease;
 	/* transition-delay: 0.1s; */
 }
 
@@ -29,12 +29,14 @@
 	margin-left: -0.5rem;
 	border-width: 0.5rem;
 	border-style: solid;
-	border-color: #ffbbf7 transparent transparent transparent;
+	border-color: var(--colorscheme-surface-light) transparent transparent
+		transparent;
 }
 
 .tooltip.tooltip-top .tooltip-notch {
 	top: -0.9rem;
-	border-color: transparent transparent #ffbbf7 transparent;
+	border-color: transparent transparent var(--colorscheme-surface-light)
+		transparent;
 }
 
 .tooltip .tooltipicon {
@@ -43,7 +45,7 @@
 	grid-column-end: 2;
 	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 	border-radius: 6px 0 0 6px;
-	background-color: #f979ca;
+	background-color: var(--colorscheme-surface-dark);
 	height: 100%;
 	width: 2.8rem;
 }
@@ -56,16 +58,14 @@
 	font-family: "SymbolsNerdFont-Regular";
 	font-size: 1.8rem;
 	line-height: 1.8rem;
-	color: white;
 }
 
 .tooltip .tooltiptext {
 	grid-column-start: 2;
 	grid-column-end: 3;
 	font-family: "Monocraft";
-	color: #000;
 	text-wrap: wrap;
 	font-size: 1rem;
-	padding: .4rem;
+	padding: 0.4rem;
 	transition: opacity 0.3s;
 }

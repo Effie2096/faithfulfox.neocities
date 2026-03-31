@@ -15,24 +15,26 @@
 		<meta property="og:image" content="https://faithfulfox.neocities.org/assets/img/pfp.png">
 
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+		<link href="/css/colorschemes/foxden.css" rel="stylesheet">
+		<link href="/css/globals.css" rel="stylesheet">
+		<link href="/css/scrollbar.css" rel="stylesheet">
+		<link href="/css/spoiler.css" rel="stylesheet">
+		<link href="/css/updates.css" rel="stylesheet">
+		<link href="/css/badges.css" rel="stylesheet">
+		<link href="/css/tooltip.css" rel="stylesheet">
+		<link href="/css/notification.css" rel="stylesheet">
+		<link href="/css/content_warnings.css" rel="stylesheet">
+		<link href="/css/style.css" rel="stylesheet">
+
 		<script src="/script/jquery-3.7.1.min.js"></script>
 
 		<script src="/script/index.js" type="module"></script>
-
 		<script src="/script/post.js"></script>
 		<script src="/script/page_include.js"></script>
 		<script src="/script/toggleToDo.js"></script>
 		<script src="/script/gallery.js"></script>
 		<script src="/script/tooltip.js"></script>
-
-		<link href="css/globals.css" rel="stylesheet">
-		<link href="css/scrollbar.css" rel="stylesheet">
-		<link href="css/spoiler.css" rel="stylesheet">
-		<link href="css/notification.css" rel="stylesheet">
-		<link href="css/badges.css" rel="stylesheet">
-		<link href="css/tooltip.css" rel="stylesheet">
-		<link href="css/content_warnings.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -139,6 +141,19 @@
 					</div>
 
 					<div class="sidebar-content sidebar-content-left tilt index-item new"
+					     id="devlog"
+					>
+						<a href="/pages/devlog.html">
+							<img class="click index-item-image"
+							     src="/assets/img/nerd-nerd-emoji.gif"
+							     alt="dumb ah nerd emoji"
+							     onmouseover="tooltip(this, 'Devlog')"
+							>
+							<h3 class="click">Devlog</h3>
+						</a>
+					</div>
+
+					<div class="sidebar-content sidebar-content-left tilt index-item"
 					     id="guestbook"
 					>
 						<a href="https://faithfulfox.atabook.org/">
@@ -155,10 +170,12 @@
 				<div id="update-container" class="sidebar-content sidebar-content-left">
 					<div id="update-header">
 						<a href="/pages/updates_page.html"
-						   style="text-decoration: none; color: black"
 						   class="update-icon-link"
 						>
-							<span id="update-icon" class="icon click link">󰂞</span>
+							<span id="update-icon"
+							      class="icon click link"
+							      onmouseover="tooltip(this, 'Updates Page')"
+							>󰂞</span>
 						</a>
 						<a href="#" class="rss-link soon">
 							<svg xmlns="http://www.w3.org/2000/svg"
@@ -195,7 +212,6 @@
 						</a>
 						<a href="/pages/updates_page.html"
 						   class="click link update-link"
-						   style="text-decoration: none; color: black"
 						>
 							<h3 id="update-heading">Updates</h3>
 						</a>
@@ -211,9 +227,6 @@
 				<div id="posts">
 					<div class="content-card pinned"
 					     data-include="/pages/posts/aboutme_summary"
-					></div>
-					<div class="content-card"
-					     data-include="/pages/posts/devlog_20260318_summary"
 					></div>
 					<div class="content-card"
 					     data-include="/pages/posts/horror_gaming_20260308_summary"
@@ -326,9 +339,7 @@
 
 				<div id="badges-container">
 					<div id="badges-header">
-						<a style="text-decoration: none; color: black"
-						   href="/pages/badge_page.html"
-						>
+						<a href="/pages/badge_page.html">
 							<h3 class="heading link click">Badges</h3>
 						</a>
 					</div>

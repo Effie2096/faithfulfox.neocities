@@ -3,13 +3,13 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>About Me</title>
+		<title>Media Files</title>
+		<link href="/css/colorschemes/matrix.css" rel="stylesheet">
 		<link href="/css/globals.css" rel="stylesheet">
-		<link href="/css/notification.css" rel="stylesheet">
 		<link href="/css/tooltip.css" rel="stylesheet">
 		<link href="/css/codeblock.css" rel="stylesheet">
-		<link href="/css/post_base.css" rel="stylesheet">
 		<link href="/css/devlog.css" rel="stylesheet">
+		<link href="/css/notification.css" rel="stylesheet">
 
 		<script src="/script/tooltip.js"></script>
 		<script src="/script/syntaxHighlight.js"></script>
@@ -37,7 +37,7 @@
 	<body>
 
 		<div id="backlink">
-			<a href="/index.html">cd ~</a>
+			<a href="/pages/devlog.html">cd ../</a>
 		</div>
 
 		<div id="notifications">
@@ -62,10 +62,7 @@
 		</div>
 
 		<div class="content-body">
-			<h1>Dev Log</h1>
-
 			<section>
-
 				<div class="prompt-divider">
 					<span class="prompt-left">dev/tools</span>
 					<span class="prompt-right"><span class="timestamp">21:07:51</span></span>
@@ -86,20 +83,6 @@
 		| cut -d ' ' -f 4
 		| sed s/,//
   }}</code></pre>
-				<!-- 				<div class="codeblock shell nu"> -->
-				<!-- 					<div class="code-header"> -->
-				<!-- 						<span class="code-title"></span> -->
-				<!-- 						<span class="code-desc"></span> -->
-				<!-- 						<span class="code-copy click" -->
-				<!-- 						      onmouseover="tooltip(this, 'Copy code')" -->
-				<!-- 						></span> -->
-				<!-- 					</div> -->
-				<!-- 					<pre><code>ls *.gif | each {|| $in -->
-				<!-- 	| insert duration { -->
-				<!-- 		ffmpeg -i $in.name o+e>| grep Duration | cut -d ' ' -f 4 | sed s/,// -->
-				<!-- 	} -->
-				<!-- }</code></pre> -->
-				<!-- 				</div> -->
 				<table class="ls-output nu">
 					<thead><tr>
 						<th scope="col">#</th>
