@@ -1,10 +1,9 @@
 @font-face {
-	font-family: "IosevkaTermNF";
-	src: url("/assets/font/IosevkaTermNerdFont-Regular.ttf");
+	font-family: "IosevkaTerm";
+	src: url("/assets/font/IosevkaTerm-Regular.woff2");
 }
 
 * {
-	font-family: "IosevkaTermNF", monospace;
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
@@ -12,6 +11,7 @@
 
 body {
 	background-color: var(--colorscheme-bg);
+	font-family: "IosevkaTerm", monospace;
 }
 
 a {
@@ -45,6 +45,21 @@ a {
 	content: "";
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol {
+	margin-bottom: 1rem;
+}
+ul :is(ul, ol),
+ol :is(ul, ol) {
+	margin-bottom: 0;
+}
 h2,
 h3,
 h4,
@@ -105,6 +120,7 @@ li > :is(ul, ol) {
 	right: 0;
 	top: 0;
 }
+
 .prompt-divider + :is(h1, h2, h3, h4, h5, h6).commandline {
 	padding-right: 0;
 }
@@ -131,6 +147,7 @@ li > :is(ul, ol) {
 
 .prompt-divider .prompt-left:before {
 	content: "󱃪 ";
+	font-family: "SymbolsNerdFont-Regular";
 	color: var(--colorscheme-orange);
 	padding-right: 0.2rem;
 }
@@ -144,12 +161,13 @@ li > :is(ul, ol) {
 
 .prompt-right {
 	float: right;
-	color: var(--colorscheme-yellow);
+	color: var(--colorscheme-yellow-dark);
 	margin-left: 0.5em;
 }
 
 .prompt-right .timestamp:before {
 	content: " ";
+	font-family: "SymbolsNerdFont-Regular";
 	padding-right: 0.2rem;
 }
 
@@ -177,7 +195,7 @@ li > :is(ul, ol) {
 }
 
 .ls-output > tbody td:nth-of-type(1) {
-	color: var(--colorscheme-fg-dark);
+	color: var(--colorscheme-fg);
 }
 
 .ls-output > tbody td:nth-of-type(2) {
@@ -242,7 +260,7 @@ li > :is(ul, ol) {
 }
 
 .ls-output.nu > tbody td:nth-of-type(1) {
-	color: var(--colorscheme-grey);
+	color: var(--colorscheme-fg-dark);
 }
 
 .ls-output.nu > tbody td:nth-of-type(2) a,

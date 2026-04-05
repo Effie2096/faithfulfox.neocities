@@ -1,53 +1,283 @@
 :root {
+	/* Bg Shades */
+	--kanagawa-sumiInk0: #16161d;
+	--kanagawa-sumiInk1: #181820;
+	--kanagawa-sumiInk2: #1a1a22;
+	--kanagawa-sumiInk3: #1f1f28;
+	--kanagawa-sumiInk4: #2a2a37;
+	--kanagawa-sumiInk5: #363646;
+	--kanagawa-sumiInk6: #54546d; /* fg */
+
+	/* Popup and Floats */
+	--kanagawa-waveBlue1: #223249;
+	--kanagawa-waveBlue2: #2d4f67;
+
+	/* Diff and Git */
+	--kanagawa-winterGreen: #2b3328;
+	--kanagawa-winterYellow: #49443c;
+	--kanagawa-winterRed: #43242b;
+	--kanagawa-winterBlue: #252535;
+	--kanagawa-autumnGreen: #76946a;
+	--kanagawa-autumnRed: #c34043;
+	--kanagawa-autumnYellow: #dca561;
+
+	/* Diag */
+	--kanagawa-samuraiRed: #e82424;
+	--kanagawa-roninYellow: #ff9e3b;
+	--kanagawa-waveAqua1: #6a9589;
+	--kanagawa-dragonBlue: #658594;
+
+	/* Fg and Comments */
+	--kanagawa-oldWhite: #c8c093;
+	--kanagawa-fujiWhite: #dcd7ba;
+	--kanagawa-fujiGray: #727169;
+
+	--kanagawa-oniViolet: #957fb8;
+	--kanagawa-oniViolet2: #b8b4d0;
+	--kanagawa-crystalBlue: #7e9cd8;
+	--kanagawa-springViolet1: #938aa9;
+	--kanagawa-springViolet2: #9cabca;
+	--kanagawa-springBlue: #7fb4ca;
+	--kanagawa-lightBlue: #a3d4d5;
+	--kanagawa-waveAqua2: #7aa89f;
+
+	--kanagawa-springGreen: #98bb6c;
+	--kanagawa-boatYellow1: #938056;
+	--kanagawa-boatYellow2: #c0a36e;
+	--kanagawa-carpYellow: #e6c384;
+
+	--kanagawa-sakuraPink: #d27e99;
+	--kanagawa-waveRed: #e46876;
+	--kanagawa-peachRed: #ff5d62;
+	--kanagawa-surimiOrange: #ffa066;
+	--kanagawa-katanaGray: #717c7c;
+
+	--kanagawa-dragonBlack0: #0d0c0c;
+	--kanagawa-dragonBlack1: #12120f;
+	--kanagawa-dragonBlack2: #1d1c19;
+	--kanagawa-dragonBlack3: #181616;
+	--kanagawa-dragonBlack4: #282727;
+	--kanagawa-dragonBlack5: #393836;
+	--kanagawa-dragonBlack6: #625e5a;
+
+	--kanagawa-dragonWhite: #c5c9c5;
+	--kanagawa-dragonGreen: #87a987;
+	--kanagawa-dragonGreen2: #8a9a7b;
+	--kanagawa-dragonPink: #a292a3;
+	--kanagawa-dragonOrange: #b6927b;
+	--kanagawa-dragonOrange2: #b98d7b;
+	--kanagawa-dragonGray: #a6a69c;
+	--kanagawa-dragonGray2: #9e9b93;
+	--kanagawa-dragonGray3: #7a8382;
+	--kanagawa-dragonBlue2: #8ba4b0;
+	--kanagawa-dragonViolet: #8992a7;
+	--kanagawa-dragonRed: #c4746e;
+	--kanagawa-dragonAqua: #8ea4a2;
+	--kanagawa-dragonAsh: #737c73;
+	--kanagawa-dragonTeal: #949fb5;
+	--kanagawa-dragonYellow: #c4b28a;
+
+	--kanagawa-lotusInk1: #545464;
+	--kanagawa-lotusInk2: #43436c;
+	--kanagawa-lotusGray: #dcd7ba;
+	--kanagawa-lotusGray2: #716e61;
+	--kanagawa-lotusGray3: #8a8980;
+	--kanagawa-lotusWhite0: #d5cea3;
+	--kanagawa-lotusWhite1: #dcd5ac;
+	--kanagawa-lotusWhite2: #e5ddb0;
+	--kanagawa-lotusWhite3: #f2ecbc;
+	--kanagawa-lotusWhite4: #e7dba0;
+	--kanagawa-lotusWhite5: #e4d794;
+	--kanagawa-lotusViolet1: #a09cac;
+	--kanagawa-lotusViolet2: #766b90;
+	--kanagawa-lotusViolet3: #c9cbd1;
+	--kanagawa-lotusViolet4: #624c83;
+	--kanagawa-lotusBlue1: #c7d7e0;
+	--kanagawa-lotusBlue2: #b5cbd2;
+	--kanagawa-lotusBlue3: #9fb5c9;
+	--kanagawa-lotusBlue4: #4d699b;
+	--kanagawa-lotusBlue5: #5d57a3;
+	--kanagawa-lotusGreen: #6f894e;
+	--kanagawa-lotusGreen2: #6e915f;
+	--kanagawa-lotusGreen3: #b7d0ae;
+	--kanagawa-lotusPink: #b35b79;
+	--kanagawa-lotusOrange: #cc6d00;
+	--kanagawa-lotusOrange2: #e98a00;
+	--kanagawa-lotusYellow: #77713f;
+	--kanagawa-lotusYellow2: #836f4a;
+	--kanagawa-lotusYellow3: #de9800;
+	--kanagawa-lotusYellow4: #f9d791;
+	--kanagawa-lotusRed: #c84053;
+	--kanagawa-lotusRed2: #d7474b;
+	--kanagawa-lotusRed3: #e82424;
+	--kanagawa-lotusRed4: #d9a594;
+	--kanagawa-lotusAqua: #597b75;
+	--kanagawa-lotusAqua2: #5e857a;
+	--kanagawa-lotusTeal1: #4e8ca2;
+	--kanagawa-lotusTeal2: #6693bf;
+	--kanagawa-lotusTeal3: #5a7785;
+	--kanagawa-lotusCyan: #d7e3d8;
+
 	color-scheme: light dark;
 
-	--colorscheme-bg: light-dark(hsl(53 66% 84%), hsl(0 5% 9%));
-	--colorscheme-bg_light: light-dark(hsl(45 54% 77%), hsl(0 2% 16%));
-	--colorscheme-bg_dark: light-dark(hsl(48 39% 77%), hsl(60 9% 6%));
+	--colorscheme-bg: light-dark(
+		var(--kanagawa-lotusWhite3),
+		var(--kanagawa-dragonBlack3)
+	);
+	--colorscheme-bg-light: light-dark(
+		var(--kanagawa-lotusWhite4),
+		var(--kanagawa-dragonBlack4)
+	);
+	--colorscheme-bg-dark: light-dark(
+		var(--kanagawa-lotusWhite5),
+		var(--kanagawa-dragonBlack5)
+	);
 
-	--colorscheme-fg: light-dark(hsl(240 9% 36%), hsl(120 5% 78%));
-	--colorscheme-fg_light: light-dark(hsl(52 35% 80%), hsl(210 38% 21%));
-	--colorscheme-fg_dark: light-dark(hsl(240 23% 34%), hsl(51 29% 68%));
+	--colorscheme-fg: light-dark(
+		var(--kanagawa-lotusInk1),
+		var(--kanagawa-dragonWhite)
+	);
+	--colorscheme-fg-light: light-dark(
+		var(--kanagawa-sumiInk6),
+		var(--kanagawa-fujiWhite)
+	);
+	--colorscheme-fg-dark: light-dark(
+		var(--kanagawa-lotusInk2),
+		var(--kanagawa-oldWhite)
+	);
 
-	--colorscheme-float: light-dark(hsl(48 37% 74%), hsl(0 4% 5%));
-	--colorscheme-float_light: light-dark(hsl(207 33% 71%), hsl(207 39% 29%));
-	--colorscheme-float_dark: light-dark(hsl(205 38% 83%), hsl(210 38% 21%));
+	--colorscheme-float: light-dark(
+		var(--kanagawa-lotusBlue2),
+		var(--kanagawa-waveBlue1)
+	);
+	--colorscheme-float-light: light-dark(
+		var(--kanagawa-lotusBlue1),
+		var(--kanagawa-waveBlue2)
+	);
+	--colorscheme-float-dark: light-dark(
+		var(--kanagawa-lotusBlue3),
+		var(--kanagawa-waveBlue1)
+	);
 
-	--colorscheme-surface: light-dark(hsl(48 39% 77%), hsl(60 9% 6%));
-	--colorscheme-surface_light: light-dark(hsl(48 43% 80%), hsl(40 8% 11%));
-	--colorscheme-surface_dark: light-dark(hsl(48 37% 74%), hsl(0 4% 5%));
+	--colorscheme-surface: light-dark(
+		var(--kanagawa-lotusWhite2),
+		var(--kanagawa-dragonBlack0)
+	);
+	--colorscheme-surface-light: light-dark(
+		var(--kanagawa-lotusWhite1),
+		var(--kanagawa-dragonBlack2)
+	);
+	--colorscheme-surface-dark: light-dark(
+		var(--kanagawa-lotusWhite0),
+		var(--kanagawa-dragonBlack1)
+	);
 
-	--colorscheme-accent: hsl(337 48% 66%);
+	--colorscheme-accent: light-dark(
+		var(--kanagawa-sakuraPink),
+		var(--kanagawa-sakuraPink)
+	);
 
-	--colorscheme-red: hsl(0 80% 52%);
-	--colorscheme-red_light: hsl(358 100% 68%);
-	--colorscheme-red_dark: hsl(0 80% 52%);
+	--colorscheme-red: light-dark(
+		var(--kanagawa-lotusRed3),
+		var(--kanagawa-dragonRed)
+	);
+	--colorscheme-red-light: light-dark(
+		var(--kanagawa-lotusRed2),
+		var(--kanagawa-dragonRed)
+	);
+	--colorscheme-red-dark: light-dark(
+		var(--kanagawa-lotusRed),
+		var(--kanagawa-dragonRed)
+	);
 
-	--colorscheme-green: hsl(93 36% 58%);
-	--colorscheme-green_light: hsl(104 33% 75%);
-	--colorscheme-green_dark: hsl(104 21% 47%);
+	--colorscheme-green: light-dark(
+		var(--kanagawa-lotusGreen),
+		var(--kanagawa-dragonGreen)
+	);
+	--colorscheme-green-light: light-dark(
+		var(--kanagawa-lotusGreen3),
+		var(--kanagawa-dragonGreen)
+	);
+	--colorscheme-green-dark: light-dark(
+		var(--kanagawa-lotusGreen2),
+		var(--kanagawa-dragonGreen2)
+	);
 
-	--colorscheme-blue: hsl(219 53% 67%);
-	--colorscheme-blue_light: hsl(207 33% 71%);
-	--colorscheme-blue_dark: hsl(217 34% 46%);
+	--colorscheme-blue: light-dark(
+		var(--kanagawa-lotusBlue4),
+		var(--kanagawa-dragonBlue2)
+	);
+	--colorscheme-blue-light: light-dark(
+		var(--kanagawa-lotusBlue3),
+		var(--kanagawa-springBlue)
+	);
+	--colorscheme-blue-dark: light-dark(
+		var(--kanagawa-lotusBlue5),
+		var(--kanagawa-dragonBlue2)
+	);
 
-	--colorscheme-cyan: hsl(196 42% 64%);
-	--colorscheme-cyan_light: hsl(182 39% 74%);
-	--colorscheme-cyan_dark: hsl(168 21% 57%);
+	--colorscheme-cyan: light-dark(
+		var(--kanagawa-lotusAqua2),
+		var(--kanagawa-dragonAqua)
+	);
+	--colorscheme-cyan-light: light-dark(
+		var(--kanagawa-lotusAqua2),
+		var(--kanagawa-waveAqua2)
+	);
+	--colorscheme-cyan-dark: light-dark(
+		var(--kanagawa-lotusAqua),
+		var(--kanagawa-dragonTeal)
+	);
 
-	--colorscheme-pink: hsl(337 48% 66%);
-	--colorscheme-pink_light: hsl(337 36% 53%);
-	--colorscheme-pink_dark: hsl(284 10% 63%);
+	--colorscheme-pink: light-dark(
+		var(--kanagawa-lotusPink),
+		var(--kanagawa-dragonPink)
+	);
+	--colorscheme-pink-light: light-dark(
+		var(--kanagawa-lotusPink),
+		var(--kanagawa-dragonPink)
+	);
+	--colorscheme-pink-dark: light-dark(
+		var(--kanagawa-lotusPink),
+		var(--kanagawa-dragonPink)
+	);
 
-	--colorscheme-purple: hsl(260 27% 41%);
-	--colorscheme-purple_light: hsl(263 31% 61%);
-	--colorscheme-purple_dark: hsl(240 23% 34%);
+	--colorscheme-purple: light-dark(
+		var(--kanagawa-lotusViolet4),
+		var(--kanagawa-dragonViolet)
+	);
+	--colorscheme-purple-light: light-dark(
+		var(--kanagawa-lotusViolet4),
+		var(--kanagawa-springViolet1)
+	);
+	--colorscheme-purple-dark: light-dark(
+		var(--kanagawa-lotusViolet4),
+		var(--kanagawa-springViolet2)
+	);
 
-	--colorscheme-yellow: hsl(41 100% 44%);
-	--colorscheme-yellow_light: hsl(42 87% 77%);
-	--colorscheme-yellow_dark: hsl(40 28% 40%);
+	--colorscheme-yellow: light-dark(
+		var(--kanagawa-lotusYellow),
+		var(--kanagawa-dragonYellow)
+	);
+	--colorscheme-yellow-light: light-dark(
+		var(--kanagawa-lotusYellow2),
+		var(--kanagawa-carpYellow)
+	);
+	--colorscheme-yellow-dark: light-dark(
+		var(--kanagawa-lotusYellow3),
+		var(--kanagawa-dragonYellow)
+	);
 
-	--colorscheme-orange: hsl(35 100% 46%);
-	--colorscheme-orange_light: hsl(24 100% 70%);
-	--colorscheme-orange_dark: hsl(32 100% 40%);
+	--colorscheme-orange: light-dark(
+		var(--kanagawa-lotusOrange),
+		var(--kanagawa-dragonOrange)
+	);
+	--colorscheme-orange-light: light-dark(
+		var(--kanagawa-roninYellow),
+		var(--kanagawa-dragonOrange2)
+	);
+	--colorscheme-orange-dark: light-dark(
+		var(--kanagawa-lotusOrange2),
+		var(--kanagawa-dragonOrange)
+	);
 }

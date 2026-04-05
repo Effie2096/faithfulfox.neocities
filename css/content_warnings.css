@@ -27,23 +27,26 @@
 }
 
 #content-warning-index {
-	position: absolute;
-	top: 0;
-	right: 0;
+	position: fixed;
+	bottom: 0;
+	left: 50%;
 	display: grid;
-	grid-template-rows: 2em auto 1.2em;
-	z-index: 900;
-	background-color: var(--colorscheme-orange);
-	border-radius: 0 0 1em 1em;
+	grid-template-rows: 1.2em 2em 1fr;
+	z-index: 910;
+	background-color: var(--colorscheme-float);
+	color: var(--colorscheme-fg-light);
+	border-radius: 1em 1em 0 0;
+	transform: translateX(-50%);
+	max-height: 94vh;
 }
 
 #content-warning-header {
-	grid-row-start: 1;
-	grid-row-end: 1;
+	grid-row-start: 2;
+	grid-row-end: 3;
 	display: grid;
 	grid-template-columns: auto auto auto;
 	font-size: 1.2em;
-	line-height: 1.2em;
+	line-height: 1.6em;
 	text-align: center;
 	margin: auto;
 	justify-items: center;
@@ -62,11 +65,15 @@
 
 #content-warning-index-items {
 	display: none;
-	grid-row-start: 2;
-	grid-row-end: 2;
+	grid-row-start: 3;
+	grid-row-end: 4;
 	font-size: 1.1em;
-	padding-left: 1em;
-	padding-right: 1em;
+	overflow: scroll;
+}
+
+#content-warning-index.active {
+	width: 20rem;
+	max-width: 85%;
 }
 
 #content-warning-index.active #content-warning-index-items {
@@ -78,8 +85,8 @@
 	grid-template-columns: 64px 1fr;
 	align-items: center;
 }
-.content-warning-index-item:nth-child(even) {
-	background-color: var(--colorscheme-orange-dark);
+.content-warning-index-item:nth-child(odd) {
+	background-color: var(--colorscheme-float-light);
 }
 
 .content-warning-index-item p {
@@ -87,12 +94,12 @@
 }
 
 #content-warning-index-toggle {
-	grid-row-start: 3;
-	grid-row-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 2;
 	width: 100%;
 	text-align: center;
-	background-color: var(--colorscheme-orange-dark);
-	border-radius: 0 0 1em 1em;
+	background-color: var(--colorscheme-float-dark);
+	border-radius: 1em 1em 0 0;
 	cursor: pointer;
 	font-family: Helvetica, Arial, sans-serif;
 }
@@ -114,7 +121,7 @@
 	overflow-x: hidden;
 	scrollbar-width: none;
 	height: 100%;
-	background-color: color-mix(var(--colorscheme-fg), transparent 80%);
+	background-color: color-mix(var(--colorscheme-fg), transparent 20%);
 	border-radius: 0rem 0.3rem 0.3rem 0rem;
 	position: absolute;
 	top: 0;

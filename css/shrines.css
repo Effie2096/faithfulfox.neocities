@@ -27,7 +27,7 @@
 }
 
 body {
-	height: 1vh;
+	height: 100vh;
 	font-family: Helvetica, Arial, sans-serif;
 	background-color: var(--colorscheme-bg);
 }
@@ -55,7 +55,6 @@ body {
 }
 
 #shrines-container {
-	height: 70vh;
 	overflow: scroll;
 	border-radius: 0.7em;
 	scrollbar-width: none;
@@ -84,7 +83,7 @@ body {
 
 #shrines .card:hover {
 	transform: scale(1.01);
-	z-index: 100;
+	z-index: 900;
 }
 
 #shrines .card.has-warnings img {
@@ -145,10 +144,11 @@ body {
 	font-family: "SymbolsNerdFont-Regular";
 	padding: 0px 10px 0px 10px;
 	display: inline-block;
+	transform: rotate(180deg);
 }
 #content-warning-index.active #toggle-button::before,
 #content-warning-index.active #toggle-button::after {
-	transform: rotate(180deg);
+	transform: rotate(0deg);
 }
 
 #neovim-logo {

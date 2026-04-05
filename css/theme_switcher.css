@@ -1,0 +1,103 @@
+#themes-container {
+	display: grid;
+	grid-auto-flow: column;
+	gap: 0.2em;
+}
+
+#mode-switcher {
+	font-family: "SymbolsNerdFont-Regular";
+}
+
+#themes-container #colorschemes-select {
+	position: relative;
+	width: 1.5em;
+	height: 1.5em;
+
+	padding: 0;
+	padding-top: 0.4rem;
+	padding-left: 0.4rem;
+
+	display: grid;
+	grid-auto-flow: row;
+	gap: 0.3em;
+
+	font-size: 1.5em;
+	text-align: left;
+
+	border: none;
+	border-radius: 1em;
+	transition: width 0.2s ease-out;
+	transform: scale(1);
+
+	overflow: hidden;
+}
+
+#themes-container #colorschemes-select:hover {
+	width: 12rem;
+	height: fit-content;
+	padding: 0.5rem;
+	max-height: 12rem;
+	overflow: scroll;
+	scrollbar-width: none;
+}
+
+.colorscheme-option:hover {
+	transform: scale(1.05);
+}
+
+#themes-container
+	#colorschemes-select
+	.colorscheme-option:first-of-type
+	~ .colorscheme-option,
+#themes-container
+	#colorschemes-select
+	.colorscheme-option:first-of-type
+	.colorscheme-name {
+	display: none;
+}
+
+#themes-container
+	#colorschemes-select:hover
+	.colorscheme-option:first-of-type
+	~ .colorscheme-option,
+#themes-container
+	#colorschemes-select:hover
+	.colorscheme-option:first-of-type
+	.colorscheme-name {
+	display: block;
+}
+
+#themes-container
+	#colorschemes-select
+	.colorscheme-option
+	.colorscheme-display
+	.colorscheme-value {
+	display: none;
+}
+
+#themes-container
+	#colorschemes-select
+	.colorscheme-option
+	.colorscheme-display {
+	display: grid;
+	grid-template-columns: 2rem 1fr;
+}
+
+#themes-container
+	#colorschemes-select
+	.colorscheme-option
+	.colorscheme-display
+	img {
+	display: block;
+	aspect-ratio: 1 / 1;
+	width: 1.5rem;
+}
+
+#themes-container
+	#colorschemes-select
+	.colorscheme-option
+	.colorscheme-display
+	span {
+	cursor: var(--cursor-pointer);
+	color: var(--colorscheme-fg);
+}

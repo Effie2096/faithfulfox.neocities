@@ -1,5 +1,11 @@
 @import url("/css/fonts.css");
 
+* {
+	transition:
+		background-color 0.5s ease,
+		color 0.5s ease;
+}
+
 .icon {
 	font-family: "SymbolsNerdFont-Regular";
 }
@@ -138,4 +144,37 @@
 }
 .blink {
 	animation: blinking 1s infinite;
+}
+
+#toolbar {
+	display: grid;
+	grid-template-columns: auto;
+	grid-auto-flow: column;
+	justify-items: end;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 950;
+	gap: 0.5em;
+	padding: 0.3em;
+}
+
+.toolbar-button {
+	font-size: 1.5em;
+	-moz-user-select: none;
+	user-select: none;
+	cursor: var(--cursor-pointer);
+	padding: 0.3em;
+	background-color: var(--colorscheme-surface-light);
+	color: var(--colorscheme-fg);
+	line-height: 1em;
+	border-radius: 50%;
+	width: 1.5em;
+	height: 1.5em;
+	display: block;
+	text-align: center;
+}
+
+#toolbar .toolbar-button:hover {
+	transform: scale(1.1);
 }

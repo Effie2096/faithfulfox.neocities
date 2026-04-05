@@ -1,11 +1,7 @@
 import { CopyToClipboard, copyFile } from "./CopyToClipboard.js";
 import { censorElementDescendants } from "./censor.js";
 import { toggleActive } from "./globals.js";
-import {
-	notificationClearButton,
-	notificationHistoryButton,
-	notify,
-} from "./notify.js";
+import { notify } from "./notify.js";
 import { shortDate } from "./utils/time_format.js";
 
 window.notify = notify;

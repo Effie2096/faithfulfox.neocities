@@ -1,6 +1,10 @@
 @font-face {
-	font-family: "IosevkaTermNF";
-	src: url("/assets/font/IosevkaTermNerdFont-Regular.ttf");
+	font-family: "IosevkaTerm";
+	src: url("/assets/font/IosevkaTerm-Regular.woff2");
+}
+@font-face {
+	font-family: "Lilex";
+	src: url("/assets/font/LilexNerdFontMono-Regular.ttf");
 }
 
 :root {
@@ -39,7 +43,7 @@
 		var(--colorscheme-purple-light)
 	);
 	--code-block-yellow: light-dark(
-		var(--colorscheme-yellow-dark),
+		var(--colorscheme-yellow),
 		var(--colorscheme-yellow-light)
 	);
 	--code-block-orange: light-dark(
@@ -74,7 +78,18 @@
 .codeblock var,
 .commandline {
 	color: var(--code-block-foreground);
-	font-family: "IosevkaTermNF", monospace;
+}
+
+.codeblock code,
+.codeblock pre,
+.codeblock samp,
+.codeblock var {
+	font-family: "Lilex", monospace;
+	font-size: 0.96em;
+}
+
+.commandline {
+	font-family: "IosevkaTerm", monospace;
 }
 
 .codeblock:not(.inline) > code,
@@ -89,7 +104,6 @@
 .codeblock:not(.inline) > samp,
 .codeblock:not(.inline) > var,
 .commandline {
-	font-size: 1em;
 	tab-size: 2;
 	white-space: pre-wrap;
 }
@@ -132,23 +146,23 @@
 	margin: 0px;
 }
 
-.codeblock .code-desc {
+.codeblock .code-header .code-desc {
 	color: var(--code-block-subtext);
 	font-style: italic;
 	text-align: center;
 }
 
-.codeblock .code-copy {
+.codeblock .code-header .code-copy {
 	position: relative;
 }
 
-.codeblock .code-copy:after {
+.codeblock .code-header .code-copy:after {
 	position: absolute;
 	width: 1em;
 	right: 0;
 	top: 0;
 	content: " ";
-	font-family: "IosevkaTermNF";
+	font-family: "SymbolsNerdFont-Regular";
 	color: var(--code-block-foreground);
 }
 
@@ -156,7 +170,7 @@
 .codeblock > pre::before,
 .codeblock > samp::before,
 .codeblock > var::before {
-	font-family: "IosevkaTermNF", monospace;
+	font-family: "SymbolsNerdFont-Regular";
 	font-size: 1em;
 	pointer-events: none;
 	-moz-pointer-events: none;
@@ -176,12 +190,14 @@
 .codeblock.shell:not(.inline) > samp::before,
 .codeblock.shell:not(.inline) > var::before {
 	content: " ";
+	font-family: "SymbolsNerdFont-Regular";
+	font-size: 1em;
 	color: var(--code-block-purple);
+	padding-right: 0.2em;
 }
 
-.codeblock .code-title::before,
-.codeblock .code-title::after {
-	font-family: "IosevkaTermNF", monospace;
+.codeblock .code-title::before {
+	font-family: "SymbolsNerdFont-Regular";
 	padding-right: 0.2em;
 }
 
@@ -225,6 +241,12 @@
 	white-space: pre;
 }
 
+.syntax.ws::before {
+	position: absolute;
+	top: 0;
+	color: var(--code-block-nontext);
+}
+
 .syntax.ws {
 	position: relative;
 	opacity: 0.4;
@@ -233,12 +255,6 @@
 
 .codeblock:not(:hover) .syntax.ws::before {
 	opacity: 0;
-}
-
-.syntax.ws::before {
-	position: absolute;
-	top: 0;
-	color: var(--code-block-nontext);
 }
 
 .shell .syntax.ws::before {
@@ -336,6 +352,10 @@
 
 .syntax.var {
 	color: var(--code-block-yellow);
+}
+
+.commandline .syntax.var {
+	color: var(--colorscheme-yellow-dark);
 }
 
 .syntax:is(.comment, .placeholder) {

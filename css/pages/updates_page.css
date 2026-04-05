@@ -18,14 +18,185 @@ html {
 body {
 	width: 100%;
 	height: 100%;
+}
+
+#background-texture {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
 	background-image: url("/assets/img/corkboard.jpg");
 	background-size: auto 100%;
 	background-position: center;
 	background-repeat: no-repeat;
+
 	border: 15px solid #990000;
 	border-radius: 25px;
 	outline: 25px solid #990000;
 	outline-offset: -5px;
+	z-index: -2;
+}
+
+:root {
+	--light-on:
+		linear-gradient(
+			to bottom,
+			transparent 0%,
+			rgba(0, 0, 0, 0.8) 0%,
+			rgba(0, 0, 0, 0.87) 10%
+		),
+		conic-gradient(
+			from 180deg at 50% -46%,
+			rgba(0, 0, 0, 0.2) 0deg,
+			rgb(0, 0, 0) 30deg,
+			rgb(0, 0, 0) 330deg,
+			rgba(0, 0, 0, 0.2) 360deg
+		);
+	--light-off:
+		linear-gradient(
+			to bottom,
+			transparent 0%,
+			rgba(0, 0, 0, 0.8) 0%,
+			rgba(0, 0, 0, 0.87) 10%
+		),
+		conic-gradient(
+			from 180deg at 50% -46%,
+			rgba(0, 0, 0, 1) 0deg,
+			rgba(0, 0, 0, 1) 30deg,
+			rgba(0, 0, 0, 1) 330deg,
+			rgba(0, 0, 0, 1) 360deg
+		);
+	--light-fault:
+		linear-gradient(
+			to bottom,
+			transparent 0%,
+			rgba(0, 0, 0, 0.8) 0%,
+			rgba(0, 0, 0, 0.87) 10%
+		),
+		conic-gradient(
+			from 180deg at 50% -46%,
+			rgba(0, 0, 0, 0.6) 0deg,
+			rgb(0, 0, 0) 30deg,
+			rgb(0, 0, 0) 330deg,
+			rgba(0, 0, 0, 0.6) 360deg
+		);
+}
+@keyframes light-flicker {
+	0%,
+	100% {
+		mask-image: var(--light-on);
+	}
+	3% {
+		mask-image: var(--light-off);
+	}
+	3.2% {
+		mask-image: var(--light-on);
+	}
+	7% {
+		mask-image: var(--light-fault);
+	}
+	9% {
+		mask-image: var(--light-on);
+	}
+	19% {
+		mask-image: var(--light-on);
+	}
+	20% {
+		mask-image: var(--light-off);
+	}
+	20.2% {
+		mask-image: var(--light-on);
+	}
+	23% {
+		mask-image: var(--light-fault);
+	}
+	25% {
+		mask-image: var(--light-on);
+	}
+	30% {
+		mask-image: var(--light-fault);
+	}
+	30.2% {
+		mask-image: var(--light-on);
+	}
+	30.4% {
+		mask-image: var(--light-off);
+	}
+	30.6% {
+		mask-image: var(--light-on);
+	}
+	30.9% {
+		mask-image: var(--light-off);
+	}
+	31.2% {
+		mask-image: var(--light-on);
+	}
+	31.5% {
+		mask-image: var(--light-fault);
+	}
+	31.8% {
+		mask-image: var(--light-on);
+	}
+	55% {
+		mask-image: var(--light-on);
+	}
+	57% {
+		mask-image: var(--light-off);
+	}
+	57.2% {
+		mask-image: var(--light-on);
+	}
+	74% {
+		mask-image: var(--light-on);
+	}
+	75% {
+		mask-image: var(--light-off);
+	}
+	75.6% {
+		mask-image: var(--light-on);
+	}
+	77% {
+		mask-image: var(--light-fault);
+	}
+	80% {
+		mask-image: var(--light-off);
+	}
+	80.8% {
+		mask-image: var(--light-on);
+	}
+}
+
+#spotlight {
+	position: absolute;
+	z-index: 5;
+	inset: 0;
+	background: light-dark(rgba(0, 0, 0, 0), rgb(0, 0, 0));
+	background-blend-mode: soft-light;
+
+	mask-image:
+		linear-gradient(
+			to bottom,
+			transparent 0%,
+			rgba(0, 0, 0, 0.8) 0%,
+			rgba(0, 0, 0, 0.87) 10%
+		),
+		conic-gradient(
+			from 180deg at 50% -46%,
+			rgba(0, 0, 0, 0.2) 0deg,
+			rgb(0, 0, 0) 30deg,
+			rgb(0, 0, 0) 330deg,
+			rgba(0, 0, 0, 0.2) 360deg
+		);
+
+	animation: light-flicker 10s infinite;
+
+	mask-composite: intersect;
+	-webkit-mask-composite: source-in;
+
+	pointer-events: none;
+	-moz-pointer-events: none;
 }
 
 #backlink {

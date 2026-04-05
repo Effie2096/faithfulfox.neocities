@@ -25,16 +25,16 @@
 		<link href="/css/tooltip.css" rel="stylesheet">
 		<link href="/css/notification.css" rel="stylesheet">
 		<link href="/css/content_warnings.css" rel="stylesheet">
+		<link href="/css/theme_switcher.css" rel="stylesheet">
 		<link href="/css/style.css" rel="stylesheet">
-
-		<script src="/script/jquery-3.7.1.min.js"></script>
 
 		<script src="/script/index.js" type="module"></script>
 		<script src="/script/post.js"></script>
-		<script src="/script/page_include.js"></script>
+		<script src="/script/page_include.js" type="module"></script>
 		<script src="/script/toggleToDo.js"></script>
 		<script src="/script/gallery.js"></script>
 		<script src="/script/tooltip.js"></script>
+		<script src="/script/theme_switcher.js" type="module"></script>
 	</head>
 
 	<body>
@@ -64,26 +64,8 @@
 			<p id="luc" class="blink">we stay lucrative</p>
 		</div>
 
-		<div id="notifications">
-			<div id="notification-history-container">
-				<div id="notification-history"></div>
-				<div id="notification-buttons-container">
-					<div id="notification-clear-button"
-					     onmouseover="tooltip(this, 'Clear All', '');"
-					>
-						<span id="notification-clear" class="icon">󰎟</span>
-					</div>
-					<div id="notification-count-button">
-						<div id="notification-count-container"
-						     onmouseover="tooltip(this, 'History Toggle', '');"
-						>
-							<span id="notification-count" class="active">0</span>
-						</div>
-						<span id="notification-check" class="icon"></span>
-					</div>
-				</div>
-			</div>
-		</div>
+		<div id="toolbar"></div>
+
 		<div id="chat-btn-container" class="chat-stuff">
 			<button id="chat-btn" class="chat-stuff rainbow-bg" type="button">
 				<span class="click">Chat<span class="icon click"></span></span>
@@ -226,7 +208,7 @@
 			<div class="main-content">
 				<div id="posts">
 					<div class="content-card pinned"
-					     data-include="/pages/posts/aboutme_summary"
+					     data-include="/pages/posts/aboutme"
 					></div>
 					<div class="content-card"
 					     data-include="/pages/posts/horror_gaming_20260308_summary"

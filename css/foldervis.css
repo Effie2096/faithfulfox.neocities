@@ -1,6 +1,6 @@
 @font-face {
-	font-family: "IosevkaTermNF";
-	src: url("/assets/font/IosevkaTermNerdFont-Regular.ttf");
+	font-family: "IosevkaTerm";
+	src: url("/assets/font/IosevkaTerm-Regular.woff2");
 }
 
 :root {
@@ -24,7 +24,7 @@
 }
 
 .folderblock pre {
-	font-family: "IosevkaTermNF", monospace;
+	font-family: "IosevkaTerm", monospace;
 	font-size: 1.1em;
 	color: var(--code-block-subtext);
 	pointer-events: none;
@@ -39,6 +39,7 @@
 }
 
 .folderblock pre span::before {
+	font-family: "SymbolsNerdFont-Regular";
 	margin-right: 0.2em;
 }
 

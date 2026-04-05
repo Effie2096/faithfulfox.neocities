@@ -195,26 +195,6 @@ function resizeCount() {
 	);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-	notificationCountDisplay();
-
-	const countObserver = new MutationObserver((mutations) => {
-		mutations.forEach((mutation) => {
-			if (mutation.addedNodes.length > 0) {
-				mutation.addedNodes.forEach((node) => {
-					if (node.nodeType === Node.TEXT_NODE) {
-						resizeCount();
-					}
-				});
-			}
-		});
-	});
-	countObserver.observe(document.querySelector("#notification-count"), {
-		childList: true,
-		subtree: true,
-	});
-});
-
 function addNotificationToHistory(notification) {
 	var notificationHistory = document.getElementById("notification-history");
 	var notificationCount = document.getElementById("notification-count");
@@ -244,35 +224,119 @@ function addNotificationToHistory(notification) {
 	document.querySelector("#notification-check").classList.remove("active");
 }
 
-export function notificationHistoryButton() {
+function notificationHistoryButton() {
+	document.querySelector("#notifications").classList.toggle("active");
 	document.querySelector("#notification-history").classList.toggle("active");
 }
 
-export function notificationClearButton() {
+function notificationClearButton() {
 	clearNotifications();
 }
 
 function clearNotifications() {
 	document.querySelectorAll(".notification.history").forEach((notification) => {
 		notification.remove();
-		notification_count = 0;
 	});
-	document
-		.querySelector("#notification-history-container")
-		.classList.remove("active");
+	notification_count = 0;
+	// document
+	// 	.querySelector("#notification-history-container")
+	// 	.classList.remove("active");
 	document.querySelector("#notification-count").classList.remove("active");
 	document.querySelector("#notification-check").classList.add("active");
 }
 
+function createNotifications() {
+	const notifications = document.createElement("div");
+	notifications.id = "notifications";
+
+	const historyContainer = document.createElement("div");
+	historyContainer.id = "notification-history-container";
+
+	const history = document.createElement("div");
+	history.id = "notification-history";
+
+	const buttonsContainer = document.createElement("div");
+	buttonsContainer.id = "notification-buttons-container";
+
+	// Clear button
+	const clearButton = document.createElement("div");
+	clearButton.id = "notification-clear-button";
+	clearButton.className = "toolbar-button";
+
+	clearButton.addEventListener("mouseover", (event) => {
+		tooltip(event.currentTarget, "Clear All", "");
+	});
+	clearButton.addEventListener("click", () => {
+		notificationClearButton();
+	});
+
+	const clearIcon = document.createElement("span");
+	clearIcon.id = "notification-clear";
+	clearIcon.className = "icon";
+	clearIcon.textContent = "󰎟";
+
+	clearButton.appendChild(clearIcon);
+
+	// Count button
+	const countButton = document.createElement("div");
+	countButton.id = "notification-count-button";
+	countButton.className = "toolbar-button";
+	countButton.addEventListener("click", () => {
+		notificationHistoryButton();
+	});
+	countButton.addEventListener("mouseover", (event) => {
+		tooltip(event.currentTarget, "History Toggle", "");
+	});
+
+	const countContainer = document.createElement("div");
+	countContainer.id = "notification-count-container";
+
+	const count = document.createElement("span");
+	count.id = "notification-count";
+	count.className = "active";
+	count.textContent = "0";
+
+	countContainer.appendChild(count);
+
+	const checkIcon = document.createElement("span");
+	checkIcon.id = "notification-check";
+	checkIcon.className = "icon";
+	checkIcon.textContent = "";
+
+	countButton.appendChild(countContainer);
+	countButton.appendChild(checkIcon);
+
+	// Assemble structure
+	buttonsContainer.appendChild(clearButton);
+	buttonsContainer.appendChild(countButton);
+
+	historyContainer.appendChild(history);
+	historyContainer.appendChild(buttonsContainer);
+
+	notifications.appendChild(historyContainer);
+
+	return notifications;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-	document
-		.querySelector("#notification-clear-button")
-		.addEventListener("click", () => {
-			notificationClearButton();
+	const toolbar = document.querySelector("#toolbar");
+	toolbar.appendChild(createNotifications());
+
+	notificationCountDisplay();
+
+	const countObserver = new MutationObserver((mutations) => {
+		mutations.forEach((mutation) => {
+			if (mutation.addedNodes.length > 0) {
+				mutation.addedNodes.forEach((node) => {
+					if (node.nodeType === Node.TEXT_NODE) {
+						resizeCount();
+					}
+				});
+			}
 		});
-	document
-		.querySelector("#notification-count-button")
-		.addEventListener("click", () => {
-			notificationHistoryButton();
-		});
+	});
+	countObserver.observe(document.querySelector("#notification-count"), {
+		childList: true,
+		subtree: true,
+	});
 });

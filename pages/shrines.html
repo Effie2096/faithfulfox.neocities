@@ -7,11 +7,13 @@
 		<link href="/css/colorschemes/foxden.css" rel="stylesheet">
 		<link href="/css/globals.css" rel="stylesheet">
 
+		<link rel="stylesheet" href="/css/theme_switcher.css">
 		<link rel="stylesheet" href="/css/content_warnings.css">
 		<link rel="stylesheet" href="/css/tooltip.css">
 
 		<link href="/css/shrines.css" rel="stylesheet">
 
+		<script src="/script/theme_switcher.js" type="module"></script>
 		<script src="/script/pages/shrines.js"></script>
 		<script src="/script/tooltip.js"></script>
 	</head>
@@ -21,7 +23,12 @@
 			<a href="/index.html">Home</a>
 		</div>
 
+		<div id="toolbar"></div>
+
 		<div id="content-warning-index">
+			<div id="content-warning-index-toggle">
+				<div id="toggle-button" onclick="toggleContentWarnings()">expand</div>
+			</div>
 			<div id="content-warning-header">
 				<img src="/assets/img/content_warning/Warning.gif" alt="Warning Sign">
 				<h3>Content Warnings</h3>
@@ -62,9 +69,6 @@
 					<div class="content-warning suicide"></div>
 					<p>Contains references or depictions relating to suicide.</p>
 				</div>
-			</div>
-			<div id="content-warning-index-toggle">
-				<div id="toggle-button" onclick="toggleContentWarnings()">expand</div>
 			</div>
 		</div>
 
@@ -107,7 +111,7 @@
 
 					<div class="card soon">
 						<div class="card-image">
-							<a href="#">
+							<a href="/pages/shrines/nvim.html">
 								<img src="/assets/img/shrines/Neovim.png" alt="My Neovim">
 								<div class="title">Neovim</div>
 								<div id="neovim-logo">
