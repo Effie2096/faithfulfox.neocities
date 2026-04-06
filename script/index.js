@@ -1,3 +1,4 @@
+import { getCookie, setCookie } from "/script/cookies.js";
 import { CopyToClipboard, copyFile } from "./CopyToClipboard.js";
 import { censorElementDescendants } from "./censor.js";
 import { toggleActive } from "./globals.js";
@@ -26,7 +27,23 @@ function toggleChat() {
 	chatButtonIcon.textContent = chatButtonIcon.textContent === "" ? "" : "";
 }
 
+async function cookieDialog() {
+	const cookie = await getCookie("consent");
+	if (!cookie?.value) {
+		const cookieDialog = document.querySelector("#cookies");
+
+		const cookieButton = cookieDialog.querySelector("button");
+		cookieDialog.classList.remove("dismissed");
+		cookieButton.addEventListener("click", () => {
+			setCookie("consent", true);
+			cookieDialog.classList.add("dismissed");
+		});
+	}
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+	cookieDialog();
+
 	const postObserver = new MutationObserver((mutations) => {
 		mutations.forEach((mutation) => {
 			if (mutation.addedNodes.length > 0) {

@@ -158,6 +158,57 @@ body {
 	font-size: 0.8rem;
 }
 
+#cookies {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 1.3rem;
+	color: var(--colorscheme-fg);
+
+	position: absolute;
+	bottom: 3rem;
+	left: 50%;
+	transform: translateX(-50%);
+
+	display: grid;
+
+	padding: 1em;
+
+	background-color: var(--colorscheme-float);
+
+	border: solid 0.2rem var(--colorscheme-float-dark);
+	border-radius: 1rem;
+
+	z-index: 999;
+}
+
+#cookies *:not(:is(img, button)) {
+	padding-bottom: 0.5rem;
+}
+
+#cookies img {
+	aspect-ratio: 1 / 1;
+	height: 3rem;
+	margin-right: 0.5rem;
+}
+
+#cookies p {
+	font-size: 1.1em;
+}
+
+#cookies ul {
+	padding-left: 1em;
+}
+
+#cookies button {
+	font-size: 1.2em;
+	height: 2.8rem;
+	width: 12rem;
+	margin: auto;
+}
+
+#cookies.dismissed {
+	display: none;
+}
+
 .chat-stuff {
 	position: absolute;
 	margin: 10px;

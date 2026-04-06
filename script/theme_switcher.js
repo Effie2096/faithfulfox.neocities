@@ -5,6 +5,8 @@ import kanagawa from "/css/colorschemes/kanagawa.css" with { type: "css" };
 import matrix from "/css/colorschemes/matrix.css" with { type: "css" };
 import sakura from "/css/colorschemes/sakura.css" with { type: "css" };
 
+import { getCookie, setCookie } from "/script/cookies.js";
+
 const MODES = {
 	light: {
 		property: "light",
@@ -89,6 +91,7 @@ async function changeColorscheme(name = "foxden") {
 	});
 
 	document.adoptedStyleSheets.push(theme.sheet);
+	await setCookie("colorscheme", name);
 
 	updatePicker(name);
 }
@@ -96,6 +99,7 @@ async function changeColorscheme(name = "foxden") {
 function updatePicker(selected) {
 	const picker = document.querySelector("#colorschemes-select");
 	const options = picker.querySelectorAll(".colorscheme-option");
+
 	Object.values(options)
 		.sort((a, b) => {
 			const valueA = a.querySelector(".colorscheme-value");
@@ -111,6 +115,7 @@ function updatePicker(selected) {
 		.forEach((option) => {
 			picker.appendChild(option);
 		});
+
 	picker.prepend(
 		Object.values(options).find((option) => {
 			return (
@@ -225,6 +230,22 @@ function toggleMode() {
 	}
 }
 
+async function loadTheme() {
+	const cookieTheme = await getCookie("colorscheme");
+
+	let existingTheme = getThemeSheets()
+		.pop()
+		.href.replace(/.*\//, "")
+		.replace(/\.css/, "");
+
+	if (cookieTheme?.value) {
+		existingTheme = cookieTheme.value;
+		changeColorscheme(cookieTheme.value);
+	}
+
+	updatePicker(existingTheme);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 	const toolbar = document.querySelector("#toolbar");
 	const themesElement = newThemesContainer();
@@ -235,10 +256,5 @@ document.addEventListener("DOMContentLoaded", () => {
 		themesElement.modeSwitcher.textContent = mode.icon;
 	}
 
-	const existingTheme = getThemeSheets()
-		.pop()
-		.href.replace(/.*\//, "")
-		.replace(/\.css/, "");
-
-	updatePicker(existingTheme);
+	loadTheme();
 });
