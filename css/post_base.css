@@ -1,5 +1,5 @@
 :root {
-	font-size: 1em;
+	font-size: 19px;
 }
 
 * {
@@ -10,11 +10,6 @@
 
 body {
 	background-color: var(--colorscheme-bg);
-}
-
-.content-body {
-	color: var(--colorscheme-fg);
-	padding: 2em;
 }
 
 #backlink {
@@ -34,25 +29,46 @@ body {
 	margin-right: 5%;
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ul,
-ol {
+.content-body {
+	font-family: Arial, Helvetica, sans-serif;
+	color: var(--colorscheme-fg);
+
+	width: 70dvw;
+	max-width: 40rem;
+	min-width: 20rem;
+
+	padding: 2rem min(2rem, 5%);
+	margin: auto;
+}
+
+.content-body > :is(p, h1, h2, h3, h4, h5, h6, ul, ol) {
 	margin-bottom: 1rem;
 }
+
+h1 {
+	font-size: clamp(1.8rem, 10vw, 3rem);
+}
+h2 {
+	font-size: clamp(1.6rem, 9vw, 2.6rem);
+}
+h3 {
+	font-size: clamp(1.5rem, 6vw, 2rem);
+}
+h4 {
+	font-size: clamp(1.4rem, 5vw, 1.6rem);
+}
+h5 {
+	font-size: clamp(1.3rem, 4vw, 1.4rem);
+}
+h6 {
+	font-size: clamp(1.2rem, 3vw, 1.2rem);
+}
+
+p {
+	text-align: justify;
+}
+
 ul :is(ul, ol),
 ol :is(ul, ol) {
 	margin-bottom: 0;
-}
-
-.content-body {
-	margin: auto;
-	width: 40rem;
-	max-width: 100%;
-	min-width: 16rem;
 }

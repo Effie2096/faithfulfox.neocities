@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-	document.querySelectorAll(".gallery-card").forEach((gallery) => {
-		setupImageViewer(gallery);
-	});
-
 	const canvas = document.getElementById("canvas");
 	const ctx = canvas.getContext("2d");
 

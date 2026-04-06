@@ -1,4 +1,6 @@
 function setupImageViewer(triggerElement) {
+	if (triggerElement.dataset.viewerInitialized === "true") return;
+
 	const containers = Array.from(triggerElement.children);
 	const imagePairs = containers
 		.map((container) => {
@@ -6,13 +8,32 @@ function setupImageViewer(triggerElement) {
 			const captionEl = container.querySelector("p");
 			if (!img) return null;
 			return {
+				element: container,
 				img,
 				caption: captionEl ? captionEl.textContent : "",
+				visible: window.getComputedStyle(container).display !== "none",
 			};
 		})
 		.filter(Boolean); // remove nulls (containers with no img)
 
-	if (triggerElement.dataset.viewerInitialized === "true") return;
+	const lastImage = Array.from(imagePairs)
+		.reverse()
+		.find((element) => {
+			return element.visible;
+		});
+
+	const extraCount =
+		imagePairs.length - containers.indexOf(lastImage.element) - 1;
+
+	if (extraCount > 0) {
+		lastImage.element.style.position = "relative";
+
+		const extraCountDisplay = document.createElement("span");
+		extraCountDisplay.classList.add("extra-count");
+		extraCountDisplay.textContent = `+${extraCount}`;
+		lastImage.element.appendChild(extraCountDisplay);
+	}
+
 	triggerElement.dataset.viewerInitialized = "true";
 
 	triggerElement.addEventListener("click", (e) => {
@@ -102,3 +123,9 @@ function openViewer(imagePairs, startIndex) {
 		}
 	}
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+	document.querySelectorAll(".gallery-card").forEach((gallery) => {
+		setupImageViewer(gallery);
+	});
+});
