@@ -61,32 +61,40 @@ const THEMES = [
 
 const PATH_OVERRIDES = {
 	"/pages/devlog": "matrix",
+	"/": "foxden",
 };
 
-function searchOverrides(pathname) {
+function pathStartsWith(dir) {
+	const path = window.location.pathname;
+
+	// special case: homepage
+	if (dir === "/" || dir === "/index.html")
+		return path === "/" || path === "/index.html";
+
+	// normalize trailing slash on dir
+	const normalizedDir = dir.endsWith("/") ? dir : `${dir}/`;
+
+	return path.startsWith(normalizedDir);
+}
+
+function searchOverrides() {
 	return Object.entries(PATH_OVERRIDES).find(([path, _]) => {
-		return pathname.startsWith(path);
+		return pathStartsWith(path);
 	});
 }
 
 async function setThemeCookie(name) {
-	const url = new URL(window.location.href);
-
-	const override = searchOverrides(url.pathname);
+	const override = searchOverrides();
 	const cookieName = override ? `${override[0]}-colorscheme` : "colorscheme";
 
 	await setCookie(cookieName, name);
 }
 
 async function getThemeCookie() {
-	const url = new URL(window.location.href);
-
-	const override = searchOverrides(url.pathname);
+	const override = searchOverrides();
 	const cookieName = override ? `${override[0]}-colorscheme` : "colorscheme";
 
-	const themeCookie = await getCookie(cookieName);
-
-	return themeCookie;
+	return await getCookie(cookieName);
 }
 
 function getThemeSheets(filter = THEMES_DIR) {
@@ -99,18 +107,6 @@ function removeThemeSheets(stylesheets) {
 	Object.values(stylesheets).forEach((sheet) => {
 		sheet.ownerNode.parentNode.removeChild(sheet.ownerNode);
 	});
-}
-
-async function changeColorscheme(name = "foxden") {
-	const theme = THEMES.find((theme) => {
-		return theme.name === name;
-	});
-
-	document.adoptedStyleSheets.push(theme.sheet);
-
-	await setThemeCookie(name);
-
-	updatePicker(name);
 }
 
 function updatePicker(selected) {
@@ -173,9 +169,15 @@ function newThemePicker() {
 	select.id = "colorschemes-select";
 	select.classList.add("toolbar-button");
 
+	const override = searchOverrides();
+
 	THEMES.sort(sortThemes).forEach((theme) => {
 		const option = document.createElement("div");
 		option.classList.add("colorscheme-option");
+
+		if (override && override[1] === theme.name) {
+			option.classList.add("preferred");
+		}
 
 		const optionDisplay = document.createElement("div");
 		optionDisplay.classList.add("colorscheme-display");
@@ -248,6 +250,7 @@ function setMode(mode = "light dark") {
 		root.style.setProperty("color-scheme", mode);
 	}
 }
+
 function toggleMode() {
 	const root = document.querySelector(":root");
 	const themesElement = getThemesElement();
@@ -263,20 +266,39 @@ function toggleMode() {
 	}
 }
 
+async function changeColorscheme(name = "foxden") {
+	const theme = THEMES.find((theme) => {
+		return theme.name === name;
+	});
+
+	document.adoptedStyleSheets.push(theme.sheet);
+
+	await setThemeCookie(name);
+
+	updatePicker(name);
+}
+
 async function loadTheme() {
 	const cookieTheme = await getThemeCookie();
 
-	let existingTheme = getThemeSheets()
-		.pop()
-		.href.replace(/.*\//, "")
-		.replace(/\.css/, "");
+	let themeName = "foxden"; // fallback
 
 	if (cookieTheme?.value) {
-		existingTheme = cookieTheme.value;
-		changeColorscheme(cookieTheme.value);
+		themeName = cookieTheme.value;
+	} else {
+		const existingTheme = getThemeSheets()
+			.pop()
+			.href.replace(/.*\//, "")
+			.replace(/\.css/, "");
+		themeName = existingTheme;
 	}
+	const theme = THEMES.find((theme) => {
+		return theme.name === themeName;
+	});
 
-	updatePicker(existingTheme);
+	document.adoptedStyleSheets.push(theme.sheet);
+
+	updatePicker(themeName);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -14,12 +14,9 @@
 	height: 1.5em;
 
 	padding: 0;
-	padding-top: 0.4rem;
-	padding-left: 0.4rem;
 
 	display: grid;
 	grid-auto-flow: row;
-	gap: 0.3em;
 
 	font-size: 1.5em;
 	text-align: left;
@@ -35,14 +32,77 @@
 #themes-container #colorschemes-select:hover {
 	width: 12rem;
 	height: fit-content;
-	padding: 0.5rem;
-	max-height: 12rem;
+	padding-top: 0;
+	padding-right: 0.5rem;
+	max-height: 11rem;
 	overflow: scroll;
 	scrollbar-width: none;
+	border-radius: 0.5rem;
+}
+
+.colorscheme-display {
+	position: relative;
+}
+
+#themes-container
+	#colorschemes-select:hover
+	.colorscheme-option
+	.colorscheme-display {
+	padding: 0.2rem;
+}
+
+#themes-container
+	#colorschemes-select:hover
+	.colorscheme-option.preferred
+	.colorscheme-display {
+	background-color: var(--colorscheme-accent);
+}
+#themes-container
+	#colorschemes-select:hover
+	.colorscheme-option.preferred
+	.colorscheme-display,
+#themes-container
+	#colorschemes-select:hover
+	.colorscheme-option
+	.colorscheme-display {
+	border-radius: 1rem 0.5rem 0.5rem 1rem;
+}
+
+#themes-container
+	#colorschemes-select:hover
+	.colorscheme-option.preferred
+	.colorscheme-display::after {
+	content: "!";
+	position: absolute;
+	right: 0.5rem;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 .colorscheme-option:hover {
 	transform: scale(1.05);
+}
+
+#themes-container #colorschemes-select .colorscheme-option {
+	padding-top: 0.4rem;
+	padding-left: 0.4rem;
+}
+
+#themes-container #colorschemes-select:hover .colorscheme-option:first-of-type {
+	position: sticky;
+	background-color: var(--colorscheme-float);
+	top: 0;
+	z-index: 100;
+}
+#themes-container #colorschemes-select:hover .colorscheme-option:last-of-type {
+	padding-bottom: 0.4rem;
+}
+
+#themes-container
+	#colorschemes-select:hover
+	.colorscheme-option:first-of-type
+	.colorscheme-display {
+	background-color: var(--colorscheme-float-light);
 }
 
 #themes-container

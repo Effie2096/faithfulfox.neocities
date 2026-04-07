@@ -165,7 +165,7 @@
 	user-select: none;
 	cursor: var(--cursor-pointer);
 	padding: 0.3em;
-	background-color: var(--colorscheme-surface-light);
+	background-color: var(--colorscheme-float);
 	color: var(--colorscheme-fg);
 	line-height: 1em;
 	border-radius: 50%;

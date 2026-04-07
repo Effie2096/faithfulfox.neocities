@@ -3,9 +3,9 @@
 	--colorscheme-bg: light-dark(#dcdae0, #0d0208);
 	--colorscheme-bg-light: light-dark(#c0bad3, #003b00);
 	--colorscheme-bg-dark: light-dark(#675e6d, #113311);
-	--colorscheme-surface: light-dark(#e5a5c9, #300e21);
-	--colorscheme-surface-light: light-dark(#f1c1dc, #3c1129);
-	--colorscheme-surface-dark: light-dark(#cba9bc, #1c0813);
+	--colorscheme-surface: light-dark(#85dc85, #300e21);
+	--colorscheme-surface-light: light-dark(#a5e5a5, #3c1129);
+	--colorscheme-surface-dark: light-dark(#72d672, #1c0813);
 	--colorscheme-float: light-dark(#81d88e, #027c14);
 	--colorscheme-float-light: light-dark(#97f0a4, #03a41a);
 	--colorscheme-float-dark: light-dark(#51c051, #226622);

@@ -50,7 +50,6 @@
 
 	color-scheme: light dark;
 
-	/* kit fox foxden-burrow fennec */
 	--colorscheme-bg: light-dark(var(--foxden-coat), var(--foxden-epiphora));
 	--colorscheme-bg-light: light-dark(var(--foxden-whisker), var(--foxden-tail));
 	--colorscheme-bg-dark: light-dark(var(--foxden-pelt), var(--foxden-burrow));
