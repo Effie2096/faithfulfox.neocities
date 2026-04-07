@@ -1,14 +1,18 @@
-export function setCookie(name, value, exdays) {
-	const expiry = (exdays || 30) * 24 * 60 * 60 * 1000;
-	cookieStore.set({
-		name: name,
-		value: value,
-		expires: Date.now() + expiry,
-		path: "/",
-	});
+export function setCookie(name, value, exdays = 30, path = "/") {
+	const expiry = exdays * 24 * 60 * 60 * 1000;
+	try {
+		cookieStore.set({
+			name: name,
+			value: value,
+			expires: Date.now() + expiry,
+			path: path,
+			partitioned: true,
+		});
+	} catch (error) {
+		console.log(`Error setting cookie ${name}: ${error}`);
+	}
 }
 
 export async function getCookie(name) {
-	const cookie = await cookieStore.get(name);
-	return cookie;
+	return await cookieStore.get(name);
 }

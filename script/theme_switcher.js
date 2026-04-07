@@ -59,6 +59,40 @@ const THEMES = [
 	},
 ];
 
+const PATH_OVERRIDES = {
+	"/pages/devlog": "matrix",
+};
+
+function searchOverrides(pathname) {
+	return Object.entries(PATH_OVERRIDES).find(([path, _]) => {
+		return pathname.startsWith(path);
+	});
+}
+
+async function setThemeCookie(name) {
+	const url = new URL(window.location.href);
+
+	const override = searchOverrides(url.pathname);
+	const cookieName = override ? `${override[0]}-colorscheme` : "colorscheme";
+
+	await setCookie(cookieName, name);
+}
+
+async function getThemeCookie() {
+	const url = new URL(window.location.href);
+
+	const override = searchOverrides(url.pathname);
+	const cookieName = override ? `${override[0]}-colorscheme` : "colorscheme";
+
+	const themeCookie = await getCookie(cookieName);
+
+	if (!themeCookie && override) {
+		return override[1];
+	}
+
+	return themeCookie;
+}
+
 function getMode() {
 	const root = document.querySelector(":root");
 
@@ -91,7 +125,8 @@ async function changeColorscheme(name = "foxden") {
 	});
 
 	document.adoptedStyleSheets.push(theme.sheet);
-	await setCookie("colorscheme", name);
+
+	await setThemeCookie(name);
 
 	updatePicker(name);
 }
@@ -231,7 +266,7 @@ function toggleMode() {
 }
 
 async function loadTheme() {
-	const cookieTheme = await getCookie("colorscheme");
+	const cookieTheme = await getThemeCookie();
 
 	let existingTheme = getThemeSheets()
 		.pop()
