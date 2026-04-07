@@ -9,17 +9,17 @@ import { getCookie, setCookie } from "/script/cookies.js";
 
 const MODES = {
 	light: {
-		property: "light",
+		value: "light",
 		icon: " ",
 		next: "dark",
 	},
 	dark: {
-		property: "dark",
+		value: "dark",
 		icon: "󰖔",
 		next: "system",
 	},
 	system: {
-		property: "light dark",
+		value: "light dark",
 		icon: "󰔎",
 		next: "light",
 	},
@@ -86,25 +86,7 @@ async function getThemeCookie() {
 
 	const themeCookie = await getCookie(cookieName);
 
-	if (!themeCookie && override) {
-		return override[1];
-	}
-
 	return themeCookie;
-}
-
-function getMode() {
-	const root = document.querySelector(":root");
-
-	if (root) {
-		const styles = getComputedStyle(root);
-
-		const mode = styles.getPropertyValue("color-scheme");
-		return Object.values(MODES).find((entry) => {
-			return entry.property === mode;
-		});
-	}
-	return null;
 }
 
 function getThemeSheets(filter = THEMES_DIR) {
@@ -236,6 +218,29 @@ function newModeSwitcher() {
 	return modeSwitcher;
 }
 
+function getThemesElement() {
+	const themesContainer = document.querySelector("#themes-container");
+	const modeSwitcher = themesContainer.querySelector("#mode-switcher");
+	return { themesContainer: themesContainer, modeSwitcher: modeSwitcher };
+}
+
+function getMode() {
+	const root = document.querySelector(":root");
+
+	if (!root) {
+		return MODES.system;
+	}
+
+	const styles = getComputedStyle(root);
+	const mode = styles.getPropertyValue("color-scheme");
+
+	const documentMode = Object.values(MODES).find((entry) => {
+		return entry.value === mode;
+	});
+
+	return documentMode === "normal" ? MODES.system : documentMode;
+}
+
 function setMode(mode = "light dark") {
 	const root = document.querySelector(":root");
 
@@ -243,13 +248,6 @@ function setMode(mode = "light dark") {
 		root.style.setProperty("color-scheme", mode);
 	}
 }
-
-function getThemesElement() {
-	const themesContainer = document.querySelector("#themes-container");
-	const modeSwitcher = themesContainer.querySelector("#mode-switcher");
-	return { themesContainer: themesContainer, modeSwitcher: modeSwitcher };
-}
-
 function toggleMode() {
 	const root = document.querySelector(":root");
 	const themesElement = getThemesElement();
@@ -259,7 +257,7 @@ function toggleMode() {
 		if (current) {
 			const next = MODES[current.next];
 
-			setMode(next.property);
+			setMode(next.value);
 			themesElement.modeSwitcher.textContent = next.icon;
 		}
 	}
