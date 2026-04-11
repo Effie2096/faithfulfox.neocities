@@ -65,6 +65,14 @@
 	position: relative;
 }
 
+.codeblock:hover {
+	box-shadow: 0rem 0rem 3rem
+		light-dark(
+			color-mix(var(--colorscheme-fg-light), transparent 60%),
+			color-mix(var(--colorscheme-bg-light), transparent 60%)
+		);
+}
+
 .codeblock.inline {
 	border-radius: 5px;
 	padding: 0 0.3em;
