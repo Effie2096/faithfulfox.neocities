@@ -89,7 +89,7 @@ body {
 }
 
 .scrollbox {
-	overflow: scroll;
+	overflow-x: hidden;
 	scrollbar-width: none;
 }
 

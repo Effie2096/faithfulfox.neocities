@@ -15,8 +15,11 @@ const explosion = {
 	speed: 10,
 	angle: 0,
 };
+const frameTime = 16;
 const scaleFactor = 1;
-const imageLimit = 100;
+const imageLimit = 200;
+const lifetime = 2000;
+const fadeTime = 600;
 
 function createImage(x, y) {
 	const img = {
@@ -25,7 +28,10 @@ function createImage(x, y) {
 		vx: Math.random() * explosion.speed - explosion.speed / 2,
 		vy: Math.random() * explosion.speed - explosion.speed / 2,
 		angle: Math.random() * 360,
-		lifetime: 2000,
+		opacity: 1.0,
+		birth: performance.now(),
+		lifetime: lifetime,
+		fade: Math.random() * fadeTime,
 	};
 	explosion.images.push(img);
 }
@@ -36,30 +42,35 @@ function updateImages() {
 		img.x += img.vx;
 		img.y += img.vy;
 		img.angle += 1;
-		img.lifetime -= 16; // decrease lifetime by 16 milliseconds (approximately 1 frame)
+		img.lifetime -= frameTime;
 
 		// Check if the image has hit an edge
 		if (
 			img.x + (image_tuah.width * scaleFactor) / 2 > canvas_tuah.width ||
 			img.x - (image_tuah.width * scaleFactor) / 2 < 0
 		) {
-			img.vx = -img.vx; // Reverse the x direction
+			img.vx = -img.vx;
 		}
 		if (
 			img.y + (image_tuah.height * scaleFactor) / 2 > canvas_tuah.height ||
 			img.y - (image_tuah.height * scaleFactor) / 2 < 0
 		) {
-			img.vy = -img.vy; // Reverse the y direction
+			img.vy = -img.vy;
 		}
 
-		// Check if the image's lifetime has expired
+		if (img.lifetime <= img.fade) {
+			const dec = img.fade / frameTime / 100;
+			const opacity = Math.max(0, img.opacity - dec);
+
+			img.opacity = opacity;
+		}
+
 		if (img.lifetime <= 0) {
 			explosion.images.splice(i, 1); // remove the image from the array
 			i--; // decrement the index to avoid skipping images
 		}
 	}
 
-	// Limit the number of images to 100
 	if (explosion.images.length > imageLimit) {
 		explosion.images.shift(); // remove the oldest image from the array
 	}
@@ -72,6 +83,7 @@ function drawImages() {
 		ctx_tuah.save();
 		ctx_tuah.translate(img.x, img.y);
 		ctx_tuah.rotate((img.angle * Math.PI) / 180);
+		ctx_tuah.globalAlpha = img.opacity;
 		ctx_tuah.drawImage(
 			image_tuah,
 			0,
@@ -90,8 +102,6 @@ function drawImages() {
 let updateInterval = null;
 let drawInterval = null;
 function createExplosion(x, y) {
-	explosion.images = [];
-
 	for (let i = 0; i < explosion.numImages; i++) {
 		createImage(x, y);
 	}
@@ -105,8 +115,8 @@ function createExplosion(x, y) {
 	}
 
 	// Set new intervals
-	updateInterval = setInterval(updateImages, 16);
-	drawInterval = setInterval(drawImages, 16);
+	updateInterval = setInterval(updateImages, frameTime);
+	drawInterval = setInterval(drawImages, frameTime);
 }
 
 document.addEventListener("click", (event) => {
