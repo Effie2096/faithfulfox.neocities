@@ -24,14 +24,14 @@ body {
 	z-index: 900;
 }
 
-#backlink > a {
+#backlink>a {
 	text-decoration: none;
 	color: var(--colorscheme-yellow);
 	font-size: 24px;
 	margin: 10px;
 }
 
-#backlink > a::before {
+#backlink>a::before {
 	content: "<";
 	margin-right: 5%;
 }
@@ -47,8 +47,8 @@ body {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
+	/* width: 100%; */
+	/* height: 100%; */
 	pointer-events: none;
 }
 
@@ -93,11 +93,9 @@ body {
 }
 
 .header {
-	background-image: linear-gradient(
-		180deg,
-		var(--colorscheme-bg) 80%,
-		color-mix(var(--colorscheme-bg), transparent 80%)
-	);
+	background-image: linear-gradient(180deg,
+			var(--colorscheme-bg) 80%,
+			color-mix(var(--colorscheme-bg), transparent 80%));
 	margin: auto;
 	text-align: center;
 	font-family: Arial, sans-serif;

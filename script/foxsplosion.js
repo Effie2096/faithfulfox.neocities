@@ -127,3 +127,16 @@ document.addEventListener("click", (event) => {
 		createExplosion(x, y);
 	}
 });
+
+let debounce = null;
+const resizeObserver = new ResizeObserver(() => {
+	if (debounce) {
+		clearTimeout(debounce);
+	}
+
+	debounce = setTimeout(() => {
+		canvas_tuah.width = window.innerWidth;
+		canvas_tuah.height = window.innerHeight;
+	}, 100);
+});
+resizeObserver.observe(document.querySelector("body"));
