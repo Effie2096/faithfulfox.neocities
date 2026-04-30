@@ -47,6 +47,12 @@ html {
 	margin-right: 5%;
 }
 
+#canvas {
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
 #container {
 	background-color: var(--page-bg);
 	margin: auto;
