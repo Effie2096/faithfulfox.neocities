@@ -134,6 +134,7 @@ li > :is(ul, ol) {
 
 .prompt-divider {
 	width: 100%;
+	height: 0.2rem; /* fixes things immediately after prompt being indented due to use of float */
 }
 
 .prompt-left {
