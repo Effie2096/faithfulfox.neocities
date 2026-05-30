@@ -1186,8 +1186,10 @@ body:has(#construction:hover) #paradox {
 	position: absolute;
 	font-family: "SymbolsNerdFont-Regular";
 	opacity: 0%;
-	top: -0.2rem;
+	line-height: 100%;
+	top: 50%;
 	left: -1.5rem;
+	transform: translateY(-50%);
 	transition: linear 0.2s;
 }
 
