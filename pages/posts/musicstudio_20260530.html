@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Music Studio</title>
+		<link href="/css/colorschemes/foxden.css" rel="stylesheet">
+		<link href="/css/globals.css" rel="stylesheet">
+		<link href="/css/post_base.css" rel="stylesheet">
+		<link href="/css/media_viewers.css" rel="stylesheet">
+		<link href="/css/tooltip.css" rel="stylesheet">
+		<link href="/css/theme_switcher.css" rel="stylesheet">
+
+		<script src="/script/theme_switcher.js" type="module"></script>
+
+		<script src="/script/tooltip.js"></script>
+		<script type="module">
+			import { addCensors } from "/script/censor.js"
+			window.onload = () => {
+				addCensors()
+			}
+		</script>
+	</head>
+	<body>
+
+		<div id="backlink">
+			<a href="/index.html">Home</a>
+		</div>
+
+		<div id="toolbar"></div>
+
+		<div class="content-body">
+		</div>
+	</body>
+</html>
