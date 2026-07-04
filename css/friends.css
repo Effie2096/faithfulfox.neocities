@@ -25,7 +25,7 @@
 
 body,
 html {
-	height: 100vh;
+	height: 100dvh;
 	overflow: hidden;
 }
 
@@ -57,7 +57,7 @@ html {
 #container {
 	background-color: var(--page-bg);
 	margin: auto;
-	height: 100vh;
+	height: 100dvh;
 
 	background-position: center;
 	background-size: cover;

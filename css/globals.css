@@ -155,7 +155,7 @@
 	position: fixed;
 	top: 0;
 	right: 0;
-	z-index: 950;
+	z-index: 960;
 	gap: 0.5em;
 	padding: 0.3em;
 }
