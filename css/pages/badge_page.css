@@ -9,7 +9,7 @@ body {
 	background-position: center bottom;
 	background-size: contain;
 	background-color: var(--colorscheme-surface-light);
-	height: 100vh;
+	height: 100dvh;
 	overflow: hidden;
 }
 
@@ -42,7 +42,7 @@ body {
 #container {
 	margin: auto;
 	width: 80%;
-	height: 70%;
+	height: 70dvh;
 	overflow: scroll;
 	scrollbar-width: none;
 }
