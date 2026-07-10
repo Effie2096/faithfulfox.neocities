@@ -96,6 +96,14 @@ async function getThemeCookie() {
 
 	return await getCookie(cookieName);
 }
+ 
+async function setModeCookie(mode) {
+	await setCookie("theme-mode", mode)
+}
+
+async function getModeCookie() {
+	return await getCookie("theme-mode")
+}
 
 function getThemeSheets(filter = THEMES_DIR) {
 	return Object.values(document.styleSheets).filter((sheet) => {
@@ -249,19 +257,24 @@ function setMode(mode = "light dark") {
 	if (root) {
 		root.style.setProperty("color-scheme", mode);
 	}
+	const newMode = Object.values(MODES).find((entry) => {
+		return entry.value === mode;
+	});
+	const themesElement = getThemesElement();
+	themesElement.modeSwitcher.textContent = newMode.icon;
 }
 
-function toggleMode() {
+async function toggleMode() {
 	const root = document.querySelector(":root");
-	const themesElement = getThemesElement();
 
 	if (root) {
 		const current = getMode();
 		if (current) {
 			const next = MODES[current.next];
 
+			await setModeCookie(current.next)
+
 			setMode(next.value);
-			themesElement.modeSwitcher.textContent = next.icon;
 		}
 	}
 }
@@ -280,8 +293,13 @@ async function changeColorscheme(name = "foxden") {
 
 async function loadTheme() {
 	const cookieTheme = await getThemeCookie();
+	const cookieMode = await getModeCookie();
 
 	let themeName = "foxden"; // fallback
+
+	if (cookieMode?.value) {
+		setMode(MODES[cookieMode.value].value)
+	}
 
 	if (cookieTheme?.value) {
 		themeName = cookieTheme.value;
@@ -306,10 +324,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	const themesElement = newThemesContainer();
 	toolbar.appendChild(themesElement.themesContainer);
 
+	loadTheme();
 	const mode = getMode();
 	if (mode) {
 		themesElement.modeSwitcher.textContent = mode.icon;
 	}
 
-	loadTheme();
 });
