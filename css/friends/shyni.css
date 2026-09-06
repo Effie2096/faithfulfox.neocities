@@ -5,7 +5,7 @@
 #shyni-board #poppee-container {
 	position: absolute;
 	width: 23%;
-	aspect-ratio: 1/1;
+	aspect-ratio: 1 / 1;
 }
 
 #shyni-board.active #poppee-container {
@@ -23,10 +23,30 @@
 	height: 100%;
 }
 
+#shyni-board #married-container {
+	position: absolute;
+	width: 23%;
+	aspect-ratio: 1 / 1;
+}
+
+#shyni-board.active #married-container {
+	right: 3%;
+	bottom: 70%;
+	transition-delay: calc(var(--swipe-scale) * 0.2);
+	transform: rotate(5deg);
+}
+
+#shyni-board #married-container #married {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	height: 100%;
+}
+
 #shyni-board #vodka-container {
 	position: absolute;
 	width: 22%;
-	aspect-ratio: 1/2;
+	aspect-ratio: 1 / 2;
 }
 
 #shyni-board.active #vodka-container {
@@ -45,7 +65,7 @@
 #shyni-board #csm-container {
 	position: absolute;
 	width: 38%;
-	aspect-ratio: 2/1;
+	aspect-ratio: 2 / 1;
 }
 
 #shyni-board.active #csm-container {
@@ -65,7 +85,7 @@
 #shyni-board #haruhi-container {
 	position: absolute;
 	width: 37%;
-	aspect-ratio: 1/2;
+	aspect-ratio: 1 / 2;
 }
 
 #shyni-board.active #haruhi-container {

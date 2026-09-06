@@ -72,7 +72,7 @@ body {
 
 #container {
 	width: 90%;
-	height: 100vh;
+	height: 100dvh;
 	margin: auto;
 	display: grid;
 }

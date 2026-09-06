@@ -35,13 +35,14 @@ body {
 
 	width: 70dvw;
 	max-width: 40rem;
-	min-width: 20rem;
+	min-width: 18rem;
 
 	padding: 2rem min(2rem, 5%);
+	padding-top: 3rem;
 	margin: auto;
 }
 
-.content-body > :is(p, h1, h2, h3, h4, h5, h6, ul, ol) {
+.content-body section > :is(p, h1, h2, h3, h4, h5, h6, ul, ol) {
 	margin-bottom: 1rem;
 }
 
@@ -71,4 +72,19 @@ p {
 ul :is(ul, ol),
 ol :is(ul, ol) {
 	margin-bottom: 0;
+}
+
+.update-marker {
+	border-right: 3px solid var(--colorscheme-accent);
+	padding-right: 0.5rem;
+}
+
+.update-date {
+	width: fit-content;
+	margin-right: 0;
+	margin-left: auto;
+	padding-left: 3px;
+	transform: translateX(0.5rem);
+	background-color: var(--colorscheme-accent);
+	color: var(--colorscheme-bg);
 }

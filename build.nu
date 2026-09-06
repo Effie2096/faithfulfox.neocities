@@ -108,7 +108,7 @@ def generate-badges-page [] {
     }
 
     "</div>" | save --append $badges_outfile
-    "<hr/>"  | save --append $badges_outfile
+    "<hr>"  | save --append $badges_outfile
   }
 
   for key in ($badge_dirs | columns) {

@@ -83,7 +83,7 @@ add_images() {
         echo "<img src=\"/$path${badge##*/}\" alt=\"${badge##*/}\" onmouseover=\"tooltip(this, '${badge##*/}')\" loading=\"lazy\">" >> $badges_file
     done
     echo '</div>' >> $badges_file
-    echo '<hr/>' >> $badges_file
+    echo '<hr>' >> $badges_file
 }
 
 add_images $badges80 "smol"

@@ -1,3 +1,11 @@
+.media-card img {
+  image-rendering: -moz-crisp-edges;         /* Firefox */
+  image-rendering:   -o-crisp-edges;         /* Opera */
+  image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
+}
+
 .media-card {
 	width: 95%;
 	margin: auto;
@@ -51,7 +59,7 @@
 
 .download-flex-container {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
 	justify-content: center;
 	gap: 1rem;
 	padding: 0.5rem 0;
@@ -142,7 +150,7 @@
 	grid-row-start: 2;
 	grid-row-end: 3;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 0.8rem;
+	font-size: 0.6rem;
 	padding: 0.1rem;
 	background-color: color-mix(var(--colorscheme-fg-light), transparent 60%);
 	color: var(--colorscheme-bg-dark);
