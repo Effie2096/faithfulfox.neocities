@@ -43,7 +43,7 @@ def make-logger [
     let color = ($colors | get $level)
 
     let timestamp = $"(ansi grey)[($timestamp)](ansi reset)"
-    let level_indicator = $"($color)[($level | str upcase)](ansi reset)"
+    let level_indicator = $"($color)[($level | str uppercase)](ansi reset)"
     let pad = ("" | fill --width ($max_level_len - ($level | str length)))
     let indent = $"(ansi grey)($indent)(ansi reset)"
     let message = $"($color)($msg)(ansi reset)"
